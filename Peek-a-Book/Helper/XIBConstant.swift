@@ -15,7 +15,7 @@ struct XIBConstant {
     static let AddressMapsView = "AddressMapsView"
 
     static let BooksHomeScreenCVC = "BooksHomescreenCollectionViewCell"
-    static let KatalogLenderCVC = "KatalogLenderCollectionViewCell"
+    static let KatalogLenderCVC = "KatalogLenderCollectionViewCell"    
 }
 
 

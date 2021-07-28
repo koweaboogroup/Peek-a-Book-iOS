@@ -15,6 +15,7 @@
 		3E5B7563A59C3A4FF7D89F57 /* XIBConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB78C1AD0E7EF5B9021C332 /* XIBConstant.swift */; };
 		4BA9DB4139D3CE5F654CE7A8 /* UIView+cornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37745B033D1F79389E637F92 /* UIView+cornerRadius.swift */; };
 		4C739B626D3946EDF0E82778 /* UIView+loadViewFromNib.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A3CB00E3FC319BA8430B49 /* UIView+loadViewFromNib.swift */; };
+		5109BF762C1D9BF2DD60F6DA /* Pods_Peek_a_Book.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B97009D3105BF1156E9CE2A /* Pods_Peek_a_Book.framework */; };
 		6A17203F810453A9A4658CB2 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4B6DBFFF549D91E0B8932A /* Constant.swift */; };
 		70B65395D17838F6B6C4B723 /* MKMapView+centerToLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906725EAE0AC8DF524AE2661 /* MKMapView+centerToLocation.swift */; };
 		7302150916D9131C0B56FC42 /* AddressMapsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12070EB467C78FF064A1F339 /* AddressMapsView.xib */; };
@@ -26,7 +27,6 @@
 		A546E5470780ED916662E9DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85A38057B0B03D158512EAE3 /* Assets.xcassets */; };
 		B6829D7AE555FE2DE5D5204A /* MapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D3F6CA1768C73EBAAB8435 /* MapsViewController.swift */; };
 		BFFA984A503BA76BDAF284AC /* BooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354FA11E31D7A45A9196E4B2 /* BooksViewController.swift */; };
-		CFAE9B738929496E6DA1DC59 /* Pods_Peek_a_Book.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62FD51390A59B379A8951482 /* Pods_Peek_a_Book.framework */; };
 		D32C64F5D5A672B756DBDF8B /* MapsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC78AEFEA926433E48F0F8E6 /* MapsViewController.xib */; };
 		D69C0BA12867164AEB0662AB /* BooksHomescreenCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE21D7008869231B95093FF /* BooksHomescreenCollectionViewCell.xib */; };
 		D872711A24530F2899220077 /* BooksViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07E248C4DC1D4893FFDA1E91 /* BooksViewController.xib */; };
@@ -38,6 +38,7 @@
 /* Begin PBXFileReference section */
 		0139F849E0DC724A2FB5FD51 /* MapsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsViewModel.swift; sourceTree = "<group>"; };
 		07E248C4DC1D4893FFDA1E91 /* BooksViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BooksViewController.xib; sourceTree = "<group>"; };
+		08A9BA57C6AD13266057EB2F /* Pods-Peek-a-Book.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Peek-a-Book.debug.xcconfig"; path = "Target Support Files/Pods-Peek-a-Book/Pods-Peek-a-Book.debug.xcconfig"; sourceTree = "<group>"; };
 		08B064F78BD704540E2BBFD6 /* ProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
 		0BB9C5A15209D76380F12FDE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		12070EB467C78FF064A1F339 /* AddressMapsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressMapsView.xib; sourceTree = "<group>"; };
@@ -49,33 +50,32 @@
 		354FA11E31D7A45A9196E4B2 /* BooksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksViewController.swift; sourceTree = "<group>"; };
 		37745B033D1F79389E637F92 /* UIView+cornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+cornerRadius.swift"; sourceTree = "<group>"; };
 		3F3107B07BEFA63275722E94 /* KatalogLenderCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KatalogLenderCollectionViewCell.xib; sourceTree = "<group>"; };
-		40DD00690606A2C9E216C2EC /* Pods-Peek-a-Book.test.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Peek-a-Book.test.xcconfig"; path = "Target Support Files/Pods-Peek-a-Book/Pods-Peek-a-Book.test.xcconfig"; sourceTree = "<group>"; };
 		4FE9472AF15E0564D5EA84AF /* BaseRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRequest.swift; sourceTree = "<group>"; };
 		5E60A5CC03B3300F9A9628C5 /* AddressMapsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressMapsView.swift; sourceTree = "<group>"; };
-		62FD51390A59B379A8951482 /* Pods_Peek_a_Book.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Peek_a_Book.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		685B24D5F9392279C110F48B /* BooksHomescreenCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksHomescreenCollectionViewCell.swift; sourceTree = "<group>"; };
 		6C640B6AF46A23B1BD9E5A1E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		6CFDA45524DD6EBF6925C818 /* Pods-Peek-a-Book.integ.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Peek-a-Book.integ.xcconfig"; path = "Target Support Files/Pods-Peek-a-Book/Pods-Peek-a-Book.integ.xcconfig"; sourceTree = "<group>"; };
+		7B97009D3105BF1156E9CE2A /* Pods_Peek_a_Book.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Peek_a_Book.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		85A38057B0B03D158512EAE3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		876724C06686666253BF5725 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		89E2725FBC237D96C33EBC27 /* KatalogLenderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KatalogLenderCollectionViewCell.swift; sourceTree = "<group>"; };
 		906725EAE0AC8DF524AE2661 /* MKMapView+centerToLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMapView+centerToLocation.swift"; sourceTree = "<group>"; };
-		999FEBC74DBF7833A6964D0B /* Pods-Peek-a-Book.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Peek-a-Book.debug.xcconfig"; path = "Target Support Files/Pods-Peek-a-Book/Pods-Peek-a-Book.debug.xcconfig"; sourceTree = "<group>"; };
+		AFB1B167ECFE1748CB5DD921 /* Pods-Peek-a-Book.integ.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Peek-a-Book.integ.xcconfig"; path = "Target Support Files/Pods-Peek-a-Book/Pods-Peek-a-Book.integ.xcconfig"; sourceTree = "<group>"; };
+		B71C533A11D05984ED4F378D /* Pods-Peek-a-Book.test.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Peek-a-Book.test.xcconfig"; path = "Target Support Files/Pods-Peek-a-Book/Pods-Peek-a-Book.test.xcconfig"; sourceTree = "<group>"; };
 		BCE21D7008869231B95093FF /* BooksHomescreenCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BooksHomescreenCollectionViewCell.xib; sourceTree = "<group>"; };
 		C03666B11649344BDE9A28B1 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		CC78AEFEA926433E48F0F8E6 /* MapsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapsViewController.xib; sourceTree = "<group>"; };
 		D8D3F6CA1768C73EBAAB8435 /* MapsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsViewController.swift; sourceTree = "<group>"; };
 		D95737498464DFC8B2209025 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
-		DAD681567CA1B8699011D0F8 /* Pods-Peek-a-Book.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Peek-a-Book.release.xcconfig"; path = "Target Support Files/Pods-Peek-a-Book/Pods-Peek-a-Book.release.xcconfig"; sourceTree = "<group>"; };
 		F6A3CB00E3FC319BA8430B49 /* UIView+loadViewFromNib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+loadViewFromNib.swift"; sourceTree = "<group>"; };
+		FE5719330B295E4124DCE493 /* Pods-Peek-a-Book.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Peek-a-Book.release.xcconfig"; path = "Target Support Files/Pods-Peek-a-Book/Pods-Peek-a-Book.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		2A185A21637A05867BB4CBC8 /* Frameworks */ = {
+		22545E0A852E651A5228B737 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CFAE9B738929496E6DA1DC59 /* Pods_Peek_a_Book.framework in Frameworks */,
+				5109BF762C1D9BF2DD60F6DA /* Pods_Peek_a_Book.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -159,8 +159,8 @@
 			children = (
 				F0DB6B1B402CD38985A6F246 /* Peek-a-Book */,
 				93A37A52ADFCFE884332BB36 /* Products */,
-				DE4DABB2BBA354937A770B78 /* Pods */,
-				C5E7F3F3CB3D4CCEFB67B371 /* Frameworks */,
+				E2B10A826247F1F6F752B861 /* Pods */,
+				CB2B3BB9AA029D442A769351 /* Frameworks */,
 			);
 			indentWidth = 4;
 			sourceTree = "<group>";
@@ -209,10 +209,10 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		C5E7F3F3CB3D4CCEFB67B371 /* Frameworks */ = {
+		CB2B3BB9AA029D442A769351 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				62FD51390A59B379A8951482 /* Pods_Peek_a_Book.framework */,
+				7B97009D3105BF1156E9CE2A /* Pods_Peek_a_Book.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -234,13 +234,13 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
-		DE4DABB2BBA354937A770B78 /* Pods */ = {
+		E2B10A826247F1F6F752B861 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				999FEBC74DBF7833A6964D0B /* Pods-Peek-a-Book.debug.xcconfig */,
-				DAD681567CA1B8699011D0F8 /* Pods-Peek-a-Book.release.xcconfig */,
-				6CFDA45524DD6EBF6925C818 /* Pods-Peek-a-Book.integ.xcconfig */,
-				40DD00690606A2C9E216C2EC /* Pods-Peek-a-Book.test.xcconfig */,
+				08A9BA57C6AD13266057EB2F /* Pods-Peek-a-Book.debug.xcconfig */,
+				FE5719330B295E4124DCE493 /* Pods-Peek-a-Book.release.xcconfig */,
+				AFB1B167ECFE1748CB5DD921 /* Pods-Peek-a-Book.integ.xcconfig */,
+				B71C533A11D05984ED4F378D /* Pods-Peek-a-Book.test.xcconfig */,
 			);
 			name = Pods;
 			path = Pods;
@@ -290,11 +290,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 089ABBF83833CB8ADB93100D /* Build configuration list for PBXNativeTarget "Peek-a-Book" */;
 			buildPhases = (
-				F1E25020ED21B0DEA79697DF /* [CP] Check Pods Manifest.lock */,
+				B591001FF674B0B3AFB20273 /* [CP] Check Pods Manifest.lock */,
 				541A820E800507097D1C6342 /* Sources */,
 				87EA2CE8C50CBDABE195267A /* Resources */,
-				2A185A21637A05867BB4CBC8 /* Frameworks */,
-				3F21E9BCACAAE7A3D6185740 /* [CP] Embed Pods Frameworks */,
+				22545E0A852E651A5228B737 /* Frameworks */,
+				27CFD3E1628F7894BD66F482 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -352,7 +352,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		3F21E9BCACAAE7A3D6185740 /* [CP] Embed Pods Frameworks */ = {
+		27CFD3E1628F7894BD66F482 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -369,7 +369,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Peek-a-Book/Pods-Peek-a-Book-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F1E25020ED21B0DEA79697DF /* [CP] Check Pods Manifest.lock */ = {
+		B591001FF674B0B3AFB20273 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -434,7 +434,7 @@
 /* Begin XCBuildConfiguration section */
 		2604BBDA77FE62328CCFF9B3 /* integ */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6CFDA45524DD6EBF6925C818 /* Pods-Peek-a-Book.integ.xcconfig */;
+			baseConfigurationReference = AFB1B167ECFE1748CB5DD921 /* Pods-Peek-a-Book.integ.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -514,7 +514,7 @@
 		};
 		AA8E4373C95B3F704A41889B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DAD681567CA1B8699011D0F8 /* Pods-Peek-a-Book.release.xcconfig */;
+			baseConfigurationReference = FE5719330B295E4124DCE493 /* Pods-Peek-a-Book.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -532,7 +532,7 @@
 		};
 		D2836123A1F62CE76296C8B7 /* test */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 40DD00690606A2C9E216C2EC /* Pods-Peek-a-Book.test.xcconfig */;
+			baseConfigurationReference = B71C533A11D05984ED4F378D /* Pods-Peek-a-Book.test.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -729,7 +729,7 @@
 		};
 		FE54F35C789F96C92DD0C974 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 999FEBC74DBF7833A6964D0B /* Pods-Peek-a-Book.debug.xcconfig */;
+			baseConfigurationReference = 08A9BA57C6AD13266057EB2F /* Pods-Peek-a-Book.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
