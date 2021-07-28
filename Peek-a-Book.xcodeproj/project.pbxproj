@@ -18,6 +18,7 @@
 		8E0F7C5126AE7FE0004A5D23 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0F7C4F26AE7FE0004A5D23 /* ProfileViewController.swift */; };
 		8E0F7C5226AE7FE0004A5D23 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E0F7C5026AE7FE0004A5D23 /* ProfileViewController.xib */; };
 		8EF36D6B26B1499400964103 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF36D6A26B1499400964103 /* RootViewController.swift */; };
+		8EF36D7526B18BBE00964103 /* UIView+loadViewFromNib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF36D7426B18BBE00964103 /* UIView+loadViewFromNib.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		8E0F7C4F26AE7FE0004A5D23 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		8E0F7C5026AE7FE0004A5D23 /* ProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
 		8EF36D6A26B1499400964103 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		8EF36D7426B18BBE00964103 /* UIView+loadViewFromNib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+loadViewFromNib.swift"; sourceTree = "<group>"; };
 		983AD7EFE4A9EEA2A4B97B22 /* Pods-Peek-a-Book.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Peek-a-Book.debug.xcconfig"; path = "Target Support Files/Pods-Peek-a-Book/Pods-Peek-a-Book.debug.xcconfig"; sourceTree = "<group>"; };
 		EBF03D67112FE754DD2BDA7C /* Pods_Peek_a_Book.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Peek_a_Book.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -103,6 +105,7 @@
 		8E0F7C2D26AE746A004A5D23 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				8EF36D7326B18BA300964103 /* Extension */,
 				8E0F7C3E26AE799D004A5D23 /* XIBConstant.swift */,
 			);
 			path = Helper;
@@ -156,6 +159,14 @@
 				8E0F7C5026AE7FE0004A5D23 /* ProfileViewController.xib */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		8EF36D7326B18BA300964103 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				8EF36D7426B18BBE00964103 /* UIView+loadViewFromNib.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		BED0ED1CB25295A639B15AAB /* Pods */ = {
@@ -282,6 +293,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8EF36D7526B18BBE00964103 /* UIView+loadViewFromNib.swift in Sources */,
 				8E0F7C1926AE73D7004A5D23 /* AppDelegate.swift in Sources */,
 				8EF36D6B26B1499400964103 /* RootViewController.swift in Sources */,
 				8E0F7C4726AE7AD5004A5D23 /* BooksViewController.swift in Sources */,
