@@ -12,4 +12,11 @@ class BooksViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .red
     }
+    
+    @IBAction func mapsDidTap(_ sender: UIButton) {
+        let vc = MapsViewController(nibName: "MapsViewController", bundle: nil)
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true, completion: nil)
+    }
+    
 }

@@ -13,7 +13,7 @@ class BooksCoordinator: BooksBaseCoordinator {
     var parentCoordinator: MainBaseCoordinator?
     
     func start() -> UIViewController {
-        rootViewController = UINavigationController(rootViewController: BooksViewController(coordinator: self, nibName: "MapsViewController"))
+        rootViewController = UINavigationController(rootViewController: BooksViewController(coordinator: self, nibName: XIBConstant.BooksVC))
         
         return rootViewController
     }

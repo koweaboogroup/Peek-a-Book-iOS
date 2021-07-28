@@ -8,8 +8,9 @@
 import UIKit
 
 @IBDesignable
-class AlamatMaps: UIView {
+class AddressMapsView: UIView {
 
+    @IBOutlet weak var addressMapView: UIView!
     @IBOutlet weak var labelAlamat: UILabel!
     @IBOutlet weak var labelDetailAlamat: UILabel!
     @IBOutlet weak var buttonDone: UIButton!
@@ -26,13 +27,13 @@ class AlamatMaps: UIView {
     }
     
     func commonInit() {
-        guard let view = loadViewFromNib() else { return }
-        view.frame = self.bounds
-        self.addSubview(view)
+        addressMapView = loadViewFromNib()
+        addressMapView.frame = self.bounds
+        self.addSubview(addressMapView)
     }
     
     func loadViewFromNib() -> UIView? {
-        let nib = UINib(nibName: XIBConstant.AlamatMapsView, bundle: nil)
+        let nib = UINib(nibName: XIBConstant.AddressMapsView, bundle: nil)
         return nib.instantiate(withOwner: self, options: nil).first as? UIView
     }
 }
