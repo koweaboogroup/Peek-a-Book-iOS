@@ -7,21 +7,13 @@
 
 import UIKit
 
-class BooksViewController: UIViewController, BooksBaseCoordinated {
-    var coordinator: BooksBaseCoordinator?
-    
-    init(coordinator: BooksBaseCoordinator, nibName: String) {
-        super.init(nibName: nibName, bundle: nil)
-        self.coordinator = coordinator
-        title = "Books"
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
+class BooksViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .red
+    }
+    
+    @IBAction func btnPressed(_ sender: UIButton) {
+        tabBarController?.selectedIndex = 1
     }
 }

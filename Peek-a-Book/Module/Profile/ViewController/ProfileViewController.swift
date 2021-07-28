@@ -7,19 +7,7 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController, ProfileBaseCoordinated {
-    var coordinator: ProfileBaseCoordinator?
-    
-    init(coordinator: ProfileBaseCoordinator, nibName: String) {
-        super.init(nibName: nibName, bundle: nil)
-        self.coordinator = coordinator
-        title = "Profile"
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
+class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .blue
