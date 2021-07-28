@@ -7,5 +7,6 @@ target 'Peek-a-Book' do
   # Pods for Peek-a-Book
   pod 'RxSwift', '6.2.0'
   pod 'RxCocoa', '6.2.0'
+  pod 'Alamofire', '~> 5.4'
 
 end
