@@ -16,18 +16,12 @@
 		8E0F7C1B26AE73D7004A5D23 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0F7C1A26AE73D7004A5D23 /* SceneDelegate.swift */; };
 		8E0F7C2226AE73D8004A5D23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E0F7C2126AE73D8004A5D23 /* Assets.xcassets */; };
 		8E0F7C2526AE73D8004A5D23 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E0F7C2326AE73D8004A5D23 /* LaunchScreen.storyboard */; };
-		8E0F7C3026AE76DB004A5D23 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0F7C2F26AE76DB004A5D23 /* Coordinator.swift */; };
-		8E0F7C3226AE76F7004A5D23 /* MainBaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0F7C3126AE76F7004A5D23 /* MainBaseCoordinator.swift */; };
-		8E0F7C3826AE7738004A5D23 /* BooksBaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0F7C3726AE7738004A5D23 /* BooksBaseCoordinator.swift */; };
-		8E0F7C3A26AE7763004A5D23 /* BooksCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0F7C3926AE7763004A5D23 /* BooksCoordinator.swift */; };
 		8E0F7C3F26AE799D004A5D23 /* XIBConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0F7C3E26AE799D004A5D23 /* XIBConstant.swift */; };
 		8E0F7C4726AE7AD5004A5D23 /* BooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0F7C4526AE7AD5004A5D23 /* BooksViewController.swift */; };
 		8E0F7C4826AE7AD5004A5D23 /* BooksViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E0F7C4626AE7AD5004A5D23 /* BooksViewController.xib */; };
-		8E0F7C4A26AE7BF1004A5D23 /* ProfileBaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0F7C4926AE7BF1004A5D23 /* ProfileBaseCoordinator.swift */; };
-		8E0F7C4C26AE7C1C004A5D23 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0F7C4B26AE7C1C004A5D23 /* ProfileCoordinator.swift */; };
-		8E0F7C4E26AE7C7E004A5D23 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0F7C4D26AE7C7E004A5D23 /* MainCoordinator.swift */; };
 		8E0F7C5126AE7FE0004A5D23 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0F7C4F26AE7FE0004A5D23 /* ProfileViewController.swift */; };
 		8E0F7C5226AE7FE0004A5D23 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E0F7C5026AE7FE0004A5D23 /* ProfileViewController.xib */; };
+		8EF36D6B26B1499400964103 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF36D6A26B1499400964103 /* RootViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,18 +36,12 @@
 		8E0F7C2126AE73D8004A5D23 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8E0F7C2426AE73D8004A5D23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8E0F7C2626AE73D8004A5D23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8E0F7C2F26AE76DB004A5D23 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
-		8E0F7C3126AE76F7004A5D23 /* MainBaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainBaseCoordinator.swift; sourceTree = "<group>"; };
-		8E0F7C3726AE7738004A5D23 /* BooksBaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksBaseCoordinator.swift; sourceTree = "<group>"; };
-		8E0F7C3926AE7763004A5D23 /* BooksCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksCoordinator.swift; sourceTree = "<group>"; };
 		8E0F7C3E26AE799D004A5D23 /* XIBConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XIBConstant.swift; sourceTree = "<group>"; };
 		8E0F7C4526AE7AD5004A5D23 /* BooksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksViewController.swift; sourceTree = "<group>"; };
 		8E0F7C4626AE7AD5004A5D23 /* BooksViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BooksViewController.xib; sourceTree = "<group>"; };
-		8E0F7C4926AE7BF1004A5D23 /* ProfileBaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileBaseCoordinator.swift; sourceTree = "<group>"; };
-		8E0F7C4B26AE7C1C004A5D23 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
-		8E0F7C4D26AE7C7E004A5D23 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		8E0F7C4F26AE7FE0004A5D23 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		8E0F7C5026AE7FE0004A5D23 /* ProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
+		8EF36D6A26B1499400964103 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		983AD7EFE4A9EEA2A4B97B22 /* Pods-Peek-a-Book.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Peek-a-Book.debug.xcconfig"; path = "Target Support Files/Pods-Peek-a-Book/Pods-Peek-a-Book.debug.xcconfig"; sourceTree = "<group>"; };
 		EBF03D67112FE754DD2BDA7C /* Pods_Peek_a_Book.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Peek_a_Book.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -142,7 +130,6 @@
 		8E0F7C1726AE73D7004A5D23 /* Peek-a-Book */ = {
 			isa = PBXGroup;
 			children = (
-				8E0F7C5326AE8173004A5D23 /* Coordinator */,
 				8E0F7C2D26AE746A004A5D23 /* Helper */,
 				8E0F7C2C26AE7462004A5D23 /* Module */,
 				8E0F7C1826AE73D7004A5D23 /* AppDelegate.swift */,
@@ -150,6 +137,7 @@
 				8E0F7C2126AE73D8004A5D23 /* Assets.xcassets */,
 				8E0F7C2326AE73D8004A5D23 /* LaunchScreen.storyboard */,
 				8E0F7C2626AE73D8004A5D23 /* Info.plist */,
+				8EF36D6A26B1499400964103 /* RootViewController.swift */,
 			);
 			path = "Peek-a-Book";
 			sourceTree = "<group>";
@@ -177,7 +165,6 @@
 			children = (
 				8E0F7C5526AE8288004A5D23 /* View */,
 				8E0F7C4026AE7A74004A5D23 /* ViewController */,
-				8E0F7C3626AE7720004A5D23 /* Coordinator */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -187,27 +174,8 @@
 			children = (
 				8E0F7C5426AE827E004A5D23 /* View */,
 				8E0F7C3B26AE77F3004A5D23 /* ViewController */,
-				8E0F7C3526AE771A004A5D23 /* Coordinator */,
 			);
 			path = Books;
-			sourceTree = "<group>";
-		};
-		8E0F7C3526AE771A004A5D23 /* Coordinator */ = {
-			isa = PBXGroup;
-			children = (
-				8E0F7C3726AE7738004A5D23 /* BooksBaseCoordinator.swift */,
-				8E0F7C3926AE7763004A5D23 /* BooksCoordinator.swift */,
-			);
-			path = Coordinator;
-			sourceTree = "<group>";
-		};
-		8E0F7C3626AE7720004A5D23 /* Coordinator */ = {
-			isa = PBXGroup;
-			children = (
-				8E0F7C4926AE7BF1004A5D23 /* ProfileBaseCoordinator.swift */,
-				8E0F7C4B26AE7C1C004A5D23 /* ProfileCoordinator.swift */,
-			);
-			path = Coordinator;
 			sourceTree = "<group>";
 		};
 		8E0F7C3B26AE77F3004A5D23 /* ViewController */ = {
@@ -224,16 +192,6 @@
 				8E0F7C4F26AE7FE0004A5D23 /* ProfileViewController.swift */,
 			);
 			path = ViewController;
-			sourceTree = "<group>";
-		};
-		8E0F7C5326AE8173004A5D23 /* Coordinator */ = {
-			isa = PBXGroup;
-			children = (
-				8E0F7C2F26AE76DB004A5D23 /* Coordinator.swift */,
-				8E0F7C3126AE76F7004A5D23 /* MainBaseCoordinator.swift */,
-				8E0F7C4D26AE7C7E004A5D23 /* MainCoordinator.swift */,
-			);
-			path = Coordinator;
 			sourceTree = "<group>";
 		};
 		8E0F7C5426AE827E004A5D23 /* View */ = {
@@ -378,20 +336,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6A6E2E3726B0A662005778FF /* MapsViewController.swift in Sources */,
-				8E0F7C3026AE76DB004A5D23 /* Coordinator.swift in Sources */,
-				8E0F7C3A26AE7763004A5D23 /* BooksCoordinator.swift in Sources */,
-				8E0F7C4C26AE7C1C004A5D23 /* ProfileCoordinator.swift in Sources */,
 				8E0F7C1926AE73D7004A5D23 /* AppDelegate.swift in Sources */,
+				8EF36D6B26B1499400964103 /* RootViewController.swift in Sources */,
 				8E0F7C4726AE7AD5004A5D23 /* BooksViewController.swift in Sources */,
 				8E0F7C1B26AE73D7004A5D23 /* SceneDelegate.swift in Sources */,
-				8E0F7C3826AE7738004A5D23 /* BooksBaseCoordinator.swift in Sources */,
 				8E0F7C3F26AE799D004A5D23 /* XIBConstant.swift in Sources */,
-				8E0F7C4E26AE7C7E004A5D23 /* MainCoordinator.swift in Sources */,
 				6A6E2E3C26B0A98B005778FF /* AlamatMaps.swift in Sources */,
 				8E0F7C5126AE7FE0004A5D23 /* ProfileViewController.swift in Sources */,
-				8E0F7C3226AE76F7004A5D23 /* MainBaseCoordinator.swift in Sources */,
-				8E0F7C4A26AE7BF1004A5D23 /* ProfileBaseCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
