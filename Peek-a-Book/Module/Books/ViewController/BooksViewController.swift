@@ -15,11 +15,5 @@ class BooksViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .red
-        
-        mapsViewModel.streetName
-            .subscribe(onNext: { test in
-                print(test)
-            })
-            .disposed(by: disposeBag)
     }
 }
