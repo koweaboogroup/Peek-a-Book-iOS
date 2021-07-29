@@ -10,6 +10,5 @@ import Foundation
 struct Constant {
     struct Network {
         static let baseUrl = "https://jsonplaceholder.typicode.com"
-        static let userRoute = "users"
     }
 }
