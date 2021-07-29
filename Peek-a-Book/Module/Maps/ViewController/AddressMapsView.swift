@@ -35,11 +35,11 @@ class AddressMapsView: UIView {
     func commonInit() {
         addressMapView = loadViewFromNib(nibName: XIBConstant.AddressMapsView)
         addressMapView.frame = self.bounds
+        buttonDone.cornerRadius(10)
         self.addSubview(addressMapView)
     }
     
     @IBAction func buttonDonePressed(_ sender: UIButton) {
-        print("kepencet")
         mapsViewModel?.buttonDonePressed.onNext(true)
     }
 }

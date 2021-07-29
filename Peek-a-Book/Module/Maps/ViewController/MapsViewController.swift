@@ -13,6 +13,7 @@ import RxSwift
 class MapsViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var addressMapsView: AddressMapsView!
     @IBOutlet weak var mapsView: MKMapView!
+    @IBOutlet weak var infoView: UIStackView!
     
     private var mapsViewModel : MapsViewModel?
     private let disposeBag = DisposeBag()
@@ -40,6 +41,7 @@ class MapsViewController: UIViewController, CLLocationManagerDelegate {
         guard let mapsViewModel = mapsViewModel else { return self.dismiss(animated: true, completion: nil) }
         addressMapsView.initViewModel(mapsViewModel)
         mapsView.delegate = self
+        infoView.cornerRadius(10)
     }
     
     private func setupEventListener(){
@@ -56,7 +58,14 @@ class MapsViewController: UIViewController, CLLocationManagerDelegate {
             })
             .disposed(by: disposeBag)
     }
+    @IBAction func infoDidTapped(_ sender: Any) {
+    }
     
+    @IBAction func locationDidTapped(_ sender: Any) {
+        if let location = LocationManager.shared.getExposedLocation() {
+            followUserLocation(location)
+        }
+    }
     private func checkLocationServices() {
         if CLLocationManager.locationServicesEnabled() {
             setupLocationManager()
@@ -75,7 +84,9 @@ class MapsViewController: UIViewController, CLLocationManagerDelegate {
         switch locationManager.authorizationStatus {
         case .authorizedWhenInUse:
             mapsView.showsUserLocation = true
-            followUserLocation()
+            if let location = LocationManager.shared.getExposedLocation() {
+                followUserLocation(location)
+            }
             break
         case .denied:
             // Show alert
@@ -92,23 +103,21 @@ class MapsViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    private func followUserLocation() {
-        if let location = locationManager.location {
-            mapsView.centerToLocation(location)
-            LocationManager.shared.getPlace(for: location) { placemark in
-                guard let placemark = placemark else { return }
-                self.streetName = placemark.thoroughfare ?? "Jalan Tidak Diketahui"
-                self.districtName = placemark.locality ?? ""
-                self.cityName = placemark.subAdministrativeArea ?? ""
-                self.provName = placemark.administrativeArea ?? ""
-                self.countryName = placemark.country ?? ""
-                
-                let location = [self.districtName, self.cityName, self.provName, self.countryName]
-                let administrativePlaceName = location.joined(separator: ", ")
-                
-                self.addressMapsView.labelAlamat.text = self.streetName
-                self.addressMapsView.labelDetailAlamat.text = administrativePlaceName
-            }
+    private func followUserLocation(_ location : CLLocation) {
+        mapsView.centerToLocation(location)
+        LocationManager.shared.getPlace(for: location) { placemark in
+            guard let placemark = placemark else { return }
+            self.streetName = placemark.thoroughfare ?? "Jalan Tidak Diketahui"
+            self.districtName = placemark.locality ?? ""
+            self.cityName = placemark.subAdministrativeArea ?? ""
+            self.provName = placemark.administrativeArea ?? ""
+            self.countryName = placemark.country ?? ""
+            
+            let location = [self.districtName, self.cityName, self.provName, self.countryName]
+            let administrativePlaceName = location.filter { !$0.isEmpty }.joined(separator: ", ")
+            
+            self.addressMapsView.labelAlamat.text = self.streetName
+            self.addressMapsView.labelDetailAlamat.text = administrativePlaceName
         }
     }
     
@@ -119,23 +128,12 @@ class MapsViewController: UIViewController, CLLocationManagerDelegate {
 }
 
 extension MapsViewController: MKMapViewDelegate {
-    
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
-        if annotation is MKUserLocation {
-            return nil
-        }
-        
-        let reuseId = "pin"
-        var pav: MKPinAnnotationView? = self.mapsView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
-        if pav == nil {
-            pav = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
-            pav?.isDraggable = true
-            pav?.canShowCallout = true
-        } else {
-            pav?.annotation = annotation
-        }
-        
-        return pav
+    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        print(mapView.centerCoordinate)
+        let lat = mapsView.centerCoordinate.latitude
+        let long = mapView.centerCoordinate.longitude
+        let location = CLLocation(latitude: lat, longitude: long)
+        followUserLocation(location)
     }
 }
