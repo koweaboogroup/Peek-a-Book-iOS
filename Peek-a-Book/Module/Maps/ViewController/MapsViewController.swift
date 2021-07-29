@@ -8,32 +8,74 @@
 import UIKit
 import MapKit
 import CoreLocation
+import RxSwift
 
 class MapsViewController: UIViewController, CLLocationManagerDelegate {
-    
-    @IBOutlet weak var alamatMapsView: AddressMapsView!
+    @IBOutlet weak var addressMapsView: AddressMapsView!
     @IBOutlet weak var mapsView: MKMapView!
-   
-    let locationManager = CLLocationManager()
+    
+    private var mapsViewModel : MapsViewModel?
+    private let disposeBag = DisposeBag()
+    
+    private let locationManager = CLLocationManager()
+    
+    private var streetName = ""
+    private var districtName = ""
+    private var cityName = ""
+    private var provName = ""
+    private var countryName = ""
+
+    func initViewModel(_ viewmodel : MapsViewModel) {
+        self.mapsViewModel = viewmodel
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupMaps()
+        setupEventListener()
         checkLocationServices()
-
     }
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let location = locations.last else { return }
-        let region = MKCoordinateRegion.init(center: location.coordinate, latitudinalMeters: 4000, longitudinalMeters: 4000)
-        mapsView.setRegion(region, animated: true)
+    private func setupMaps(){
+        guard let mapsViewModel = mapsViewModel else { return self.dismiss(animated: true, completion: nil) }
+        addressMapsView.initViewModel(mapsViewModel)
+        mapsView.delegate = self
     }
     
-    func checkLocationAuthorization() {
-        switch CLLocationManager.authorizationStatus() {
+    private func setupEventListener(){
+        mapsViewModel?.buttonDonePressed
+            .subscribe(onNext: { pressed in
+                if(pressed){
+                    self.mapsViewModel?.streetName.onNext(self.streetName)
+                    self.mapsViewModel?.districtName.onNext(self.districtName)
+                    self.mapsViewModel?.cityName.onNext(self.cityName)
+                    self.mapsViewModel?.provName.onNext(self.provName)
+                    self.mapsViewModel?.countryName.onNext(self.countryName)
+                    self.dismiss(animated: true, completion: nil)
+                }
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func checkLocationServices() {
+        if CLLocationManager.locationServicesEnabled() {
+            setupLocationManager()
+            checkLocationAuthorization()
+        } else {
+            // the user didn't turn it on
+        }
+    }
+    
+    private func setupLocationManager() {
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+    }
+    
+    private func checkLocationAuthorization() {
+        switch locationManager.authorizationStatus {
         case .authorizedWhenInUse:
             mapsView.showsUserLocation = true
             followUserLocation()
-            locationManager.startUpdatingLocation()
             break
         case .denied:
             // Show alert
@@ -45,22 +87,28 @@ class MapsViewController: UIViewController, CLLocationManagerDelegate {
             break
         case .authorizedAlways:
             break
+        default:
+            break
         }
     }
     
-    func checkLocationServices() {
-        if CLLocationManager.locationServicesEnabled() {
-            setupLocationManager()
-            checkLocationAuthorization()
-        } else {
-            // the user didn't turn it on
-        }
-    }
-    
-    func followUserLocation() {
-        if let location = locationManager.location?.coordinate {
-            let region = MKCoordinateRegion.init(center: location, latitudinalMeters: 1000, longitudinalMeters: 1000)
-            mapsView.setRegion(region, animated: true)
+    private func followUserLocation() {
+        if let location = locationManager.location {
+            mapsView.centerToLocation(location)
+            LocationManager.shared.getPlace(for: location) { placemark in
+                guard let placemark = placemark else { return }
+                self.streetName = placemark.thoroughfare ?? "Jalan Tidak Diketahui"
+                self.districtName = placemark.locality ?? ""
+                self.cityName = placemark.subAdministrativeArea ?? ""
+                self.provName = placemark.administrativeArea ?? ""
+                self.countryName = placemark.country ?? ""
+                
+                let location = [self.districtName, self.cityName, self.provName, self.countryName]
+                let administrativePlaceName = location.joined(separator: ", ")
+                
+                self.addressMapsView.labelAlamat.text = self.streetName
+                self.addressMapsView.labelDetailAlamat.text = administrativePlaceName
+            }
         }
     }
     
@@ -68,18 +116,26 @@ class MapsViewController: UIViewController, CLLocationManagerDelegate {
         checkLocationAuthorization()
     }
     
-    func setupLocationManager() {
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-    }
 }
 
-private extension MKMapView {
-  func centerToLocation(_ location: CLLocation, regionRadius: CLLocationDistance = 1000) {
-    let coordinateRegion = MKCoordinateRegion(
-      center: location.coordinate,
-      latitudinalMeters: regionRadius,
-      longitudinalMeters: regionRadius)
-    setRegion(coordinateRegion, animated: true)
-  }
+extension MapsViewController: MKMapViewDelegate {
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        if annotation is MKUserLocation {
+            return nil
+        }
+        
+        let reuseId = "pin"
+        var pav: MKPinAnnotationView? = self.mapsView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
+        if pav == nil {
+            pav = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            pav?.isDraggable = true
+            pav?.canShowCallout = true
+        } else {
+            pav?.annotation = annotation
+        }
+        
+        return pav
+    }
 }

@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		16B7AF280F812355FFBB3617 /* Pods_Peek_a_Book.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBF03D67112FE754DD2BDA7C /* Pods_Peek_a_Book.framework */; };
 		6A688C3226B1559E00B44402 /* MapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6E2E3526B0A662005778FF /* MapsViewController.swift */; };
+		6A688C3926B1967D00B44402 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A688C3826B1967D00B44402 /* LocationManager.swift */; };
+		6A688C3B26B1AB5700B44402 /* MKMapView+centerToLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A688C3A26B1AB5700B44402 /* MKMapView+centerToLocation.swift */; };
+		6A688C3D26B1B0EE00B44402 /* MapsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A688C3C26B1B0EE00B44402 /* MapsViewModel.swift */; };
 		6A6E2E3826B0A662005778FF /* MapsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A6E2E3626B0A662005778FF /* MapsViewController.xib */; };
 		6A6E2E3C26B0A98B005778FF /* AddressMapsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6E2E3B26B0A98B005778FF /* AddressMapsView.swift */; };
 		6A6E2E3E26B0A99F005778FF /* AddressMapsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A6E2E3D26B0A99F005778FF /* AddressMapsView.xib */; };
@@ -22,9 +25,13 @@
 		8E0F7C5126AE7FE0004A5D23 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0F7C4F26AE7FE0004A5D23 /* ProfileViewController.swift */; };
 		8E0F7C5226AE7FE0004A5D23 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E0F7C5026AE7FE0004A5D23 /* ProfileViewController.xib */; };
 		8EF36D6B26B1499400964103 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF36D6A26B1499400964103 /* RootViewController.swift */; };
+		8EF36D7526B18BBE00964103 /* UIView+loadViewFromNib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF36D7426B18BBE00964103 /* UIView+loadViewFromNib.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6A688C3826B1967D00B44402 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		6A688C3A26B1AB5700B44402 /* MKMapView+centerToLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMapView+centerToLocation.swift"; sourceTree = "<group>"; };
+		6A688C3C26B1B0EE00B44402 /* MapsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsViewModel.swift; sourceTree = "<group>"; };
 		6A6E2E3526B0A662005778FF /* MapsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsViewController.swift; sourceTree = "<group>"; };
 		6A6E2E3626B0A662005778FF /* MapsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapsViewController.xib; sourceTree = "<group>"; };
 		6A6E2E3B26B0A98B005778FF /* AddressMapsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressMapsView.swift; sourceTree = "<group>"; };
@@ -42,6 +49,7 @@
 		8E0F7C4F26AE7FE0004A5D23 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		8E0F7C5026AE7FE0004A5D23 /* ProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
 		8EF36D6A26B1499400964103 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		8EF36D7426B18BBE00964103 /* UIView+loadViewFromNib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+loadViewFromNib.swift"; sourceTree = "<group>"; };
 		983AD7EFE4A9EEA2A4B97B22 /* Pods-Peek-a-Book.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Peek-a-Book.debug.xcconfig"; path = "Target Support Files/Pods-Peek-a-Book/Pods-Peek-a-Book.debug.xcconfig"; sourceTree = "<group>"; };
 		EBF03D67112FE754DD2BDA7C /* Pods_Peek_a_Book.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Peek_a_Book.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -105,6 +113,7 @@
 		6A6E2E3426B0A642005778FF /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				6A688C3C26B1B0EE00B44402 /* MapsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -155,7 +164,9 @@
 		8E0F7C2D26AE746A004A5D23 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				8EF36D7326B18BA300964103 /* Extension */,
 				8E0F7C3E26AE799D004A5D23 /* XIBConstant.swift */,
+				6A688C3826B1967D00B44402 /* LocationManager.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -208,6 +219,15 @@
 				8E0F7C5026AE7FE0004A5D23 /* ProfileViewController.xib */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		8EF36D7326B18BA300964103 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				8EF36D7426B18BBE00964103 /* UIView+loadViewFromNib.swift */,
+				6A688C3A26B1AB5700B44402 /* MKMapView+centerToLocation.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		BED0ED1CB25295A639B15AAB /* Pods */ = {
@@ -337,6 +357,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				6A688C3226B1559E00B44402 /* MapsViewController.swift in Sources */,
+				8EF36D7526B18BBE00964103 /* UIView+loadViewFromNib.swift in Sources */,
+				6A688C3926B1967D00B44402 /* LocationManager.swift in Sources */,
+				6A688C3D26B1B0EE00B44402 /* MapsViewModel.swift in Sources */,
+				6A688C3B26B1AB5700B44402 /* MKMapView+centerToLocation.swift in Sources */,
 				8E0F7C1926AE73D7004A5D23 /* AppDelegate.swift in Sources */,
 				8EF36D6B26B1499400964103 /* RootViewController.swift in Sources */,
 				8E0F7C4726AE7AD5004A5D23 /* BooksViewController.swift in Sources */,

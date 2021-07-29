@@ -16,6 +16,12 @@ class AddressMapsView: UIView {
     @IBOutlet weak var buttonDone: UIButton!
     @IBOutlet weak var buttonSearch: UIImageView!
     
+    private var mapsViewModel : MapsViewModel?
+    
+    func initViewModel(_ mapsViewModel: MapsViewModel) {
+        self.mapsViewModel = mapsViewModel
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
@@ -27,13 +33,13 @@ class AddressMapsView: UIView {
     }
     
     func commonInit() {
-        addressMapView = loadViewFromNib()
+        addressMapView = loadViewFromNib(nibName: XIBConstant.AddressMapsView)
         addressMapView.frame = self.bounds
         self.addSubview(addressMapView)
     }
     
-    func loadViewFromNib() -> UIView? {
-        let nib = UINib(nibName: XIBConstant.AddressMapsView, bundle: nil)
-        return nib.instantiate(withOwner: self, options: nil).first as? UIView
+    @IBAction func buttonDonePressed(_ sender: UIButton) {
+        print("kepencet")
+        mapsViewModel?.buttonDonePressed.onNext(true)
     }
 }

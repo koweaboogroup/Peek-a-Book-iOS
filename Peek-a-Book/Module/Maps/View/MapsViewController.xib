@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MapsViewController" customModule="Peek_a_Book" customModuleProvider="target">
             <connections>
-                <outlet property="alamatMapsView" destination="LMW-up-otq" id="oJo-6V-kgt"/>
+                <outlet property="addressMapsView" destination="LMW-up-otq" id="oJo-6V-kgt"/>
                 <outlet property="mapsView" destination="CeQ-Jn-Q0e" id="0JO-uw-3xT"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="IEc-RG-t5K"/>
             </connections>
