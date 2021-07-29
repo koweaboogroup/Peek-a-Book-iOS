@@ -9,14 +9,20 @@ import Alamofire
 
 class BaseRequest {
     
-//    MARK: GET Method
-    static func get(route: String, completionHandler: @escaping (DataRequest) -> Void) {
-        let request = AF.request(Router.get(route))
+//    MARK: - GET Method
+    static func get(router: URLRequestConvertible, completionHandler: @escaping (DataRequest) -> Void) {
+        let request = AF.request(router)
             .validate(statusCode: 200..<300)
-            .validate(contentType: ["application/json"])
         
         completionHandler(request)
     }
     
+//    MARK: - POST Method
+    static func post(router: URLRequestConvertible, completionHandler: @escaping (DataRequest) -> Void) {
+        let request = AF.request(router)
+            .validate(statusCode: 200..<300)
+        
+        completionHandler(request)
+    }
 }
 
