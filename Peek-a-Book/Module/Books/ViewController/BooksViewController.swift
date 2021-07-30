@@ -12,4 +12,16 @@ class BooksViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .red
     }
+    @IBAction func gotodetailbook(_ sender: UIButton) {
+        let vc = DetailBooksViewController(
+            nibName: "\(DetailBooksViewController.self)",
+                bundle: nil)
+        
+
+        vc.hidesBottomBarWhenPushed = true
+     //   self.present(vc, animated: true, completion: nil)
+        
+             navigationController?.pushViewController(vc,
+                animated: true)
+    }
 }

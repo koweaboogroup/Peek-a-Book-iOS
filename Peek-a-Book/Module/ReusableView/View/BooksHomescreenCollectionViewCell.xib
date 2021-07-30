@@ -66,12 +66,6 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="E4R-Il-eHZ">
-                                <rect key="frame" x="0.0" y="48" width="168" height="128"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="6bp-L2-IBE"/>
-                                </constraints>
-                            </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="gZi-fN-eVg">
                                 <rect key="frame" x="8" y="184" width="152" height="62"/>
                                 <subviews>
@@ -106,10 +100,14 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="E4R-Il-eHZ">
+                                <rect key="frame" x="0.0" y="48" width="168" height="128"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="E4R-Il-eHZ" secondAttribute="trailing" id="4R1-gI-kuZ"/>
+                            <constraint firstItem="E4R-Il-eHZ" firstAttribute="height" secondItem="obP-Qj-K8V" secondAttribute="height" multiplier="0.428094" id="B3g-XL-TGU"/>
                             <constraint firstAttribute="trailing" secondItem="jkA-O7-Mig" secondAttribute="trailing" constant="8" id="MFS-OP-UE2"/>
                             <constraint firstItem="gZi-fN-eVg" firstAttribute="leading" secondItem="obP-Qj-K8V" secondAttribute="leading" constant="8" id="Mau-V6-m5a"/>
                             <constraint firstItem="jkA-O7-Mig" firstAttribute="leading" secondItem="obP-Qj-K8V" secondAttribute="leading" constant="8" id="SEZ-Vk-teg"/>

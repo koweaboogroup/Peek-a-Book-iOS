@@ -10,10 +10,11 @@ import Foundation
 struct XIBConstant {
     static let BooksVC = "BooksViewController"
     static let ProfileVC = "ProfileViewController"
-  
+    static let DetailBooksVC = "DetailBooksViewController"
+    static let EditProfileVC = "EditProfileViewController"
     
-    static let BooksHomeScreenCVC = "BooksHomescreenCollectionViewCell"
-    static let KatalogLenderCVC = "KatalogLenderCollectionViewCell"
+    static let BooksHomescreenCollectionViewCell = "BooksHomescreenCollectionViewCell"
+    static let KatalogLenderCollectionViewCell = "KatalogLenderCollectionViewCell"
     
 }
 
