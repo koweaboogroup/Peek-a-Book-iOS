@@ -16,6 +16,12 @@ struct XIBConstant {
 
     static let BooksHomeScreenCVC = "BooksHomescreenCollectionViewCell"
     static let KatalogLenderCVC = "KatalogLenderCollectionViewCell"    
+
+    static let DetailBooksVC = "DetailBooksViewController"
+    static let EditProfileVC = "EditProfileViewController"
+    
+    static let BooksHomescreenCollectionViewCell = "BooksHomescreenCollectionViewCell"
+    static let KatalogLenderCollectionViewCell = "KatalogLenderCollectionViewCell"
 }
 
 
