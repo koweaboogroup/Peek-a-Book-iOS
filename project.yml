@@ -1,0 +1,18 @@
+name: Peek-a-Book
+options: # Some general settings for the projectproject.yml
+  createIntermediateGroups: true # If the folders are nested, also nest the groups in Xcode
+  indentWidth: 4
+  tabWidth: 4
+  bundleIdPrefix: "com.koweaboo"
+configs:
+  Debug: debug
+  integ: debug
+  test: debug
+  Release: release
+targets:
+  Peek-a-Book:
+    type: application
+    platform: iOS
+    deploymentTarget: "14.5"
+    sources:  
+      - path: Peek-a-Book
