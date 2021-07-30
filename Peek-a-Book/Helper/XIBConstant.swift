@@ -19,6 +19,7 @@ struct XIBConstant {
 
     static let DetailBooksVC = "DetailBooksViewController"
     static let EditProfileVC = "EditProfileViewController"
+    static let InsertBookToLenderCatalogueVC = "InsertBookToLenderCatalogueViewController"
     
     static let BooksHomescreenCollectionViewCell = "BooksHomescreenCollectionViewCell"
     static let KatalogLenderCollectionViewCell = "KatalogLenderCollectionViewCell"

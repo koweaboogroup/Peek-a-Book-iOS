@@ -47,6 +47,7 @@
                                         </label>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nama Lengkap" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oAm-vZ-0Dm">
                                             <rect key="frame" x="110.5" y="11" width="247.5" height="22"/>
+                                            <color key="textColor" systemColor="systemBlueColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="name"/>
                                         </textField>
@@ -83,6 +84,7 @@
                                         </label>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hnd-hI-enu">
                                             <rect key="frame" x="107" y="11" width="251" height="22"/>
+                                            <color key="textColor" systemColor="systemBlueColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="email"/>
                                         </textField>
@@ -119,6 +121,7 @@
                                         </label>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="No Whatsapp" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5yV-Ff-Or5">
                                             <rect key="frame" x="170" y="11" width="188" height="22"/>
+                                            <color key="textColor" systemColor="systemBlueColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="tel"/>
                                         </textField>
@@ -155,6 +158,7 @@
                                         </label>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bmg-8P-bNH">
                                             <rect key="frame" x="139.5" y="11.5" width="218.5" height="21"/>
+                                            <color key="textColor" systemColor="systemBlueColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES" textContentType="password"/>
                                         </textField>
@@ -191,6 +195,7 @@
                                         </label>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pc3-sS-FjU">
                                             <rect key="frame" x="224.5" y="11.5" width="133.5" height="21"/>
+                                            <color key="textColor" systemColor="systemBlueColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES" textContentType="password"/>
                                         </textField>

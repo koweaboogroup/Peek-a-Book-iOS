@@ -30,6 +30,9 @@
                     <rect key="frame" x="83" y="471" width="225" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="Present Halaman Pengisian Buku"/>
+                    <connections>
+                        <action selector="gotoInsertBook:" destination="-1" eventType="touchUpInside" id="ISf-PK-Lv2"/>
+                    </connections>
                 </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
