@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxSwift
 
 class BooksViewController: UIViewController, BooksBaseCoordinated {
     var coordinator: BooksBaseCoordinator?

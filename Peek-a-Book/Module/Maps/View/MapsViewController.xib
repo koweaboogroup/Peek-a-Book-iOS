@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MapsViewController" customModule="Peek_a_Book" customModuleProvider="target">
+            <connections>
+                <outlet property="addressMapsView" destination="LMW-up-otq" id="oJo-6V-kgt"/>
+                <outlet property="infoView" destination="N1c-qo-UbS" id="L3j-iB-PZO"/>
+                <outlet property="mapsView" destination="CeQ-Jn-Q0e" id="0JO-uw-3xT"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="IEc-RG-t5K"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="CeQ-Jn-Q0e">
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                </mapView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LMW-up-otq" customClass="AddressMapsView" customModule="Peek_a_Book" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="662" width="414" height="200"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="200" id="lgc-er-cpU"/>
+                        <constraint firstAttribute="width" constant="414" id="v4P-Ac-lIr"/>
+                    </constraints>
+                </view>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pin-location" translatesAutoresizingMaskIntoConstraints="NO" id="3aH-C6-dR0">
+                    <rect key="frame" x="196" y="432" width="22" height="32"/>
+                </imageView>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="N1c-qo-UbS">
+                    <rect key="frame" x="354" y="64" width="40" height="91"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3jt-sm-dbu">
+                            <rect key="frame" x="0.0" y="0.0" width="40" height="37"/>
+                            <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="5"/>
+                            <state key="normal" image="info.circle" catalog="system"/>
+                            <connections>
+                                <action selector="infoDidTapped:" destination="-1" eventType="touchUpInside" id="mZK-rO-wHy"/>
+                            </connections>
+                        </button>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MhL-8r-pV8">
+                            <rect key="frame" x="0.0" y="45" width="40" height="1"/>
+                            <color key="backgroundColor" red="0.50196078430000002" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="C0N-x0-C8v"/>
+                                <constraint firstAttribute="width" constant="40" id="xga-c3-qMt"/>
+                            </constraints>
+                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nM7-nQ-CSa">
+                            <rect key="frame" x="0.0" y="54" width="40" height="37"/>
+                            <inset key="contentEdgeInsets" minX="10" minY="5" maxX="10" maxY="10"/>
+                            <state key="normal" image="location.fill" catalog="system"/>
+                            <connections>
+                                <action selector="locationDidTapped:" destination="-1" eventType="touchUpInside" id="DJc-0f-njr"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="MhL-8r-pV8" firstAttribute="leading" secondItem="3jt-sm-dbu" secondAttribute="leading" id="amq-mD-mVZ"/>
+                        <constraint firstItem="MhL-8r-pV8" firstAttribute="trailing" secondItem="3jt-sm-dbu" secondAttribute="trailing" id="hD7-LE-2lN"/>
+                    </constraints>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="CeQ-Jn-Q0e" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="FlM-AY-q8b"/>
+                <constraint firstItem="CeQ-Jn-Q0e" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="Pyc-Zz-kRc"/>
+                <constraint firstItem="3aH-C6-dR0" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" constant="-5" id="RyS-QN-xXb"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="N1c-qo-UbS" secondAttribute="trailing" constant="20" id="bT0-KJ-bH8"/>
+                <constraint firstItem="N1c-qo-UbS" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="cZr-SV-jCy"/>
+                <constraint firstItem="3aH-C6-dR0" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="cw7-z3-23U"/>
+                <constraint firstItem="CeQ-Jn-Q0e" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="gBV-Z1-ebo"/>
+                <constraint firstItem="LMW-up-otq" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="hYf-PC-B4O"/>
+                <constraint firstItem="LMW-up-otq" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="hte-aF-mCC"/>
+                <constraint firstItem="CeQ-Jn-Q0e" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="kjv-je-8Jt"/>
+            </constraints>
+            <point key="canvasLocation" x="55" y="109"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="info.circle" catalog="system" width="128" height="121"/>
+        <image name="location.fill" catalog="system" width="128" height="121"/>
+        <image name="pin-location" width="22" height="32"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
