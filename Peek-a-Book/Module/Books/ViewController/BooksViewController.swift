@@ -6,8 +6,12 @@
 //
 
 import UIKit
+import RxSwift
 
 class BooksViewController: UIViewController {
+    let mapsViewModel = MapsViewModel()
+    let disposeBag = DisposeBag()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .red
