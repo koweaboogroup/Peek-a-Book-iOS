@@ -58,5 +58,31 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+  <key>NSAppTransportSecurity</key>
+  <dict>
+    <key>NSAllowsArbitraryLoads</key>
+    <false/>
+    <key>NSExceptionDomains</key>
+    <dict>
+      <key>http://api.peekabooks.my.id</key>
+      <dict>
+        <key>NSIncludesSubdomains</key>
+        <true/>
+        <key>NSExceptionAllowsInsecureHTTPLoads</key>
+        <true/>
+      </dict>
+    </dict>
+  </dict>
+	<key>UIUserInterfaceStyle</key>
+	<string>Light</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>DMSerifText-Italic.ttf</string>
+		<string>DMSerifText-Regular.ttf</string>
+		<string>GraphikMedium.otf</string>
+		<string>GraphikMediumItalic.otf</string>
+		<string>GraphikRegular.otf</string>
+		<string>GraphikRegularItalic.otf</string>
+	</array>
 </dict>
 </plist>
