@@ -15,9 +15,6 @@ struct XIBConstant {
 
     static let LoginContentView = "LoginContentView"
     static let AddressMapsView = "AddressMapsView"
-    static let LoginViewController = "LoginViewController"
-
-    static let LoginContentView = "LoginContentView"
 }
 
 
