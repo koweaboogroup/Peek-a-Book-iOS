@@ -23,6 +23,8 @@ struct XIBConstant {
     
     static let BooksHomescreenCollectionViewCell = "BooksHomescreenCollectionViewCell"
     static let KatalogLenderCollectionViewCell = "KatalogLenderCollectionViewCell"
+    
+    static let SearchView = "SearchView"
 }
 
 
