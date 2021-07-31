@@ -26,4 +26,12 @@ struct Constant {
         static let emptyState = UIImage(named: "empty-state")
         static let login = UIImage(named: "login")
     }
+    
+    struct UserDefaultConstant {
+        static let name = "name"
+        static let alamat = "alamat"
+        
+        static let itemKeranjang = "item keranjang"
+        static let quantityItem = "quantity keranjang"
+    }
 }
