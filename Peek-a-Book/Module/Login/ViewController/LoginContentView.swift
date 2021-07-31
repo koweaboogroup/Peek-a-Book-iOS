@@ -18,8 +18,11 @@ class LoginContentView: UIView {
     @IBOutlet weak var identifierTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
-    let viewModel = LoginViewModel()
+    var viewModel: LoginViewModel?
     
+    func initViewModel(_ viewModel: LoginViewModel) {
+        self.viewModel = viewModel
+    }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -32,17 +35,34 @@ class LoginContentView: UIView {
     }
     
     override func awakeFromNib() {
+        setupCornerRadius()
+        
+        setupTextFieldDelegate()
+    }
+    
+    private func setupCornerRadius() {
         layer.cornerRadius = 36
         layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         clipsToBounds = true
+    }
+    
+    private func setupTextFieldDelegate() {
+        identifierTextField.delegate = self
+        passwordTextField.delegate = self
     }
     
     func commonInit() {
         loginContentView = loadViewFromNib(nibName: XIBConstant.LoginContentView)
         loginContentView.frame = self.bounds
         
-        passwordTextField.isSecureTextEntry = true
+        setupLoginButton()
         
+        setupFieldContainer()
+        
+        self.addSubview(loginContentView)
+    }
+    
+    private func setupLoginButton() {
         loginButton.layer.cornerRadius = 12
         loginButton.layer.applyShadow(
             color: .black,
@@ -52,7 +72,9 @@ class LoginContentView: UIView {
             blur: 10,
             spread: 0
         )
-        
+    }
+    
+    private func setupFieldContainer() {
         fieldContainer.layer.cornerRadius = 12
         fieldContainer.layer.applyShadow(
             color: .black,
@@ -62,14 +84,32 @@ class LoginContentView: UIView {
             blur: 5,
             spread: 0
         )
-        
-        self.addSubview(loginContentView)
     }
     
-    @IBAction func loginBtnPressed(_ sender: UIButton) {
+    func processLogin() {
         let identifier = identifierTextField.text ?? ""
         let password = passwordTextField.text ?? ""
         
-        viewModel.login(identifier: identifier, password: password)
+        viewModel?.login(identifier: identifier, password: password)
+    }
+    
+    @IBAction func loginBtnPressed(_ sender: UIButton) {
+        processLogin()
+    }
+}
+
+extension LoginContentView: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        if textField == identifierTextField {
+            passwordTextField.becomeFirstResponder()
+        } else if textField == passwordTextField {
+            textField.resignFirstResponder()
+            processLogin()
+        } else {
+            textField.resignFirstResponder()
+        }
+        
+        return true
     }
 }

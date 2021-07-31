@@ -42,10 +42,10 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UzY-K9-UNK">
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" placeholder="Email" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UzY-K9-UNK">
                                             <rect key="frame" x="76.666666666666657" y="11" width="261.33333333333337" height="25"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <textInputTraits key="textInputTraits" returnKeyType="continue"/>
+                                            <textInputTraits key="textInputTraits" returnKeyType="continue" textContentType="username"/>
                                         </textField>
                                     </subviews>
                                     <directionalEdgeInsets key="directionalLayoutMargins" top="11" leading="12" bottom="11" trailing="12"/>
@@ -66,10 +66,10 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BVp-oE-k4U">
+                                        <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" placeholder="Password" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BVp-oE-k4U">
                                             <rect key="frame" x="109.33333333333336" y="11" width="228.66666666666663" height="22"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                            <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                         </textField>
                                     </subviews>
                                     <constraints>
@@ -121,7 +121,7 @@
                         <color key="titleColor" systemColor="systemBackgroundColor"/>
                     </state>
                     <connections>
-                        <action selector="loginBtnPressed:" destination="-1" eventType="touchUpInside" id="HE1-22-Gqa"/>
+                        <action selector="loginBtnPressed:" destination="-1" eventType="touchDown" id="wPh-MM-Ql6"/>
                     </connections>
                 </button>
             </subviews>
