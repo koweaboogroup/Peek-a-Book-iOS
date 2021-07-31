@@ -58,5 +58,16 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIUserInterfaceStyle</key>
+	<string>Light</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>DMSerifText-Italic.ttf</string>
+		<string>DMSerifText-Regular.ttf</string>
+		<string>GraphikMedium.otf</string>
+		<string>GraphikMediumItalic.otf</string>
+		<string>GraphikRegular.otf</string>
+		<string>GraphikRegularItalic.otf</string>
+	</array>
 </dict>
 </plist>
