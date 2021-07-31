@@ -64,7 +64,7 @@
     <false/>
     <key>NSExceptionDomains</key>
     <dict>
-      <key>http://api.peekabooks.my.id</key>
+      <key>peekabooks.my.id</key>
       <dict>
         <key>NSIncludesSubdomains</key>
         <true/>
