@@ -13,7 +13,7 @@ struct LoginResponse: Codable {
 }
 
 struct User: Codable {
-    var id: String? = nil
+    var id: Int? = nil
     var username: String? = nil
     var email: String? = nil
     var provider: String? = nil
@@ -25,21 +25,21 @@ struct User: Codable {
     var lender: Lender? = nil
     var created_at: String? = nil
     var updated_at: String? = nil
-//    var rents: [Any]
+//    var rents: []
 }
 
 struct Role: Codable {
-    var id: String? = nil
+    var id: Int? = nil
     var name: String? = nil
     var description: String? = nil
     var type: String? = nil
 }
 
 struct Lender: Codable {
-    var id: String? = nil
+    var id: Int? = nil
     var lenderName: String? = nil
     var lenderBio: String? = nil
-    var user: String? = nil
+    var user: Int? = nil
     var published_at: String? = nil
     var created_at: String? = nil
     var updated_at: String? = nil
