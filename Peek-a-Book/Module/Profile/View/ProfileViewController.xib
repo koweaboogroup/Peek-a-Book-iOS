@@ -75,20 +75,25 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0c7-YH-ikX">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0c7-YH-ikX">
                                             <rect key="frame" x="18" y="43" width="332" height="1"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="1" id="Zaf-Qx-sId"/>
+                                            </constraints>
                                         </view>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <gestureRecognizers/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="44" id="8ly-av-9ok"/>
+                                        <constraint firstAttribute="trailing" secondItem="0c7-YH-ikX" secondAttribute="trailing" id="Amq-aW-u1s"/>
                                         <constraint firstItem="7De-st-es0" firstAttribute="centerY" secondItem="7Nj-gy-D5j" secondAttribute="centerY" id="Hbk-Ap-djD"/>
+                                        <constraint firstItem="0c7-YH-ikX" firstAttribute="leading" secondItem="7Nj-gy-D5j" secondAttribute="leading" constant="18" id="XE7-1t-MIA"/>
                                         <constraint firstItem="7De-st-es0" firstAttribute="leading" secondItem="7Nj-gy-D5j" secondAttribute="leading" constant="16" id="jh1-0c-zFy"/>
                                         <constraint firstItem="Fbd-jH-toK" firstAttribute="centerY" secondItem="7Nj-gy-D5j" secondAttribute="centerY" id="nXB-t0-Gvh"/>
                                         <constraint firstAttribute="trailing" secondItem="Fbd-jH-toK" secondAttribute="trailing" constant="16" id="tOe-oQ-gmQ"/>
+                                        <constraint firstAttribute="bottom" secondItem="0c7-YH-ikX" secondAttribute="bottom" id="wE6-jS-Nv0"/>
                                     </constraints>
                                     <connections>
                                         <outletCollection property="gestureRecognizers" destination="VWZ-Vj-62c" appends="YES" id="9Gh-vF-2xw"/>
@@ -111,10 +116,12 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qqn-IH-ijf">
-                                            <rect key="frame" x="17" y="43" width="333" height="1"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qqn-IH-ijf">
+                                            <rect key="frame" x="18" y="43" width="332" height="1"/>
                                             <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="1" id="7fh-si-6SB"/>
+                                            </constraints>
                                         </view>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -124,7 +131,10 @@
                                         <constraint firstItem="YXw-av-PNL" firstAttribute="centerY" secondItem="sIJ-vM-aUI" secondAttribute="centerY" id="1vz-lc-C0p"/>
                                         <constraint firstItem="YXw-av-PNL" firstAttribute="leading" secondItem="sIJ-vM-aUI" secondAttribute="leading" constant="16" id="OKw-Jz-jK4"/>
                                         <constraint firstItem="tgG-3c-RT5" firstAttribute="centerY" secondItem="sIJ-vM-aUI" secondAttribute="centerY" id="PNg-BP-yZO"/>
+                                        <constraint firstAttribute="bottom" secondItem="Qqn-IH-ijf" secondAttribute="bottom" id="bPj-mA-3Gc"/>
+                                        <constraint firstItem="Qqn-IH-ijf" firstAttribute="leading" secondItem="sIJ-vM-aUI" secondAttribute="leading" constant="18" id="sU7-gW-Dcd"/>
                                         <constraint firstAttribute="trailing" secondItem="tgG-3c-RT5" secondAttribute="trailing" constant="16" id="scA-05-svV"/>
+                                        <constraint firstAttribute="trailing" secondItem="Qqn-IH-ijf" secondAttribute="trailing" id="uef-Aw-ay7"/>
                                     </constraints>
                                     <connections>
                                         <outletCollection property="gestureRecognizers" destination="9q2-kM-2Hl" appends="YES" id="OUX-Lq-g9e"/>
@@ -147,10 +157,12 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h0q-wz-VEe">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h0q-wz-VEe">
                                             <rect key="frame" x="18" y="43" width="332" height="1"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="1" id="mU1-dJ-Cat"/>
+                                            </constraints>
                                         </view>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -159,8 +171,11 @@
                                         <constraint firstItem="aU8-9z-I0h" firstAttribute="leading" secondItem="hF4-G1-Sef" secondAttribute="leading" constant="16" id="2bH-qU-cTE"/>
                                         <constraint firstAttribute="height" constant="44" id="5lu-Is-e0I"/>
                                         <constraint firstItem="aU8-9z-I0h" firstAttribute="centerY" secondItem="hF4-G1-Sef" secondAttribute="centerY" id="DcI-RX-TaT"/>
+                                        <constraint firstAttribute="trailing" secondItem="h0q-wz-VEe" secondAttribute="trailing" id="Dh0-6k-byJ"/>
+                                        <constraint firstAttribute="bottom" secondItem="h0q-wz-VEe" secondAttribute="bottom" id="HXw-vo-JX7"/>
                                         <constraint firstAttribute="trailing" secondItem="2q7-11-ro0" secondAttribute="trailing" constant="16" id="KxI-ey-wso"/>
                                         <constraint firstItem="2q7-11-ro0" firstAttribute="centerY" secondItem="hF4-G1-Sef" secondAttribute="centerY" id="h2H-g5-W5a"/>
+                                        <constraint firstItem="h0q-wz-VEe" firstAttribute="leading" secondItem="hF4-G1-Sef" secondAttribute="leading" constant="18" id="tUS-JD-fdJ"/>
                                     </constraints>
                                     <connections>
                                         <outletCollection property="gestureRecognizers" destination="KGl-UX-dKc" appends="YES" id="kTZ-gt-2Km"/>

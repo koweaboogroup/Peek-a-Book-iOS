@@ -15,31 +15,7 @@ class BooksViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    @IBAction func gotodetailbook(_ sender: UIButton) {
-        let vc = DetailBooksViewController(
-            nibName: "\(DetailBooksViewController.self)",
-                bundle: nil)
-        
 
-        vc.hidesBottomBarWhenPushed = true
-     //   self.present(vc, animated: true, completion: nil)
-        
-             navigationController?.pushViewController(vc,
-                animated: true)
-    }
-    @IBAction func gotoInsertBook(_ sender: UIButton) {
-        let vc = InsertBookToLenderCatalogueViewController(
-            nibName: "\(InsertBookToLenderCatalogueViewController.self)",
-                bundle: nil)
-        
-
-        vc.hidesBottomBarWhenPushed = true
-     //   self.present(vc, animated: true, completion: nil)
-        
-             navigationController?.pushViewController(vc,
-                animated: true)
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
@@ -47,4 +23,9 @@ class BooksViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(false, animated: false)
     }
+    
+    
+    
+    
+    
 }

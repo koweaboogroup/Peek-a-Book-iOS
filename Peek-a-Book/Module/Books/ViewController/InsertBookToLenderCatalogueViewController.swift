@@ -9,6 +9,15 @@ import UIKit
 
 class InsertBookToLenderCatalogueViewController: UIViewController {
 
+    @IBOutlet weak var judulBukuTextField: UITextField!
+    @IBOutlet weak var nomerISBNBukuTextField: UITextField!
+    @IBOutlet weak var hargaSewaBukuTextField: UITextField!
+    
+    
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -16,14 +25,13 @@ class InsertBookToLenderCatalogueViewController: UIViewController {
     }
 
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func kondisiBukuTapped(_ sender: UITapGestureRecognizer) {
     }
-    */
+    
+    
+    @IBAction func genreBukuTapped(_ sender: UITapGestureRecognizer) {
+    }
+    
+ 
 
 }
