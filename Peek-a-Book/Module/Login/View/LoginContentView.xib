@@ -10,6 +10,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginContentView" customModule="Peek_a_Book" customModuleProvider="target">
             <connections>
                 <outlet property="fieldContainer" destination="XSo-0C-y5m" id="IOC-pq-ixT"/>
+                <outlet property="identifierTextField" destination="UzY-K9-UNK" id="DVU-e8-Cl2"/>
                 <outlet property="loginButton" destination="Yru-Zy-JN7" id="kQb-6f-cWh"/>
                 <outlet property="loginContentView" destination="iN0-l3-epB" id="pbT-Jr-tZt"/>
                 <outlet property="passwordTextField" destination="BVp-oE-k4U" id="LxZ-Uo-Gc1"/>
@@ -44,7 +45,7 @@
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UzY-K9-UNK">
                                             <rect key="frame" x="76.666666666666657" y="11" width="261.33333333333337" height="25"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <textInputTraits key="textInputTraits"/>
+                                            <textInputTraits key="textInputTraits" returnKeyType="continue"/>
                                         </textField>
                                     </subviews>
                                     <directionalEdgeInsets key="directionalLayoutMargins" top="11" leading="12" bottom="11" trailing="12"/>
@@ -68,7 +69,7 @@
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BVp-oE-k4U">
                                             <rect key="frame" x="109.33333333333336" y="11" width="228.66666666666663" height="22"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <textInputTraits key="textInputTraits"/>
+                                            <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                                         </textField>
                                     </subviews>
                                     <constraints>
@@ -119,6 +120,9 @@
                     <state key="normal" title="Masuk">
                         <color key="titleColor" systemColor="systemBackgroundColor"/>
                     </state>
+                    <connections>
+                        <action selector="loginBtnPressed:" destination="-1" eventType="touchUpInside" id="HE1-22-Gqa"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>

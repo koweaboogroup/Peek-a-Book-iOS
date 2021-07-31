@@ -15,7 +15,10 @@ class LoginContentView: UIView {
     
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var fieldContainer: UIView!
+    @IBOutlet weak var identifierTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    
+    let viewModel = LoginViewModel()
     
     
     required init?(coder aDecoder: NSCoder) {
@@ -61,5 +64,12 @@ class LoginContentView: UIView {
         )
         
         self.addSubview(loginContentView)
+    }
+    
+    @IBAction func loginBtnPressed(_ sender: UIButton) {
+        let identifier = identifierTextField.text ?? ""
+        let password = passwordTextField.text ?? ""
+        
+        viewModel.login(identifier: identifier, password: password)
     }
 }
