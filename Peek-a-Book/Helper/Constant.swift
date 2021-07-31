@@ -20,4 +20,10 @@ struct Constant {
         static let primary5 = UIColor.init(named: "primary-5")
         static let primary6 = UIColor.init(named: "primary-6")
     }
+    
+    struct Ilustration {
+        static let emptyNotif = UIImage(named: "empty-notif")
+        static let emptyState = UIImage(named: "empty-state")
+        static let login = UIImage(named: "login")
+    }
 }
