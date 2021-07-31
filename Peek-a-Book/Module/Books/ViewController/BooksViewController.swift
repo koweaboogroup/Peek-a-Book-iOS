@@ -14,7 +14,6 @@ class BooksViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .red
     }
     @IBAction func gotodetailbook(_ sender: UIButton) {
         let vc = DetailBooksViewController(
@@ -39,5 +38,13 @@ class BooksViewController: UIViewController {
         
              navigationController?.pushViewController(vc,
                 animated: true)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(false, animated: false)
     }
 }
