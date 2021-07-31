@@ -15,8 +15,6 @@ class LoginViewModel {
     
     public let buttonLoginPressed = PublishSubject<Bool>()
     
-    
-    
     public func login(identifier: String, password: String) {
         
         self.loading.onNext(true)
