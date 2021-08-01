@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import SafariServices
 
 class RegisterViewController: UIViewController {
     
@@ -98,5 +99,11 @@ class RegisterViewController: UIViewController {
         
         registerButton.layer.cornerRadius = 12
         registerButton.layer.applyShadow(color: .black, alpha: 0.2, x: 0, y: 3, blur: 10, spread: 0)
+    }
+    
+    @IBAction func termsAndConditionsButtonPressed(_ sender: UIButton) {
+        let safariViewController = SFSafariViewController(url: URL(string: Constant.termsAndConditionsLink) ?? URL(fileURLWithPath: ""))
+        
+        self.present(safariViewController, animated: true, completion: nil)
     }
 }
