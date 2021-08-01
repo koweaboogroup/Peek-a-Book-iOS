@@ -73,11 +73,11 @@ class RegisterViewController: UIViewController {
             .bind(to: viewModel.confirmPassword)
             .disposed(by: disposeBag)
         
-        viewModel.isAllTextFieldFilled()
+        viewModel.isValid()
             .bind(to: registerButton.rx.isEnabled)
             .disposed(by: disposeBag)
         
-        viewModel.isAllTextFieldFilled()
+        viewModel.isValid()
             .map {
                 $0 ? 1 : 0.5
             }
