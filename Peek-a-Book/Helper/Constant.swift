@@ -8,6 +8,9 @@
 import UIKit
 
 struct Constant {
+    
+    static let termsAndConditionsLink = "https://github.com/yrojx"
+    
     struct Network {
         static let baseUrl = "http://api.peekabooks.my.id"
     }
