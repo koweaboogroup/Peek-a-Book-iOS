@@ -108,6 +108,9 @@
                             <rect key="frame" x="128" y="0.0" width="41" height="29"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" title="Daftar"/>
+                            <connections>
+                                <action selector="registerBtnPressed:" destination="-1" eventType="touchUpInside" id="bzB-sN-YNx"/>
+                            </connections>
                         </button>
                     </subviews>
                 </stackView>

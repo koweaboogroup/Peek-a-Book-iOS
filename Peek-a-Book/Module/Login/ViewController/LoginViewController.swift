@@ -37,6 +37,13 @@ class LoginViewController: UIViewController {
         viewModel.user.subscribe(onNext: { user in
             self.changeToProfileVC()
         }).disposed(by: disposeBag)
+        
+        viewModel.buttonRegisterPressed.subscribe (onNext: { pressed in
+            if pressed {
+                self.changeToRegisterVC()
+            }
+        })
+
     }
     
     private func changeToProfileVC() {
@@ -44,6 +51,11 @@ class LoginViewController: UIViewController {
         profileVC.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person.crop.circle.fill"), tag: 1)
 
         self.tabBarController?.viewControllers?[1] = profileVC
+    }
+    
+    private func changeToRegisterVC(){
+        let registerVC = RegisterLenderViewController()
+        navigationController?.pushViewController(registerVC, animated: true)
     }
     
     private func setupKeyboardListener() {

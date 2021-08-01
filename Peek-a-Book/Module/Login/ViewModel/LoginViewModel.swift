@@ -14,7 +14,8 @@ class LoginViewModel {
     public let error : PublishSubject<String> = PublishSubject()
     
     public let buttonLoginPressed = PublishSubject<Bool>()
-    
+    public let buttonRegisterPressed = PublishSubject<Bool>()
+
     public func login(identifier: String, password: String) {
         
         self.loading.onNext(true)
