@@ -12,13 +12,22 @@ class RootViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let dataManager = DataManager.shared
+        
         let booksVC = UINavigationController(rootViewController: BooksViewController())
         booksVC.tabBarItem = UITabBarItem(title: "Books", image: UIImage(systemName: "book.fill"), tag: 0)
         
-        let profileVC = UINavigationController(rootViewController: ProfileViewController())
-        profileVC.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person.crop.circle.fill"), tag: 1)
+        var secondViewController: UINavigationController
         
-        self.viewControllers = [booksVC, profileVC]
+        if dataManager.isLoggedIn() {
+            secondViewController = UINavigationController(rootViewController: ProfileViewController())
+        } else {
+            secondViewController = UINavigationController(rootViewController: LoginViewController())
+        }
+        
+        secondViewController.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person.crop.circle.fill"), tag: 1)
+        
+        self.viewControllers = [booksVC, secondViewController]
     }
     
 }
