@@ -23,6 +23,7 @@ class RegisterLenderViewController: UIViewController {
     private func setupView(){
         self.navigationItem.title = "Buka Penyewaan"
 
+        circleImageView.setImage(image: <#T##UIImage#>)
         registerContentView.cornerRadius(10)
         registerContentView.layer.applyShadow(
             color: .black,

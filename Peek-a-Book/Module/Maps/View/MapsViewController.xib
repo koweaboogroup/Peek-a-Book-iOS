@@ -28,8 +28,8 @@
                     <rect key="frame" x="0.0" y="662" width="414" height="200"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
+                        <constraint firstAttribute="width" constant="414" id="7uF-WT-LCP"/>
                         <constraint firstAttribute="height" constant="200" id="lgc-er-cpU"/>
-                        <constraint firstAttribute="width" constant="414" id="v4P-Ac-lIr"/>
                     </constraints>
                 </view>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pin-location" translatesAutoresizingMaskIntoConstraints="NO" id="3aH-C6-dR0">
