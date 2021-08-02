@@ -18,13 +18,13 @@ class DataManager {
         return jwtValue != nil
     }
     
-    ///TODO : INI BELUM SELESAI, HANYA DUMMY. DIKATAKAN SELESAI KETIKA RESPONSE SUDAH ADA
-    func saveProfile(name: String, alamat: String) {
-        UserDefaults.standard.string(forKey: Constant.UserDefaultConstant.name)
-        UserDefaults.standard.set(name, forKey: Constant.UserDefaultConstant.name)
-        
-        UserDefaults.standard.string(forKey: Constant.UserDefaultConstant.alamat)
-        UserDefaults.standard.set(alamat, forKey: Constant.UserDefaultConstant.alamat)
+    func saveProfile(user: User) {
+        do {
+            let data = try JSONEncoder().encode(user)
+            UserDefaults.standard.set(data, forKey: Constant.UserDefaultConstant.user)
+        } catch {
+            print("Unable to Encode Note (\(error))")
+        }
     }
 
     ///TODO : INI BELUM SELESAI, HANYA DUMMY. DIKATAKAN SELESAI KETIKA RESPONSE SUDAH ADA
