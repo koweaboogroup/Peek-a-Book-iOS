@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -10,44 +10,59 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RegisterLenderViewController" customModule="Peek_a_Book" customModuleProvider="target">
             <connections>
+                <outlet property="buttonRegisterLender" destination="ULx-Lr-Byk" id="yUt-Mm-JuW"/>
                 <outlet property="circleImageView" destination="YJh-tO-mtI" id="wro-dA-IYu"/>
+                <outlet property="registerContentView" destination="fGc-N6-mtB" id="sja-fk-uic"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fBA-m4-PXZ">
-                    <rect key="frame" x="155" y="178" width="104" height="30"/>
+                    <rect key="frame" x="143" y="178" width="104" height="30"/>
                     <state key="normal" title="Edit"/>
                 </button>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YJh-tO-mtI" customClass="CircleImageView" customModule="Peek_a_Book" customModuleProvider="target">
-                    <rect key="frame" x="155" y="64" width="104" height="104"/>
+                    <rect key="frame" x="143" y="64" width="104" height="104"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="104" id="3cU-45-BhK"/>
                         <constraint firstAttribute="height" constant="104" id="Vgc-F8-RNx"/>
                     </constraints>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fGc-N6-mtB" customClass="RegisterContentView" customModule="Peek_a_Book" customModuleProvider="target">
-                    <rect key="frame" x="20" y="228" width="374" height="128"/>
+                    <rect key="frame" x="20" y="228" width="350" height="150"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="fGc-N6-mtB" secondAttribute="height" multiplier="187:64" id="WL9-Jf-jip"/>
+                        <constraint firstAttribute="width" secondItem="fGc-N6-mtB" secondAttribute="height" multiplier="7:3" id="lfk-Rj-Nsd"/>
                     </constraints>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ULx-Lr-Byk">
+                    <rect key="frame" x="20" y="740" width="350" height="50"/>
+                    <color key="backgroundColor" red="0.0" green="0.40000000000000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="ULx-Lr-Byk" secondAttribute="height" multiplier="7:1" id="2Un-df-uwm"/>
+                    </constraints>
+                    <state key="normal" title="Daftar">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="fGc-N6-mtB" firstAttribute="top" secondItem="fBA-m4-PXZ" secondAttribute="bottom" constant="20" id="1FA-MR-Q5R"/>
                 <constraint firstItem="YJh-tO-mtI" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="Bao-SB-Ug4"/>
-                <constraint firstItem="fGc-N6-mtB" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="Ibm-Hr-bRj"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="ULx-Lr-Byk" secondAttribute="bottom" constant="20" id="CY9-Uc-gHG"/>
+                <constraint firstItem="fGc-N6-mtB" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="Ibm-Hr-bRj"/>
                 <constraint firstItem="fBA-m4-PXZ" firstAttribute="top" secondItem="YJh-tO-mtI" secondAttribute="bottom" constant="10" id="O0i-rS-9hZ"/>
+                <constraint firstItem="ULx-Lr-Byk" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="VrR-yq-YGD"/>
                 <constraint firstItem="fBA-m4-PXZ" firstAttribute="trailing" secondItem="YJh-tO-mtI" secondAttribute="trailing" id="WAb-Rs-nOQ"/>
                 <constraint firstItem="YJh-tO-mtI" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Z0j-qz-nVo"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="fGc-N6-mtB" secondAttribute="trailing" constant="20" id="g6o-PC-h9s"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ULx-Lr-Byk" secondAttribute="trailing" constant="20" id="eTM-GS-FL4"/>
+                <constraint firstAttribute="trailing" secondItem="fGc-N6-mtB" secondAttribute="trailing" constant="20" id="g6o-PC-h9s"/>
                 <constraint firstItem="fBA-m4-PXZ" firstAttribute="leading" secondItem="YJh-tO-mtI" secondAttribute="leading" id="pI0-Dn-pTM"/>
             </constraints>
             <point key="canvasLocation" x="-86" y="48"/>

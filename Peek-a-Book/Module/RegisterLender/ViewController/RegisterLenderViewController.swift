@@ -11,6 +11,8 @@ class RegisterLenderViewController: UIViewController {
 
     @IBOutlet weak var circleImageView: CircleImageView!
     
+    @IBOutlet weak var buttonRegisterLender: UIButton!
+    @IBOutlet weak var registerContentView: RegisterContentView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -19,7 +21,17 @@ class RegisterLenderViewController: UIViewController {
     }
 
     private func setupView(){
-        circleImageView.setBackgroundColor(color: #colorLiteral(red: 0.9058823529, green: 0.9568627451, blue: 1, alpha: 1))
-        circleImageView.setImage(image: #imageLiteral(resourceName: "bag-icon"))
+        self.navigationItem.title = "Buka Penyewaan"
+
+        registerContentView.cornerRadius(10)
+        registerContentView.layer.applyShadow(
+            color: .black,
+            alpha: 0.1,
+            x: 0,
+            y: 2,
+            blur: 5,
+            spread: 0
+        )
+        buttonRegisterLender.cornerRadius(10)
     }
 }

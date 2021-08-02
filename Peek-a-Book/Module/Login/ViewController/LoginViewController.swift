@@ -40,7 +40,6 @@ class LoginViewController: UIViewController {
         
         viewModel.buttonRegisterPressed.subscribe (onNext: { pressed in
             if pressed {
-                self.changeToRegisterVC()
             }
         })
 
@@ -54,8 +53,7 @@ class LoginViewController: UIViewController {
     }
     
     private func changeToRegisterVC(){
-        let registerVC = RegisterLenderViewController()
-        navigationController?.pushViewController(registerVC, animated: true)
+        //TODO TAMBAHKAN METHOD UNTUK BERALIH KE HALAMAN REGISTER
     }
     
     private func setupKeyboardListener() {
