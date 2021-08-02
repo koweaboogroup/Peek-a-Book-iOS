@@ -15,6 +15,8 @@ struct XIBConstant {
 
     static let LoginContentView = "LoginContentView"
     static let AddressMapsView = "AddressMapsView"
+    static let CircleImageView = "CircleImageView"
+    static let RegisterContentView = "RegisterContentView"
 
     static let BooksHomeScreenCVC = "BooksHomescreenCollectionViewCell"
     static let KatalogLenderCVC = "KatalogLenderCollectionViewCell"    
