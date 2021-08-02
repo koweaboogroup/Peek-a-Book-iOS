@@ -2,8 +2,7 @@
 //  RegisterViewModel.swift
 //  Peek-a-Book
 //
-//  Created by Yossan Sandi Rahmadi on 01/08/21.
-//
+
 
 import Foundation
 import RxSwift
@@ -14,6 +13,8 @@ struct RegisterViewModel {
     let whatsappNumber: PublishSubject<String> = PublishSubject()
     let password: PublishSubject<String> = PublishSubject()
     let confirmPassword: PublishSubject<String> = PublishSubject()
+    let loading: PublishSubject<Bool> = PublishSubject()
+    let error: PublishSubject<String> = PublishSubject()
     
     func isAllTextFieldFilled() -> Observable<Bool> {
         return Observable.combineLatest(
@@ -45,5 +46,27 @@ struct RegisterViewModel {
                 return isAllTextFieldFilled && isPasswordConfirmed
             }
             .startWith(false)
+    }
+
+    public func register(identifier: String, password: String) {
+        
+        self.loading.onNext(true)
+        
+                            //isi parameter RegisterRequest
+        let registerRequest = RegisterRequest()
+        
+        RegisterService.register(registerRequest: registerRequest) { registerResponse in
+            
+            self.loading.onNext(false)
+            
+            //kalo success mau gmn???
+            
+        } failCompletion: { error in
+            
+            self.loading.onNext(false)
+            self.error.onNext(error.errorDescription ?? "Error")
+            fatalError()
+            
+        }
     }
 }

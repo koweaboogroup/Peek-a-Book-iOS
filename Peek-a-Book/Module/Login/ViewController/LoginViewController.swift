@@ -41,7 +41,7 @@ class LoginViewController: UIViewController {
         viewModel.buttonRegisterPressed.subscribe (onNext: { pressed in
             if pressed {
             }
-        })
+        }).disposed(by: disposeBag)
 
     }
     
