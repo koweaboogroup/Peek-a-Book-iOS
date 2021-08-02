@@ -36,6 +36,7 @@ class AddressMapsView: UIView {
         addressMapView = loadViewFromNib(nibName: XIBConstant.AddressMapsView)
         addressMapView.frame = self.bounds
         buttonDone.cornerRadius(10)
+        addressMapView.cornerRadiusTop(30)
         self.addSubview(addressMapView)
     }
     

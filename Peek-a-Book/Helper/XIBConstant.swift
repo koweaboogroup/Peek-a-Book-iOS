@@ -15,6 +15,18 @@ struct XIBConstant {
 
     static let LoginContentView = "LoginContentView"
     static let AddressMapsView = "AddressMapsView"
+
+    static let BooksHomeScreenCVC = "BooksHomescreenCollectionViewCell"
+    static let KatalogLenderCVC = "KatalogLenderCollectionViewCell"    
+
+    static let DetailBooksVC = "DetailBooksViewController"
+    static let EditProfileVC = "EditProfileViewController"
+    static let InsertBookToLenderCatalogueVC = "InsertBookToLenderCatalogueViewController"
+    
+    static let BooksHomescreenCollectionViewCell = "BooksHomescreenCollectionViewCell"
+    static let KatalogLenderCollectionViewCell = "KatalogLenderCollectionViewCell"
+    
+    static let SearchView = "SearchView"
 }
 
 
