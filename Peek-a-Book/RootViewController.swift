@@ -22,7 +22,7 @@ class RootViewController: UITabBarController {
         if dataManager.isLoggedIn() {
             secondViewController = UINavigationController(rootViewController: ProfileViewController())
         } else {
-            secondViewController = UINavigationController(rootViewController: EditProfileLenderViewController())
+            secondViewController = UINavigationController(rootViewController: LoginViewController())
         }
         
         secondViewController.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person.crop.circle.fill"), tag: 1)
