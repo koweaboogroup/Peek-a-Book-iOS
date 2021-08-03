@@ -44,12 +44,6 @@ class LoginViewController: UIViewController {
         })
 
     }
-    @IBAction func pindah(_ sender: UIButton) {
-        let profileVC = UINavigationController(rootViewController: DetailOrderViewController())
-
-
-        self.tabBarController?.viewControllers?[1] = profileVC
-    }
     
     private func changeToProfileVC() {
         let profileVC = UINavigationController(rootViewController: ProfileViewController())
