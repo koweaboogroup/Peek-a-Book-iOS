@@ -36,5 +36,10 @@ class LocationManager {
         }
         
     }
+    
+    func getDistance(yourLocation: CLLocation, anotherLocation: CLLocation) -> CLLocationDistance {
+        let distance = yourLocation.distance(from: anotherLocation)
+        return distance
+    }
          
 }
