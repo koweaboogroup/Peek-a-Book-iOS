@@ -14,7 +14,12 @@ class BooksViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let viewModel = BooksViewModel()
+        viewModel.getListBook()
+        
+        
     }
+    
 
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: false)
