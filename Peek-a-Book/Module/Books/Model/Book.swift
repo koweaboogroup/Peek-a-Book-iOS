@@ -16,7 +16,7 @@ struct Book: Codable {
     let publishedAt, createdAt, updatedAt: String?
     let bookImage: [BookImage]?
     let lat, long: Float?
-    let distance: Double?
+    var distance: Double = 0.0
     
     enum CodingKeys: String, CodingKey {
         case id, bookTitle, bookISBN, bookWriter, bookSinopsis, lat, long, distance

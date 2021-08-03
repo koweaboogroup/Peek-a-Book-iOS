@@ -39,6 +39,7 @@ class BooksViewController: UIViewController, CLLocationManagerDelegate {
             checkLocationAuthorization()
         } else {
             // the user didn't turn it on
+            searchView.labelLokasi.text = "Aktifkan Lokasi"
         }
     }
     
@@ -59,6 +60,7 @@ class BooksViewController: UIViewController, CLLocationManagerDelegate {
             break
         case .denied:
             // Show alert
+            searchView.labelLokasi.text = "Aktifkan Lokasi"
             break
         case .notDetermined:
             locationManager.requestWhenInUseAuthorization()
