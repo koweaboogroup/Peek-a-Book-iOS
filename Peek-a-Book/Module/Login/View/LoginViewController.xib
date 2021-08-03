@@ -33,6 +33,14 @@
                         <constraint firstAttribute="width" secondItem="MyT-WU-fBI" secondAttribute="height" multiplier="1:1" id="cSg-Bf-phy"/>
                     </constraints>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fzp-dL-ujG">
+                    <rect key="frame" x="197" y="355" width="46" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Button"/>
+                    <connections>
+                        <action selector="pindah:" destination="-1" eventType="touchUpInside" id="qle-ft-c69"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>

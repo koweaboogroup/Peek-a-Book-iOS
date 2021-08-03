@@ -12,6 +12,8 @@ struct XIBConstant {
     static let ProfileVC = "ProfileViewController"
     static let LoginViewController = "LoginViewController"
     static let MapsVC = "MapsViewController"
+    static let DetailOrderVC = "DetailOrderViewController"
+    static let AlamatSettingVC = "AlamatSettingViewController"
 
     static let LoginContentView = "LoginContentView"
     static let AddressMapsView = "AddressMapsView"
@@ -27,6 +29,7 @@ struct XIBConstant {
     
     static let BooksHomescreenCollectionViewCell = "BooksHomescreenCollectionViewCell"
     static let KatalogLenderCollectionViewCell = "KatalogLenderCollectionViewCell"
+    static let ItemKeranjangTableViewCell = "ItemKeranjangTableViewCell"
     
     static let SearchView = "SearchView"
 }
