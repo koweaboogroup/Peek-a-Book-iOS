@@ -28,12 +28,12 @@ struct User: Codable {
 //    var rents: []
 }
 
-struct Role: Codable {
-    var id: Int? = nil
-    var name: String? = nil
-    var description: String? = nil
-    var type: String? = nil
-}
+//struct Role: Codable {
+//    var id: Int? = nil
+//    var name: String? = nil
+//    var description: String? = nil
+//    var type: String? = nil
+//}
 
 struct Lender: Codable {
     var id: Int? = nil
