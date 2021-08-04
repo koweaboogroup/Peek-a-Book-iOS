@@ -69,7 +69,7 @@ class LoginViewController: UIViewController {
                 let vc = ModuleBuilder.shared.goToRegisterViewController()
                 self.navigationController?.pushViewController(vc, animated: true)
             }
-        }).disposed(by: disposeBag)
+        })
 
     }
     

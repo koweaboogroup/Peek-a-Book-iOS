@@ -1,17 +1,16 @@
 //
-//  InsertBookToLenderCatalogueViewController.swift
+//  CheckOutViewController.swift
 //  Peek-a-Book
 //
-//  Created by Gede Wicaksana on 30/07/21.
+//  Created by Gede Wicaksana on 04/08/21.
 //
 
 import UIKit
 
-class InsertBookToLenderCatalogueViewController: UIViewController {
+class CheckOutViewController: UIViewController {
 
-    @IBOutlet weak var judulBukuTextField: UITextField!
-    @IBOutlet weak var nomerISBNBukuTextField: UITextField!
-    @IBOutlet weak var hargaSewaBukuTextField: UITextField!
+    
+    
     
     
     
@@ -21,10 +20,12 @@ class InsertBookToLenderCatalogueViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBar()
+        // Do any additional setup after loading the view.
     }
-    
+
+
     func setNavigationBar(){
-        self.navigationItem.title = "Tambah Buku"
+        self.navigationItem.title = "Keranjang"
         
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "DM Serif Text", size: 19)!]
         
@@ -35,16 +36,5 @@ class InsertBookToLenderCatalogueViewController: UIViewController {
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = .clear
     }
-    
-  
-
-    @IBAction func kondisiBukuTapped(_ sender: UITapGestureRecognizer) {
-    }
-    
-    
-    @IBAction func genreBukuTapped(_ sender: UITapGestureRecognizer) {
-    }
-    
- 
 
 }

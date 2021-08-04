@@ -1,30 +1,24 @@
 //
-//  InsertBookToLenderCatalogueViewController.swift
+//  NotificationViewController.swift
 //  Peek-a-Book
 //
-//  Created by Gede Wicaksana on 30/07/21.
+//  Created by Gede Wicaksana on 03/08/21.
 //
 
 import UIKit
 
-class InsertBookToLenderCatalogueViewController: UIViewController {
-
-    @IBOutlet weak var judulBukuTextField: UITextField!
-    @IBOutlet weak var nomerISBNBukuTextField: UITextField!
-    @IBOutlet weak var hargaSewaBukuTextField: UITextField!
-    
-    
-    
-    
-    
+class NotificationViewController: UIViewController {
+    @IBOutlet weak var notificationTableView: UITableView!
+    @IBOutlet weak var notificationSegmentedControl: UISegmentedControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBar()
+        setSegmentedControl()
     }
     
     func setNavigationBar(){
-        self.navigationItem.title = "Tambah Buku"
+        self.navigationItem.title = "Notifikasi"
         
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "DM Serif Text", size: 19)!]
         
@@ -36,15 +30,11 @@ class InsertBookToLenderCatalogueViewController: UIViewController {
         self.navigationController?.view.backgroundColor = .clear
     }
     
-  
-
-    @IBAction func kondisiBukuTapped(_ sender: UITapGestureRecognizer) {
+    func setSegmentedControl(){
+        notificationSegmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.systemBlue], for: UIControl.State.selected)
+        notificationSegmentedControl.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "Graphik", size: 14)!], for: .normal)
     }
     
     
-    @IBAction func genreBukuTapped(_ sender: UITapGestureRecognizer) {
-    }
-    
- 
 
 }
