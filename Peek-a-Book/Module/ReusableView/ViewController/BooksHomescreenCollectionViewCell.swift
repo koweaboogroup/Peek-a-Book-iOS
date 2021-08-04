@@ -11,7 +11,7 @@ class BooksHomescreenCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var rootView: UIView!
     @IBOutlet weak var lenderStoreName:UILabel!
     @IBOutlet weak var lenderStoreLocation:UILabel!
-    @IBOutlet weak var lenderStoreImage:UIImageView!
+    @IBOutlet weak var lenderStoreImage:CircleImageView!
     @IBOutlet weak var bookImage:UIImageView!
     @IBOutlet weak var bookTitle:UILabel!
     @IBOutlet weak var bookWriter:UILabel!
@@ -27,7 +27,7 @@ class BooksHomescreenCollectionViewCell: UICollectionViewCell {
                 blur: 10,
                 spread: 0
             )
-            self.lenderStoreImage.kf.setImage(with: URL(string: Constant.Network.baseUrl + (response.lender?.image?[0].url ?? "")))
+            self.lenderStoreImage.setImage(fromUrl: Constant.Network.baseUrl + (response.lender?.image?[0].url ?? ""))
             self.lenderStoreName.text = response.lender?.name
             self.lenderStoreLocation.text = response.lender?.kota
             self.bookTitle.text = response.book?.title
