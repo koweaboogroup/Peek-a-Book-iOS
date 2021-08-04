@@ -13,6 +13,9 @@ class LoginViewModel {
     public let loading : PublishSubject<Bool> = PublishSubject()
     public let error : PublishSubject<String> = PublishSubject()
     
+    let identifier: PublishSubject<String> = PublishSubject()
+    let password: PublishSubject<String> = PublishSubject()
+    
     public let buttonLoginPressed = PublishSubject<Bool>()
     public let buttonRegisterPressed = PublishSubject<Bool>()
 
@@ -40,6 +43,13 @@ class LoginViewModel {
             self.loading.onNext(false)
             self.error.onNext(error.errorDescription ?? "Error")
         }
-        
+    }
+    
+    func isAllTextFieldsFilled() -> Observable<Bool> {
+        return Observable.combineLatest(identifier.asObservable().startWith(""), password.asObservable().startWith(""))
+            .map { identifier, password in
+                return !identifier.isEmpty && !password.isEmpty
+            }
+            .startWith(false)
     }
 }
