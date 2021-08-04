@@ -12,15 +12,20 @@ enum BookRouter: URLRequestConvertible {
     
     ///TODO : UBAH REQUEST DAN RESPONSE
     case post(BookRequest)
+    case get
     
     var method: HTTPMethod {
         switch self {
         case .post: return .post
+        case .get: return .get
         }
     }
     
     var url: URL {
         return URL(string: Constant.Network.baseUrl + "/auth/local")!
+    }
+    var urlBooks: URL {
+        return URL(string: Constant.Network.baseUrl + "/books")!
     }
     
     func asURLRequest() throws -> URLRequest {
@@ -29,6 +34,8 @@ enum BookRouter: URLRequestConvertible {
         switch self {
         case let .post(bookRequest):
             request.httpBody = try JSONEncoder().encode(bookRequest)
+        case .get: break
+
         }
         
         request.headers.add(.contentType("application/json"))

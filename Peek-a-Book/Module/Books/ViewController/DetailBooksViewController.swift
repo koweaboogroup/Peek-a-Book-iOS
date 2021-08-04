@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
 class DetailBooksViewController: UIViewController {
 
@@ -34,7 +36,8 @@ class DetailBooksViewController: UIViewController {
     @IBOutlet weak var totalBookButtonView: UIView!
     @IBOutlet weak var tambahKeranjangButton: UIButton!
     
-    
+    private var viewModel = DetailBookViewModel()
+    private var disposeBag = DisposeBag()
     
     
     
@@ -43,10 +46,52 @@ class DetailBooksViewController: UIViewController {
         super.viewDidLoad()
         
         totalBookButtonView.isHidden = true
-
+        setupRx()
     }
     
-    
+    func setupRx() {
+        // MARK: -Setup Header View
+        //jangan lupa binding Book Image
+        
+        viewModel.bookDetail.asObserver().map { book in
+            book.bookTitle
+        }.bind(to: detailBookTitleLabel.rx.text)
+        .disposed(by: disposeBag)
+        
+        viewModel.bookDetail.asObserver().map { book in
+            book.bookWriter
+        }.bind(to: detailBookWriterLabel.rx.text)
+        .disposed(by: disposeBag)
+        
+        //book price blm ada?
+        
+        // MARK: - Setup Lender Button View
+        
+        
+        
+        
+        
+        
+        
+        
+        // MARK: - Setup Content View
+        viewModel.bookDetail.asObserver().map { book in
+            book.bookISBN
+        }.bind(to: detailBookISBNLabel.rx.text)
+        .disposed(by: disposeBag)
+        
+        //bahasa, halaman, condition blm ada?
+        
+        viewModel.bookDetail.asObserver().map { book in
+            book.bookGenre?.bookGenreName
+        }.bind(to: detailBookGenreLabel.rx.text)
+        .disposed(by: disposeBag)
+        
+        viewModel.bookDetail.asObserver().map { book in
+            book.bookSinopsis
+        }.bind(to: detailBookSinopsisLabel.rx.text)
+        .disposed(by: disposeBag)
+    }
     
     
 
