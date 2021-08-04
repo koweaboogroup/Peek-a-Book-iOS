@@ -8,6 +8,8 @@
 import UIKit
 import RxCocoa
 import RxSwift
+import Kingfisher
+import RxKingfisher
 
 class DetailBooksViewController: UIViewController {
 
@@ -46,49 +48,96 @@ class DetailBooksViewController: UIViewController {
         super.viewDidLoad()
         
         totalBookButtonView.isHidden = true
+        
+        
+        
+    
+
+        setNavigationBar()
         setupRx()
     }
     
     func setupRx() {
         // MARK: -Setup Header View
         //jangan lupa binding Book Image
+//        let url: Observable<URL> = Observable.create { observer in
+//            <#code#>
+//        }
+        
+        let url2 = URL(string: "https://assets.pikiran-rakyat.com/crop/0x946:996x2004/x/photo/2020/06/19/2624712725.jpg")
+        
+        detailBookImages.kf.setImage(with: url2)
+        
+//        viewModel.bookDetail.asObservable().map { book in
+//            let url = book.images?[0].url
+//            detailBookImages.kf.rx.setImage(with: url)
+//        )}
+//        .subscribe(onNext: { image in
+//            print(image)
+//        })
+//        .disposed(by: disposeBag)
+        
         
         viewModel.bookDetail.asObserver().map { book in
-            book.bookTitle
+            book.book?.title
         }.bind(to: detailBookTitleLabel.rx.text)
         .disposed(by: disposeBag)
         
         viewModel.bookDetail.asObserver().map { book in
-            book.bookWriter
+            book.book?.author
         }.bind(to: detailBookWriterLabel.rx.text)
         .disposed(by: disposeBag)
         
-        //book price blm ada?
+        viewModel.bookDetail.asObserver().map { book in
+            "\(book.price ?? 0)"
+        }.bind(to: detailBookWriterLabel.rx.text)
+        .disposed(by: disposeBag)
         
         // MARK: - Setup Lender Button View
         
+        //lenderImage dipertanyakan Bang Arif
         
+        viewModel.bookDetail.asObserver().map { book in
+            book.lender?.name
+        }.bind(to: lenderStoreNameLabel.rx.text)
+        .disposed(by: disposeBag)
         
-        
-        
-        
+        viewModel.bookDetail.asObserver().map { book in
+            book.lender?.kota
+        }.bind(to: lenderStoreLocationLabel.rx.text)
+        .disposed(by: disposeBag)
         
         
         // MARK: - Setup Content View
         viewModel.bookDetail.asObserver().map { book in
-            book.bookISBN
+            book.book?.isbn
         }.bind(to: detailBookISBNLabel.rx.text)
         .disposed(by: disposeBag)
         
-        //bahasa, halaman, condition blm ada?
+        viewModel.bookDetail.asObserver().map { book in
+            book.language
+        }.bind(to: detailBookBahasaLabel.rx.text)
+        .disposed(by: disposeBag)
         
         viewModel.bookDetail.asObserver().map { book in
-            book.bookGenre?.bookGenreName
+            "\(book.page ?? 0)"
+        }.bind(to: detailBookHalamanLabel.rx.text)
+        .disposed(by: disposeBag)
+        
+        viewModel.bookDetail.asObserver().map { book in
+            book.bookCondition?.title
+        }.bind(to: detailBookConditionLabel.rx.text)
+        .disposed(by: disposeBag)
+        
+        
+        //MARK: -Book Genre blm ada String
+        viewModel.bookDetail.asObserver().map { book in
+            book.book?.bookGenre == 1 ? "Fiksi" : "Non Fiksi"
         }.bind(to: detailBookGenreLabel.rx.text)
         .disposed(by: disposeBag)
         
         viewModel.bookDetail.asObserver().map { book in
-            book.bookSinopsis
+            book.book?.sinopsis
         }.bind(to: detailBookSinopsisLabel.rx.text)
         .disposed(by: disposeBag)
     }
@@ -113,6 +162,18 @@ class DetailBooksViewController: UIViewController {
         print("aww geli")
     }
     
+    
+    
+    func setNavigationBar(){
+        self.navigationItem.title = "Detail Buku"
+        
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "DM Serif Text", size: 19)!]
   
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.view.backgroundColor = .clear
+    }
+
 
 }

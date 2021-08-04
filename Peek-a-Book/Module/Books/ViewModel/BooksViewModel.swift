@@ -10,28 +10,33 @@ import RxSwift
 import CoreLocation
 
 class BooksViewModel {
-    public let listBook : PublishSubject<[Book]> = PublishSubject()
+    public let listBookFiction : PublishSubject<[BookResponse]> = PublishSubject()
     public let error : PublishSubject<String> = PublishSubject()
-    public let nearestListBook: PublishSubject<[Book]> = PublishSubject()
+    public let nearestListBook: PublishSubject<[BookResponse]> = PublishSubject()
     
     func getListBook(){
         BookService.getListBook { book in
-            print(book)
-            self.listBook.onNext(book)
+            var fictionBook = [BookResponse]()
+            for item in book {
+                if item.book?.bookGenre == 1 {
+                    fictionBook.append(item)
+                }
+            }
+            self.listBookFiction.onNext(fictionBook)
         } failCompletion: { error in
-            print(error.errorDescription!)
             self.error.onNext(error.errorDescription ?? "Data Tidak Ditemukan")
         }
     }
     
     func getListBook(yourLocation: CLLocation) {
         BookService.getListBook { book in
-            var nearestBook = [Book]()
+            var nearestBook = [BookResponse]()
             for item in book {
-                if let lat = item.lat, let long = item.long {
+                if let lat = item.lender?.latitude, let long = item.lender?.longtitude {
                     let location = CLLocation(latitude: CLLocationDegrees(lat), longitude: CLLocationDegrees(long))
                     let distance = LocationManager.shared.getDistance(yourLocation: yourLocation, anotherLocation: location)
-                    nearestBook.append(Book(id: item.id, bookTitle: item.bookTitle, bookISBN: item.bookISBN, bookWriter: item.bookWriter, bookSinopsis: item.bookSinopsis, bookGenre: item.bookGenre, lenderBook: item.lenderBook, publishedAt: item.publishedAt, createdAt: item.createdAt, updatedAt: item.updatedAt, bookImage: item.bookImage, lat: item.lat, long: item.long, distance: distance))
+                    
+                    nearestBook.append(BookResponse(id: item.id, price: item.price, bookCondition: item.bookCondition, lender: item.lender, book: item.book, page: item.page, language: item.language, publishedAt: item.publishedAt, createdAt: item.createdAt, updatedAt: item.updatedAt, images: item.images, distance: distance))
                 }
             }
             nearestBook.sort {
@@ -41,7 +46,7 @@ class BooksViewModel {
         } failCompletion: { error in
             self.error.onNext(error.errorDescription ?? "Data Tidak Ditemukan")
         }
-
+        
     }
 }
 
