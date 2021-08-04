@@ -28,21 +28,6 @@ struct BookCatalogueElement: Codable {
     }
 }
 
-// MARK: - BookCondition
-struct BookCondition: Codable {
-    let id: Int?
-    let title, bookConditionDescription, publishedAt, createdAt: String?
-    let updatedAt: String?
-
-    enum CodingKeys: String, CodingKey {
-        case id, title
-        case bookConditionDescription = "description"
-        case publishedAt = "published_at"
-        case createdAt = "created_at"
-        case updatedAt = "updated_at"
-    }
-}
-
 // MARK: - Image
 struct Image: Codable {
     let id: Int?
