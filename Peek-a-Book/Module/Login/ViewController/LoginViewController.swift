@@ -54,7 +54,7 @@ class LoginViewController: UIViewController {
         
         
         viewModel.error.subscribe(onNext: { error in
-            let alert = UIAlertController(title: "Tidak berhasil login", message: "Coba dinget2 lagi, yok bisa yok", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Tidak Berhasil Masuk", message: "Email atau password Anda salah", preferredStyle: .alert)
 
             alert.addAction(UIAlertAction(title: "Baiklah!", style: .default, handler: { action in
                 self.loginViewContent.identifierTextField.becomeFirstResponder()
@@ -86,12 +86,6 @@ class LoginViewController: UIViewController {
         let vc = ModuleBuilder.shared.goToRegisterViewController()
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    
-    private func setupKeyboardListener() {
-        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillShowNotification, object: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,7 +94,7 @@ class LoginViewController: UIViewController {
         
         self.hideKeyboardWhenTappedAround()
         
-        setupKeyboardListener()
+        self.setupKeyboardListener(selector: #selector(handleKeyboardNotification))
         
         setupRx()
     }

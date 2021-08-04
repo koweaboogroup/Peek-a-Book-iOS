@@ -17,10 +17,8 @@ class BooksViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         let viewModel = BooksViewModel()
         viewModel.getListBook()
-        
         checkLocationServices()
     }
     
@@ -72,7 +70,7 @@ class BooksViewController: UIViewController, CLLocationManagerDelegate {
             break
         }
     }
-    
+        
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         checkLocationAuthorization()
     }
