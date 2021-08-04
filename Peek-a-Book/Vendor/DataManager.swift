@@ -11,6 +11,8 @@ class DataManager {
     
     static let shared = DataManager()
     
+    var user: User?
+    
     func isLoggedIn() -> Bool {
         let jwt = "jwt"
         let jwtValue = UserDefaults.standard.string(forKey: jwt)
@@ -18,13 +20,12 @@ class DataManager {
         return jwtValue != nil
     }
     
-    func saveProfile(user: User) {
-        do {
-            let data = try JSONEncoder().encode(user)
-            UserDefaults.standard.set(data, forKey: Constant.UserDefaultConstant.user)
-        } catch {
-            print("Unable to Encode Note (\(error))")
-        }
+    func getUser() -> User? {
+        return user
+    }
+    
+    func setUser(user: User) {
+        self.user = user
     }
 
     ///TODO : INI BELUM SELESAI, HANYA DUMMY. DIKATAKAN SELESAI KETIKA RESPONSE SUDAH ADA
