@@ -51,7 +51,6 @@ class BooksViewController: UIViewController, CLLocationManagerDelegate {
     private func checkLocationAuthorization() {
         switch locationManager.authorizationStatus {
         case .authorizedWhenInUse:
-            print("Masuk Sini")
             if let location = LocationManager.shared.getExposedLocation() {
                 LocationManager.shared.getPlace(for: location) { placemark in
                     self.searchView.labelLokasi.text = placemark?.locality ?? placemark?.subAdministrativeArea ?? placemark?.administrativeArea ?? "Lokasi Tidak Ditemukan"
