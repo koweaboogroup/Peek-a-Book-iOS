@@ -8,13 +8,17 @@
 import Foundation
 import RxSwift
 
-class LoginViewModel {
+struct LoginViewModel {
     public let user : PublishSubject<User> = PublishSubject()
     public let loading : PublishSubject<Bool> = PublishSubject()
     public let error : PublishSubject<String> = PublishSubject()
     
-    public let buttonLoginPressed = PublishSubject<Bool>()
+    let identifier: PublishSubject<String> = PublishSubject()
+    let password: PublishSubject<String> = PublishSubject()
     
+    public let buttonLoginPressed = PublishSubject<Bool>()
+    public let buttonRegisterPressed = PublishSubject<Bool>()
+
     public func login(identifier: String, password: String) {
         
         self.loading.onNext(true)
@@ -39,6 +43,13 @@ class LoginViewModel {
             self.loading.onNext(false)
             self.error.onNext(error.errorDescription ?? "Error")
         }
-        
+    }
+    
+    func isAllTextFieldsFilled() -> Observable<Bool> {
+        return Observable.combineLatest(identifier.asObservable().startWith(""), password.asObservable().startWith(""))
+            .map { identifier, password in
+                return !identifier.isEmpty && !password.isEmpty
+            }
+            .startWith(false)
     }
 }

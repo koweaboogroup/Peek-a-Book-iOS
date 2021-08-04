@@ -96,6 +96,11 @@ class LoginContentView: UIView {
     @IBAction func loginBtnPressed(_ sender: UIButton) {
         processLogin()
     }
+    
+    @IBAction func registerBtnPressed(_ sender: UIButton) {
+        viewModel?.buttonRegisterPressed.onNext(true)
+    }
+    
 }
 
 extension LoginContentView: UITextFieldDelegate {

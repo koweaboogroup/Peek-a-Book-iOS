@@ -3,9 +3,21 @@
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="DMSerifText-Regular.ttf">
+            <string>DMSerifText-Regular</string>
+        </array>
+        <array key="GraphikMedium.otf">
+            <string>Graphik-Medium</string>
+        </array>
+        <array key="GraphikRegular.otf">
+            <string>Graphik-Regular</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginContentView" customModule="Peek_a_Book" customModuleProvider="target">
             <connections>
@@ -22,13 +34,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Masuk ke Akun Saya" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xt7-Du-tdt">
-                    <rect key="frame" x="30" y="40" width="330" height="33.666666666666657"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                    <rect key="frame" x="30" y="40" width="330" height="38.666666666666657"/>
+                    <fontDescription key="fontDescription" name="DMSerifText-Regular" family="DM Serif Text" pointSize="28"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XSo-0C-y5m" userLabel="FieldContainer">
-                    <rect key="frame" x="20" y="93.666666666666686" width="350" height="112"/>
+                    <rect key="frame" x="20" y="98.666666666666686" width="350" height="112"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="fUK-y8-gkx">
                             <rect key="frame" x="0.0" y="10" width="350" height="92"/>
@@ -37,14 +49,14 @@
                                     <rect key="frame" x="0.0" y="0.0" width="350" height="47"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lEQ-ax-jr6">
-                                            <rect key="frame" x="11.999999999999996" y="11" width="40.666666666666657" height="25"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <rect key="frame" x="12" y="11" width="43" height="25"/>
+                                            <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" placeholder="Email" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UzY-K9-UNK">
-                                            <rect key="frame" x="76.666666666666657" y="11" width="261.33333333333337" height="25"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <rect key="frame" x="79" y="11" width="259" height="25"/>
+                                            <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                             <textInputTraits key="textInputTraits" returnKeyType="continue" textContentType="username"/>
                                         </textField>
                                     </subviews>
@@ -61,14 +73,14 @@
                                     <rect key="frame" x="0.0" y="47.999999999999986" width="350" height="44"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l3D-0t-Et8">
-                                            <rect key="frame" x="12" y="11" width="73.333333333333329" height="22"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <rect key="frame" x="12" y="11" width="75.666666666666671" height="22"/>
+                                            <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" placeholder="Password" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BVp-oE-k4U">
-                                            <rect key="frame" x="109.33333333333336" y="11" width="228.66666666666663" height="22"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <rect key="frame" x="111.66666666666664" y="11" width="226.33333333333337" height="22"/>
+                                            <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                             <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                         </textField>
                                     </subviews>
@@ -96,27 +108,31 @@
                     </constraints>
                 </view>
                 <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="jz6-2U-Efr">
-                    <rect key="frame" x="110.66666666666669" y="321" width="169" height="29"/>
+                    <rect key="frame" x="109.66666666666669" y="324" width="171" height="26"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Belum punya akun?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MSY-DL-3hv">
-                            <rect key="frame" x="0.0" y="0.0" width="125" height="29"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <rect key="frame" x="0.0" y="0.0" width="127" height="26"/>
+                            <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="14"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="moy-r8-O8V">
-                            <rect key="frame" x="128" y="0.0" width="41" height="29"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <rect key="frame" x="130" y="0.0" width="41" height="26"/>
+                            <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="14"/>
                             <state key="normal" title="Daftar"/>
+                            <connections>
+                                <action selector="registerBtnPressed:" destination="-1" eventType="touchUpInside" id="bzB-sN-YNx"/>
+                            </connections>
                         </button>
                     </subviews>
                 </stackView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yru-Zy-JN7">
-                    <rect key="frame" x="30" y="261" width="330" height="50"/>
-                    <color key="backgroundColor" red="0.0" green="0.40000000000000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <rect key="frame" x="30" y="264" width="330" height="50"/>
+                    <color key="backgroundColor" name="primary-1"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="Yru-Zy-JN7" secondAttribute="height" multiplier="33:5" id="v9I-Fl-HjZ"/>
                     </constraints>
+                    <fontDescription key="fontDescription" name="Graphik-Medium" family="Graphik" pointSize="21"/>
                     <state key="normal" title="Masuk">
                         <color key="titleColor" systemColor="systemBackgroundColor"/>
                     </state>
@@ -144,6 +160,9 @@
         </view>
     </objects>
     <resources>
+        <namedColor name="primary-1">
+            <color red="0.0" green="0.40000000000000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

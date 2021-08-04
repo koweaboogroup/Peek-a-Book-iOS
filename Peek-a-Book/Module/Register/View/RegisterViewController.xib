@@ -32,7 +32,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="y3S-BW-qrL">
-                    <rect key="frame" x="30" y="764" width="330" height="26"/>
+                    <rect key="frame" x="30" y="761" width="330" height="29"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Saya setuju dengan" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.20000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="Mt2-go-afL">
                             <rect key="frame" x="0.0" y="0.0" width="162.66666666666666" height="26"/>
@@ -41,7 +41,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZQx-vj-9BM">
-                            <rect key="frame" x="167.66666666666663" y="0.0" width="162.33333333333337" height="26"/>
+                            <rect key="frame" x="167.66666666666663" y="0.0" width="162.33333333333337" height="29"/>
                             <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="14"/>
                             <state key="normal" title="Syarat &amp; Ketentuan">
                                 <color key="titleColor" name="primary-1"/>
@@ -56,7 +56,7 @@
                     </subviews>
                 </stackView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PJs-jr-59Z">
-                    <rect key="frame" x="30" y="704" width="330" height="50"/>
+                    <rect key="frame" x="30" y="701" width="330" height="50"/>
                     <color key="backgroundColor" name="primary-1"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="PJs-jr-59Z" secondAttribute="height" multiplier="33:5" id="kx2-Ve-DdW"/>
@@ -72,21 +72,21 @@
                     <rect key="frame" x="20" y="54" width="350" height="284"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7pW-qG-3Ay">
-                            <rect key="frame" x="0.0" y="53" width="350" height="1"/>
+                            <rect key="frame" x="0.0" y="53.333333333333329" width="350" height="1"/>
                             <color key="backgroundColor" systemColor="systemGray4Color"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="lap-We-Q0k"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gxl-LQ-zIQ">
-                            <rect key="frame" x="0.0" y="97" width="350" height="1"/>
+                            <rect key="frame" x="0.0" y="97.666666666666657" width="350" height="1"/>
                             <color key="backgroundColor" systemColor="systemGray4Color"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="cmx-MH-fC1"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CPx-Zx-sD1">
-                            <rect key="frame" x="0.0" y="141" width="350" height="1"/>
+                            <rect key="frame" x="0.0" y="142" width="350" height="1"/>
                             <color key="backgroundColor" systemColor="systemGray4Color"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="bzM-1b-O0B"/>
@@ -107,7 +107,7 @@
                             </constraints>
                         </view>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="NV6-j8-KAr">
-                            <rect key="frame" x="12" y="10" width="326" height="43"/>
+                            <rect key="frame" x="12" y="10" width="326" height="43.333333333333336"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nama" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="2k1-wg-qge">
                                     <rect key="frame" x="0.0" y="0.0" width="46.333333333333336" height="43"/>
@@ -127,7 +127,7 @@
                             </constraints>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="tVO-bx-I8L">
-                            <rect key="frame" x="12" y="54" width="326" height="43"/>
+                            <rect key="frame" x="12" y="54.333333333333329" width="326" height="43.333333333333329"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="hhx-v0-4VY">
                                     <rect key="frame" x="0.0" y="13" width="43" height="17"/>
@@ -147,7 +147,7 @@
                             </constraints>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="mc3-AR-hbN">
-                            <rect key="frame" x="12" y="98" width="326" height="43"/>
+                            <rect key="frame" x="12" y="98.666666666666657" width="326" height="43.333333333333343"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Whatsapp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="Bhd-vy-2qI">
                                     <rect key="frame" x="0.0" y="0.0" width="107" height="43"/>
