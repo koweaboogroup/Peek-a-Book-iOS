@@ -39,7 +39,7 @@ class BooksViewController: UIViewController, CLLocationManagerDelegate {
             checkLocationAuthorization()
         } else {
             // the user didn't turn it on
-            searchView.labelLokasi.text = "Aktifkan Lokasi"
+            searchView.labelLocation.text = "Aktifkan Lokasi"
         }
     }
     
@@ -53,13 +53,13 @@ class BooksViewController: UIViewController, CLLocationManagerDelegate {
         case .authorizedWhenInUse:
             if let location = LocationManager.shared.getExposedLocation() {
                 LocationManager.shared.getPlace(for: location) { placemark in
-                    self.searchView.labelLokasi.text = placemark?.locality ?? placemark?.subAdministrativeArea ?? placemark?.administrativeArea ?? "Lokasi Tidak Ditemukan"
+                    self.searchView.labelLocation.text = placemark?.locality ?? placemark?.subAdministrativeArea ?? placemark?.administrativeArea ?? "Lokasi Tidak Ditemukan"
                 }
             }
             break
         case .denied:
             // Show alert
-            searchView.labelLokasi.text = "Aktifkan Lokasi"
+            searchView.labelLocation.text = "Aktifkan Lokasi"
             break
         case .notDetermined:
             locationManager.requestWhenInUseAuthorization()

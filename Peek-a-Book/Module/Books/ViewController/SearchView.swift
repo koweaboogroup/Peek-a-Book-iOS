@@ -13,7 +13,7 @@ class SearchView: UIView {
     @IBOutlet weak var buttonBack: UIButton!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var buttonNotif: UIButton!
-    @IBOutlet weak var labelLokasi: UILabel!
+    @IBOutlet weak var labelLocation: UILabel!
     @IBOutlet weak var searchView: UIView!
     
     required init?(coder aDecoder: NSCoder) {
