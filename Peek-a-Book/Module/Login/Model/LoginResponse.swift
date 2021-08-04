@@ -12,28 +12,28 @@ struct LoginResponse: Codable {
     var user: User? = nil
 }
 
-struct User: Codable {
-    var id: Int? = nil
-    var username: String? = nil
-    var email: String? = nil
-    var provider: String? = nil
-    var confirmed: Bool? = nil
-    var blocked: Bool? = nil
-    var role: Role? = nil
-    var userPhoneNumber: String? = nil
-    var userAddress: String? = nil
-    var lender: Lender? = nil
-    var created_at: String? = nil
-    var updated_at: String? = nil
-//    var rents: []
-}
+//struct User: Codable {
+//    var id: Int? = nil
+//    var username: String? = nil
+//    var email: String? = nil
+//    var provider: String? = nil
+//    var confirmed: Bool? = nil
+//    var blocked: Bool? = nil
+//    var role: Role? = nil
+//    var userPhoneNumber: String? = nil
+//    var userAddress: String? = nil
+//    var lender: Lender? = nil
+//    var created_at: String? = nil
+//    var updated_at: String? = nil
+////    var rents: []
+//}
 
-struct Role: Codable {
-    var id: Int? = nil
-    var name: String? = nil
-    var description: String? = nil
-    var type: String? = nil
-}
+//struct Role: Codable {
+//    var id: Int? = nil
+//    var name: String? = nil
+//    var description: String? = nil
+//    var type: String? = nil
+//}
 
 struct Lender: Codable {
     var id: Int? = nil

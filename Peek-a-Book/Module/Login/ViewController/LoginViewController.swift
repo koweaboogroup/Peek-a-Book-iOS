@@ -66,6 +66,8 @@ class LoginViewController: UIViewController {
         
         viewModel.buttonRegisterPressed.subscribe (onNext: { pressed in
             if pressed {
+                let vc = ModuleBuilder.shared.goToRegisterViewController()
+                self.navigationController?.pushViewController(vc, animated: true)
             }
         }).disposed(by: disposeBag)
 
