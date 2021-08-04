@@ -31,8 +31,7 @@ struct Constant {
     }
     
     struct UserDefaultConstant {
-        static let name = "name"
-        static let alamat = "alamat"
+        static let user = "user"
         
         static let itemKeranjang = "item keranjang"
         static let quantityItem = "quantity keranjang"
