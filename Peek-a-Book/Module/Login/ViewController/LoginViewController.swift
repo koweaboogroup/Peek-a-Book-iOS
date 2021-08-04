@@ -19,6 +19,9 @@ class LoginViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+//        MARK: set title to be empty for back button when pushed
+        self.navigationItem.backButtonTitle = ""
 
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
