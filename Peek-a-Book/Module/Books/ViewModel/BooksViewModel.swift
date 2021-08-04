@@ -10,6 +10,7 @@ import RxSwift
 import CoreLocation
 
 class BooksViewModel {
+    
     public let listBook : PublishSubject<[Book]> = PublishSubject()
     public let error : PublishSubject<String> = PublishSubject()
     public let nearestListBook: PublishSubject<[Book]> = PublishSubject()
@@ -41,7 +42,7 @@ class BooksViewModel {
         } failCompletion: { error in
             self.error.onNext(error.errorDescription ?? "Data Tidak Ditemukan")
         }
-
+        
     }
 }
 

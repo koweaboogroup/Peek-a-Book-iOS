@@ -7,14 +7,17 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="GraphikRegular.otf">
+            <string>Graphik-Regular</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditProfileViewController" customModule="Peek_a_Book" customModuleProvider="target">
             <connections>
                 <outlet property="emailTextField" destination="hnd-hI-enu" id="5u4-PV-CmF"/>
-                <outlet property="konfirmasiPasswordTextField" destination="pc3-sS-FjU" id="7DU-Mc-aG4"/>
                 <outlet property="namaLengkapTextField" destination="oAm-vZ-0Dm" id="A1w-WG-JEN"/>
                 <outlet property="noWhatsappTextField" destination="5yV-Ff-Or5" id="sYs-dp-EL2"/>
-                <outlet property="passwordTextField" destination="bmg-8P-bNH" id="jdA-gW-wCi"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -24,10 +27,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oig-3Y-hwO">
-                    <rect key="frame" x="20" y="234" width="374" height="284"/>
+                    <rect key="frame" x="20" y="230" width="374" height="196"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="dEw-s4-R1V">
-                            <rect key="frame" x="0.0" y="10" width="374" height="264"/>
+                            <rect key="frame" x="0.0" y="10" width="374" height="176"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r1I-62-YJF" userLabel="Nama View">
                                     <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
@@ -40,15 +43,15 @@
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nama" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mO9-fb-Ika">
-                                            <rect key="frame" x="16" y="12" width="44.5" height="20.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <rect key="frame" x="16" y="13.5" width="46.5" height="17"/>
+                                            <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nama Lengkap" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oAm-vZ-0Dm">
-                                            <rect key="frame" x="110.5" y="11" width="247.5" height="22"/>
+                                            <rect key="frame" x="112.5" y="13" width="245.5" height="18.5"/>
                                             <color key="textColor" systemColor="systemBlueColor"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                             <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="name"/>
                                         </textField>
                                     </subviews>
@@ -77,15 +80,15 @@
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="acw-XQ-Upf">
-                                            <rect key="frame" x="16" y="12" width="41" height="20.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <rect key="frame" x="16" y="13.5" width="43" height="17"/>
+                                            <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hnd-hI-enu">
-                                            <rect key="frame" x="107" y="11" width="251" height="22"/>
+                                            <rect key="frame" x="109" y="13" width="249" height="18.5"/>
                                             <color key="textColor" systemColor="systemBlueColor"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                             <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="email"/>
                                         </textField>
                                     </subviews>
@@ -114,15 +117,15 @@
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Whatsapp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="COL-EN-cJY">
-                                            <rect key="frame" x="16" y="12" width="104" height="20.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <rect key="frame" x="16" y="13.5" width="107" height="17"/>
+                                            <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="No Whatsapp" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5yV-Ff-Or5">
-                                            <rect key="frame" x="170" y="11" width="188" height="22"/>
+                                            <rect key="frame" x="173" y="13" width="185" height="18.5"/>
                                             <color key="textColor" systemColor="systemBlueColor"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                             <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="tel"/>
                                         </textField>
                                     </subviews>
@@ -140,82 +143,8 @@
                                         <constraint firstItem="5yV-Ff-Or5" firstAttribute="centerY" secondItem="Ynj-Uq-uvN" secondAttribute="centerY" id="wcF-Zn-DQU"/>
                                     </constraints>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="68Y-eN-0oh" userLabel="Password View">
-                                    <rect key="frame" x="0.0" y="132" width="374" height="44"/>
-                                    <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="biU-99-q7a">
-                                            <rect key="frame" x="0.0" y="43" width="374" height="1"/>
-                                            <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="1" id="oWu-3k-7Bk"/>
-                                            </constraints>
-                                        </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mUA-xi-i95">
-                                            <rect key="frame" x="16" y="12" width="73.5" height="20.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bmg-8P-bNH">
-                                            <rect key="frame" x="139.5" y="11.5" width="218.5" height="21"/>
-                                            <color key="textColor" systemColor="systemBlueColor"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES" textContentType="password"/>
-                                        </textField>
-                                    </subviews>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <gestureRecognizers/>
-                                    <constraints>
-                                        <constraint firstItem="mUA-xi-i95" firstAttribute="leading" secondItem="68Y-eN-0oh" secondAttribute="leading" constant="16" id="0dp-EL-flA"/>
-                                        <constraint firstAttribute="bottom" secondItem="biU-99-q7a" secondAttribute="bottom" id="62N-xh-oh7"/>
-                                        <constraint firstAttribute="trailing" secondItem="bmg-8P-bNH" secondAttribute="trailing" constant="16" id="83V-7R-XXj"/>
-                                        <constraint firstItem="bmg-8P-bNH" firstAttribute="centerY" secondItem="68Y-eN-0oh" secondAttribute="centerY" id="8kg-9W-W33"/>
-                                        <constraint firstItem="bmg-8P-bNH" firstAttribute="leading" secondItem="mUA-xi-i95" secondAttribute="trailing" constant="50" id="Mtz-mA-SHo"/>
-                                        <constraint firstItem="biU-99-q7a" firstAttribute="leading" secondItem="68Y-eN-0oh" secondAttribute="leading" id="eNc-OM-PVr"/>
-                                        <constraint firstAttribute="trailing" secondItem="biU-99-q7a" secondAttribute="trailing" id="gFi-tr-STc"/>
-                                        <constraint firstItem="mUA-xi-i95" firstAttribute="centerY" secondItem="68Y-eN-0oh" secondAttribute="centerY" id="grp-1J-o3U"/>
-                                        <constraint firstAttribute="height" constant="44" id="jCh-t5-ELl"/>
-                                    </constraints>
-                                </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2bH-iE-BOx" userLabel="Konfirmasi Password View">
-                                    <rect key="frame" x="0.0" y="176" width="374" height="44"/>
-                                    <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ug2-mI-DYF">
-                                            <rect key="frame" x="0.0" y="43" width="374" height="1"/>
-                                            <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="1" id="oxg-CC-RYH"/>
-                                            </constraints>
-                                        </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Konfirmasi Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Qd-f2-E8R">
-                                            <rect key="frame" x="16" y="12" width="158.5" height="20.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pc3-sS-FjU">
-                                            <rect key="frame" x="224.5" y="11.5" width="133.5" height="21"/>
-                                            <color key="textColor" systemColor="systemBlueColor"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES" textContentType="password"/>
-                                        </textField>
-                                    </subviews>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <gestureRecognizers/>
-                                    <constraints>
-                                        <constraint firstItem="pc3-sS-FjU" firstAttribute="centerY" secondItem="2bH-iE-BOx" secondAttribute="centerY" id="AZw-C8-A0a"/>
-                                        <constraint firstAttribute="bottom" secondItem="Ug2-mI-DYF" secondAttribute="bottom" id="GtV-Yg-qwV"/>
-                                        <constraint firstAttribute="height" constant="44" id="JHh-rZ-EA5"/>
-                                        <constraint firstAttribute="trailing" secondItem="pc3-sS-FjU" secondAttribute="trailing" constant="16" id="fWm-mA-YgO"/>
-                                        <constraint firstItem="9Qd-f2-E8R" firstAttribute="leading" secondItem="2bH-iE-BOx" secondAttribute="leading" constant="16" id="jqZ-Ir-sn6"/>
-                                        <constraint firstItem="pc3-sS-FjU" firstAttribute="leading" secondItem="9Qd-f2-E8R" secondAttribute="trailing" constant="50" id="oyL-t7-EQh"/>
-                                        <constraint firstItem="9Qd-f2-E8R" firstAttribute="centerY" secondItem="2bH-iE-BOx" secondAttribute="centerY" id="r4z-0M-2C8"/>
-                                        <constraint firstAttribute="trailing" secondItem="Ug2-mI-DYF" secondAttribute="trailing" id="uz0-aT-b07"/>
-                                        <constraint firstItem="Ug2-mI-DYF" firstAttribute="leading" secondItem="2bH-iE-BOx" secondAttribute="leading" id="vuZ-3f-hnc"/>
-                                    </constraints>
-                                </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5bV-gB-tO0" userLabel="Detail Alamat View">
-                                    <rect key="frame" x="0.0" y="220" width="374" height="44"/>
+                                    <rect key="frame" x="0.0" y="132" width="374" height="44"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="WfV-Zh-ARY">
                                             <rect key="frame" x="348" y="13" width="10" height="18.5"/>
@@ -226,8 +155,8 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detail Alamat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xwk-gd-vyZ">
-                                            <rect key="frame" x="16" y="12" width="101" height="20.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <rect key="frame" x="16" y="13.5" width="106" height="17"/>
+                                            <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -286,9 +215,9 @@
                     </userDefinedRuntimeAttributes>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eul-2O-nSi">
-                    <rect key="frame" x="146.5" y="181" width="121" height="33"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <state key="normal" title="Edit Foto Profile"/>
+                    <rect key="frame" x="138.5" y="181" width="137" height="29"/>
+                    <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
+                    <state key="normal" title="Ubah Foto Profile"/>
                 </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

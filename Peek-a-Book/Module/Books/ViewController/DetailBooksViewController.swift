@@ -46,6 +46,12 @@ class DetailBooksViewController: UIViewController {
         super.viewDidLoad()
         
         totalBookButtonView.isHidden = true
+        
+        
+        
+    
+
+        setNavigationBar()
         setupRx()
     }
     
@@ -113,6 +119,18 @@ class DetailBooksViewController: UIViewController {
         print("aww geli")
     }
     
+    
+    
+    func setNavigationBar(){
+        self.navigationItem.title = "Detail Buku"
+        
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "DM Serif Text", size: 19)!]
   
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.view.backgroundColor = .clear
+    }
+
 
 }
