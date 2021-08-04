@@ -66,8 +66,7 @@ class LoginViewController: UIViewController {
         
         viewModel.buttonRegisterPressed.subscribe (onNext: { pressed in
             if pressed {
-                let vc = ModuleBuilder.shared.goToRegisterViewController()
-                self.navigationController?.pushViewController(vc, animated: true)
+                self.changeToRegisterVC()
             }
         }).disposed(by: disposeBag)
 
@@ -81,7 +80,8 @@ class LoginViewController: UIViewController {
     }
     
     private func changeToRegisterVC(){
-        //TODO TAMBAHKAN METHOD UNTUK BERALIH KE HALAMAN REGISTER
+        let vc = ModuleBuilder.shared.goToRegisterViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     private func setupKeyboardListener() {
