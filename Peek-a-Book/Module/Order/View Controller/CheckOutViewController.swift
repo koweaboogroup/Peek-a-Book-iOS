@@ -1,24 +1,31 @@
 //
-//  NotificationViewController.swift
+//  CheckOutViewController.swift
 //  Peek-a-Book
 //
-//  Created by Gede Wicaksana on 03/08/21.
+//  Created by Gede Wicaksana on 04/08/21.
 //
 
 import UIKit
 
-class NotificationViewController: UIViewController {
-    @IBOutlet weak var notificationTableView: UITableView!
-    @IBOutlet weak var notificationSegmentedControl: UISegmentedControl!
+class CheckOutViewController: UIViewController {
+
+    
+    
+    
+    
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBar()
-        setSegmentedControl()
+        // Do any additional setup after loading the view.
     }
-    
+
+
     func setNavigationBar(){
-        self.navigationItem.title = "Notifikasi"
+        self.navigationItem.title = "Keranjang"
         
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "DM Serif Text", size: 19)!]
         
@@ -29,12 +36,5 @@ class NotificationViewController: UIViewController {
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = .clear
     }
-    
-    func setSegmentedControl(){
-        notificationSegmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.systemBlue], for: UIControl.State.selected)
-        notificationSegmentedControl.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "Graphik", size: 14)!], for: .normal)
-    }
-    
-    
 
 }

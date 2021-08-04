@@ -9,12 +9,26 @@ import Foundation
 import RxSwift
 
 class BooksViewModel {
-    public let streetName : PublishSubject<String> = PublishSubject()
-    public let districtName : PublishSubject<String> = PublishSubject()
-    public let cityName : PublishSubject<String> = PublishSubject()
-    public let provName : PublishSubject<String> = PublishSubject()
-    public let countryName : PublishSubject<String> = PublishSubject()
+    public let listBook : PublishSubject<Book> = PublishSubject()
+    public let error : PublishSubject<String> = PublishSubject()
+        
+        
+        
+        
+        func getListBook(){
+            BookService.getListBook { book in
+                if let listbook = book {
+                    print(listbook)
+                    self.listBook.onNext(listbook)
+                }else{
+                    print("Data Tidak Ditemukan")
+                    self.error.onNext("Data Tidak Ditemukan")
+                }
+            } failCompletion: { error in
+                print(error.errorDescription!)
+                self.error.onNext(error.errorDescription ?? "Data Tidak Ditemukan")
+            }
 
-    public let buttonDonePressed = PublishSubject<Bool>()
+        }
 }
 

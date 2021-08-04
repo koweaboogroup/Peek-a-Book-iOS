@@ -14,6 +14,8 @@ class BooksViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let viewModel = BooksViewModel()
+        viewModel.getListBook()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -26,6 +28,14 @@ class BooksViewController: UIViewController {
     
     
     
+    @IBAction func justfortest(_ sender: UIButton) {
+        let vc = DetailBooksViewController(
+            nibName: "\(DetailBooksViewController.self)",
+                bundle: nil)
+        vc.hidesBottomBarWhenPushed = true
+             navigationController?.pushViewController(vc,
+                animated: true)
+    }
     
     
 }
