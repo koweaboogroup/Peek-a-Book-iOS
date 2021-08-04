@@ -12,7 +12,7 @@ struct Constant {
     static let termsAndConditionsLink = "https://github.com/yrojx"
     
     struct Network {
-        static let baseUrl = "http://api.peekabooks.my.id"
+        static let baseUrl = "http://103.214.112.183:1340"
     }
     
     struct Color {

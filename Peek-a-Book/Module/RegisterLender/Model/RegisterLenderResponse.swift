@@ -16,4 +16,12 @@ struct RegisterLenderResponse: Codable {
     let longtitude, latitude: Float?
     let publishedAt, createdAt, updatedAt: String?
 //    let image: []?
+    
+    enum CodingKeys: String, CodingKey {
+            case id, name, bio, user, alamat, provinsi, kota, kelurahan, kecamatan, longtitude, latitude
+            case publishedAt = "published_at"
+            case createdAt = "created_at"
+            case updatedAt = "updated_at"
+//            case image
+        }
 }
