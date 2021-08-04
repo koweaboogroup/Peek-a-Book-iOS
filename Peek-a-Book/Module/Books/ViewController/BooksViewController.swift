@@ -7,21 +7,39 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
 import CoreLocation
 
 class BooksViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var searchView: SearchView!
-    let mapsViewModel = MapsViewModel()
+    @IBOutlet weak var nearestBookCollectionView: UICollectionView!
+    let viewModel = BooksViewModel()
     let disposeBag = DisposeBag()
     let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let viewModel = BooksViewModel()
         viewModel.getListBook()
-        
         checkLocationServices()
+        setupView()
+    }
+    
+    private func setupView(){
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.scrollDirection = .horizontal
+        flowLayout.itemSize = CGSize(width: 168, height: 299)
+        flowLayout.minimumLineSpacing = 5.0
+        flowLayout.minimumInteritemSpacing = 5.0
+        
+        nearestBookCollectionView.register(UINib(nibName: XIBConstant.BooksHomescreenCollectionViewCell, bundle: nil), forCellWithReuseIdentifier: XIBConstant.BooksHomescreenCollectionViewCell)
+
+        nearestBookCollectionView.collectionViewLayout = flowLayout
+        self.nearestBookCollectionView.showsHorizontalScrollIndicator = false
+
+        viewModel.nearestListBook.bind(to: nearestBookCollectionView.rx.items(cellIdentifier: XIBConstant.BooksHomescreenCollectionViewCell, cellType: BooksHomescreenCollectionViewCell.self)) {  (row,book,cell) in
+            cell.response = book
+        }.disposed(by: disposeBag)
+        
     }
     
 
@@ -55,6 +73,7 @@ class BooksViewController: UIViewController, CLLocationManagerDelegate {
                 LocationManager.shared.getPlace(for: location) { placemark in
                     self.searchView.labelLocation.text = placemark?.locality ?? placemark?.subAdministrativeArea ?? placemark?.administrativeArea ?? "Lokasi Tidak Ditemukan"
                 }
+                viewModel.getListBook(yourLocation: location)
             }
             break
         case .denied:
@@ -72,7 +91,7 @@ class BooksViewController: UIViewController, CLLocationManagerDelegate {
             break
         }
     }
-    
+        
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         checkLocationAuthorization()
     }

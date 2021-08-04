@@ -16,6 +16,8 @@ struct BookResponse: Codable {
     let page: Int?
     let language, publishedAt, createdAt, updatedAt: String?
     let images: [ImageObject]?
+    var distance : Double = 0.0
+    
 
     enum CodingKeys: String, CodingKey {
         case id, price

@@ -215,6 +215,7 @@
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="syz-1b-CsL" secondAttribute="height" multiplier="196:43" id="NbR-af-uEQ"/>
                                     </constraints>
+                                    <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="18"/>
                                     <state key="normal" image="chevron.right" catalog="system"/>
                                 </button>
                             </subviews>
