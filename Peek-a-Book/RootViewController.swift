@@ -14,6 +14,8 @@ class RootViewController: UITabBarController {
         
         let dataManager = DataManager.shared
         
+        dataManager.loadCartFromUserDefaults()
+        
         let booksVC = UINavigationController(rootViewController: BooksViewController())
         booksVC.tabBarItem = UITabBarItem(title: "Books", image: UIImage(systemName: "book.fill"), tag: 0)
         
