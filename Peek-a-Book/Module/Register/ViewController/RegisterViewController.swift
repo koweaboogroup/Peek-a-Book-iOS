@@ -31,6 +31,8 @@ class RegisterViewController: UIViewController {
         super.viewDidLoad()
         self.title = "Buat Akun Penyewaanmu"
         
+        self.tabBarController?.tabBar.isHidden = true
+        
         setupUI()
         setupRx()
         self.setupKeyboardListener(selector: #selector(handleKeyboardNotification))
