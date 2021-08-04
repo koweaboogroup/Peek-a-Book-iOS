@@ -20,6 +20,18 @@ class DataManager {
         return jwtValue != nil
     }
     
+    func getUserIdByJwt() -> Int {
+        let jwtKey = "jwt"
+
+        if let jwt = UserDefaults.standard.string(forKey: jwtKey) {
+            if let decodedJwt = try? decode(jwtToken: jwt) {
+                return decodedJwt["id"] as! Int
+            }
+        }
+        
+        return -1
+    }
+    
     func getUser() -> User? {
         return user
     }
