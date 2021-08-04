@@ -25,7 +25,7 @@ enum BookRouter: URLRequestConvertible {
         return URL(string: Constant.Network.baseUrl + "/auth/local")!
     }
     var urlBooks: URL {
-        return URL(string: Constant.Network.baseUrl + "/books")!
+        return URL(string: Constant.Network.baseUrl + "/lender-books")!
     }
     
     func asURLRequest() throws -> URLRequest {
