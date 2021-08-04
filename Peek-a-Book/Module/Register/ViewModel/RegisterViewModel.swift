@@ -52,12 +52,12 @@ struct RegisterViewModel {
     
     
     //fix parameter RegisterRequest
-    public func register(username: String, email: String, provider: String, password: String, resetPasswordToken: String, confirmationToken: String, confirmed: Bool, blocked: Bool, role: String, lender: String, rents: [String], address: String, created_by: String, updated_by: String) {
+    public func register(username: String, email: String, password: String, phoneNumber: String, alamat: String, provinsi: String, kota: String, kelurahan: String, kecamatan: String, longtitude: Float, latitude: Float) {
             
             self.loading.onNext(true)
             
                                 //fix parameter RegisterRequest
-        let registerRequest = RegisterRequest(username: username, email: email, provider: provider, password: password, resetPasswordToken: resetPasswordToken, confirmationToken: confirmationToken, confirmed: confirmed, blocked: blocked, role: role, lender: lender, rents: rents, address: address, created_by: created_by, updated_by: updated_by)
+        let registerRequest = RegisterRequest(username: username, email: email, password: password, phoneNumber: phoneNumber, alamat: alamat, provinsi: provinsi, kota: kota, kelurahan: kelurahan, kecamatan: kecamatan, longtitude: longtitude, latitude: latitude)
             
             RegisterService.register(registerRequest: registerRequest) { registerResponse in
                 

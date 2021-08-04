@@ -8,11 +8,7 @@
 import Foundation
 
 struct RegisterRequest: Codable {
-    var username, email, provider, password: String
-    var resetPasswordToken, confirmationToken: String
-    var confirmed, blocked: Bool
-    var role, lender: String
-    var rents: [String]
-    var address: String
-    var created_by, updated_by: String
+    var username, email, password, phoneNumber: String
+    var alamat, provinsi, kota, kelurahan, kecamatan: String
+    var longtitude, latitude: Float
 }
