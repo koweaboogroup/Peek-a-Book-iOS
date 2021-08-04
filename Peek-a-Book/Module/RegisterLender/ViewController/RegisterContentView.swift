@@ -10,6 +10,10 @@ import UIKit
 @IBDesignable
 class RegisterContentView: UIView {
     
+    @IBOutlet weak var storeNameTextField: UITextField!
+    @IBOutlet weak var storeBioTextField: UITextField!
+    
+    
     @IBOutlet var registerContentView: UIView!
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)

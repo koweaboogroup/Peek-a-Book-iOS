@@ -8,7 +8,7 @@
 import Foundation
 import RxSwift
 
-class LoginViewModel {
+struct LoginViewModel {
     public let user : PublishSubject<User> = PublishSubject()
     public let loading : PublishSubject<Bool> = PublishSubject()
     public let error : PublishSubject<String> = PublishSubject()
