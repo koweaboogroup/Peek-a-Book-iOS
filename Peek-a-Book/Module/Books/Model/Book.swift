@@ -15,9 +15,11 @@ struct Book: Codable {
     let lenderBook: Int?
     let publishedAt, createdAt, updatedAt: String?
     let bookImage: [BookImage]?
+    let lat, long: Float?
+    var distance: Double = 0.0
     
     enum CodingKeys: String, CodingKey {
-        case id, bookTitle, bookISBN, bookWriter, bookSinopsis
+        case id, bookTitle, bookISBN, bookWriter, bookSinopsis, lat, long, distance
         case bookGenre = "book_genre"
         case lenderBook = "lender_book"
         case publishedAt = "published_at"

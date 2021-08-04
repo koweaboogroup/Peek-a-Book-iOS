@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BooksViewController" customModule="Peek_a_Book" customModuleProvider="target">
             <connections>
+                <outlet property="searchView" destination="pnN-2M-nMZ" id="REQ-3w-cGG"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -154,14 +155,6 @@
                         <constraint firstItem="KWI-8v-LJM" firstAttribute="top" secondItem="Ndh-y9-1QX" secondAttribute="top" id="led-6c-mUw"/>
                     </constraints>
                 </scrollView>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ec7-f4-oZ3">
-                    <rect key="frame" x="177" y="182" width="46" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Button"/>
-                    <connections>
-                        <action selector="justfortest:" destination="-1" eventType="touchUpInside" id="hdm-Ra-cvA"/>
-                    </connections>
-                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>

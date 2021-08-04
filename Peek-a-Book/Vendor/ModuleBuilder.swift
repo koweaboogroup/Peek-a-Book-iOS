@@ -27,4 +27,11 @@ class ModuleBuilder {
         
         return vc
     }
+    
+    func goToRegisterViewController() -> RegisterViewController {
+        let vc = RegisterViewController(nibName: XIBConstant.RegisterViewController, bundle: nil)
+        
+        return vc
+    }
+
 }

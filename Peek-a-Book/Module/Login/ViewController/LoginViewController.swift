@@ -23,23 +23,51 @@ class LoginViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
-    private func setupSubcribe() {
+    private func setupRx() {
+        loginViewContent.identifierTextField.rx.text
+            .map {
+                return $0 ?? ""
+            }
+            .bind(to: viewModel.identifier)
+            .disposed(by: disposeBag)
+        
+        loginViewContent.passwordTextField.rx.text
+            .map {
+                return $0 ?? ""
+            }
+            .bind(to: viewModel.password)
+            .disposed(by: disposeBag)
+        
+        viewModel.isAllTextFieldsFilled()
+            .bind(to: loginViewContent.loginButton.rx.isEnabled)
+            .disposed(by: disposeBag)
+        
+        viewModel.isAllTextFieldsFilled()
+            .map {
+                return $0 ? 1 : 0.5
+            }
+            .bind(to: loginViewContent.loginButton.rx.alpha)
+            .disposed(by: disposeBag)
+        
+        
         viewModel.error.subscribe(onNext: { error in
             let alert = UIAlertController(title: "Tidak berhasil login", message: "Coba dinget2 lagi, yok bisa yok", preferredStyle: .alert)
-            
+
             alert.addAction(UIAlertAction(title: "Baiklah!", style: .default, handler: { action in
                 self.loginViewContent.identifierTextField.becomeFirstResponder()
             }))
-            
+
             self.present(alert, animated: true, completion: nil)
         }).disposed(by: disposeBag)
-        
+
         viewModel.user.subscribe(onNext: { user in
             self.changeToProfileVC()
         }).disposed(by: disposeBag)
         
         viewModel.buttonRegisterPressed.subscribe (onNext: { pressed in
             if pressed {
+                let vc = ModuleBuilder.shared.goToRegisterViewController()
+                self.navigationController?.pushViewController(vc, animated: true)
             }
         })
 
@@ -71,7 +99,7 @@ class LoginViewController: UIViewController {
         
         setupKeyboardListener()
         
-        setupSubcribe()
+        setupRx()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
