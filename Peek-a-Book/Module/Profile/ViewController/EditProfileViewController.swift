@@ -23,8 +23,17 @@ class EditProfileViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        setupRx()
     }
     
+    private func setupRx() {
+        let user = DataManager.shared.getUser()
+        
+        //contoh binding
+        namaLengkapTextField.text = user?.username
+        emailTextField.text = user?.email
+        
+    }
 
     @IBAction func detailAlamatGetTap(_ sender: UITapGestureRecognizer) {
         print("Pindah Ke maps")
