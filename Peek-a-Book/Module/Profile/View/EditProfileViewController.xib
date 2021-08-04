@@ -286,9 +286,9 @@
                     </userDefinedRuntimeAttributes>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eul-2O-nSi">
-                    <rect key="frame" x="192" y="181" width="30" height="33"/>
+                    <rect key="frame" x="146.5" y="181" width="121" height="33"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <state key="normal" title="Edit"/>
+                    <state key="normal" title="Edit Foto Profile"/>
                 </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

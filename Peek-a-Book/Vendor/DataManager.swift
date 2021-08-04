@@ -20,7 +20,7 @@ class DataManager {
         return jwtValue != nil
     }
     
-    func getUser() -> User {
+    func getUser() -> User? {
         return user
     }
     

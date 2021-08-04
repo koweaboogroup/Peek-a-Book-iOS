@@ -15,6 +15,9 @@ struct RegisterViewModel {
     let password: PublishSubject<String> = PublishSubject()
     let confirmPassword: PublishSubject<String> = PublishSubject()
     
+    let loading: PublishSubject<Bool> = PublishSubject()
+    let error: PublishSubject<String> = PublishSubject()
+    
     func isAllTextFieldFilled() -> Observable<Bool> {
         return Observable.combineLatest(
             name.asObserver().startWith(""),
@@ -46,4 +49,28 @@ struct RegisterViewModel {
             }
             .startWith(false)
     }
+    
+    
+    //fix parameter RegisterRequest
+    public func register(username: String, email: String, password: String, phoneNumber: String, alamat: String, provinsi: String, kota: String, kelurahan: String, kecamatan: String, longtitude: Float, latitude: Float) {
+            
+            self.loading.onNext(true)
+            
+                                //fix parameter RegisterRequest
+        let registerRequest = RegisterRequest(username: username, email: email, password: password, phoneNumber: phoneNumber, alamat: alamat, provinsi: provinsi, kota: kota, kelurahan: kelurahan, kecamatan: kecamatan, longtitude: longtitude, latitude: latitude)
+            
+            RegisterService.register(registerRequest: registerRequest) { registerResponse in
+                
+                self.loading.onNext(false)
+                
+                //MARK: kalo success mau gmn???
+                
+            } failCompletion: { error in
+                
+                self.loading.onNext(false)
+                self.error.onNext(error.errorDescription ?? "Error")
+                fatalError()
+                
+            }
+        }
 }

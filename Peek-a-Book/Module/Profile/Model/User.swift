@@ -11,16 +11,16 @@ struct User: Codable {
     var id: Int? = nil
     var username: String? = nil
     var email: String? = nil
-    var provider: String? = nil
-    var confirmed: Bool? = nil
-    var blocked: Bool? = nil
-    var role: Role? = nil
-    var userPhoneNumber: String? = nil
-    var userAddress: String? = nil
-    var lender: Lender? = nil
+    var phoneNumber: String? = nil
+    var alamat: String? = nil
+    var provinsi: String? = nil
+    var kota: String? = nil
+    var kelurahan: String? = nil
+    var kecamatan: String? = nil
+    var longtitude: Float? = nil
+    var latitude: Float? = nil
     var created_at: String? = nil
     var updated_at: String? = nil
-//    var rents: []
 }
 
 struct Role: Codable {
