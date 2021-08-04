@@ -11,6 +11,8 @@ class DataManager {
     
     static let shared = DataManager()
     
+    var user: User?
+    
     func isLoggedIn() -> Bool {
         let jwt = "jwt"
         let jwtValue = UserDefaults.standard.string(forKey: jwt)
@@ -18,13 +20,12 @@ class DataManager {
         return jwtValue != nil
     }
     
-    ///TODO : INI BELUM SELESAI, HANYA DUMMY. DIKATAKAN SELESAI KETIKA RESPONSE SUDAH ADA
-    func saveProfile(name: String, alamat: String) {
-        UserDefaults.standard.string(forKey: Constant.UserDefaultConstant.name)
-        UserDefaults.standard.set(name, forKey: Constant.UserDefaultConstant.name)
-        
-        UserDefaults.standard.string(forKey: Constant.UserDefaultConstant.alamat)
-        UserDefaults.standard.set(alamat, forKey: Constant.UserDefaultConstant.alamat)
+    func getUser() -> User? {
+        return user
+    }
+    
+    func setUser(user: User) {
+        self.user = user
     }
 
     ///TODO : INI BELUM SELESAI, HANYA DUMMY. DIKATAKAN SELESAI KETIKA RESPONSE SUDAH ADA

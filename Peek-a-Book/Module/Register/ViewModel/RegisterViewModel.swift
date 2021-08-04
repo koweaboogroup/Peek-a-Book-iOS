@@ -39,7 +39,7 @@ struct RegisterViewModel {
     }
     
     
-//    MARK: Combine all validations
+    //    MARK: Combine all validations
     func isValid() -> Observable<Bool> {
         return Observable.combineLatest(isAllTextFieldFilled(), isPasswordConfirmed())
             .map { isAllTextFieldFilled, isPasswordConfirmed in
@@ -47,19 +47,17 @@ struct RegisterViewModel {
             }
             .startWith(false)
     }
-
-    public func register(identifier: String, password: String) {
+    
+    public func register(username: String, email: String, password: String, phoneNumber: String, alamat: String, provinsi: String, kota: String, kelurahan: String, kecamatan: String, longtitude: Float, latitude: Float) {
         
         self.loading.onNext(true)
         
-                            //isi parameter RegisterRequest
-        let registerRequest = RegisterRequest()
+        let registerRequest = RegisterRequest(username: username, email: email, password: password, phoneNumber: phoneNumber, alamat: alamat, provinsi: provinsi, kota: kota, kelurahan: kelurahan, kecamatan: kecamatan, longtitude: longtitude, latitude: latitude)
         
         RegisterService.register(registerRequest: registerRequest) { registerResponse in
             
             self.loading.onNext(false)
             
-            //kalo success mau gmn???
             
         } failCompletion: { error in
             

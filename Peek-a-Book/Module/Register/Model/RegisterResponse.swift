@@ -8,5 +8,6 @@
 import Foundation
 
 struct RegisterResponse: Codable {
-    
+    var jwt: String? = nil
+    var user: User? = nil
 }

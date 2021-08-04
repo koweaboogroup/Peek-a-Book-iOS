@@ -2,7 +2,7 @@
 //  RegisterRouter.swift
 //  Peek-a-Book
 //
-//  Created by Annetta Carolina on 30/07/21.
+//  Created by Annetta Carolina on 02/08/21.
 //
 
 import Alamofire
@@ -17,8 +17,8 @@ enum RegisterRouter: URLRequestConvertible {
         }
     }
     
-    var url: URL {                                     //ganti link
-        return URL(string: Constant.Network.baseUrl + "/auth/local")!
+    var url: URL {
+        return URL(string: Constant.Network.baseUrl + "/auth/local/register")!
     }
     
     func asURLRequest() throws -> URLRequest {

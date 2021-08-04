@@ -8,5 +8,7 @@
 import Foundation
 
 struct RegisterRequest: Codable {
-    
+    var username, email, password, phoneNumber: String
+    var alamat, provinsi, kota, kelurahan, kecamatan: String
+    var longtitude, latitude: Float
 }
