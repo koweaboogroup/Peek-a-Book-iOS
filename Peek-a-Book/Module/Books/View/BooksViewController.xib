@@ -46,7 +46,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="6K4-LY-Uaa">
-                                                    <rect key="frame" x="0.0" y="56.5" width="414" height="299"/>
+                                                    <rect key="frame" x="20" y="56.5" width="374" height="299"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="299" id="nSv-6v-7fA"/>
@@ -61,10 +61,10 @@
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstItem="6K4-LY-Uaa" firstAttribute="leading" secondItem="A3w-K9-LYa" secondAttribute="leading" id="4Pi-f3-VBj"/>
+                                                <constraint firstItem="6K4-LY-Uaa" firstAttribute="leading" secondItem="A3w-K9-LYa" secondAttribute="leading" constant="20" id="4Pi-f3-VBj"/>
                                                 <constraint firstItem="wVp-S9-Nkp" firstAttribute="leading" secondItem="A3w-K9-LYa" secondAttribute="leading" constant="20" id="BQH-jV-Bou"/>
                                                 <constraint firstItem="wVp-S9-Nkp" firstAttribute="top" secondItem="A3w-K9-LYa" secondAttribute="top" constant="20" id="Un5-wZ-Iy1"/>
-                                                <constraint firstAttribute="trailing" secondItem="6K4-LY-Uaa" secondAttribute="trailing" id="hmC-MU-sxM"/>
+                                                <constraint firstAttribute="trailing" secondItem="6K4-LY-Uaa" secondAttribute="trailing" constant="20" id="hmC-MU-sxM"/>
                                                 <constraint firstItem="6K4-LY-Uaa" firstAttribute="top" secondItem="wVp-S9-Nkp" secondAttribute="bottom" constant="10" id="yAM-7u-LaG"/>
                                             </constraints>
                                         </view>

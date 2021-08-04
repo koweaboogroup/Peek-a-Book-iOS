@@ -25,6 +25,7 @@ class BooksViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     private func setupView(){
+        searchView.hideNavigation(true)
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .horizontal
         flowLayout.itemSize = CGSize(width: 168, height: 299)

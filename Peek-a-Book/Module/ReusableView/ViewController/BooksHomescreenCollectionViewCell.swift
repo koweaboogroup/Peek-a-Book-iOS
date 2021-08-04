@@ -32,7 +32,7 @@ class BooksHomescreenCollectionViewCell: UICollectionViewCell {
             self.lenderStoreLocation.text = response.lender?.kota
             self.bookTitle.text = response.book?.title
             self.bookWriter.text = response.book?.author
-            self.bookRentPrice.text = "\(String(describing: response.price?.toRupiah()))/minggu"
+            self.bookRentPrice.text = "\(response.price?.toRupiah() ?? "")/minggu"
             self.bookImage.kf.setImage(with: URL(string: Constant.Network.baseUrl + (response.images?[0].url ?? "")))
         }
     }
