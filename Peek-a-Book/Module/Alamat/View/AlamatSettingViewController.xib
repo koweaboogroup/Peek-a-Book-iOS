@@ -15,6 +15,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AlamatSettingViewController" customModule="Peek_a_Book" customModuleProvider="target">
             <connections>
+                <outlet property="checkButton" destination="g2E-pK-b9G" id="q5X-ze-GSn"/>
                 <outlet property="jalanTextField" destination="mmh-bt-6Zr" id="pd5-L7-Snd"/>
                 <outlet property="kecamatanTextField" destination="j4M-jt-2rU" id="Ran-S0-zaQ"/>
                 <outlet property="kelurahanTextField" destination="lXl-6L-JsI" id="hMF-6A-BI5"/>
@@ -53,7 +54,7 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Peta Lokasi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wgo-Z0-JBp">
-                                            <rect key="frame" x="16" y="13.5" width="89" height="17"/>
+                                            <rect key="frame" x="16" y="12" width="89" height="20"/>
                                             <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -83,13 +84,13 @@
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Kecamatan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ciC-Lf-Cf3">
-                                            <rect key="frame" x="16" y="13.5" width="89" height="17"/>
+                                            <rect key="frame" x="16" y="12" width="86.5" height="20"/>
                                             <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Kecamatan Tempat Tinggal" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j4M-jt-2rU">
-                                            <rect key="frame" x="135" y="13" width="227" height="18.5"/>
+                                            <rect key="frame" x="132.5" y="11.5" width="229.5" height="21.5"/>
                                             <color key="textColor" systemColor="systemBlueColor"/>
                                             <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                             <textInputTraits key="textInputTraits"/>
@@ -120,13 +121,13 @@
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Kelurahan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MHG-uz-mKA">
-                                            <rect key="frame" x="16" y="13.5" width="79.5" height="17"/>
+                                            <rect key="frame" x="16" y="12" width="77" height="20"/>
                                             <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Kelurahan Tempat Tinggal" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lXl-6L-JsI">
-                                            <rect key="frame" x="125.5" y="13" width="236.5" height="18.5"/>
+                                            <rect key="frame" x="123" y="11.5" width="239" height="21.5"/>
                                             <color key="textColor" systemColor="systemBlueColor"/>
                                             <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                             <textInputTraits key="textInputTraits"/>
@@ -157,13 +158,13 @@
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Kota" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wVc-Dk-qbd">
-                                            <rect key="frame" x="16" y="13.5" width="36" height="17"/>
+                                            <rect key="frame" x="16" y="12" width="36" height="20"/>
                                             <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Kota Tempat Tinggal" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qe1-oL-fgm">
-                                            <rect key="frame" x="82" y="13" width="280" height="18.5"/>
+                                            <rect key="frame" x="82" y="11.5" width="280" height="21.5"/>
                                             <color key="textColor" systemColor="systemBlueColor"/>
                                             <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                             <textInputTraits key="textInputTraits"/>
@@ -194,13 +195,13 @@
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Provinsi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jh7-yY-XtT">
-                                            <rect key="frame" x="16" y="13.5" width="62.5" height="17"/>
+                                            <rect key="frame" x="16" y="12" width="60.5" height="20"/>
                                             <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Provinsi Indonesia" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WaD-X5-jHU">
-                                            <rect key="frame" x="108.5" y="13" width="253.5" height="18.5"/>
+                                            <rect key="frame" x="106.5" y="11.5" width="255.5" height="21.5"/>
                                             <color key="textColor" systemColor="systemBlueColor"/>
                                             <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                             <textInputTraits key="textInputTraits"/>
@@ -224,13 +225,13 @@
                                     <rect key="frame" x="0.0" y="220" width="374" height="44"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Alamat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zb2-M3-kKE">
-                                            <rect key="frame" x="16" y="13.5" width="56" height="17"/>
+                                            <rect key="frame" x="16" y="12" width="53" height="20"/>
                                             <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nama Jalan, No Rumah" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nCI-zY-Oto">
-                                            <rect key="frame" x="102" y="13" width="260" height="18.5"/>
+                                            <rect key="frame" x="99" y="11.5" width="263" height="21.5"/>
                                             <color key="textColor" systemColor="systemBlueColor"/>
                                             <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                             <textInputTraits key="textInputTraits"/>
@@ -281,7 +282,6 @@
                         <constraint firstAttribute="height" constant="20" id="lKD-Jh-ZHG"/>
                         <constraint firstAttribute="width" constant="20" id="rVN-cM-0ar"/>
                     </constraints>
-                    <state key="normal" image="checkmark" catalog="system"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                             <integer key="value" value="3"/>
@@ -298,7 +298,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gunakan alamat yang sama dengan profil" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w9f-nB-a4C">
-                    <rect key="frame" x="50" y="358" width="344" height="14"/>
+                    <rect key="frame" x="50" y="358" width="344" height="16.5"/>
                     <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="14"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -320,7 +320,6 @@
         </view>
     </objects>
     <resources>
-        <image name="checkmark" catalog="system" width="128" height="114"/>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

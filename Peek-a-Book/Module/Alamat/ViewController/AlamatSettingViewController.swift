@@ -14,6 +14,7 @@ class AlamatSettingViewController: UIViewController {
     @IBOutlet weak var kotaTextField: UIView!
     @IBOutlet weak var provinsiTextField: UITextField!
     @IBOutlet weak var jalanTextField: UIView!
+    @IBOutlet weak var checkButton: UIButton!
     
     
     
@@ -23,6 +24,14 @@ class AlamatSettingViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     @IBAction func checkButtonPressed(_ sender: UIButton) {
+        if checkButton.imageView?.image == UIImage(named: "checkmark"){
+            checkButton.imageView?.image = UIImage(named: "")
+            print("kosongkan")
+        }
+        else{
+            checkButton.imageView?.image = UIImage(named: "checkmark")
+            print("isi")
+        }
     }
     
 
