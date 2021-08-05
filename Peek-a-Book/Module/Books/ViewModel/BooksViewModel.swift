@@ -10,19 +10,25 @@ import RxSwift
 import CoreLocation
 
 class BooksViewModel {
-    public let listBookFiction : PublishSubject<[BookResponse]> = PublishSubject()
     public let error : PublishSubject<String> = PublishSubject()
     public let nearestListBook: PublishSubject<[BookResponse]> = PublishSubject()
+    public let listBookNonFiction : PublishSubject<[BookResponse]> = PublishSubject()
+    public let listBookFiction : PublishSubject<[BookResponse]> = PublishSubject()
     
     func getListBook(){
         BookService.getListBook { book in
             var fictionBook = [BookResponse]()
+            var nonFictionBook = [BookResponse]()
             for item in book {
                 if item.book?.bookGenre == 1 {
-                    fictionBook.append(item)
+                    fictionBook.append(BookResponse(id: item.id, price: item.price, bookCondition: item.bookCondition, lender: item.lender, book: item.book, page: item.page, language: item.language, publishedAt: item.publishedAt, createdAt: item.createdAt, updatedAt: item.updatedAt, images: item.images))
+                    self.listBookFiction.onNext(fictionBook)
+                }
+                else if item.book?.bookGenre == 2 {
+                    nonFictionBook.append(BookResponse(id: item.id, price: item.price, bookCondition: item.bookCondition, lender: item.lender, book: item.book, page: item.page, language: item.language, publishedAt: item.publishedAt, createdAt: item.createdAt, updatedAt: item.updatedAt, images: item.images))
+                    self.listBookNonFiction.onNext(nonFictionBook)
                 }
             }
-            self.listBookFiction.onNext(fictionBook)
         } failCompletion: { error in
             self.error.onNext(error.errorDescription ?? "Data Tidak Ditemukan")
         }

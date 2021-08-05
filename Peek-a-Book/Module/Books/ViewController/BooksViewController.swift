@@ -13,33 +13,59 @@ import CoreLocation
 class BooksViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var searchView: SearchView!
     @IBOutlet weak var nearestBookCollectionView: UICollectionView!
+    @IBOutlet weak var fictionBookCollectionView: UICollectionView!
+    @IBOutlet weak var nonFictionBookCollectionView: UICollectionView!
     let viewModel = BooksViewModel()
     let disposeBag = DisposeBag()
     let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         viewModel.getListBook()
         checkLocationServices()
         setupView()
+        cellSelectedIndex()
+        print("\(DateTime.getTimeStamp())")
     }
     
     private func setupView(){
         searchView.hideNavigation(true)
-        let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.scrollDirection = .horizontal
-        flowLayout.itemSize = CGSize(width: 168, height: 299)
-        flowLayout.minimumLineSpacing = 5.0
-        flowLayout.minimumInteritemSpacing = 5.0
         
         nearestBookCollectionView.register(UINib(nibName: XIBConstant.BooksHomescreenCollectionViewCell, bundle: nil), forCellWithReuseIdentifier: XIBConstant.BooksHomescreenCollectionViewCell)
+        
+        fictionBookCollectionView.register(UINib(nibName: XIBConstant.BooksHomescreenCollectionViewCell, bundle: nil), forCellWithReuseIdentifier: XIBConstant.BooksHomescreenCollectionViewCell)
+        
+        nonFictionBookCollectionView.register(UINib(nibName: XIBConstant.BooksHomescreenCollectionViewCell, bundle: nil), forCellWithReuseIdentifier: XIBConstant.BooksHomescreenCollectionViewCell)
+        
 
-        nearestBookCollectionView.collectionViewLayout = flowLayout
-        self.nearestBookCollectionView.showsHorizontalScrollIndicator = false
-
+        viewModel.listBookFiction.bind(to: fictionBookCollectionView.rx.items(cellIdentifier: XIBConstant.BooksHomescreenCollectionViewCell, cellType: BooksHomescreenCollectionViewCell.self)){ (row,book,cell) in
+            cell.response = book
+        }.disposed(by: disposeBag)
+        
+        viewModel.listBookNonFiction.bind(to: nonFictionBookCollectionView.rx.items(cellIdentifier: XIBConstant.BooksHomescreenCollectionViewCell, cellType: BooksHomescreenCollectionViewCell.self)){ (row,book,cell) in
+            cell.response = book
+        }.disposed(by: disposeBag)
+        
         viewModel.nearestListBook.bind(to: nearestBookCollectionView.rx.items(cellIdentifier: XIBConstant.BooksHomescreenCollectionViewCell, cellType: BooksHomescreenCollectionViewCell.self)) {  (row,book,cell) in
             cell.response = book
         }.disposed(by: disposeBag)
+        
+    }
+    
+    func cellSelectedIndex(){
+        
+        fictionBookCollectionView.rx.itemSelected.subscribe(onNext: { (model) in
+            print(model.row)
+        }).disposed(by: disposeBag)
+        
+        nonFictionBookCollectionView.rx.itemSelected.subscribe(onNext: { (model) in
+            print(model.row)
+        }).disposed(by: disposeBag)
+        
+        nearestBookCollectionView.rx.itemSelected.subscribe(onNext: { (model) in
+            print(model.row)
+        }).disposed(by: disposeBag)
         
     }
     
