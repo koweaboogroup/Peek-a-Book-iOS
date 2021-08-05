@@ -21,6 +21,7 @@ class EditProfileViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        setupRx()
     }
     func setNavigationBar(){
         self.navigationItem.title = "Edit Profil"
@@ -37,6 +38,14 @@ class EditProfileViewController: UIViewController {
         self.navigationController?.view.backgroundColor = .clear
     }
     
+    private func setupRx() {
+        let user = DataManager.shared.getUser()
+        
+        //contoh binding
+        namaLengkapTextField.text = user?.username
+        emailTextField.text = user?.email
+    }
+        
     @objc func addTapped(_ sender: UINavigationItem){
         print("Simpan")
     }

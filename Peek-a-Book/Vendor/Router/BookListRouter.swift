@@ -1,16 +1,16 @@
 //
-//  BookRouter.swift
+//  BookListRouter.swift
 //  Peek-a-Book
 //
-//  Created by Arif Rahman on 01/08/21.
+//  Created by Arif Rahman on 04/08/21.
 //
 
 import Foundation
 import Alamofire
 
-enum BookRouter: URLRequestConvertible {
+enum BookListRouter: URLRequestConvertible {
     
-    case get(id: String)
+    case get
     
     var method: HTTPMethod {
         switch self {
@@ -18,19 +18,18 @@ enum BookRouter: URLRequestConvertible {
         }
     }
     
-    var url: URL {
-        return URL(string: Constant.Network.baseUrl + "/lender-books/")!
+    var urlBooks: URL {
+        return URL(string: Constant.Network.baseUrl + "/lender-books")!
     }
     
     func asURLRequest() throws -> URLRequest {
-        var urlWithParams: URL
-
+        var request = URLRequest(url: urlBooks)
+        
         switch self {
-        case let .get(id):
-            urlWithParams = url.appendingPathComponent(id)
+        case .get:
+            break
         }
         
-        var request = URLRequest(url: urlWithParams)
         request.headers.add(.contentType("application/json"))
         request.headers.add(.accept("application/json"))
         
@@ -39,3 +38,4 @@ enum BookRouter: URLRequestConvertible {
         return request
     }
 }
+
