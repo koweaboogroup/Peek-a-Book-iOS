@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 @IBDesignable
 class CircleImageView: UIImageView {
@@ -42,6 +43,12 @@ class CircleImageView: UIImageView {
     
     func setImage(image: UIImage) {
         placeImage.image = image
+        placeImage.isHidden = false
+        placeholderImage.isHidden = true
+    }
+    
+    func setImage(fromUrl: String) {
+        placeImage.kf.setImage(with: URL(string: fromUrl))
         placeImage.isHidden = false
         placeholderImage.isHidden = true
     }
