@@ -10,15 +10,13 @@ import RxSwift
 
 class DetailBookViewModel {
     
-    public let bookDetail : PublishSubject<Book> = PublishSubject()
+    public let bookDetail : PublishSubject<LenderBook> = PublishSubject()
     public let loading : PublishSubject<Bool> = PublishSubject()
     public let error : PublishSubject<String> = PublishSubject()
     
     func getDetailBook(id: String) {
         self.loading.onNext(true)
-        let bookRequest = BookRequest()
-        
-        BookService.getBookDetail(bookRequest: bookRequest) { book in
+        BookService.getBookDetail(id: id) { book in
             self.loading.onNext(false)
             if let bookResponse = book {
                 self.bookDetail.onNext(bookResponse)

@@ -12,6 +12,7 @@ class DataManager {
     static let shared = DataManager()
     
     var user: User?
+    var lender: Lender?
     
     func isLoggedIn() -> Bool {
         let jwt = "jwt"
@@ -34,6 +35,10 @@ class DataManager {
     
     func getUser() -> User? {
         return user
+    }
+    
+    func getLenderId() -> Int {
+        lender?.id ?? -1
     }
     
     func setUser(user: User) {

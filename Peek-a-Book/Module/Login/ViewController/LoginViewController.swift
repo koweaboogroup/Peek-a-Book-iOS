@@ -19,6 +19,9 @@ class LoginViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+//        MARK: set title to be empty for back button when pushed
+        self.navigationItem.backButtonTitle = ""
 
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
@@ -51,7 +54,7 @@ class LoginViewController: UIViewController {
         
         
         viewModel.error.subscribe(onNext: { error in
-            let alert = UIAlertController(title: "Tidak berhasil login", message: "Coba dinget2 lagi, yok bisa yok", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Tidak Berhasil Masuk", message: "Email atau password Anda salah", preferredStyle: .alert)
 
             alert.addAction(UIAlertAction(title: "Baiklah!", style: .default, handler: { action in
                 self.loginViewContent.identifierTextField.becomeFirstResponder()
@@ -66,8 +69,7 @@ class LoginViewController: UIViewController {
         
         viewModel.buttonRegisterPressed.subscribe (onNext: { pressed in
             if pressed {
-                let vc = ModuleBuilder.shared.goToRegisterViewController()
-                self.navigationController?.pushViewController(vc, animated: true)
+                self.changeToRegisterVC()
             }
         }).disposed(by: disposeBag)
 
@@ -81,13 +83,8 @@ class LoginViewController: UIViewController {
     }
     
     private func changeToRegisterVC(){
-        //TODO TAMBAHKAN METHOD UNTUK BERALIH KE HALAMAN REGISTER
-    }
-    
-    private func setupKeyboardListener() {
-        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillShowNotification, object: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillHideNotification, object: nil)
+        let vc = ModuleBuilder.shared.goToRegisterViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 
     override func viewDidLoad() {
@@ -97,7 +94,7 @@ class LoginViewController: UIViewController {
         
         self.hideKeyboardWhenTappedAround()
         
-        setupKeyboardListener()
+        self.setupKeyboardListener(selector: #selector(handleKeyboardNotification))
         
         setupRx()
     }

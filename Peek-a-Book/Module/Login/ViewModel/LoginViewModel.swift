@@ -28,13 +28,13 @@ struct LoginViewModel {
         LoginService.login(loginRequest: loginRequest) { loginResponse in
             self.loading.onNext(false)
             
-            //kalo success
             let jwtUserDefaults = "jwt"
             UserDefaults.standard.string(forKey: jwtUserDefaults)
             UserDefaults.standard.set(loginResponse.jwt, forKey: jwtUserDefaults)
             
             if let responseUser = loginResponse.user {
                 self.user.onNext(responseUser)
+                DataManager.shared.setUser(user: responseUser)
             } else {
                 self.error.onNext("Data Tidak Ditemukan")
             }
