@@ -59,24 +59,10 @@ class DetailBooksViewController: UIViewController {
     
     func setupRx() {
         // MARK: -Setup Header View
-        //jangan lupa binding Book Image
-//        let url: Observable<URL> = Observable.create { observer in
-//            <#code#>
-//        }
-        
-        let url2 = URL(string: "https://assets.pikiran-rakyat.com/crop/0x946:996x2004/x/photo/2020/06/19/2624712725.jpg")
-        
-        detailBookImages.kf.setImage(with: url2)
-        
-//        viewModel.bookDetail.asObservable().map { book in
-//            let url = book.images?[0].url
-//            detailBookImages.kf.rx.setImage(with: url)
-//        )}
-//        .subscribe(onNext: { image in
-//            print(image)
-//        })
-//        .disposed(by: disposeBag)
-        
+        viewModel.bookDetail.subscribe (onNext: { book in
+            let url = URL(string: Constant.Network.baseUrl + (book.images?[0].url ?? ""))
+            self.detailBookImages.kf.setImage(with: url)
+        }).disposed(by: disposeBag)
         
         viewModel.bookDetail.asObserver().map { book in
             book.book?.title
@@ -89,13 +75,15 @@ class DetailBooksViewController: UIViewController {
         .disposed(by: disposeBag)
         
         viewModel.bookDetail.asObserver().map { book in
-            "\(book.price ?? 0)"
-        }.bind(to: detailBookWriterLabel.rx.text)
+            "Rp\(book.price?.toRupiah() ?? "")"
+        }.bind(to: detailBookPriceLabel.rx.text)
         .disposed(by: disposeBag)
         
         // MARK: - Setup Lender Button View
-        
-        //lenderImage dipertanyakan Bang Arif
+        viewModel.bookDetail.subscribe (onNext: { book in
+            let url = URL(string: Constant.Network.baseUrl + (book.lender?.image?[0].url ?? ""))
+            self.lenderImage.kf.setImage(with: url)
+        }).disposed(by: disposeBag)
         
         viewModel.bookDetail.asObserver().map { book in
             book.lender?.name
@@ -129,8 +117,6 @@ class DetailBooksViewController: UIViewController {
         }.bind(to: detailBookConditionLabel.rx.text)
         .disposed(by: disposeBag)
         
-        
-        //MARK: -Book Genre blm ada String
         viewModel.bookDetail.asObserver().map { book in
             book.book?.bookGenre == 1 ? "Fiksi" : "Non Fiksi"
         }.bind(to: detailBookGenreLabel.rx.text)
