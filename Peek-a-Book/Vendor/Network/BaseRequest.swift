@@ -24,5 +24,13 @@ class BaseRequest {
         
         completionHandler(request)
     }
+    
+//    MARK: - PUT Method
+    static func put(router: URLRequestConvertible, completionHandler: @escaping (DataRequest) -> Void) {
+        let request = AF.request(router)
+            .validate(statusCode: 200..<300)
+        
+        completionHandler(request)
+    }
 }
 
