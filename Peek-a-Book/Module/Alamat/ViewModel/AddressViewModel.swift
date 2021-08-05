@@ -15,4 +15,7 @@ class AddressViewModel {
     public let districtName : PublishSubject<String> = PublishSubject()
     public let cityName : PublishSubject<String> = PublishSubject()
     public let provName : PublishSubject<String> = PublishSubject()
+    
+    public let checkBoxClicked : PublishSubject<Bool> = PublishSubject()
+    
 }

@@ -15,6 +15,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddressSettingViewController" customModule="Peek_a_Book" customModuleProvider="target">
             <connections>
+                <outlet property="checkBoxView" destination="gBx-8n-92Y" id="CXW-p9-k8i"/>
                 <outlet property="checkButton" destination="g2E-pK-b9G" id="q5X-ze-GSn"/>
                 <outlet property="jalanTextField" destination="nCI-zY-Oto" id="9TI-Po-Qrj"/>
                 <outlet property="kecamatanTextField" destination="lXl-6L-JsI" id="Sjy-Lz-hxp"/>
@@ -279,50 +280,52 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g2E-pK-b9G">
-                    <rect key="frame" x="22" y="354" width="20" height="20"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="20" id="lKD-Jh-ZHG"/>
-                        <constraint firstAttribute="width" constant="20" id="rVN-cM-0ar"/>
-                    </constraints>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                            <integer key="value" value="3"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                            <real key="value" value="1"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                            <color key="value" systemColor="systemBlueColor"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                    <connections>
-                        <action selector="checkButtonPressed:" destination="-1" eventType="touchUpInside" id="zYg-PR-f2k"/>
-                    </connections>
-                </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gunakan alamat yang sama dengan profil" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w9f-nB-a4C">
-                    <rect key="frame" x="50" y="358" width="344" height="14"/>
-                    <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="14"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="gBx-8n-92Y">
+                    <rect key="frame" x="22" y="354" width="299.5" height="20"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g2E-pK-b9G">
+                            <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="lKD-Jh-ZHG"/>
+                                <constraint firstAttribute="width" constant="20" id="rVN-cM-0ar"/>
+                            </constraints>
+                            <state key="normal" image="checkmark.square" catalog="system"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="3"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                    <real key="value" value="1"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                    <color key="value" systemColor="systemBlueColor"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="checkButtonPressed:" destination="-1" eventType="touchUpInside" id="zYg-PR-f2k"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gunakan alamat yang sama dengan profil" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w9f-nB-a4C">
+                            <rect key="frame" x="28" y="0.0" width="271.5" height="20"/>
+                            <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="14"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="o8r-Gy-qh6" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="45s-Zc-bHQ"/>
-                <constraint firstItem="w9f-nB-a4C" firstAttribute="leading" secondItem="g2E-pK-b9G" secondAttribute="trailing" constant="8" id="APf-K7-5mV"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="o8r-Gy-qh6" secondAttribute="trailing" constant="20" id="CG2-t7-4Rj"/>
-                <constraint firstItem="w9f-nB-a4C" firstAttribute="top" secondItem="o8r-Gy-qh6" secondAttribute="bottom" constant="20" id="JZg-y1-h8f"/>
                 <constraint firstItem="o8r-Gy-qh6" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="MDN-Rz-Owd"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="w9f-nB-a4C" secondAttribute="trailing" constant="20" id="NLH-vp-zza"/>
-                <constraint firstItem="g2E-pK-b9G" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="22" id="f1W-3J-SVT"/>
-                <constraint firstItem="g2E-pK-b9G" firstAttribute="top" secondItem="o8r-Gy-qh6" secondAttribute="bottom" constant="16" id="qfc-9W-H0s"/>
             </constraints>
             <point key="canvasLocation" x="20" y="109"/>
         </view>
     </objects>
     <resources>
+        <image name="checkmark.square" catalog="system" width="128" height="114"/>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

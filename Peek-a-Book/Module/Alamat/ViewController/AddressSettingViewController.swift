@@ -17,13 +17,17 @@ class AddressSettingViewController: UIViewController {
     @IBOutlet weak var provinsiTextField: UITextField!
     @IBOutlet weak var jalanTextField: UITextField!
     @IBOutlet weak var checkButton: UIButton!
+    @IBOutlet weak var checkBoxView: UIStackView!
     
     private var mapsViewModel : MapsViewModel = MapsViewModel()
     private var addressViewModel: AddressViewModel?
     private var disposeBag = DisposeBag()
     
+    private var isClicked = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupNavigation()
         setupView()
     }
     
@@ -31,7 +35,24 @@ class AddressSettingViewController: UIViewController {
         addressViewModel = viewModel
     }
     
+    private func setupNavigation(){
+        self.title = "Detail Alamat"
+        self.navigationItem.backButtonTitle = ""
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(doneEditing))
+
+    }
+    
+    @objc func doneEditing() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     private func setupView(){
+        if DataManager.shared.isLoggedIn() {
+            checkBoxView.isHidden = false
+        }else{
+            checkBoxView.isHidden = true
+        }
+        
         mapsViewModel.districtName
             .asObserver()
             .bind(to: kecamatanTextField.rx.text)
@@ -51,11 +72,19 @@ class AddressSettingViewController: UIViewController {
             .asObserver()
             .bind(to: jalanTextField.rx.text)
             .disposed(by: disposeBag)
-                
+        
         addressViewModel?.address.onNext(jalanTextField.text ?? "")
         addressViewModel?.cityName.onNext(kotaTextField.text ?? "")
         addressViewModel?.districtName.onNext(kecamatanTextField.text ?? "")
         addressViewModel?.provName.onNext(provinsiTextField.text ?? "")
+        
+        addressViewModel?.checkBoxClicked.subscribe(onNext: { isClicked in
+            if isClicked {
+                self.checkButton.imageView?.image = UIImage(named: "checkmark.square.fill")
+            }else {
+                self.checkButton.imageView?.image = UIImage(named: "checkmark.square")
+            }
+        }).disposed(by: disposeBag)
     }
     
     @IBAction func mapsBtnPressed(_ sender: Any) {
@@ -66,13 +95,12 @@ class AddressSettingViewController: UIViewController {
     }
     
     @IBAction func checkButtonPressed(_ sender: UIButton) {
-        if checkButton.imageView?.image == UIImage(named: "checkmark"){
-            checkButton.imageView?.image = UIImage(named: "")
-            removeAllAlamat()
-        }
-        else{
-            checkButton.imageView?.image = UIImage(named: "checkmark")
-            insertAllAlamat()
+        isClicked = !isClicked
+        print(isClicked)
+        if isClicked {
+            self.checkButton.setImage(UIImage(systemName: "checkmark.square.fill"), for: .normal)
+        }else {
+            self.checkButton.setImage(UIImage(systemName: "checkmark.square"), for: .normal)
         }
     }
     

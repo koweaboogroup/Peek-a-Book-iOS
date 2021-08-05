@@ -31,12 +31,17 @@ class RegisterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Buat Akun Penyewaanmu"
-        
-        self.tabBarController?.tabBar.isHidden = true
-        
         setupUI()
         setupRx()
         self.setupKeyboardListener(selector: #selector(handleKeyboardNotification))
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
     }
     
     @objc func handleKeyboardNotification(notification: NSNotification) {
