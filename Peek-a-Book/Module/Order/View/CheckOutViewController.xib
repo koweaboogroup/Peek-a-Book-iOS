@@ -21,6 +21,17 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CheckOutViewController" customModule="Peek_a_Book" customModuleProvider="target">
             <connections>
+                <outlet property="biayaOngkirLabel" destination="UYC-dO-Q35" id="Jov-OL-NAu"/>
+                <outlet property="biayaSewaBukuLabel" destination="cUZ-QM-MIY" id="59x-iw-Db2"/>
+                <outlet property="detailAlamatLabel" destination="VhT-rA-0Xa" id="vut-s8-MjL"/>
+                <outlet property="detailBukuTableView" destination="sOy-MT-Ttc" id="5J1-AK-rIK"/>
+                <outlet property="durasiPenyewaanLabel" destination="hD9-rs-7cK" id="Zts-Pj-RwO"/>
+                <outlet property="estimasiTotalLabel" destination="LIL-91-N85" id="EjP-G4-geB"/>
+                <outlet property="hargaPenyewaanLabel" destination="d6P-qN-cCD" id="Pt7-KU-1xI"/>
+                <outlet property="lenderImageView" destination="KhI-EU-D7g" id="tqe-qQ-iQB"/>
+                <outlet property="lenderNameLabel" destination="4y5-4C-W5h" id="PaE-S4-RkI"/>
+                <outlet property="metodePengirimanLabel" destination="g1a-h3-j9S" id="mzl-Ok-ga4"/>
+                <outlet property="sewaSekarangButton" destination="how-J6-Q18" id="BXj-YR-R89"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -33,19 +44,19 @@
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6E7-tB-R9z" userLabel="Content View">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="816"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="798"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H0h-9m-iIW" userLabel="Background View">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="816"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="798"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detail Buku" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bUs-j4-G1j">
-                                            <rect key="frame" x="20" y="20" width="374" height="30.5"/>
+                                            <rect key="frame" x="20" y="20" width="374" height="26"/>
                                             <fontDescription key="fontDescription" name="DMSerifText-Regular" family="DM Serif Text" pointSize="22"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="kYa-bT-VkF">
-                                            <rect key="frame" x="28" y="60.5" width="358" height="22"/>
+                                            <rect key="frame" x="28" y="56" width="358" height="22"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty-state" translatesAutoresizingMaskIntoConstraints="NO" id="KhI-EU-D7g">
                                                     <rect key="frame" x="0.0" y="0.0" width="22" height="22"/>
@@ -68,7 +79,7 @@
                                             </subviews>
                                         </stackView>
                                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sOy-MT-Ttc">
-                                            <rect key="frame" x="20" y="92.5" width="374" height="84"/>
+                                            <rect key="frame" x="20" y="88" width="374" height="84"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="84" id="468-FN-Kke"/>
@@ -92,13 +103,13 @@
                                             </userDefinedRuntimeAttributes>
                                         </tableView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Durasi Penyewaan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eXG-0x-HrX">
-                                            <rect key="frame" x="20" y="196.5" width="374" height="30.5"/>
+                                            <rect key="frame" x="20" y="192" width="374" height="26"/>
                                             <fontDescription key="fontDescription" name="DMSerifText-Regular" family="DM Serif Text" pointSize="22"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yii-3z-NQw">
-                                            <rect key="frame" x="20" y="237" width="374" height="98"/>
+                                            <rect key="frame" x="20" y="228" width="374" height="98"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="I9h-y9-ZvR">
                                                     <rect key="frame" x="0.0" y="5" width="374" height="88"/>
@@ -114,7 +125,7 @@
                                                                     </constraints>
                                                                 </view>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Durasi Penyewaan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3rT-vM-Je2">
-                                                                    <rect key="frame" x="13" y="13.5" width="144" height="17"/>
+                                                                    <rect key="frame" x="13" y="12" width="141.5" height="20"/>
                                                                     <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -128,7 +139,7 @@
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2 Minggu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hD9-rs-7cK">
-                                                                    <rect key="frame" x="271.5" y="13.5" width="74.5" height="17"/>
+                                                                    <rect key="frame" x="274.5" y="12" width="71.5" height="20"/>
                                                                     <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                                                     <color key="textColor" systemColor="systemBlueColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -148,18 +159,21 @@
                                                                 <constraint firstAttribute="bottom" secondItem="pmh-5E-fPd" secondAttribute="bottom" id="w1u-Ue-BZe"/>
                                                                 <constraint firstItem="Jkr-W0-IpH" firstAttribute="centerY" secondItem="qcy-9t-qtv" secondAttribute="centerY" id="xBJ-Sc-L0R"/>
                                                             </constraints>
+                                                            <connections>
+                                                                <outletCollection property="gestureRecognizers" destination="2hc-HK-F2T" appends="YES" id="Zf1-F4-c3v"/>
+                                                            </connections>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G3A-6f-sWY" userLabel="Nama View">
                                                             <rect key="frame" x="0.0" y="44" width="374" height="44"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Harga" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M08-fn-qBa">
-                                                                    <rect key="frame" x="13" y="13.5" width="48" height="17"/>
+                                                                    <rect key="frame" x="13" y="12" width="45.5" height="20"/>
                                                                     <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" alpha="0.30000001192092896" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10.000/minggu" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d6P-qN-cCD">
-                                                                    <rect key="frame" x="238" y="13.5" width="123" height="17"/>
+                                                                    <rect key="frame" x="246.5" y="12" width="114.5" height="20"/>
                                                                     <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                                                     <color key="textColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -204,13 +218,13 @@
                                             </userDefinedRuntimeAttributes>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detail Pengiriman" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LSb-OJ-zBE">
-                                            <rect key="frame" x="20" y="355" width="374" height="30.5"/>
+                                            <rect key="frame" x="20" y="346" width="374" height="26"/>
                                             <fontDescription key="fontDescription" name="DMSerifText-Regular" family="DM Serif Text" pointSize="22"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KAM-2j-hK5">
-                                            <rect key="frame" x="20" y="395.5" width="374" height="98"/>
+                                            <rect key="frame" x="20" y="382" width="374" height="98"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ICg-wy-Reh">
                                                     <rect key="frame" x="0.0" y="5" width="374" height="88"/>
@@ -226,7 +240,7 @@
                                                                     </constraints>
                                                                 </view>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detail Alamat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eqo-Ip-g8z">
-                                                                    <rect key="frame" x="13" y="13.5" width="106" height="17"/>
+                                                                    <rect key="frame" x="13" y="12" width="101" height="20"/>
                                                                     <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -240,7 +254,7 @@
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alamat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VhT-rA-0Xa">
-                                                                    <rect key="frame" x="290" y="13.5" width="56" height="17"/>
+                                                                    <rect key="frame" x="293" y="12" width="53" height="20"/>
                                                                     <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                                                     <color key="textColor" systemColor="systemBlueColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -260,18 +274,21 @@
                                                                 <constraint firstItem="UsC-Av-tI5" firstAttribute="leading" secondItem="Cwf-Bg-sO7" secondAttribute="leading" constant="13" id="rPW-wE-fRQ"/>
                                                                 <constraint firstItem="Eqo-Ip-g8z" firstAttribute="leading" secondItem="Cwf-Bg-sO7" secondAttribute="leading" constant="13" id="wt3-A1-Rzh"/>
                                                             </constraints>
+                                                            <connections>
+                                                                <outletCollection property="gestureRecognizers" destination="n1M-Ze-7bC" appends="YES" id="9i3-rI-hna"/>
+                                                            </connections>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yiB-PD-pd8" userLabel="Nama View">
                                                             <rect key="frame" x="0.0" y="44" width="374" height="44"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Metode Pengiriman" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IyT-Tx-g5N">
-                                                                    <rect key="frame" x="13" y="13.5" width="155.5" height="17"/>
+                                                                    <rect key="frame" x="13" y="12" width="149" height="20"/>
                                                                     <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Self Pick Up" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g1a-h3-j9S">
-                                                                    <rect key="frame" x="266" y="13.5" width="95" height="17"/>
+                                                                    <rect key="frame" x="267" y="12" width="94" height="20"/>
                                                                     <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                                                     <color key="textColor" systemColor="systemBlueColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -286,6 +303,9 @@
                                                                 <constraint firstAttribute="height" constant="44" id="c53-DO-p0N"/>
                                                                 <constraint firstItem="g1a-h3-j9S" firstAttribute="centerY" secondItem="yiB-PD-pd8" secondAttribute="centerY" id="iT4-c1-Ekd"/>
                                                             </constraints>
+                                                            <connections>
+                                                                <outletCollection property="gestureRecognizers" destination="DPY-ba-VXQ" appends="YES" id="EhE-cs-NGz"/>
+                                                            </connections>
                                                         </view>
                                                     </subviews>
                                                 </stackView>
@@ -316,13 +336,13 @@
                                             </userDefinedRuntimeAttributes>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Biaya Sewa" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oSe-X6-Jcp">
-                                            <rect key="frame" x="20" y="513.5" width="374" height="30.5"/>
+                                            <rect key="frame" x="20" y="500" width="374" height="26"/>
                                             <fontDescription key="fontDescription" name="DMSerifText-Regular" family="DM Serif Text" pointSize="22"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fhN-4Y-IcV">
-                                            <rect key="frame" x="20" y="554" width="374" height="142"/>
+                                            <rect key="frame" x="20" y="536" width="374" height="142"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Bcd-8h-re3">
                                                     <rect key="frame" x="0.0" y="5" width="374" height="132"/>
@@ -339,13 +359,13 @@
                                                                     </constraints>
                                                                 </view>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Biaya Sewa Buku" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PRL-Wz-Wfs">
-                                                                    <rect key="frame" x="13" y="13.5" width="133" height="17"/>
+                                                                    <rect key="frame" x="13" y="12" width="133.5" height="20"/>
                                                                     <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" alpha="0.30000001192092896" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20.000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cUZ-QM-MIY">
-                                                                    <rect key="frame" x="302" y="13.5" width="59" height="17"/>
+                                                                    <rect key="frame" x="309" y="12" width="52" height="20"/>
                                                                     <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                                                     <color key="textColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -376,13 +396,13 @@
                                                                     </constraints>
                                                                 </view>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Biaya Ongkir" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PiG-Hz-UfC">
-                                                                    <rect key="frame" x="13" y="13.5" width="101" height="17"/>
+                                                                    <rect key="frame" x="13" y="12" width="97.5" height="20"/>
                                                                     <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" alpha="0.30000001192092896" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J7E-ir-ua1">
-                                                                    <rect key="frame" x="349" y="13.5" width="12" height="17"/>
+                                                                    <rect key="frame" x="351.5" y="12" width="9.5" height="20"/>
                                                                     <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                                                     <color key="textColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -405,13 +425,13 @@
                                                             <rect key="frame" x="0.0" y="88" width="374" height="44"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Estimasi Total Biaya" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="109-Ku-ePc">
-                                                                    <rect key="frame" x="13" y="13.5" width="154.5" height="17"/>
+                                                                    <rect key="frame" x="13" y="12" width="151.5" height="20"/>
                                                                     <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" alpha="0.30000001192092896" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20.000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LIL-91-N85">
-                                                                    <rect key="frame" x="302" y="13.5" width="59" height="17"/>
+                                                                    <rect key="frame" x="309" y="12" width="52" height="20"/>
                                                                     <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                                                     <color key="textColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -456,7 +476,7 @@
                                             </userDefinedRuntimeAttributes>
                                         </view>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="how-J6-Q18">
-                                            <rect key="frame" x="30" y="726" width="354" height="50"/>
+                                            <rect key="frame" x="30" y="708" width="354" height="50"/>
                                             <color key="backgroundColor" red="0.0" green="0.40000000000000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="50" id="4mT-xg-yYR"/>
@@ -476,6 +496,9 @@
                                                     <integer key="value" value="12"/>
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="sewaSekarangButtonPressed:" destination="-1" eventType="touchUpInside" id="Z35-MG-Jfh"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -542,6 +565,21 @@
             </constraints>
             <point key="canvasLocation" x="89.855072463768124" y="84.375"/>
         </view>
+        <tapGestureRecognizer id="2hc-HK-F2T">
+            <connections>
+                <action selector="durasiPenyewaanGetTapped:" destination="-1" id="F6D-lC-ptO"/>
+            </connections>
+        </tapGestureRecognizer>
+        <tapGestureRecognizer id="n1M-Ze-7bC">
+            <connections>
+                <action selector="detailAlamatGetTapped:" destination="-1" id="Xwh-WF-7O1"/>
+            </connections>
+        </tapGestureRecognizer>
+        <tapGestureRecognizer id="DPY-ba-VXQ">
+            <connections>
+                <action selector="metodePengirimanGetTapped:" destination="-1" id="mNU-9m-9ZQ"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
