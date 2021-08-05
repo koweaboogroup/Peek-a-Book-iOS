@@ -11,30 +11,47 @@ class AlamatSettingViewController: UIViewController {
 
     @IBOutlet weak var kecamatanTextField: UITextField!
     @IBOutlet weak var kelurahanTextField: UITextField!
-    @IBOutlet weak var kotaTextField: UIView!
+    @IBOutlet weak var kotaTextField: UITextField!
     @IBOutlet weak var provinsiTextField: UITextField!
-    @IBOutlet weak var jalanTextField: UIView!
+    @IBOutlet weak var jalanTextField: UITextField!
     @IBOutlet weak var checkButton: UIButton!
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        //contoh binding
+        
         // Do any additional setup after loading the view.
     }
     @IBAction func checkButtonPressed(_ sender: UIButton) {
         if checkButton.imageView?.image == UIImage(named: "checkmark"){
             checkButton.imageView?.image = UIImage(named: "")
-            print("kosongkan")
+            removeAllAlamat()
         }
         else{
             checkButton.imageView?.image = UIImage(named: "checkmark")
-            print("isi")
+            insertAllAlamat()
         }
     }
     
-
+    func insertAllAlamat(){
+        let user = DataManager.shared.getUser()
+        kecamatanTextField.text = user?.kecamatan
+        kelurahanTextField.text = user?.kelurahan
+        kotaTextField.text = user?.kota
+        provinsiTextField.text = user?.provinsi
+        jalanTextField.text = user?.alamat
+    }
+    
+    func removeAllAlamat(){
+        kecamatanTextField.text = ""
+        kelurahanTextField.text = ""
+        kotaTextField.text = ""
+        provinsiTextField.text = ""
+        jalanTextField.text = ""
+    }
     /*
     // MARK: - Navigation
 

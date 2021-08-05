@@ -16,11 +16,11 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AlamatSettingViewController" customModule="Peek_a_Book" customModuleProvider="target">
             <connections>
                 <outlet property="checkButton" destination="g2E-pK-b9G" id="q5X-ze-GSn"/>
-                <outlet property="jalanTextField" destination="mmh-bt-6Zr" id="pd5-L7-Snd"/>
-                <outlet property="kecamatanTextField" destination="j4M-jt-2rU" id="Ran-S0-zaQ"/>
-                <outlet property="kelurahanTextField" destination="lXl-6L-JsI" id="hMF-6A-BI5"/>
-                <outlet property="kotaTextField" destination="g7y-j0-maX" id="e5O-iz-GoM"/>
-                <outlet property="provinsiTextField" destination="WaD-X5-jHU" id="H4Q-Y2-Z8H"/>
+                <outlet property="jalanTextField" destination="nCI-zY-Oto" id="9TI-Po-Qrj"/>
+                <outlet property="kecamatanTextField" destination="j4M-jt-2rU" id="bG3-aZ-9y3"/>
+                <outlet property="kelurahanTextField" destination="lXl-6L-JsI" id="Ezg-rG-0w3"/>
+                <outlet property="kotaTextField" destination="Qe1-oL-fgm" id="gLs-zg-zFg"/>
+                <outlet property="provinsiTextField" destination="WaD-X5-jHU" id="IIr-1e-Do9"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
