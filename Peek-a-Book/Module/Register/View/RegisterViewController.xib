@@ -225,6 +225,9 @@
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="titleLabel.adjustsFontSizeToFitWidth" value="YES"/>
                                     </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="alamatBtnPressed:" destination="-1" eventType="touchUpInside" id="c9g-lX-61k"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <constraints>

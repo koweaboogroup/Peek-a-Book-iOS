@@ -25,6 +25,7 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var termsAndConditionsBottomConstraint: NSLayoutConstraint!
     
     private let viewModel = RegisterViewModel()
+    private var addressViewModel = AddressViewModel()
     private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
@@ -53,6 +54,12 @@ class RegisterViewController: UIViewController {
     
     @IBAction func registerBtnPressed(_ sender: UIButton) {
         processRegister()
+    }
+    
+    @IBAction func alamatBtnPressed(_ sender: Any) {
+        let vc = ModuleBuilder.shared.goToAlamatViewController()
+        vc.initViewModel(viewModel: addressViewModel)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     private func setupRx() {
