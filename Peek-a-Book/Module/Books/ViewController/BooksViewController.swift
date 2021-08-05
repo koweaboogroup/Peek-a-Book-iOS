@@ -51,14 +51,6 @@ class BooksViewController: UIViewController, CLLocationManagerDelegate {
             cell.response = book
         }.disposed(by: disposeBag)
         
-        nearestBookCollectionView.rx.modelSelected(BookResponse.self)
-            .subscribe(onNext: { model in
-                let vc = ModuleBuilder.shared.goToDetailBooksViewController()
-                vc.hidesBottomBarWhenPushed = true
-                vc.id = model.id ?? 0
-                self.navigationController?.pushViewController(vc, animated: true)
-            })
-            .disposed(by: disposeBag)
     }
     
     func cellSelectedIndex(){
@@ -75,6 +67,34 @@ class BooksViewController: UIViewController, CLLocationManagerDelegate {
             print(model.row)
         }).disposed(by: disposeBag)
         
+        nearestBookCollectionView.rx.modelSelected(BookResponse.self)
+            .subscribe(onNext: { model in
+                let vc = ModuleBuilder.shared.goToDetailBooksViewController()
+                vc.hidesBottomBarWhenPushed = true
+                vc.id = model.id ?? 0
+                self.navigationController?.pushViewController(vc, animated: true)
+            })
+            .disposed(by: disposeBag)
+
+        fictionBookCollectionView.rx.modelSelected(BookResponse.self)
+            .subscribe(onNext: { model in
+                let vc = ModuleBuilder.shared.goToDetailBooksViewController()
+                vc.hidesBottomBarWhenPushed = true
+                vc.id = model.id ?? 0
+                self.navigationController?.pushViewController(vc, animated: true)
+            })
+            .disposed(by: disposeBag)
+
+        nonFictionBookCollectionView.rx.modelSelected(BookResponse.self)
+            .subscribe(onNext: { model in
+                let vc = ModuleBuilder.shared.goToDetailBooksViewController()
+                vc.hidesBottomBarWhenPushed = true
+                vc.id = model.id ?? 0
+                self.navigationController?.pushViewController(vc, animated: true)
+            })
+            .disposed(by: disposeBag)
+
+
     }
     
 
