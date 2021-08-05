@@ -18,12 +18,12 @@ enum DetailOrderRouter: URLRequestConvertible {
     }
     
     var baseUrl: URL {
-        return URL(string: Constant.Network.baseUrl + "rents")!
+        return URL(string: Constant.Network.baseUrl + "/rent-details")!
     }
     
     var path: String {
         switch self {
-        case .get: return "rents"
+        case .get(let orderId): return String(orderId)
         }
     }
     
