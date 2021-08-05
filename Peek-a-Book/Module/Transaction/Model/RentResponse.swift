@@ -11,7 +11,7 @@ struct RentResponse: Codable {
     let id, periodOfTime: Int
     let shippingMethods, timeStamp: String
     let status: Status?
-    let users: User
+    let user: User?
     let address: Int?
     let alamat, provinsi, kota, kelurahan: String?
     let kecamatan: String?
@@ -19,7 +19,7 @@ struct RentResponse: Codable {
     let publishedAt, createdAt, updatedAt: String
 
     enum CodingKeys: String, CodingKey {
-        case id, periodOfTime, shippingMethods, timeStamp, status, users, address, alamat, provinsi, kota, kelurahan, kecamatan, longtitude, latitude
+        case id, periodOfTime, shippingMethods, timeStamp, status, user, address, alamat, provinsi, kota, kelurahan, kecamatan, longtitude, latitude
         case publishedAt = "published_at"
         case createdAt = "created_at"
         case updatedAt = "updated_at"
