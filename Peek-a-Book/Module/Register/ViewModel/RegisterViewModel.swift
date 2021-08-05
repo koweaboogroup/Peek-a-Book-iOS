@@ -30,24 +30,6 @@ struct RegisterViewModel {
         .startWith(false)
     }
     
-    func isPasswordConfirmed() -> Observable<Bool> {
-        return Observable.combineLatest(password.asObserver().startWith(""), confirmPassword.asObserver().startWith(""))
-            .map { password, confirmPassword in
-                return password == confirmPassword
-            }
-            .startWith(false)
-    }
-    
-    
-    //    MARK: Combine all validations
-    func isValid() -> Observable<Bool> {
-        return Observable.combineLatest(isAllTextFieldFilled(), isPasswordConfirmed())
-            .map { isAllTextFieldFilled, isPasswordConfirmed in
-                return isAllTextFieldFilled && isPasswordConfirmed
-            }
-            .startWith(false)
-    }
-    
     public func register(username: String, email: String, password: String, phoneNumber: String, alamat: String, provinsi: String, kota: String, kelurahan: String, kecamatan: String, longtitude: Float, latitude: Float) {
         
         self.loading.onNext(true)
