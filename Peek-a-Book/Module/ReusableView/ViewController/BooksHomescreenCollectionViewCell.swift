@@ -29,7 +29,11 @@ class BooksHomescreenCollectionViewCell: UICollectionViewCell {
             )
             self.lenderStoreImage.setImage(fromUrl: Constant.Network.baseUrl + (response.lender?.image?[0].url ?? ""))
             self.lenderStoreName.text = response.lender?.name
-            self.lenderStoreLocation.text = response.lender?.kota
+            if response.distance == 0 {
+                self.lenderStoreLocation.text = response.lender?.kota
+            }else{
+                self.lenderStoreLocation.text = "\(response.lender?.kota ?? "") (\(response.distance)m)"
+            }
             self.bookTitle.text = response.book?.title
             self.bookWriter.text = response.book?.author
             self.bookRentPrice.text = "\(response.price?.toRupiah() ?? "")/minggu"

@@ -16,6 +16,12 @@ class ModuleBuilder {
         return vc
     }
     
+    func goToDetailBooksViewController() -> DetailBooksViewController {
+        let vc = DetailBooksViewController(nibName: XIBConstant.DetailBooksVC, bundle: nil)
+        
+        return vc
+    }
+    
     func goToLoginViewController() -> LoginViewController {
         let vc = LoginViewController(nibName: XIBConstant.LoginViewController, bundle: nil)
         

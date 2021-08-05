@@ -51,6 +51,13 @@ class BooksViewController: UIViewController, CLLocationManagerDelegate {
             cell.response = book
         }.disposed(by: disposeBag)
         
+        nearestBookCollectionView.rx.modelSelected(BookResponse.self)
+            .subscribe(onNext: { model in
+                let vc = ModuleBuilder.shared.goToDetailBooksViewController()
+                vc.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(vc, animated: true)
+            })
+            .disposed(by: disposeBag)
     }
     
     func cellSelectedIndex(){
