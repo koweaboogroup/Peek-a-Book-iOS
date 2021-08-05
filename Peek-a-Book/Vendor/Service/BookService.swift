@@ -10,9 +10,9 @@ import Alamofire
 
 ///TODO : UBAH SESUAI RESPONSENYA RIFKI
 class BookService {
-    static func getBookDetail(bookRequest: BookRequest, successCompletion: @escaping (BookResponse?) -> Void, failCompletion: @escaping (AFError) -> Void) {
+    static func getBookDetail(id: String, successCompletion: @escaping (BookResponse?) -> Void, failCompletion: @escaping (AFError) -> Void) {
         
-        BaseRequest.post(router: BookRouter.post(bookRequest)) { request in
+        BaseRequest.get(router: BookRouter.get(id: id)) { request in
             request.responseDecodable(of: BookResponse.self) { response in
                 
                 switch response.result {

@@ -13,6 +13,8 @@ import RxKingfisher
 
 class DetailBooksViewController: UIViewController {
 
+    var id: Int = 0
+    
     // MARK: -Header View
     @IBOutlet weak var detailBookImages: UIImageView!
     @IBOutlet weak var detailBookTitleLabel: UILabel!
@@ -46,10 +48,8 @@ class DetailBooksViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        viewModel.getDetailBook(id: String(id))
         totalBookButtonView.isHidden = true
-        
-        
         
     
 

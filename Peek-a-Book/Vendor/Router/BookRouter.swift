@@ -10,30 +10,27 @@ import Alamofire
 
 enum BookRouter: URLRequestConvertible {
     
-    ///TODO : UBAH REQUEST DAN RESPONSE
-    case post(BookRequest)
+    case get(id: String)
     
     var method: HTTPMethod {
         switch self {
-        case .post: return .post
+        case .get: return .get
         }
     }
     
     var url: URL {
-        return URL(string: Constant.Network.baseUrl + "/auth/local")!
-    }
-    var urlBooks: URL {
-        return URL(string: Constant.Network.baseUrl + "/lender-books")!
+        return URL(string: Constant.Network.baseUrl + "/lender-books/")!
     }
     
     func asURLRequest() throws -> URLRequest {
-        var request = URLRequest(url: url)
-        
+        var urlWithParams: URL
+
         switch self {
-        case let .post(bookRequest):
-            request.httpBody = try JSONEncoder().encode(bookRequest)
+        case let .get(id):
+            urlWithParams = url.appendingPathComponent(id)
         }
         
+        var request = URLRequest(url: urlWithParams)
         request.headers.add(.contentType("application/json"))
         request.headers.add(.accept("application/json"))
         

@@ -55,6 +55,7 @@ class BooksViewController: UIViewController, CLLocationManagerDelegate {
             .subscribe(onNext: { model in
                 let vc = ModuleBuilder.shared.goToDetailBooksViewController()
                 vc.hidesBottomBarWhenPushed = true
+                vc.id = model.id ?? 0
                 self.navigationController?.pushViewController(vc, animated: true)
             })
             .disposed(by: disposeBag)

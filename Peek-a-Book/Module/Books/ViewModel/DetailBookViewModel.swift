@@ -16,9 +16,7 @@ class DetailBookViewModel {
     
     func getDetailBook(id: String) {
         self.loading.onNext(true)
-        let bookRequest = BookRequest()
-        
-        BookService.getBookDetail(bookRequest: bookRequest) { book in
+        BookService.getBookDetail(id: id) { book in
             self.loading.onNext(false)
             if let bookResponse = book {
                 self.bookDetail.onNext(bookResponse)
