@@ -67,6 +67,9 @@
                             <integer key="value" value="12"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="2L1-Fy-r65" appends="YES" id="fUJ-Lt-eZ3"/>
+                    </connections>
                 </view>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="y3I-a1-zAk">
                     <rect key="frame" x="136" y="64" width="258" height="62"/>
@@ -164,6 +167,11 @@
             </constraints>
             <point key="canvasLocation" x="18.840579710144929" y="84.375"/>
         </view>
+        <tapGestureRecognizer id="2L1-Fy-r65">
+            <connections>
+                <action selector="kelolaPenyewaanGetTapped:" destination="-1" id="5Ax-Ka-a6C"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="chevron.right" catalog="system" width="96" height="128"/>

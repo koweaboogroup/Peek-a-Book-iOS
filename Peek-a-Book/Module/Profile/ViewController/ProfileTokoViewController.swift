@@ -41,4 +41,7 @@ class ProfileTokoViewController: UIViewController {
         print("Sort Disini")
     }
     
+    @IBAction func kelolaPenyewaanGetTapped(_ sender: UITapGestureRecognizer) {
+        print("Kelola Penyewaan")
+    }
 }
