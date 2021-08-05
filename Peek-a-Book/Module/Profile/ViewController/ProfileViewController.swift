@@ -23,6 +23,9 @@ class ProfileViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: false)
+        let user = DataManager.shared.getUser()
+        profileNameLabel.text = user?.username
+        //profileImage.image = ??
     }
     
     override func viewWillDisappear(_ animated: Bool) {
