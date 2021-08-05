@@ -39,6 +39,7 @@ struct RegisterViewModel {
         RegisterService.register(registerRequest: registerRequest) { registerResponse in
             
             self.loading.onNext(false)
+            //kalo success ngapain?
             
             
         } failCompletion: { error in

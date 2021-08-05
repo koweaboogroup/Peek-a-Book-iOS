@@ -8,5 +8,7 @@
 import Foundation
 
 struct RegisterLenderRequest: Codable {
-    
+    let name, bio, user, alamat: String?
+    let provinsi, kota, kelurahan, kecamatan: String?
+    let longtitude, latitude: Float?
 }
