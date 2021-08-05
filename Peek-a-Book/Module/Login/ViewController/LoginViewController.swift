@@ -19,6 +19,9 @@ class LoginViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+//        MARK: set title to be empty for back button when pushed
+        self.navigationItem.backButtonTitle = ""
 
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
@@ -66,8 +69,7 @@ class LoginViewController: UIViewController {
         
         viewModel.buttonRegisterPressed.subscribe (onNext: { pressed in
             if pressed {
-                let vc = ModuleBuilder.shared.goToRegisterViewController()
-                self.navigationController?.pushViewController(vc, animated: true)
+                self.changeToRegisterVC()
             }
         }).disposed(by: disposeBag)
 
@@ -81,7 +83,8 @@ class LoginViewController: UIViewController {
     }
     
     private func changeToRegisterVC(){
-        //TODO TAMBAHKAN METHOD UNTUK BERALIH KE HALAMAN REGISTER
+        let vc = ModuleBuilder.shared.goToRegisterViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 
     override func viewDidLoad() {
