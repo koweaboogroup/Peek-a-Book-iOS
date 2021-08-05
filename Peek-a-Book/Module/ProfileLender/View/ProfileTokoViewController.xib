@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfileTokoViewController" customModule="Peek_a_Book" customModuleProvider="target">
+            <connections>
+                <outlet property="bioTokoLabel" destination="xCc-H1-Vkk" id="kh8-7r-JOJ"/>
+                <outlet property="koleksiBukuCollectionView" destination="Xqr-jR-z6c" id="cku-gg-87Z"/>
+                <outlet property="lokasiTokoLabel" destination="g84-wc-7Md" id="XHS-cc-nX5"/>
+                <outlet property="namaTokoLabel" destination="uzM-JA-wLq" id="RHA-DY-Bot"/>
+                <outlet property="profilTokoImage" destination="9xB-p9-9hp" id="fjP-ZU-blv"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KR5-Nz-QVe" userLabel="Riwayat Penyewaan View">
+                    <rect key="frame" x="20" y="189" width="374" height="44"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="JFb-mh-fa9">
+                            <rect key="frame" x="343" y="9" width="15" height="26.5"/>
+                            <color key="tintColor" systemColor="systemBlueColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="Lga-T9-1J6"/>
+                                <constraint firstAttribute="width" constant="15" id="u2S-Oq-iFU"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kelola Penyewaan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E15-ao-gl5">
+                            <rect key="frame" x="16" y="12" width="136.5" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <gestureRecognizers/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="JFb-mh-fa9" secondAttribute="trailing" constant="16" id="B1B-zy-63C"/>
+                        <constraint firstItem="E15-ao-gl5" firstAttribute="leading" secondItem="KR5-Nz-QVe" secondAttribute="leading" constant="16" id="FCb-t4-3Qi"/>
+                        <constraint firstItem="JFb-mh-fa9" firstAttribute="centerY" secondItem="KR5-Nz-QVe" secondAttribute="centerY" id="i9E-U7-AVq"/>
+                        <constraint firstAttribute="height" constant="44" id="osg-i3-L54"/>
+                        <constraint firstItem="E15-ao-gl5" firstAttribute="centerY" secondItem="KR5-Nz-QVe" secondAttribute="centerY" id="xhm-80-6BZ"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                            <real key="value" value="0.10000000000000001"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                            <size key="value" width="0.0" height="2"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                            <real key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                            <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="12"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="2L1-Fy-r65" appends="YES" id="fUJ-Lt-eZ3"/>
+                    </connections>
+                </view>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="y3I-a1-zAk">
+                    <rect key="frame" x="136" y="64" width="258" height="62"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bacaan Dissa" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uzM-JA-wLq">
+                            <rect key="frame" x="0.0" y="0.0" width="258" height="26.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bio singkat pemberi sewa toko untuk mejelaskan tokonya" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xCc-H1-Vkk">
+                            <rect key="frame" x="0.0" y="28.5" width="258" height="33.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="questionmark.folder" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="9xB-p9-9hp">
+                    <rect key="frame" x="20" y="65" width="109" height="106.5"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="109" id="TcV-I7-gYe"/>
+                        <constraint firstAttribute="width" constant="109" id="dL9-hl-lp4"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="72"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Katalog" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XEQ-66-eQL">
+                    <rect key="frame" x="23" y="257" width="72.5" height="26.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7eH-uk-IpE">
+                    <rect key="frame" x="288" y="257" width="103" height="33"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <state key="normal" title="Semua Genre"/>
+                    <connections>
+                        <action selector="semuaGenrePressed:" destination="-1" eventType="touchUpInside" id="lHN-4T-vhF"/>
+                    </connections>
+                </button>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Xqr-jR-z6c">
+                    <rect key="frame" x="20" y="306" width="374" height="590"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="q6S-Px-bpg">
+                        <size key="itemSize" width="128" height="128"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
+                <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="bI1-UZ-GXA">
+                    <rect key="frame" x="136" y="140" width="122" height="14"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pin-location" translatesAutoresizingMaskIntoConstraints="NO" id="3rG-gp-plY">
+                            <rect key="frame" x="0.0" y="0.0" width="14" height="14"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="14" id="8Kf-Gw-RAS"/>
+                                <constraint firstAttribute="width" constant="14" id="RLn-PP-Sg2"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kemanggisan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g84-wc-7Md">
+                            <rect key="frame" x="19" y="0.0" width="103" height="14"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="0.50196078430000002" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="Xqr-jR-z6c" secondAttribute="bottom" id="1xo-fY-Pcd"/>
+                <constraint firstItem="Xqr-jR-z6c" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="4os-ED-Irv"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="7eH-uk-IpE" secondAttribute="trailing" constant="23" id="6DX-J3-4Ki"/>
+                <constraint firstItem="bI1-UZ-GXA" firstAttribute="top" secondItem="y3I-a1-zAk" secondAttribute="bottom" constant="14" id="8fS-zR-Ca7"/>
+                <constraint firstAttribute="trailing" secondItem="y3I-a1-zAk" secondAttribute="trailing" constant="20" id="9Oi-jF-Fbm"/>
+                <constraint firstItem="XEQ-66-eQL" firstAttribute="top" secondItem="KR5-Nz-QVe" secondAttribute="bottom" constant="24" id="9W7-J2-Ct0"/>
+                <constraint firstItem="9xB-p9-9hp" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="BUL-Ez-tV8"/>
+                <constraint firstItem="9xB-p9-9hp" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="CVF-G2-pnJ"/>
+                <constraint firstItem="KR5-Nz-QVe" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="DZs-dp-C3v"/>
+                <constraint firstItem="y3I-a1-zAk" firstAttribute="leading" secondItem="9xB-p9-9hp" secondAttribute="trailing" constant="7" id="M2h-ym-uDy"/>
+                <constraint firstItem="Xqr-jR-z6c" firstAttribute="top" secondItem="7eH-uk-IpE" secondAttribute="bottom" constant="16" id="RX7-XU-hsN"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Xqr-jR-z6c" secondAttribute="trailing" constant="20" id="WMl-NM-k5e"/>
+                <constraint firstItem="bI1-UZ-GXA" firstAttribute="leading" secondItem="9xB-p9-9hp" secondAttribute="trailing" constant="7" id="XBy-2q-yUa"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="KR5-Nz-QVe" secondAttribute="trailing" constant="20" id="bEJ-Tf-7Wj"/>
+                <constraint firstItem="KR5-Nz-QVe" firstAttribute="top" secondItem="9xB-p9-9hp" secondAttribute="bottom" constant="16" id="fbh-cI-jrI"/>
+                <constraint firstItem="y3I-a1-zAk" firstAttribute="top" secondItem="9xB-p9-9hp" secondAttribute="top" id="fx1-61-IZ6"/>
+                <constraint firstItem="7eH-uk-IpE" firstAttribute="top" secondItem="KR5-Nz-QVe" secondAttribute="bottom" constant="24" id="r8g-3k-D0R"/>
+                <constraint firstItem="XEQ-66-eQL" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="23" id="rLW-rf-OPL"/>
+            </constraints>
+            <point key="canvasLocation" x="18.840579710144929" y="84.375"/>
+        </view>
+        <tapGestureRecognizer id="2L1-Fy-r65">
+            <connections>
+                <action selector="kelolaPenyewaanGetTapped:" destination="-1" id="5Ax-Ka-a6C"/>
+            </connections>
+        </tapGestureRecognizer>
+    </objects>
+    <resources>
+        <image name="chevron.right" catalog="system" width="96" height="128"/>
+        <image name="pin-location" width="22" height="32"/>
+        <image name="questionmark.folder" catalog="system" width="128" height="97"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
