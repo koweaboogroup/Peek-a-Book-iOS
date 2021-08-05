@@ -16,17 +16,27 @@ class BooksHomescreenCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var bookTitle:UILabel!
     @IBOutlet weak var bookWriter:UILabel!
     @IBOutlet weak var bookRentPrice:UILabel!
+    override func awakeFromNib() {
+        rootView.layer.applyShadow(
+            color: .black,
+            alpha: 0.1,
+            x: 0,
+            y: 6,
+            blur: 30,
+            spread: 0
+        )
+    }
     
     public var response: BookResponse! {
         didSet {
-            self.rootView.layer.applyShadow(
-                color: .black,
-                alpha: 0.5,
-                x: 0,
-                y: 5,
-                blur: 10,
-                spread: 0
-            )
+//            self.rootView.layer.applyShadow(
+//                color: .black,
+//                alpha: 0.5,
+//                x: 0,
+//                y: 5,
+//                blur: 10,
+//                spread: 0
+//            )
             self.lenderStoreImage.setImage(fromUrl: Constant.Network.baseUrl + (response.lender?.image?[0].url ?? ""))
             self.lenderStoreName.text = response.lender?.name
             if response.distance == 0 {
