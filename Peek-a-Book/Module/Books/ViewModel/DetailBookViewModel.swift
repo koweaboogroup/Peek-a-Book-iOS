@@ -10,7 +10,7 @@ import RxSwift
 
 class DetailBookViewModel {
     
-    public let bookDetail : PublishSubject<BookResponse> = PublishSubject()
+    public let bookDetail : PublishSubject<LenderBook> = PublishSubject()
     public let loading : PublishSubject<Bool> = PublishSubject()
     public let error : PublishSubject<String> = PublishSubject()
     

@@ -10,10 +10,10 @@ import Alamofire
 
 ///TODO : UBAH SESUAI RESPONSENYA RIFKI
 class BookService {
-    static func getBookDetail(id: String, successCompletion: @escaping (BookResponse?) -> Void, failCompletion: @escaping (AFError) -> Void) {
+    static func getBookDetail(id: String, successCompletion: @escaping (LenderBook?) -> Void, failCompletion: @escaping (AFError) -> Void) {
         
         BaseRequest.get(router: BookRouter.get(id: id)) { request in
-            request.responseDecodable(of: BookResponse.self) { response in
+            request.responseDecodable(of: LenderBook.self) { response in
                 
                 switch response.result {
                 case .success(let bookResponse):
@@ -25,10 +25,10 @@ class BookService {
         }
     }
     
-    static func getListBook(successCompletion: @escaping ([BookResponse]) -> Void, failCompletion: @escaping (AFError) -> Void){
+    static func getListBook(successCompletion: @escaping ([LenderBook]) -> Void, failCompletion: @escaping (AFError) -> Void){
         
         BaseRequest.get(router: BookListRouter.get) { request in
-            request.responseDecodable(of: [BookResponse].self) { response in
+            request.responseDecodable(of: [LenderBook].self) { response in
                 
                 switch response.result {
                 case .success(let bookResponse):

@@ -67,7 +67,7 @@ class BooksViewController: UIViewController, CLLocationManagerDelegate {
             print(model.row)
         }).disposed(by: disposeBag)
         
-        nearestBookCollectionView.rx.modelSelected(BookResponse.self)
+        nearestBookCollectionView.rx.modelSelected(LenderBook.self)
             .subscribe(onNext: { model in
                 let vc = ModuleBuilder.shared.goToDetailBooksViewController()
                 vc.hidesBottomBarWhenPushed = true
@@ -76,7 +76,7 @@ class BooksViewController: UIViewController, CLLocationManagerDelegate {
             })
             .disposed(by: disposeBag)
 
-        fictionBookCollectionView.rx.modelSelected(BookResponse.self)
+        fictionBookCollectionView.rx.modelSelected(LenderBook.self)
             .subscribe(onNext: { model in
                 let vc = ModuleBuilder.shared.goToDetailBooksViewController()
                 vc.hidesBottomBarWhenPushed = true
@@ -85,7 +85,7 @@ class BooksViewController: UIViewController, CLLocationManagerDelegate {
             })
             .disposed(by: disposeBag)
 
-        nonFictionBookCollectionView.rx.modelSelected(BookResponse.self)
+        nonFictionBookCollectionView.rx.modelSelected(LenderBook.self)
             .subscribe(onNext: { model in
                 let vc = ModuleBuilder.shared.goToDetailBooksViewController()
                 vc.hidesBottomBarWhenPushed = true

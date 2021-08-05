@@ -1,5 +1,5 @@
 //
-//  Book.swift
+//  LenderBook.swift
 //  Peek-a-Book
 //
 //  Created by Yossan Sandi Rahmadi on 31/07/21.
@@ -7,11 +7,11 @@
 
 import Foundation
 
-// MARK: - Book
-struct BookResponse: Codable {
+// MARK: - LenderBook
+struct LenderBook: Codable {
     let id, price: Int?
     let bookCondition: BookCondition?
-    let lender: LenderBook?
+    let lender: Lender?
     let book: Book?
     let page: Int?
     let language, publishedAt, createdAt, updatedAt: String?
@@ -27,24 +27,6 @@ struct BookResponse: Codable {
         case createdAt = "created_at"
         case updatedAt = "updated_at"
         case images
-    }
-}
-
-// MARK: - Book
-struct Book: Codable {
-    let id: Int?
-    let title, isbn, author, sinopsis: String?
-    let bookGenre: Int?
-    let isChecked: Bool?
-    let publishedAt, createdAt, updatedAt: String?
-
-    enum CodingKeys: String, CodingKey {
-        case id, title, isbn, author, sinopsis
-        case bookGenre = "book_genre"
-        case isChecked
-        case publishedAt = "published_at"
-        case createdAt = "created_at"
-        case updatedAt = "updated_at"
     }
 }
 
@@ -83,8 +65,6 @@ struct ImageObject: Codable {
     }
 }
 
-
-
 // MARK: - Formats
 struct Formats: Codable {
     let thumbnail, large, medium, small: Large?
@@ -96,24 +76,4 @@ struct Large: Codable {
     let width, height: Int?
     let size: Double?
     let url: String?
-}
-
-// MARK: - Lender
-struct LenderBook: Codable {
-    let id: Int?
-    let name, bio: String?
-    let user: Int?
-    let alamat, provinsi, kota, kelurahan: String?
-    let kecamatan: String?
-    let longtitude, latitude: Double?
-    let publishedAt, createdAt, updatedAt: String?
-    let image: [ImageObject]?
-
-    enum CodingKeys: String, CodingKey {
-        case id, name, bio, user, alamat, provinsi, kota, kelurahan, kecamatan, longtitude, latitude
-        case publishedAt = "published_at"
-        case createdAt = "created_at"
-        case updatedAt = "updated_at"
-        case image
-    }
 }

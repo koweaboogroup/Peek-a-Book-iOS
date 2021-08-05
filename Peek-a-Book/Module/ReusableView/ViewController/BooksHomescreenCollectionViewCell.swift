@@ -27,7 +27,7 @@ class BooksHomescreenCollectionViewCell: UICollectionViewCell {
         )
     }
     
-    public var response: BookResponse! {
+    public var response: LenderBook! {
         didSet {
 //            self.rootView.layer.applyShadow(
 //                color: .black,
