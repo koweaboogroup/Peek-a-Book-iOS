@@ -30,7 +30,6 @@ class BooksViewModel {
                 }
             }
         } failCompletion: { error in
-            print("error \(error.errorDescription)")
             self.error.onNext(error.errorDescription ?? "Data Tidak Ditemukan")
         }
     }

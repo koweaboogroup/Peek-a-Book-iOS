@@ -11,7 +11,7 @@ import RxCocoa
 
 class ProfileViewController: UIViewController {
     // MARK: -Deklarasi IBOutlet
-    @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var profileImage: CircleImageView!
     @IBOutlet weak var profileNameLabel: UILabel!
     
     private var disposeBag = DisposeBag()
@@ -51,6 +51,8 @@ class ProfileViewController: UIViewController {
     }
     
     private func setupView(){
+        profileImage.setPlaceHolderImage(image: UIImage(systemName: "person.fill")!)
+        profileImage.setBackgroundColor(color: #colorLiteral(red: 0.9058823529, green: 0.9568627451, blue: 1, alpha: 1))
         profileViewModel.user.subscribe(onNext: { user in
             self.userObj = user
         }).disposed(by: disposeBag)

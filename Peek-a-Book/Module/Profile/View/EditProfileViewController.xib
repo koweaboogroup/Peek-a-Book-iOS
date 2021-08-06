@@ -16,6 +16,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditProfileViewController" customModule="Peek_a_Book" customModuleProvider="target">
             <connections>
                 <outlet property="emailTextField" destination="hnd-hI-enu" id="5u4-PV-CmF"/>
+                <outlet property="imageProfile" destination="h1m-4A-H9A" id="0yF-zW-WCv"/>
                 <outlet property="namaLengkapTextField" destination="oAm-vZ-0Dm" id="A1w-WG-JEN"/>
                 <outlet property="noWhatsappTextField" destination="5yV-Ff-Or5" id="sYs-dp-EL2"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -202,7 +203,7 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square.and.arrow.down.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="h1m-4A-H9A">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="h1m-4A-H9A" customClass="CircleImageView" customModule="Peek_a_Book" customModuleProvider="target">
                     <rect key="frame" x="152.5" y="64" width="109" height="109"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="109" id="J52-lm-Uhb"/>
@@ -241,7 +242,6 @@
     </objects>
     <resources>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
-        <image name="square.and.arrow.down.fill" catalog="system" width="121" height="128"/>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
