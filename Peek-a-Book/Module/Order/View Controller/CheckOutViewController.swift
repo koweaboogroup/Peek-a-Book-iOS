@@ -9,21 +9,83 @@ import UIKit
 
 class CheckOutViewController: UIViewController {
 
+    //MARK: -Header
+    @IBOutlet weak var lenderImageView: UIImageView!
+    @IBOutlet weak var lenderNameLabel: UILabel!
+    @IBOutlet weak var detailBukuTableView: UITableView!
     
     
+    //MARK: -Durasi Penyewaan
+    @IBOutlet weak var durasiPenyewaanLabel: UILabel!
+    @IBOutlet weak var hargaPenyewaanLabel: UILabel!
     
+    //MARK: -Detail Pengiriman
+    @IBOutlet weak var detailAlamatLabel: UILabel!
+    @IBOutlet weak var metodePengirimanLabel: UILabel!
     
+    //MARK: -Total Biaya Sewa
+    @IBOutlet weak var biayaSewaBukuLabel: UILabel!
+    @IBOutlet weak var biayaOngkirLabel: NSLayoutConstraint!
+    @IBOutlet weak var estimasiTotalLabel: UILabel!
     
+    //MARK: -Button
+    @IBOutlet weak var sewaSekarangButton: UIButton!
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBar()
-        // Do any additional setup after loading the view.
+        
     }
 
 
+    @IBAction func durasiPenyewaanGetTapped(_ sender: UITapGestureRecognizer) {
+        print("picker")
+    }
+    
+    @IBAction func detailAlamatGetTapped(_ sender: UITapGestureRecognizer) {
+        print("Halaman Alamat")
+    }
+    
+    @IBAction func metodePengirimanGetTapped(_ sender: UITapGestureRecognizer) {
+        print("Picker")
+    }
+    
+    @IBAction func sewaSekarangButtonPressed(_ sender: UIButton) {
+        print("cabut")
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     func setNavigationBar(){
         self.navigationItem.title = "Keranjang"
         

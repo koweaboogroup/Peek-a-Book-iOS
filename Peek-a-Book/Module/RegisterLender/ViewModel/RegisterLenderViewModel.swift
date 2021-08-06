@@ -10,7 +10,7 @@ import RxSwift
 
 struct RegisterLenderViewModel {
     let storeName: PublishSubject<String> = PublishSubject()
-    let user: PublishSubject<User> = PublishSubject()
+    let user: PublishSubject<RegisterLenderResponse> = PublishSubject()
     
     let loading: PublishSubject<Bool> = PublishSubject()
     let error: PublishSubject<String> = PublishSubject()
@@ -31,11 +31,11 @@ struct RegisterLenderViewModel {
         RegisterLenderService.registerLender(registerLenderRequest: registerLenderRequest) { registerLenderResponse in
             self.loading.onNext(false)
             
-            if let responseUser = registerLenderResponse.user {
-                self.user.onNext(responseUser)
-            } else {
-                self.error.onNext("Data Tidak Ditemukan")
-            }
+//            if let responseUser = registerLenderResponse {
+                self.user.onNext(registerLenderResponse)
+//            } else {
+//                self.error.onNext("Data Tidak Ditemukan")
+//            }
             
         } failCompletion: { error in
             self.loading.onNext(false)

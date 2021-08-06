@@ -33,6 +33,18 @@ class DetailOrderViewController: UIViewController {
     @IBOutlet weak var totalBiayaLabel: UILabel!
     @IBOutlet weak var tanggalBatasSewaLabel: UILabel!
     
+    var orderId: Int?
+    let viewModel = DetailOrderViewModel()
+    
+    init(orderId: Int, nibName: String) {
+        super.init(nibName: nibName, bundle: nil)
+        self.orderId = orderId
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     
     
     
@@ -44,8 +56,13 @@ class DetailOrderViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBar()
-        // Do any additional setup after loading the view.
+        
+        viewModel.getDetailOrder(orderId: orderId ?? -1)
     }
+    
+    
+    
+    
     func setNavigationBar(){
         self.navigationItem.title = "Detail Order"
         
