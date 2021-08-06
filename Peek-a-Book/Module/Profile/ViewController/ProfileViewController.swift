@@ -51,6 +51,9 @@ class ProfileViewController: UIViewController {
     }
     
     private func setupView(){
+        profileViewModel.user.subscribe(onNext: { user in
+            self.userObj = user
+        }).disposed(by: disposeBag)
         profileViewModel.user
             .asObserver()
             .map { user in
@@ -79,23 +82,16 @@ class ProfileViewController: UIViewController {
     
     @IBAction func tapRiwayatPenyewaan(_ sender: UITapGestureRecognizer) {
         
-        print("Riwayat Penyewaan Buku")
-        
-        
     }
     
     @IBAction func tapMulaiSewakanBuku(_ sender: UITapGestureRecognizer) {
-        self.profileViewModel.user
-            .subscribe(onNext: { user in
-                if user.lender != nil {
-                    let vc = ModuleBuilder.shared.goToProfileLenderViewController()
-                    self.navigationController?.pushViewController(vc, animated: true)
-                } else {
-                    let vc = ModuleBuilder.shared.goToRegisterLenderViewController()
-                    self.navigationController?.pushViewController(vc, animated: true)
-                }
-            })
-            .disposed(by: self.disposeBag)
+        if userObj.lender != nil {
+            let vc = ModuleBuilder.shared.goToProfileLenderViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
+        } else {
+            let vc = ModuleBuilder.shared.goToRegisterLenderViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     @IBAction func tapSyaratDanKetentuan(_ sender: UITapGestureRecognizer) {
