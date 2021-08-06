@@ -8,6 +8,8 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import Kingfisher
+import RxKingfisher
 
 class ProfileTokoViewController: UIViewController {
 
@@ -29,7 +31,6 @@ class ProfileTokoViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit Profile", style: .plain, target: self, action: #selector(addTapped))
         
         setupRx()
-
     }
     
     private func setupRx() {
@@ -46,7 +47,7 @@ class ProfileTokoViewController: UIViewController {
         .disposed(by: disposeBag)
         
         viewModel.lenderProfile.asObserver().map { response in
-            response.bio
+            response.bio ?? ""
         }.bind(to: bioTokoLabel.rx.text)
         .disposed(by: disposeBag)
         
