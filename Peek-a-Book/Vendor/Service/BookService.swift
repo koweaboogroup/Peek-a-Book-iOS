@@ -12,11 +12,11 @@ class BookService {
     static func getBookDetail(id: String, successCompletion: @escaping (LenderBook?) -> Void, failCompletion: @escaping (AFError) -> Void) {
         
         BaseRequest.get(router: BookRouter.get(id: id)) { request in
-            request.responseDecodable(of: LenderBook.self) { response in
+            request.responseDecodable(of: [LenderBook].self) { response in
                 
                 switch response.result {
                 case .success(let bookResponse):
-                    successCompletion(bookResponse)
+                    successCompletion(bookResponse[0])
                 case .failure(let error):
                     failCompletion(error)
                 }
@@ -27,9 +27,6 @@ class BookService {
     static func getListBook(successCompletion: @escaping ([LenderBook]) -> Void, failCompletion: @escaping (AFError) -> Void){
         
         BaseRequest.get(router: BookListRouter.get) { request in
-//            request.responseJSON { item in
-//                print(item)
-//            }
             request.responseDecodable(of: [LenderBook].self) { response in
                 
                 switch response.result {
