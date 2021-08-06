@@ -27,12 +27,16 @@ class BookService {
     static func getListBook(successCompletion: @escaping ([LenderBook]) -> Void, failCompletion: @escaping (AFError) -> Void){
         
         BaseRequest.get(router: BookListRouter.get) { request in
+//            request.responseJSON { item in
+//                print(item)
+//            }
             request.responseDecodable(of: [LenderBook].self) { response in
                 
                 switch response.result {
                 case .success(let bookResponse):
                     successCompletion(bookResponse)
                 case .failure(let error):
+                    debugPrint(error)
                     failCompletion(error)
                 }
             }

@@ -14,13 +14,13 @@ struct Lender: Codable {
     let kecamatan: String?
     let longtitude, latitude: Double?
     let publishedAt, createdAt, updatedAt: String?
-    let image: [ImageObject]?
+    let images: [ImageObject]?
 
     enum CodingKeys: String, CodingKey {
         case id, name, bio, user, alamat, provinsi, kota, kelurahan, kecamatan, longtitude, latitude
         case publishedAt = "published_at"
         case createdAt = "created_at"
         case updatedAt = "updated_at"
-        case image
+        case images
     }
 }

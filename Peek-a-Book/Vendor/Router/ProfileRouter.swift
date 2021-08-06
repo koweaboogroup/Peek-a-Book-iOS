@@ -19,7 +19,7 @@ enum ProfileRouter: URLRequestConvertible {
     }
     
     var url: URL {
-        return URL(string: Constant.Network.baseUrl + "/users/me")!
+        return URL(string: Constant.Network.baseUrl + "/users/\(DataManager.shared.getUserIdByJwt())")!
     }
 
     func asURLRequest() throws -> URLRequest {
