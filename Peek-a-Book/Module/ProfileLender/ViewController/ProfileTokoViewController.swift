@@ -11,12 +11,6 @@ import RxCocoa
 import Kingfisher
 import RxKingfisher
 
-protocol ProfileTokoDelegate {
-    
-    func fetchProfile()
-    
-}
-
 class ProfileTokoViewController: UIViewController {
 
     @IBOutlet weak var profilTokoImage: CircleImageView!
@@ -36,12 +30,16 @@ class ProfileTokoViewController: UIViewController {
         self.lenderId = id
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        viewModel.getLenderProfile(lenderId: lenderId)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit Profile", style: .plain, target: self, action: #selector(editTapped))
+        setupRx()
         
-        fetchProfile()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit Profile", style: .plain, target: self, action: #selector(editTapped))
     }
     
     private func setupRx() {
@@ -51,18 +49,18 @@ class ProfileTokoViewController: UIViewController {
             self.profilTokoImage.setImage(fromUrl: Constant.Network.baseUrl + (response.images?[0].url ?? ""))
         }).disposed(by: disposeBag)
         
-        viewModel.lenderProfile.asObserver().map { response in
+        viewModel.lenderProfile.asObservable().map { response in
             response.name
         }.bind(to: namaTokoLabel.rx.text)
         .disposed(by: disposeBag)
         
-        viewModel.lenderProfile.asObserver().map { response in
+        viewModel.lenderProfile.asObservable().map { response in
             response.bio ?? ""
         }.bind(to: bioTokoLabel.rx.text)
         .disposed(by: disposeBag)
         
         //MARK: Ini mapping lokasinya mau pake Kota aja ya?
-        viewModel.lenderProfile.asObserver().map { response in
+        viewModel.lenderProfile.asObservable().map { response in
             response.kota
         }.bind(to: lokasiTokoLabel.rx.text)
         .disposed(by: disposeBag)
@@ -82,13 +80,4 @@ class ProfileTokoViewController: UIViewController {
     @IBAction func kelolaPenyewaanGetTapped(_ sender: UITapGestureRecognizer) {
         print("Kelola Penyewaan")
     }
-}
-
-extension ProfileTokoViewController: ProfileTokoDelegate {
-    
-    func fetchProfile() {
-        setupRx()
-        viewModel.getLenderProfile(lenderId: lenderId)
-    }
-    
 }
