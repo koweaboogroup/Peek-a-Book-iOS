@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (5.4.3)
+  - JWTDecode (2.6.1)
   - Kingfisher (5.15.8):
     - Kingfisher/Core (= 5.15.8)
   - Kingfisher/Core (5.15.8)
@@ -16,6 +17,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 5.4)
+  - JWTDecode (~> 2.6)
   - RxCocoa (= 6.2.0)
   - RxKingfisher
   - RxSwift (= 6.2.0)
@@ -23,6 +25,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - JWTDecode
     - Kingfisher
     - RxCocoa
     - RxKingfisher
@@ -31,12 +34,13 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
+  JWTDecode: 5e6d4b49c2b098f994cf7617401c195c8c06300b
   Kingfisher: a3c03d702433fa6cfedabb2bddbe076fb8f2e902
   RxCocoa: 4baf94bb35f2c0ab31bc0cb9f1900155f646ba42
   RxKingfisher: a602fbf8751d756a7cc6190ddfedc2ce0d301377
   RxRelay: e72dbfd157807478401ef1982e1c61c945c94b2f
   RxSwift: d356ab7bee873611322f134c5f9ef379fa183d8f
 
-PODFILE CHECKSUM: eab37ffac9ae9ba1d53cef8671b7ac41bc21b501
+PODFILE CHECKSUM: a15fff380f99dca6743bad7b5a67938338039264
 
 COCOAPODS: 1.10.2

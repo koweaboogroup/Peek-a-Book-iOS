@@ -16,6 +16,12 @@ class ModuleBuilder {
         return vc
     }
     
+    func goToDetailBooksViewController() -> DetailBooksViewController {
+        let vc = DetailBooksViewController(nibName: XIBConstant.DetailBooksVC, bundle: nil)
+        
+        return vc
+    }
+    
     func goToLoginViewController() -> LoginViewController {
         let vc = LoginViewController(nibName: XIBConstant.LoginViewController, bundle: nil)
         
@@ -34,4 +40,33 @@ class ModuleBuilder {
         return vc
     }
 
+    func goToAlamatViewController() -> AddressSettingViewController {
+        let vc = AddressSettingViewController(nibName: XIBConstant.AlamatSettingVC, bundle: nil)
+        
+        return vc
+    }
+
+    func goToMapsViewController() -> MapsViewController {
+        let vc = MapsViewController(nibName: XIBConstant.MapsVC, bundle: nil)
+        
+        return vc
+    }
+    
+    func goToEditProfileViewController() -> EditProfileViewController {
+        let vc = EditProfileViewController(nibName: XIBConstant.EditProfileViewController, bundle: nil)
+        
+        return vc
+    }
+
+    func goToRegisterLenderViewController() -> RegisterLenderViewController {
+        let vc = RegisterLenderViewController(nibName: XIBConstant.RegisterLenderViewController, bundle: nil)
+        
+        return vc
+    }
+
+    func goToProfileLenderViewController() -> ProfileTokoViewController {
+        let vc = ProfileTokoViewController(nibName: XIBConstant.ProfileTokoViewController, bundle: nil)
+        
+        return vc
+    }
 }

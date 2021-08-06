@@ -42,7 +42,7 @@
                 <constraint firstItem="ksf-Ak-lgc" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="xXo-pY-bT7"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="-86" y="104"/>
+            <point key="canvasLocation" x="-86.231884057971016" y="103.45982142857143"/>
         </view>
     </objects>
     <resources>

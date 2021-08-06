@@ -8,12 +8,11 @@
 import Foundation
 import Alamofire
 
-///TODO : UBAH SESUAI RESPONSENYA RIFKI
 class BookService {
-    static func getBookDetail(bookRequest: BookRequest, successCompletion: @escaping (Book?) -> Void, failCompletion: @escaping (AFError) -> Void) {
+    static func getBookDetail(id: String, successCompletion: @escaping (LenderBook?) -> Void, failCompletion: @escaping (AFError) -> Void) {
         
-        BaseRequest.post(router: BookRouter.post(bookRequest)) { request in
-            request.responseDecodable(of: Book.self) { response in
+        BaseRequest.get(router: BookRouter.get(id: id)) { request in
+            request.responseDecodable(of: LenderBook.self) { response in
                 
                 switch response.result {
                 case .success(let bookResponse):
@@ -25,14 +24,14 @@ class BookService {
         }
     }
     
-    static func getListBook(successCompletion: @escaping ([Book]) -> Void, failCompletion: @escaping (AFError) -> Void){
+    static func getListBook(successCompletion: @escaping ([LenderBook]) -> Void, failCompletion: @escaping (AFError) -> Void){
         
-        BaseRequest.get(router: BookRouter.get) { request in
-            request.responseDecodable(of: Book.self) { response in
+        BaseRequest.get(router: BookListRouter.get) { request in
+            request.responseDecodable(of: [LenderBook].self) { response in
                 
                 switch response.result {
                 case .success(let bookResponse):
-                    successCompletion([bookResponse])
+                    successCompletion(bookResponse)
                 case .failure(let error):
                     failCompletion(error)
                 }
