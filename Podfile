@@ -9,5 +9,6 @@ target 'Peek-a-Book' do
   pod 'RxCocoa', '6.2.0'
   pod 'Alamofire', '~> 5.4'
   pod 'RxKingfisher'
+  pod 'JWTDecode', '~> 2.6'
 
 end

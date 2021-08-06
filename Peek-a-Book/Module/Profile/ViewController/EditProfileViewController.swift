@@ -6,22 +6,27 @@
 //
 
 import UIKit
+import RxSwift
 
 class EditProfileViewController: UIViewController {
-
+    
+    @IBOutlet weak var imageProfile: CircleImageView!
     @IBOutlet weak var namaLengkapTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var noWhatsappTextField: UITextField!
     
-  
-    
-    
+    private var profileViewModel = ProfileViewModel()
+    private var disposedBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
+        setNavigationBar()
+        fetchProfile()
+        setupRx()
     }
+    
     func setNavigationBar(){
         self.navigationItem.title = "Edit Profil"
         
@@ -37,10 +42,40 @@ class EditProfileViewController: UIViewController {
         self.navigationController?.view.backgroundColor = .clear
     }
     
+    private func fetchProfile(){
+        profileViewModel.fetchProfile()
+    }
+    
+    private func setupRx() {
+        imageProfile.setPlaceHolderImage(image: UIImage(systemName: "person.fill")!)
+        imageProfile.setBackgroundColor(color: #colorLiteral(red: 0.9058823529, green: 0.9568627451, blue: 1, alpha: 1))
+        profileViewModel.user.asObserver()
+            .map{ user in
+                user.username
+            }
+            .bind(to: namaLengkapTextField.rx.text)
+            .disposed(by: disposedBag)
+        
+        profileViewModel.user.asObserver()
+            .map{ user in
+                user.email
+            }
+            .bind(to: emailTextField.rx.text)
+            .disposed(by: disposedBag)
+        
+        profileViewModel.user.asObserver()
+            .map{ user in
+                user.phoneNumber
+            }
+            .bind(to: noWhatsappTextField.rx.text)
+            .disposed(by: disposedBag)
+        
+    }
+    
     @objc func addTapped(_ sender: UINavigationItem){
         print("Simpan")
     }
-
+    
     @IBAction func detailAlamatGetTap(_ sender: UITapGestureRecognizer) {
         print("Pindah Ke maps")
     }
