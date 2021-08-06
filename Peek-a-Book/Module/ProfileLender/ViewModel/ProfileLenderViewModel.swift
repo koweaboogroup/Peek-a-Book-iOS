@@ -22,7 +22,7 @@ struct ProfileLenderViewModel {
             }.startWith(false)
     }
     
-    public func editLenderProfile(lenderId: Int, name: String?, bio: String?, user: String?, alamat: String?, provinsi: String?, kota: String?, kelurahan: String?, kecamatan: String?, longtitude: Float?, latitude: Float?) {
+    public func editLenderProfile(lenderId: Int, name: String?, bio: String?, user: String?, alamat: String?, provinsi: String?, kota: String?, kelurahan: String?, kecamatan: String?, longtitude: Float?, latitude: Float?, successCompletion: @escaping () -> Void) {
         
         self.loading.onNext(true)
         
@@ -30,7 +30,9 @@ struct ProfileLenderViewModel {
         
         LenderProfileService.editLenderProfile(lenderId: lenderId, editLenderProfileRequest: editLenderProfileRequest) { lenderProfile in
             self.loading.onNext(false)
+            
             self.lenderProfile.onNext(lenderProfile)
+            successCompletion()
         } failCompletion: { error in
             self.loading.onNext(false)
             self.error.onNext(error.errorDescription ?? "Error")
@@ -45,6 +47,7 @@ struct ProfileLenderViewModel {
         
         LenderProfileService.getLenderProfile(lenderId: lenderId) { lenderProfile in
             self.loading.onNext(false)
+            debugPrint(lenderProfile.name ?? "")
             self.lenderProfile.onNext(lenderProfile)
         } failCompletion: { error in
             self.loading.onNext(false)
