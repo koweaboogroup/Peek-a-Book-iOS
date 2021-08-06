@@ -8,7 +8,6 @@
 import Foundation
 import Alamofire
 
-///TODO : UBAH SESUAI RESPONSENYA RIFKI
 class BookService {
     static func getBookDetail(id: String, successCompletion: @escaping (LenderBook?) -> Void, failCompletion: @escaping (AFError) -> Void) {
         

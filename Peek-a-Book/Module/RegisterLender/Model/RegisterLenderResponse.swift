@@ -15,10 +15,10 @@ struct RegisterLenderResponse: Codable {
     let kecamatan: String?
     let longtitude, latitude: Float?
     let publishedAt, createdAt, updatedAt: String?
-//    let image: []?
+    let image: [ImageObject]?
     
     enum CodingKeys: String, CodingKey {
-            case id, name, bio, user, alamat, provinsi, kota, kelurahan, kecamatan, longtitude, latitude
+            case id, name, bio, user, alamat, provinsi, kota, kelurahan, kecamatan, longtitude, latitude, image
             case publishedAt = "published_at"
             case createdAt = "created_at"
             case updatedAt = "updated_at"

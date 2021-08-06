@@ -51,4 +51,22 @@ class ModuleBuilder {
         
         return vc
     }
+    
+    func goToEditProfileViewController() -> EditProfileViewController {
+        let vc = EditProfileViewController(nibName: XIBConstant.EditProfileViewController, bundle: nil)
+        
+        return vc
+    }
+
+    func goToRegisterLenderViewController() -> RegisterLenderViewController {
+        let vc = RegisterLenderViewController(nibName: XIBConstant.RegisterLenderViewController, bundle: nil)
+        
+        return vc
+    }
+
+    func goToProfileLenderViewController() -> ProfileTokoViewController {
+        let vc = ProfileTokoViewController(nibName: XIBConstant.ProfileTokoViewController, bundle: nil)
+        
+        return vc
+    }
 }
