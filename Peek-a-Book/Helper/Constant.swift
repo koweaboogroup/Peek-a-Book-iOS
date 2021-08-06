@@ -9,7 +9,7 @@ import UIKit
 
 struct Constant {
     
-    static let termsAndConditionsLink = "https://github.com/yrojx"
+    static let termsAndConditionsLink = "https://adajkt.notion.site/Syarat-dan-Ketentuan-Pengguna-Peek-a-Book-82ba0d59c92f416ca9d3ef2bc2f1a612"
     
     struct Network {
         static let baseUrl = "http://103.214.112.183:1340"

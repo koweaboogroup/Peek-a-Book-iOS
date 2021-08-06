@@ -24,7 +24,6 @@ class RegisterLenderViewController: UIViewController {
 
         setupView()
         setupRx()
-        // Do any additional setup after loading the view.
     }
     
     private func setupRx() {
@@ -41,11 +40,24 @@ class RegisterLenderViewController: UIViewController {
             return $0 ? 1 : 0.5
         }.bind(to: buttonRegisterLender.rx.alpha)
         .disposed(by: disposeBag)
+        
+        viewModel.detailAddressPressed.asObserver()
+            .subscribe(onNext: { pressed in
+                if pressed {
+                    let vc = ModuleBuilder.shared.goToAlamatViewController()                    
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
+            })
+            .disposed(by: disposeBag)
     }
 
     private func setupView(){
+        registerContentView.initViewModel(viewModel: viewModel)
         self.navigationItem.title = "Buka Penyewaan"
+        self.navigationItem.backButtonTitle = ""
 
+        circleImageView.setPlaceHolderImage(image: #imageLiteral(resourceName: "store"))
+        circleImageView.setBackgroundColor(color: #colorLiteral(red: 0.9058823529, green: 0.9568627451, blue: 1, alpha: 1))
         registerContentView.cornerRadius(10)
         registerContentView.layer.applyShadow(
             color: .black,
@@ -56,5 +68,14 @@ class RegisterLenderViewController: UIViewController {
             spread: 0
         )
         buttonRegisterLender.cornerRadius(10)
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
     }
 }

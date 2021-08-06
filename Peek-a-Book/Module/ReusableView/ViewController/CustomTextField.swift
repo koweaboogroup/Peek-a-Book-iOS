@@ -38,6 +38,10 @@ class CustomTextField: UIView {
     func setPlaceholderField(_ title: String) {
         fieldName.placeholder = title
     }
+    
+    var text : String? {
+        return fieldName.text
+    }
 
     func isPassword(_ params: Bool) {
         if params {

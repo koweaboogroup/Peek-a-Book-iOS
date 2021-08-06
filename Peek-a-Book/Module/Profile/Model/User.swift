@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct User: Codable {
+class User: Codable {
     var id: Int? = nil
     var username: String? = nil
     var email: String? = nil
@@ -21,6 +21,7 @@ struct User: Codable {
     var latitude: Float? = nil
     var created_at: String? = nil
     var updated_at: String? = nil
+    var lender: Lender? = nil
 }
 
 struct Role: Codable {
@@ -28,23 +29,4 @@ struct Role: Codable {
     var name: String? = nil
     var description: String? = nil
     var type: String? = nil
-}
-
-struct Lender: Codable {
-    let id: Int?
-    let name, bio: String?
-    let user: Int?
-    let alamat, provinsi, kota, kelurahan: String?
-    let kecamatan: String?
-    let longtitude, latitude: Double?
-    let publishedAt, createdAt, updatedAt: String?
-    let image: [ImageObject]?
-
-    enum CodingKeys: String, CodingKey {
-        case id, name, bio, user, alamat, provinsi, kota, kelurahan, kecamatan, longtitude, latitude
-        case publishedAt = "published_at"
-        case createdAt = "created_at"
-        case updatedAt = "updated_at"
-        case image
-    }
 }

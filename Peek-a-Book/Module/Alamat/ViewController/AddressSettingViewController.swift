@@ -39,7 +39,6 @@ class AddressSettingViewController: UIViewController {
         self.title = "Detail Alamat"
         self.navigationItem.backButtonTitle = ""
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(doneEditing))
-
     }
     
     @objc func doneEditing() {
@@ -53,30 +52,68 @@ class AddressSettingViewController: UIViewController {
             checkBoxView.isHidden = true
         }
         
-        mapsViewModel.districtName
-            .asObserver()
-            .bind(to: kecamatanTextField.rx.text)
+        mapsViewModel.streetName
+            .subscribe(onNext: {
+                self.jalanTextField.text = $0
+                self.jalanTextField.sendActions(for: .allEditingEvents)
+            })
             .disposed(by: disposeBag)
         
         mapsViewModel.cityName
-            .asObserver()
-            .bind(to: kotaTextField.rx.text)
+            .subscribe(onNext: {
+                self.kotaTextField.text = $0
+                self.kotaTextField.sendActions(for: .allEditingEvents)
+            })
+            .disposed(by: disposeBag)
+        
+        mapsViewModel.districtName
+            .subscribe(onNext: {
+                self.kecamatanTextField.text = $0
+                self.kecamatanTextField.sendActions(for: .allEditingEvents)
+            })
             .disposed(by: disposeBag)
         
         mapsViewModel.provName
-            .asObserver()
-            .bind(to: provinsiTextField.rx.text)
+            .subscribe(onNext: {
+                self.provinsiTextField.text = $0
+                self.provinsiTextField.sendActions(for: .allEditingEvents)
+            })
             .disposed(by: disposeBag)
         
-        mapsViewModel.streetName
-            .asObserver()
-            .bind(to: jalanTextField.rx.text)
+        kelurahanTextField.rx.text
+            .map {
+                $0?.trimmingCharacters(in: .whitespaces) ?? ""
+            }
+            .bind(to: addressViewModel?.urbanVillage ?? PublishSubject<String>())
             .disposed(by: disposeBag)
         
-        addressViewModel?.address.onNext(jalanTextField.text ?? "")
-        addressViewModel?.cityName.onNext(kotaTextField.text ?? "")
-        addressViewModel?.districtName.onNext(kecamatanTextField.text ?? "")
-        addressViewModel?.provName.onNext(provinsiTextField.text ?? "")
+        kecamatanTextField.rx.text
+            .map {
+                $0?.trimmingCharacters(in: .whitespaces) ?? ""
+            }
+            .bind(to: addressViewModel?.districtName ?? PublishSubject<String>())
+            .disposed(by: disposeBag)
+        
+        kotaTextField.rx.text
+            .map {
+                $0?.trimmingCharacters(in: .whitespaces) ?? ""
+            }
+            .bind(to: addressViewModel?.cityName ?? PublishSubject<String>())
+            .disposed(by: disposeBag)
+        
+        provinsiTextField.rx.text
+            .map {
+                $0?.trimmingCharacters(in: .whitespaces) ?? ""
+            }
+            .bind(to: addressViewModel?.provName ?? PublishSubject<String>())
+            .disposed(by: disposeBag)
+        
+        jalanTextField.rx.text
+            .map {
+                $0?.trimmingCharacters(in: .whitespaces) ?? ""
+            }
+            .bind(to: addressViewModel?.address ?? PublishSubject<String>())
+            .disposed(by: disposeBag)
         
         addressViewModel?.checkBoxClicked.subscribe(onNext: { isClicked in
             if isClicked {
@@ -119,5 +156,13 @@ class AddressSettingViewController: UIViewController {
         kotaTextField.text = ""
         provinsiTextField.text = ""
         jalanTextField.text = ""
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
     }
 }

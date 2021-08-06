@@ -14,6 +14,9 @@ class DataManager {
     var user: User?
     var lender: Lender?
     
+    // MARK: Cart is array of lenderBookId
+    var cart = [Int]()
+    
     func isLoggedIn() -> Bool {
         let jwt = "jwt"
         let jwtValue = UserDefaults.standard.string(forKey: jwt)
@@ -45,13 +48,18 @@ class DataManager {
         self.user = user
     }
 
-    ///TODO : INI BELUM SELESAI, HANYA DUMMY. DIKATAKAN SELESAI KETIKA RESPONSE SUDAH ADA
-    func addItemToCart(itemKeranjang: String, quantityKeranjang: Int) {
-        UserDefaults.standard.string(forKey: Constant.UserDefaultConstant.itemKeranjang)
-        UserDefaults.standard.set(itemKeranjang, forKey: Constant.UserDefaultConstant.itemKeranjang)
-
-        UserDefaults.standard.integer(forKey: Constant.UserDefaultConstant.quantityItem)
-        UserDefaults.standard.set(quantityKeranjang, forKey: Constant.UserDefaultConstant.quantityItem)
+    func addItemToCart(lenderBookId: Int) {
+        cart.append(lenderBookId)
+    }
+    
+    func saveCartToUserDefaults() {
+        let cartKey = "cart"
+        UserDefaults.standard.set(cart, forKey: cartKey)
+    }
+    
+    func loadCartFromUserDefaults() {
+        let cartKey = "cart"
+        cart = UserDefaults.standard.array(forKey: cartKey) as? [Int] ?? []
     }
     
     private func decode(jwtToken jwt: String) throws -> [String: Any] {
