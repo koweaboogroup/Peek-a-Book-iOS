@@ -77,9 +77,11 @@ class EditProfileLenderViewController: UIViewController {
     
     @objc func doneEditing() {
         
-        viewModel.editLenderProfile(lenderId: lenderId ?? -1, name: fieldStoreName.text, bio: fieldStoreBio.text, user: nil, alamat: nil, provinsi: nil, kota: nil, kelurahan: nil, kecamatan: nil, longtitude: nil, latitude: nil)
-        delegate?.fetchProfile()
+        viewModel.editLenderProfile(lenderId: lenderId ?? -1, name: fieldStoreName.text, bio: fieldStoreBio.text, user: nil, alamat: nil, provinsi: nil, kota: nil, kelurahan: nil, kecamatan: nil, longtitude: nil, latitude: nil) {
+            self.navigationController?.popViewController(animated: true)
+        }
+//        delegate?.fetchProfile()
         
-        self.navigationController?.popViewController(animated: true)
+        
     }
 }
