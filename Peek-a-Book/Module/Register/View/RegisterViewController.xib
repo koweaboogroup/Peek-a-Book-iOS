@@ -16,6 +16,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RegisterViewController" customModule="Peek_a_Book" customModuleProvider="target">
             <connections>
+                <outlet property="addressDetailButton" destination="syz-1b-CsL" id="Ogj-5d-udy"/>
                 <outlet property="confirmPasswordTextField" destination="AYE-WU-2qr" id="cVn-wY-tLR"/>
                 <outlet property="emailTextField" destination="pzM-0j-O0g" id="gD4-QG-oBs"/>
                 <outlet property="fieldContainer" destination="Oyn-BG-lJQ" id="lXm-E4-faR"/>
