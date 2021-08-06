@@ -10,6 +10,7 @@ import RxSwift
 
 class EditProfileViewController: UIViewController {
     
+    @IBOutlet weak var imageProfile: CircleImageView!
     @IBOutlet weak var namaLengkapTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var noWhatsappTextField: UITextField!
@@ -46,6 +47,8 @@ class EditProfileViewController: UIViewController {
     }
     
     private func setupRx() {
+        imageProfile.setPlaceHolderImage(image: UIImage(systemName: "person.fill")!)
+        imageProfile.setBackgroundColor(color: #colorLiteral(red: 0.9058823529, green: 0.9568627451, blue: 1, alpha: 1))
         profileViewModel.user.asObserver()
             .map{ user in
                 user.username
