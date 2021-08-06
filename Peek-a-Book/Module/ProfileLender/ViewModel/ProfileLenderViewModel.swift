@@ -47,7 +47,6 @@ struct ProfileLenderViewModel {
         
         LenderProfileService.getLenderProfile(lenderId: lenderId) { lenderProfile in
             self.loading.onNext(false)
-            debugPrint(lenderProfile.name ?? "")
             self.lenderProfile.onNext(lenderProfile)
         } failCompletion: { error in
             self.loading.onNext(false)
