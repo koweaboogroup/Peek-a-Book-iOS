@@ -9,7 +9,7 @@ import Alamofire
 
 class RentService {
     
-    static func getListRentTransaction(id: String, successCompletion: @escaping ([RentResponse]) -> Void, failCompletion: @escaping (AFError) -> Void) {
+    static func getListRentTransaction(id: Int, successCompletion: @escaping ([RentResponse]) -> Void, failCompletion: @escaping (AFError) -> Void) {
         
         BaseRequest.get(router: RentRouter.get(id: id)) { request in
             request.responseDecodable(of: [RentResponse].self) { response in
