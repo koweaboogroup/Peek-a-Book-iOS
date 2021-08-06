@@ -57,9 +57,9 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="BookImage" destination="q8W-8C-NuK" id="ALM-6O-wOf"/>
-                <outlet property="BookTitle" destination="vav-Nm-zmh" id="bMl-hI-FCW"/>
-                <outlet property="BookWriter" destination="mZK-eL-5Eu" id="EEH-Cv-SF9"/>
+                <outlet property="bookImage" destination="q8W-8C-NuK" id="uCP-jP-gPq"/>
+                <outlet property="bookTitle" destination="vav-Nm-zmh" id="sja-kb-nsW"/>
+                <outlet property="bookWriter" destination="mZK-eL-5Eu" id="4cI-xW-oxx"/>
             </connections>
             <point key="canvasLocation" x="61.594202898550726" y="132.58928571428572"/>
         </tableViewCell>

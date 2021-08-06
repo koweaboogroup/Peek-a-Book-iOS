@@ -59,7 +59,32 @@ class DetailOrderViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBar()
+        setView()
+        setRx()
+    }
+    
+    
+    
+    
+    func setNavigationBar(){
+        self.navigationItem.title = "Detail Order"
         
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "DM Serif Text", size: 19)!]
+        
+        UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "DM Serif Text", size: 19.0)!], for: .normal)
+        
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.view.backgroundColor = .clear
+    }
+    
+    func setView(){
+        detailBukuTableView.layer.applyShadow(color: .black, alpha: 0.1, x: 0, y: 2, blur: 5, spread: 0)
+    }
+    
+    
+    func setRx(){
         viewModel.getDetailOrder(orderId: orderId ?? -1)
       
 //        nomorOrderPenyewaanLabel.rx.text.map {
@@ -104,38 +129,19 @@ class DetailOrderViewController: UIViewController {
 
         detailBukuTableView.register(UINib(nibName: XIBConstant.ItemKeranjangTableViewCell, bundle: nil), forCellReuseIdentifier: String(describing: ItemKeranjangTableViewCell.self))
         
-//        viewModel.order.asObserver().map { order in
-//            order.lenderBooks ??
-//        }.bind(to: detailBukuTableView.rx.items(cellIdentifier: "ItemKeranjangTableViewCell", cellType: ItemKeranjangTableViewCell.self)) {  (row,book,cell) in
-//                cell.response = book
-//            }.disposed(by: disposeBag)
-        
-        
-        
- 
-     
-
-   
-
-        
-        
+        viewModel.order.asObservable().map{ order in
+            order.lenderBooks ?? []
+        }.bind(to: detailBukuTableView.rx.items(cellIdentifier: "ItemKeranjangTableViewCell", cellType: ItemKeranjangTableViewCell.self)){(row, lenderBook, cell) in
+            let url = URL(string: Constant.Network.baseUrl + (lenderBook.images?[0].url ?? ""))
+            cell.bookImage.kf.setImage(with: url)
+            cell.bookTitle.text = lenderBook.book?.title
+            cell.bookWriter.text = lenderBook.book?.author
+            
+        }.disposed(by: disposeBag)
     }
     
     
     
-    
-    func setNavigationBar(){
-        self.navigationItem.title = "Detail Order"
-        
-        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "DM Serif Text", size: 19)!]
-        
-        UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "DM Serif Text", size: 19.0)!], for: .normal)
-        
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.isTranslucent = true
-        self.navigationController?.view.backgroundColor = .clear
-    }
     
 
 
