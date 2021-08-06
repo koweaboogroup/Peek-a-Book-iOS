@@ -14,6 +14,9 @@ struct DetailOrderViewModel {
     
     let order: PublishSubject<Order> = PublishSubject()
     
+    
+    
+    
     func getDetailOrder(orderId: Int) {
         self.loading.onNext(true)
         

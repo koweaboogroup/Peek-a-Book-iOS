@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class DetailOrderViewController: UIViewController {
 
@@ -34,7 +36,8 @@ class DetailOrderViewController: UIViewController {
     @IBOutlet weak var tanggalBatasSewaLabel: UILabel!
     
     var orderId: Int?
-    let viewModel = DetailOrderViewModel()
+    private let viewModel = DetailOrderViewModel()
+    private let disposeBag = DisposeBag()
     
     init(orderId: Int, nibName: String) {
         super.init(nibName: nibName, bundle: nil)
@@ -58,6 +61,64 @@ class DetailOrderViewController: UIViewController {
         setNavigationBar()
         
         viewModel.getDetailOrder(orderId: orderId ?? -1)
+      
+//        nomorOrderPenyewaanLabel.rx.text.map {
+//            $0 ?? ""
+//        }.bind(to: viewModel.order)
+//        .disposed(by: disposeBag)
+        
+        viewModel.order.asObserver().map { order in
+            "\(order.id ?? -1)"
+        }.bind(to: nomorOrderPenyewaanLabel.rx.text)
+        .disposed(by: disposeBag)
+        
+        viewModel.order.asObserver().map { order in
+            order.rent?.users.username
+        }.bind(to: namaPenyewaLabel.rx.text)
+        .disposed(by: disposeBag)
+        
+        viewModel.order.asObserver().map { order in
+            order.rent?.alamat
+        }.bind(to: jalanPenyewaLabel.rx.text)
+        .disposed(by: disposeBag)
+        
+        viewModel.order.asObserver().map { order in
+            order.rent?.users.phoneNumber
+        }.bind(to: nomorTeleponPenyewaLabel.rx.text)
+        .disposed(by: disposeBag)
+        
+        viewModel.order.asObserver().map { order in
+            "\(order.rent?.periodOfTime ?? -1)"
+        }.bind(to: durasiSewaLabel.rx.text)
+        .disposed(by: disposeBag)
+        
+        viewModel.order.asObserver().map { order in
+            order.rent?.shippingMethods
+        }.bind(to: metodePengirimanLabel.rx.text)
+        .disposed(by: disposeBag)
+        
+        viewModel.order.asObserver().map { order in
+            order.rent?.users.username
+        }.bind(to: profileNameLabel.rx.text)
+        .disposed(by: disposeBag)
+
+        detailBukuTableView.register(UINib(nibName: XIBConstant.ItemKeranjangTableViewCell, bundle: nil), forCellReuseIdentifier: String(describing: ItemKeranjangTableViewCell.self))
+        
+//        viewModel.order.asObserver().map { order in
+//            order.lenderBooks ??
+//        }.bind(to: detailBukuTableView.rx.items(cellIdentifier: "ItemKeranjangTableViewCell", cellType: ItemKeranjangTableViewCell.self)) {  (row,book,cell) in
+//                cell.response = book
+//            }.disposed(by: disposeBag)
+        
+        
+        
+ 
+     
+
+   
+
+        
+        
     }
     
     
