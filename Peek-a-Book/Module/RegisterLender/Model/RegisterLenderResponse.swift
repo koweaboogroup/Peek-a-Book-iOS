@@ -22,6 +22,5 @@ struct RegisterLenderResponse: Codable {
             case publishedAt = "published_at"
             case createdAt = "created_at"
             case updatedAt = "updated_at"
-//            case image
         }
 }
