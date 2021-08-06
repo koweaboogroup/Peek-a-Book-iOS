@@ -40,4 +40,15 @@ class ModuleBuilder {
         return vc
     }
 
+    func goToAlamatViewController() -> AddressSettingViewController {
+        let vc = AddressSettingViewController(nibName: XIBConstant.AlamatSettingVC, bundle: nil)
+        
+        return vc
+    }
+
+    func goToMapsViewController() -> MapsViewController {
+        let vc = MapsViewController(nibName: XIBConstant.MapsVC, bundle: nil)
+        
+        return vc
+    }
 }
