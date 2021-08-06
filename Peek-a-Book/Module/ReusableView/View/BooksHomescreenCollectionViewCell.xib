@@ -37,11 +37,6 @@
                                             <constraint firstAttribute="width" constant="32" id="HLA-57-eCX"/>
                                             <constraint firstAttribute="height" constant="32" id="Tbc-iB-YVE"/>
                                         </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="20"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="i3R-tL-nal">
                                         <rect key="frame" x="42" y="2" width="106" height="28"/>

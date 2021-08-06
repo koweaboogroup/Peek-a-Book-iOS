@@ -13,8 +13,14 @@ class RegisterContentView: UIView {
     @IBOutlet weak var storeNameTextField: UITextField!
     @IBOutlet weak var storeBioTextField: UITextField!
     
-    
     @IBOutlet var registerContentView: UIView!
+    
+    private var viewModel: RegisterLenderViewModel?
+    
+    func initViewModel(viewModel: RegisterLenderViewModel) {
+        self.viewModel = viewModel
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
@@ -30,5 +36,8 @@ class RegisterContentView: UIView {
         registerContentView.frame = self.bounds
         
         self.addSubview(registerContentView)
+    }
+    @IBAction func buttonAlamatPressed(_ sender: UIButton) {
+        viewModel?.detailAddressPressed.onNext(true)
     }
 }

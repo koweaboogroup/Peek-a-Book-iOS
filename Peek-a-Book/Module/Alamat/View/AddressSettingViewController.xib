@@ -280,8 +280,8 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>
-                <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="gBx-8n-92Y">
-                    <rect key="frame" x="22" y="354" width="299.5" height="20"/>
+                <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="gBx-8n-92Y">
+                    <rect key="frame" x="20" y="354" width="374" height="20"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g2E-pK-b9G">
                             <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
@@ -306,7 +306,7 @@
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gunakan alamat yang sama dengan profil" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w9f-nB-a4C">
-                            <rect key="frame" x="28" y="0.0" width="271.5" height="20"/>
+                            <rect key="frame" x="28" y="0.0" width="346" height="20"/>
                             <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="14"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -318,8 +318,11 @@
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="o8r-Gy-qh6" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="45s-Zc-bHQ"/>
+                <constraint firstItem="gBx-8n-92Y" firstAttribute="leading" secondItem="o8r-Gy-qh6" secondAttribute="leading" id="A8Y-aw-uag"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="o8r-Gy-qh6" secondAttribute="trailing" constant="20" id="CG2-t7-4Rj"/>
                 <constraint firstItem="o8r-Gy-qh6" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="MDN-Rz-Owd"/>
+                <constraint firstItem="gBx-8n-92Y" firstAttribute="trailing" secondItem="o8r-Gy-qh6" secondAttribute="trailing" id="deW-Ax-L1k"/>
+                <constraint firstItem="gBx-8n-92Y" firstAttribute="top" secondItem="o8r-Gy-qh6" secondAttribute="bottom" constant="16" id="pJu-3Y-Pi2"/>
             </constraints>
             <point key="canvasLocation" x="20" y="109"/>
         </view>
