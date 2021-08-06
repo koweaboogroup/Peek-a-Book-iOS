@@ -69,4 +69,10 @@ class ModuleBuilder {
         
         return vc
     }
+    
+    func goToEditProfileLenderViewController() -> EditProfileLenderViewController {
+        let vc = EditProfileLenderViewController(nibName: XIBConstant.EditProfileLenderViewController, bundle: nil)
+        
+        return vc
+    }
 }

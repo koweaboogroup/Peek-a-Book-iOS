@@ -18,6 +18,7 @@ struct XIBConstant {
     static let RegisterViewController = "RegisterViewController"
     static let RegisterLenderViewController = "RegisterLenderViewController"
     static let ProfileTokoViewController = "ProfileTokoViewController"
+    static let EditProfileLenderViewController = "EditProfileLenderViewController"
 
     static let LoginContentView = "LoginContentView"
     static let AddressMapsView = "AddressMapsView"

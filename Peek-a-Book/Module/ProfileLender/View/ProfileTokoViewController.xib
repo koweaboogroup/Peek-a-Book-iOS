@@ -88,17 +88,12 @@
                         </label>
                     </subviews>
                 </stackView>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pencil.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="9xB-p9-9hp">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pencil.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="9xB-p9-9hp" customClass="CircleImageView" customModule="Peek_a_Book" customModuleProvider="target">
                     <rect key="frame" x="20" y="64.5" width="109" height="108"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="109" id="TcV-I7-gYe"/>
                         <constraint firstAttribute="width" constant="109" id="dL9-hl-lp4"/>
                     </constraints>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                            <real key="value" value="72"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Katalog" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XEQ-66-eQL">
                     <rect key="frame" x="23" y="257" width="72.5" height="26.5"/>
@@ -173,6 +168,11 @@
             </connections>
         </tapGestureRecognizer>
     </objects>
+    <designables>
+        <designable name="9xB-p9-9hp">
+            <size key="intrinsicContentSize" width="20" height="20"/>
+        </designable>
+    </designables>
     <resources>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
         <image name="pencil.circle.fill" catalog="system" width="128" height="121"/>

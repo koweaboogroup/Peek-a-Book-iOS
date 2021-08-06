@@ -13,7 +13,7 @@ import RxKingfisher
 
 class ProfileTokoViewController: UIViewController {
 
-    @IBOutlet weak var profilTokoImage: UIImageView!
+    @IBOutlet weak var profilTokoImage: CircleImageView!
     @IBOutlet weak var namaTokoLabel: UILabel!
     @IBOutlet weak var bioTokoLabel: UILabel!
     
@@ -24,12 +24,18 @@ class ProfileTokoViewController: UIViewController {
     private let viewModel = ProfileLenderViewModel()
     private let disposeBag = DisposeBag()
     
+    private var lenderId: Int = 0
+    
+    func setLenderId(id: Int) {
+        self.lenderId = id
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit Profile", style: .plain, target: self, action: #selector(addTapped))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit Profile", style: .plain, target: self, action: #selector(editTapped))
         
+        viewModel.getLenderProfile(lenderId: lenderId)
         setupRx()
     }
     
@@ -37,8 +43,7 @@ class ProfileTokoViewController: UIViewController {
         
         //MARK: - Setup View Detail Toko
         viewModel.lenderProfile.subscribe (onNext: { response in
-            let url = URL(string: Constant.Network.baseUrl + (response.image?[0].url ?? ""))
-            self.profilTokoImage.kf.setImage(with: url)
+            self.profilTokoImage.setImage(fromUrl: Constant.Network.baseUrl + (response.images?[0].url ?? ""))
         }).disposed(by: disposeBag)
         
         viewModel.lenderProfile.asObserver().map { response in
@@ -56,17 +61,14 @@ class ProfileTokoViewController: UIViewController {
             response.kota
         }.bind(to: lokasiTokoLabel.rx.text)
         .disposed(by: disposeBag)
-        
-        //MARK: - Setup View Katalog Toko
-        
-        
     }
     
     
     
     
-    @objc func addTapped(){
-         print("clicked")
+    @objc func editTapped(){
+        let vc = ModuleBuilder.shared.goToEditProfileLenderViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
 

@@ -87,6 +87,7 @@ class ProfileViewController: UIViewController {
     @IBAction func tapMulaiSewakanBuku(_ sender: UITapGestureRecognizer) {
         if userObj.lender != nil {
             let vc = ModuleBuilder.shared.goToProfileLenderViewController()
+            vc.setLenderId(id: userObj.lender?.id ?? 0)
             self.navigationController?.pushViewController(vc, animated: true)
         } else {
             let vc = ModuleBuilder.shared.goToRegisterLenderViewController()
