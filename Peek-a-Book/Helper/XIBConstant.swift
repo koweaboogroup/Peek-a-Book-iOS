@@ -35,6 +35,8 @@ struct XIBConstant {
     static let ItemKeranjangTableViewCell = "ItemKeranjangTableViewCell"
     
     static let SearchView = "SearchView"
+    
+    static let RentBookItemTableViewCell = "RentBookItemTableViewCell"
 }
 
 
