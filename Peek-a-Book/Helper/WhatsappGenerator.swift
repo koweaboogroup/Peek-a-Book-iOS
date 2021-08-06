@@ -21,6 +21,17 @@ enum WhatsappGenerator {
         
         var bookListString = ""
         var totalPriceEstimation = 0
+        var stringTotalPriceEstimation: String
+        
+        let formatter = NumberFormatter()
+        formatter.locale = Locale.current
+        formatter.numberStyle = .currency
+        if let formattedTotalPriceEstimation = formatter.string(from: totalPriceEstimation as NSNumber) {
+            stringTotalPriceEstimation = "\(formattedTotalPriceEstimation)"
+        } else {
+            stringTotalPriceEstimation = String(totalPriceEstimation)
+        }
+
         
         if let lenderBooks = order.lenderBooks {
             for lenderBook in lenderBooks {
@@ -33,11 +44,11 @@ enum WhatsappGenerator {
 
         switch self {
         case .courier:
-            message = "Halo \(username),\nPenyewaan buku Anda dengan nomor order \(orderId) sudah diterima. Mohon konfirmasi kesesuaian detail penyewaan di bawah ini:\n\nDetail Buku:\n\(bookListString)Durasi Penyewaan:\n\(periodOfTime) Minggu\nMetode Pengiriman:\nKurir\nAlamat:\n\(fullAddress)\nTotal Biaya:\n\(totalPriceEstimation)\n\nApakah detail di atas sudah sesuai? Jika sudah sesuai, saya ingin bertanya terkait pilihan pengiriman dan pembayaran yang menjadi preferensi Anda 🙏"
+            message = "Halo \(username),\nPenyewaan buku Anda dengan nomor order \(orderId) sudah diterima. Mohon konfirmasi kesesuaian detail penyewaan di bawah ini:\n\n*Detail Buku:*\n\(bookListString)\n\n*Durasi Penyewaan:*\n\(periodOfTime) Minggu\n\n*Metode Pengiriman:*\nKurir\n\n*Alamat:*\n\(fullAddress)\n\n*Estimasi Total Biaya:*\n\(stringTotalPriceEstimation)\n\nApakah detail di atas sudah sesuai? Jika sudah sesuai, saya ingin bertanya terkait pilihan pengiriman dan pembayaran yang menjadi preferensi Anda 🙏"
         case .selfPickup:
-            message = "Halo \(username),\nPenyewaan buku Anda dengan nomor order \(orderId) sudah diterima. Mohon konfirmasi kesesuaian detail penyewaan di bawah ini:\nDetail Buku:\n\(bookListString)Durasi Penyewaan:\n\(periodOfTime) Minggu\nMetode Pengiriman:\nSelf Pickup\nTotal Biaya:\n\(totalPriceEstimation)\nApakah detail di atas sudah sesuai? Jika sudah sesuai, saya ingin bertanya terkait pilihan pengiriman dan pembayaran yang menjadi preferensi Anda 🙏"
+            message = "Halo \(username),\nPenyewaan buku Anda dengan nomor order \(orderId) sudah diterima. Mohon konfirmasi kesesuaian detail penyewaan di bawah ini:\n\n*Detail Buku:*\n\(bookListString)\n*Durasi Penyewaan:*\n\(periodOfTime) Minggu\n\n*Metode Pengiriman:*\nSelf Pickup\n\n*Estimasi Total Biaya:*\n\(stringTotalPriceEstimation)\n\nApakah detail di atas sudah sesuai? Jika sudah sesuai, saya ingin bertanya terkait pilihan pengiriman dan pembayaran yang menjadi preferensi Anda 🙏"
         case .cod:
-            message = "Halo \(username),\nPenyewaan buku Anda dengan nomor order \(orderId) sudah diterima. Mohon konfirmasi kesesuaian detail penyewaan di bawah ini:\nDetail Buku:\n\(bookListString)Durasi Penyewaan:\n\(periodOfTime) Minggu\nMetode Pengiriman:\nCOD\nTotal Biaya:\n\(totalPriceEstimation)\nApakah detail di atas sudah sesuai? Jika sudah sesuai, saya ingin bertanya terkait pilihan pengiriman dan pembayaran yang menjadi preferensi Anda 🙏"
+            message = "Halo \(username),\nPenyewaan buku Anda dengan nomor order \(orderId) sudah diterima. Mohon konfirmasi kesesuaian detail penyewaan di bawah ini:\n\n*Detail Buku:*\n\(bookListString)\n*Durasi Penyewaan:*\n\(periodOfTime) Minggu\n\n*Metode Pengiriman:*\nCOD\n\n*Estimasi Total Biaya:*\n\(stringTotalPriceEstimation)\n\nApakah detail di atas sudah sesuai? Jika sudah sesuai, saya ingin bertanya terkait pilihan pengiriman dan pembayaran yang menjadi preferensi Anda 🙏"
         }
         
         let urlString = "https://api.whatsapp.com/send?phone=\(order.rent?.user?.phoneNumber ?? "")&text=\(message.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? "")"
