@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import SafariServices
 
 class ProfileViewController: UIViewController {
     // MARK: -Deklarasi IBOutlet
@@ -98,8 +99,9 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func tapSyaratDanKetentuan(_ sender: UITapGestureRecognizer) {
+        let safariViewController = SFSafariViewController(url: URL(string: Constant.termsAndConditionsLink) ?? URL(fileURLWithPath: ""))
         
-        print("Syarat Dan Ketentuan bukunya gimana?")
+        self.present(safariViewController, animated: true, completion: nil)
     }
     
     @IBAction func tapKeluar(_ sender: UITapGestureRecognizer) {

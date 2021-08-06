@@ -15,6 +15,8 @@ struct RegisterLenderViewModel {
     let loading: PublishSubject<Bool> = PublishSubject()
     let error: PublishSubject<String> = PublishSubject()
     
+    let detailAddressPressed: PublishSubject<Bool> = PublishSubject()
+    
     func isStoreNameFilled() -> Observable<Bool> {
         return storeName.asObserver().startWith("")
             .map { (storeName) in
