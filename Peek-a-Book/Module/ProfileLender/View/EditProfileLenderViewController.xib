@@ -12,11 +12,8 @@
             <connections>
                 <outlet property="circleImageView" destination="cKq-ki-8Sd" id="3Kz-JK-ur8"/>
                 <outlet property="containerView" destination="yBi-VN-SYu" id="J0Y-L8-xiL"/>
-                <outlet property="fieldConfirmPassword" destination="R5S-1l-uCk" id="EYF-c3-Wru"/>
-                <outlet property="fieldEmail" destination="7Jt-SB-Ur6" id="NAM-Iq-Ewl"/>
-                <outlet property="fieldName" destination="fJU-h3-jzL" id="K68-dK-qnV"/>
-                <outlet property="fieldPassword" destination="qLT-p9-xmY" id="Gk9-gx-8rf"/>
-                <outlet property="fieldWA" destination="AMr-wY-FoP" id="zMf-Wk-Bkj"/>
+                <outlet property="fieldStoreBio" destination="7Jt-SB-Ur6" id="NAM-Iq-Ewl"/>
+                <outlet property="fieldStoreName" destination="fJU-h3-jzL" id="K68-dK-qnV"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -37,7 +34,7 @@
                     <state key="normal" title="Edit"/>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yBi-VN-SYu">
-                    <rect key="frame" x="20" y="233" width="350" height="335"/>
+                    <rect key="frame" x="20" y="233" width="350" height="182"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fJU-h3-jzL" customClass="CustomTextField" customModule="Peek_a_Book" customModuleProvider="target">
                             <rect key="frame" x="10" y="10" width="330" height="50"/>
@@ -67,50 +64,8 @@
                                 <constraint firstAttribute="height" constant="1" id="6bc-Ff-zSc"/>
                             </constraints>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AMr-wY-FoP" customClass="CustomTextField" customModule="Peek_a_Book" customModuleProvider="target">
-                            <rect key="frame" x="10" y="112" width="330" height="50"/>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            <constraints>
-                                <constraint firstAttribute="width" secondItem="AMr-wY-FoP" secondAttribute="height" multiplier="33:5" id="W4o-Jy-HNR"/>
-                            </constraints>
-                        </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bo0-Lk-L76">
-                            <rect key="frame" x="0.0" y="162" width="350" height="1"/>
-                            <color key="backgroundColor" red="0.74509803919999995" green="0.74509803919999995" blue="0.75294117650000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="1" id="arr-p3-31i"/>
-                            </constraints>
-                        </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qLT-p9-xmY" customClass="CustomTextField" customModule="Peek_a_Book" customModuleProvider="target">
-                            <rect key="frame" x="10" y="163" width="330" height="50"/>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            <constraints>
-                                <constraint firstAttribute="width" secondItem="qLT-p9-xmY" secondAttribute="height" multiplier="33:5" id="rRH-nI-Ajp"/>
-                            </constraints>
-                        </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yy6-g4-Kwq">
-                            <rect key="frame" x="0.0" y="213" width="350" height="1"/>
-                            <color key="backgroundColor" red="0.74509803919999995" green="0.74509803919999995" blue="0.75294117650000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="1" id="anO-XG-Wdh"/>
-                            </constraints>
-                        </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R5S-1l-uCk" customClass="CustomTextField" customModule="Peek_a_Book" customModuleProvider="target">
-                            <rect key="frame" x="10" y="214" width="330" height="50"/>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            <constraints>
-                                <constraint firstAttribute="width" secondItem="R5S-1l-uCk" secondAttribute="height" multiplier="33:5" id="HSa-Vo-Cow"/>
-                            </constraints>
-                        </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U5G-wu-loJ">
-                            <rect key="frame" x="0.0" y="264" width="350" height="1"/>
-                            <color key="backgroundColor" red="0.74509803919999995" green="0.74509803919999995" blue="0.75294117650000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="1" id="AvM-hJ-fE1"/>
-                            </constraints>
-                        </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5rU-GM-HF7" customClass="CustomTextField" customModule="Peek_a_Book" customModuleProvider="target">
-                            <rect key="frame" x="10" y="265" width="330" height="50"/>
+                            <rect key="frame" x="10" y="112" width="330" height="50"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="5rU-GM-HF7" secondAttribute="height" multiplier="33:5" id="rew-vA-ojP"/>
@@ -118,42 +73,24 @@
                         </view>
                     </subviews>
                     <constraints>
-                        <constraint firstItem="U5G-wu-loJ" firstAttribute="leading" secondItem="yBi-VN-SYu" secondAttribute="leading" id="1A2-B7-ruk"/>
                         <constraint firstItem="GSJ-LO-dkx" firstAttribute="leading" secondItem="yBi-VN-SYu" secondAttribute="leading" id="3Vm-0z-iLl"/>
-                        <constraint firstItem="R5S-1l-uCk" firstAttribute="top" secondItem="yy6-g4-Kwq" secondAttribute="bottom" id="6qn-CO-naS"/>
-                        <constraint firstItem="yy6-g4-Kwq" firstAttribute="leading" secondItem="yBi-VN-SYu" secondAttribute="leading" id="7Wd-dQ-uLy"/>
-                        <constraint firstItem="yy6-g4-Kwq" firstAttribute="top" secondItem="qLT-p9-xmY" secondAttribute="bottom" id="9aR-gq-HhY"/>
+                        <constraint firstItem="5rU-GM-HF7" firstAttribute="top" secondItem="GSJ-LO-dkx" secondAttribute="bottom" id="5Ie-Z0-Hp4"/>
                         <constraint firstItem="5rU-GM-HF7" firstAttribute="leading" secondItem="yBi-VN-SYu" secondAttribute="leading" constant="10" id="Alt-Av-D3O"/>
                         <constraint firstItem="7Jt-SB-Ur6" firstAttribute="centerX" secondItem="yBi-VN-SYu" secondAttribute="centerX" id="DXO-EP-9rD"/>
                         <constraint firstAttribute="trailing" secondItem="fJU-h3-jzL" secondAttribute="trailing" constant="10" id="Du0-ZN-TRb"/>
                         <constraint firstItem="GSJ-LO-dkx" firstAttribute="top" secondItem="7Jt-SB-Ur6" secondAttribute="bottom" id="Efw-JU-BQz"/>
                         <constraint firstItem="fJU-h3-jzL" firstAttribute="centerX" secondItem="yBi-VN-SYu" secondAttribute="centerX" id="FEe-ad-kPu"/>
                         <constraint firstItem="7Jt-SB-Ur6" firstAttribute="leading" secondItem="yBi-VN-SYu" secondAttribute="leading" constant="10" id="H8X-sr-6db"/>
-                        <constraint firstItem="bo0-Lk-L76" firstAttribute="top" secondItem="AMr-wY-FoP" secondAttribute="bottom" id="K2H-iN-0T0"/>
-                        <constraint firstItem="qLT-p9-xmY" firstAttribute="leading" secondItem="yBi-VN-SYu" secondAttribute="leading" constant="10" id="Kf6-kd-oRL"/>
-                        <constraint firstAttribute="trailing" secondItem="AMr-wY-FoP" secondAttribute="trailing" constant="10" id="Lem-d2-P7Z"/>
                         <constraint firstAttribute="trailing" secondItem="7Jt-SB-Ur6" secondAttribute="trailing" constant="10" id="M8f-IV-HaV"/>
                         <constraint firstItem="dI2-sx-tvX" firstAttribute="top" secondItem="fJU-h3-jzL" secondAttribute="bottom" id="Ofz-r1-V16"/>
-                        <constraint firstItem="qLT-p9-xmY" firstAttribute="top" secondItem="bo0-Lk-L76" secondAttribute="bottom" id="Q9A-T2-EGv"/>
-                        <constraint firstItem="AMr-wY-FoP" firstAttribute="top" secondItem="GSJ-LO-dkx" secondAttribute="bottom" id="Qan-iy-BYM"/>
                         <constraint firstItem="fJU-h3-jzL" firstAttribute="leading" secondItem="yBi-VN-SYu" secondAttribute="leading" constant="10" id="Qzj-St-QbO"/>
                         <constraint firstAttribute="trailing" secondItem="dI2-sx-tvX" secondAttribute="trailing" id="W1u-ex-YAc"/>
-                        <constraint firstAttribute="trailing" secondItem="U5G-wu-loJ" secondAttribute="trailing" id="WPW-3I-dmz"/>
-                        <constraint firstAttribute="trailing" secondItem="qLT-p9-xmY" secondAttribute="trailing" constant="10" id="XMU-FE-MjD"/>
-                        <constraint firstAttribute="trailing" secondItem="bo0-Lk-L76" secondAttribute="trailing" id="YJj-5z-UHx"/>
-                        <constraint firstAttribute="trailing" secondItem="yy6-g4-Kwq" secondAttribute="trailing" id="a2x-7Q-4dw"/>
                         <constraint firstAttribute="trailing" secondItem="5rU-GM-HF7" secondAttribute="trailing" constant="10" id="a70-eJ-kDk"/>
-                        <constraint firstItem="5rU-GM-HF7" firstAttribute="top" secondItem="U5G-wu-loJ" secondAttribute="bottom" id="cDK-bh-iyB"/>
                         <constraint firstAttribute="trailing" secondItem="GSJ-LO-dkx" secondAttribute="trailing" id="cXP-Hi-CRm"/>
-                        <constraint firstItem="R5S-1l-uCk" firstAttribute="leading" secondItem="yBi-VN-SYu" secondAttribute="leading" constant="10" id="e26-di-Buu"/>
                         <constraint firstAttribute="bottom" secondItem="5rU-GM-HF7" secondAttribute="bottom" constant="20" id="eeE-i6-fVl"/>
                         <constraint firstItem="fJU-h3-jzL" firstAttribute="top" secondItem="yBi-VN-SYu" secondAttribute="top" constant="10" id="ejG-ZI-Ahc"/>
                         <constraint firstItem="7Jt-SB-Ur6" firstAttribute="top" secondItem="dI2-sx-tvX" secondAttribute="bottom" id="fNd-nM-lWB"/>
                         <constraint firstItem="dI2-sx-tvX" firstAttribute="leading" secondItem="yBi-VN-SYu" secondAttribute="leading" id="fqh-Yh-eqA"/>
-                        <constraint firstItem="U5G-wu-loJ" firstAttribute="top" secondItem="R5S-1l-uCk" secondAttribute="bottom" id="fsi-Dt-8Fe"/>
-                        <constraint firstItem="bo0-Lk-L76" firstAttribute="leading" secondItem="yBi-VN-SYu" secondAttribute="leading" id="glW-3K-xSZ"/>
-                        <constraint firstAttribute="trailing" secondItem="R5S-1l-uCk" secondAttribute="trailing" constant="10" id="lNe-Hr-Cul"/>
-                        <constraint firstItem="AMr-wY-FoP" firstAttribute="leading" secondItem="yBi-VN-SYu" secondAttribute="leading" constant="10" id="xOl-LX-yo9"/>
                     </constraints>
                 </view>
             </subviews>
