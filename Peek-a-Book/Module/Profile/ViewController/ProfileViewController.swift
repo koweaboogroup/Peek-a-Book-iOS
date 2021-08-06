@@ -100,7 +100,9 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func tapKeluar(_ sender: UITapGestureRecognizer) {
-        print("Babay")
+        profileViewModel.logout()
+        let vc = ModuleBuilder.shared.goToLoginViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
 }

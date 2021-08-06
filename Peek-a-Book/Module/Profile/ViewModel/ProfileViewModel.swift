@@ -17,6 +17,10 @@ class ProfileViewModel {
         } failCompletion: { error in
             self.error.onNext(error.errorDescription ?? "Data Tidak Ditemukan")
         }
-
+    }
+    
+    func logout() {
+        let jwtUserDefaults = "jwt"
+        UserDefaults.standard.removeObject(forKey: jwtUserDefaults)
     }
 }
