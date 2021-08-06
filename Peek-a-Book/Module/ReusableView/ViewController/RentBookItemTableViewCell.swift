@@ -7,6 +7,7 @@
 
 import UIKit
 
+@IBDesignable
 class RentBookItemTableViewCell: UITableViewCell{
     
     @IBOutlet weak var imageProfileLenders: CircleImageView!
