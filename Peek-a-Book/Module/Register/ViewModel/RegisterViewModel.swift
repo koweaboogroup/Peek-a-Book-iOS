@@ -16,6 +16,8 @@ struct RegisterViewModel {
     let loading: PublishSubject<Bool> = PublishSubject()
     let error: PublishSubject<String> = PublishSubject()
     
+    private let disposeBag = DisposeBag()
+    
     func isAllTextFieldFilled() -> Observable<Bool> {
         return Observable.combineLatest(
             name.asObserver().startWith(""),
@@ -30,24 +32,28 @@ struct RegisterViewModel {
         .startWith(false)
     }
     
-    public func register(username: String, email: String, password: String, phoneNumber: String, alamat: String, provinsi: String, kota: String, kelurahan: String, kecamatan: String, longtitude: Float, latitude: Float) {
+    public func register(alamat: String, provinsi: String, kota: String, kelurahan: String, kecamatan: String, longtitude: Float, latitude: Float) {
         
         self.loading.onNext(true)
         
-        let registerRequest = RegisterRequest(username: username, email: email, password: password, phoneNumber: phoneNumber, alamat: alamat, provinsi: provinsi, kota: kota, kelurahan: kelurahan, kecamatan: kecamatan, longtitude: longtitude, latitude: latitude)
+        Observable.combineLatest(name.asObservable(), email.asObservable(), whatsappNumber.asObservable(), password.asObservable()) { name, email, whatsappNumber, password in
+            let registerRequest = RegisterRequest(username: name, email: email, password: password, phoneNumber: whatsappNumber, alamat: alamat, provinsi: provinsi, kota: kota, kelurahan: kelurahan, kecamatan: kecamatan, longtitude: longtitude, latitude: latitude)
+            
+            RegisterService.register(registerRequest: registerRequest) { registerResponse in
+                
+                self.loading.onNext(false)
+
+                
+            } failCompletion: { error in
+                
+                self.loading.onNext(false)
+                self.error.onNext(error.errorDescription ?? "Error")
+                fatalError()
+                
+            }
+        }.subscribe()
+        .disposed(by: disposeBag)
         
-        RegisterService.register(registerRequest: registerRequest) { registerResponse in
-            
-            self.loading.onNext(false)
-            //kalo success ngapain?
-            
-            
-        } failCompletion: { error in
-            
-            self.loading.onNext(false)
-            self.error.onNext(error.errorDescription ?? "Error")
-            fatalError()
-            
-        }
+        
     }
 }
