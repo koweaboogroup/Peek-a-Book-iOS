@@ -9,12 +9,12 @@ import Foundation
 import RxSwift
 
 struct RentViewModel{
-    public let rent: PublishSubject<[RentResponse]> = PublishSubject()
+    public let rents: PublishSubject<[Order]> = PublishSubject()
     let error: PublishSubject<String> = PublishSubject()
     
     func getListRentAsUser(id: Int){
         RentService.getListRentTransaction(id: id) { rentResponse in
-            self.rent.onNext(rentResponse)
+            self.rents.onNext(rentResponse)
         } failCompletion: { error in
             self.error.onNext(error.errorDescription!)
         }

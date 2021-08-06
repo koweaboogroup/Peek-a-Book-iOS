@@ -26,7 +26,7 @@ enum RentRouter: URLRequestConvertible {
         }
     
     var url: URL {
-        return URL(string: Constant.Network.baseUrl + "/rents?user.id=\(parameterId)")!
+        return URL(string: Constant.Network.baseUrl + "/rent-details?lender_books.lender.id=\(parameterId)")!
     }
     
     func asURLRequest() throws -> URLRequest {
