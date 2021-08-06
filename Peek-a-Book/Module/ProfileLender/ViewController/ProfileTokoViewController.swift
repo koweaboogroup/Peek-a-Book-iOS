@@ -11,6 +11,12 @@ import RxCocoa
 import Kingfisher
 import RxKingfisher
 
+protocol ProfileTokoDelegate {
+    
+    func fetchProfile()
+    
+}
+
 class ProfileTokoViewController: UIViewController {
 
     @IBOutlet weak var profilTokoImage: CircleImageView!
@@ -32,11 +38,10 @@ class ProfileTokoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit Profile", style: .plain, target: self, action: #selector(editTapped))
         
-        viewModel.getLenderProfile(lenderId: lenderId)
-        setupRx()
+        fetchProfile()
     }
     
     private func setupRx() {
@@ -63,16 +68,13 @@ class ProfileTokoViewController: UIViewController {
         .disposed(by: disposeBag)
     }
     
-    
-    
-    
     @objc func editTapped(){
         let vc = ModuleBuilder.shared.goToEditProfileLenderViewController()
+        vc.lenderId = self.lenderId
+        vc.delegate = self
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-
-
     @IBAction func semuaGenrePressed(_ sender: UIButton) {
         print("Sort Disini")
     }
@@ -80,4 +82,13 @@ class ProfileTokoViewController: UIViewController {
     @IBAction func kelolaPenyewaanGetTapped(_ sender: UITapGestureRecognizer) {
         print("Kelola Penyewaan")
     }
+}
+
+extension ProfileTokoViewController: ProfileTokoDelegate {
+    
+    func fetchProfile() {
+        setupRx()
+        viewModel.getLenderProfile(lenderId: lenderId)
+    }
+    
 }

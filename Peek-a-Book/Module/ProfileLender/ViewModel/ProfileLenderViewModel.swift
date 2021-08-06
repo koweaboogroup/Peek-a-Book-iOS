@@ -10,9 +10,17 @@ import RxSwift
 
 struct ProfileLenderViewModel {
     let lenderProfile: PublishSubject<RegisterLenderResponse> = PublishSubject()
+    let storeName: PublishSubject<String> = PublishSubject()
     
     let loading: PublishSubject<Bool> = PublishSubject()
     let error: PublishSubject<String> = PublishSubject()
+    
+    func isStoreNameFilled() -> Observable<Bool> {
+        return storeName.asObserver().startWith("")
+            .map { (storeName) in
+                return !storeName.isEmpty
+            }.startWith(false)
+    }
     
     public func editLenderProfile(lenderId: Int, name: String?, bio: String?, user: String?, alamat: String?, provinsi: String?, kota: String?, kelurahan: String?, kecamatan: String?, longtitude: Float?, latitude: Float?) {
         
