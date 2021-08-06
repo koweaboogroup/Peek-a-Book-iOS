@@ -15,7 +15,7 @@ class DataManager {
     var lender: Lender?
     
     // MARK: Cart is array of lenderBookId
-    var cart = [Int]()
+    private var cart = [LenderBook]()
     
     func isLoggedIn() -> Bool {
         let jwt = "jwt"
@@ -48,18 +48,31 @@ class DataManager {
         self.user = user
     }
 
-    func addItemToCart(lenderBookId: Int) {
-        cart.append(lenderBookId)
+    func addItemToCart(lenderBook: LenderBook) {
+        cart.append(lenderBook)
     }
     
     func saveCartToUserDefaults() {
         let cartKey = "cart"
+        let encoder = JSONEncoder()
+        if let encoded = try? encoder.encode(cart){
+         UserDefaults.standard.set(encoded, forKey: "cart")
+        }
         UserDefaults.standard.set(cart, forKey: cartKey)
     }
     
     func loadCartFromUserDefaults() {
         let cartKey = "cart"
-        cart = UserDefaults.standard.array(forKey: cartKey) as? [Int] ?? []
+        if let cart = UserDefaults.standard.value(forKey: cartKey) as? Data {
+            let decoder = JSONDecoder()
+            if let decodedCart = try? decoder.decode(Array.self, from: cart) as [LenderBook] {
+                self.cart = decodedCart
+            }
+         }
+    }
+    
+    func getCart() -> [LenderBook] {
+        return cart
     }
     
     private func decode(jwtToken jwt: String) throws -> [String: Any] {
