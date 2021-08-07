@@ -98,7 +98,7 @@ class DetailOrderViewController: UIViewController {
         .disposed(by: disposeBag)
         
         viewModel.order.asObserver().map { order in
-            order.rent?.users.username
+            order.rent?.user?.username
         }.bind(to: namaPenyewaLabel.rx.text)
         .disposed(by: disposeBag)
         
@@ -108,7 +108,7 @@ class DetailOrderViewController: UIViewController {
         .disposed(by: disposeBag)
         
         viewModel.order.asObserver().map { order in
-            order.rent?.users.phoneNumber
+            order.rent?.user?.phoneNumber
         }.bind(to: nomorTeleponPenyewaLabel.rx.text)
         .disposed(by: disposeBag)
         
@@ -123,7 +123,7 @@ class DetailOrderViewController: UIViewController {
         .disposed(by: disposeBag)
         
         viewModel.order.asObserver().map { order in
-            order.rent?.users.username
+            order.rent?.user?.username
         }.bind(to: profileNameLabel.rx.text)
         .disposed(by: disposeBag)
 

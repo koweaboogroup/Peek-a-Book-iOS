@@ -29,15 +29,7 @@ class BooksHomescreenCollectionViewCell: UICollectionViewCell {
     
     public var response: LenderBook! {
         didSet {
-//            self.rootView.layer.applyShadow(
-//                color: .black,
-//                alpha: 0.5,
-//                x: 0,
-//                y: 5,
-//                blur: 10,
-//                spread: 0
-//            )
-            self.lenderStoreImage.setImage(fromUrl: Constant.Network.baseUrl + (response.lender?.image?[0].url ?? ""))
+            self.lenderStoreImage.setImage(fromUrl: Constant.Network.baseUrl + (response.lender?.images?[0].url ?? ""))
             self.lenderStoreName.text = response.lender?.name
             if response.distance == 0 {
                 self.lenderStoreLocation.text = response.lender?.kota

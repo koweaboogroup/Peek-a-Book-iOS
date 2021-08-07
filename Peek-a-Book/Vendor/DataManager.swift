@@ -14,6 +14,9 @@ class DataManager {
     var user: User?
     var lender: Lender?
     
+    // MARK: Cart is array of lenderBookId
+    private var cart = [LenderBook]()
+    
     func isLoggedIn() -> Bool {
         let jwt = "jwt"
         let jwtValue = UserDefaults.standard.string(forKey: jwt)
@@ -45,13 +48,31 @@ class DataManager {
         self.user = user
     }
 
-    ///TODO : INI BELUM SELESAI, HANYA DUMMY. DIKATAKAN SELESAI KETIKA RESPONSE SUDAH ADA
-    func addItemToCart(itemKeranjang: String, quantityKeranjang: Int) {
-        UserDefaults.standard.string(forKey: Constant.UserDefaultConstant.itemKeranjang)
-        UserDefaults.standard.set(itemKeranjang, forKey: Constant.UserDefaultConstant.itemKeranjang)
-
-        UserDefaults.standard.integer(forKey: Constant.UserDefaultConstant.quantityItem)
-        UserDefaults.standard.set(quantityKeranjang, forKey: Constant.UserDefaultConstant.quantityItem)
+    func addItemToCart(lenderBook: LenderBook) {
+        cart.append(lenderBook)
+    }
+    
+    func saveCartToUserDefaults() {
+        let cartKey = "cart"
+        let encoder = JSONEncoder()
+        if let encoded = try? encoder.encode(cart){
+         UserDefaults.standard.set(encoded, forKey: "cart")
+        }
+        UserDefaults.standard.set(cart, forKey: cartKey)
+    }
+    
+    func loadCartFromUserDefaults() {
+        let cartKey = "cart"
+        if let cart = UserDefaults.standard.value(forKey: cartKey) as? Data {
+            let decoder = JSONDecoder()
+            if let decodedCart = try? decoder.decode(Array.self, from: cart) as [LenderBook] {
+                self.cart = decodedCart
+            }
+         }
+    }
+    
+    func getCart() -> [LenderBook] {
+        return cart
     }
     
     private func decode(jwtToken jwt: String) throws -> [String: Any] {

@@ -81,7 +81,7 @@ class DetailBooksViewController: UIViewController {
         
         // MARK: - Setup Lender Button View
         viewModel.bookDetail.subscribe (onNext: { book in
-            let url = URL(string: Constant.Network.baseUrl + (book.lender?.image?[0].url ?? ""))
+            let url = URL(string: Constant.Network.baseUrl + (book.lender?.images?[0].url ?? ""))
             self.lenderImage.kf.setImage(with: url)
         }).disposed(by: disposeBag)
         
