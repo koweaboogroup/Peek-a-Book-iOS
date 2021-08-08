@@ -6,16 +6,18 @@
 //
 
 import Foundation
+import RxSwift
 
 class DataManager {
     
     static let shared = DataManager()
+    let isUserFetched: PublishSubject<Bool> = PublishSubject()
     
-    var user: User?
+    private var user: User?
     var lender: Lender?
     
     // MARK: Cart is array of lenderBookId
-    var cart = [Int]()
+    private var cart = [LenderBook]()
     
     func isLoggedIn() -> Bool {
         let jwt = "jwt"
@@ -36,30 +38,67 @@ class DataManager {
         return -1
     }
     
-    func getUser() -> User? {
-        return user
+    func fetchUser() {
+        self.isUserFetched.onNext(false)
+        ProfileService.getProfile { user in
+            self.user = user
+            self.isUserFetched.onNext(true)
+        } failCompletion: { error in
+            print(error)
+        }
+
     }
     
-    func getLenderId() -> Int {
-        lender?.id ?? -1
+    func getUser() -> User? {
+        return user
     }
     
     func setUser(user: User) {
         self.user = user
     }
+    
+    func getLenderId() -> Int {
+        lender?.id ?? -1
+    }
 
-    func addItemToCart(lenderBookId: Int) {
-        cart.append(lenderBookId)
+    func addItemToCart(lenderBook: LenderBook) {
+        cart.append(lenderBook)
     }
     
     func saveCartToUserDefaults() {
         let cartKey = "cart"
-        UserDefaults.standard.set(cart, forKey: cartKey)
+        let encoder = JSONEncoder()
+        if let encoded = try? encoder.encode(cart){
+            UserDefaults.standard.set(encoded, forKey: cartKey)
+        }
+        //UserDefaults.standard.set(cart, forKey: cartKey)
     }
     
-    func loadCartFromUserDefaults() {
+    func loadCartFromUserDefaults() -> [LenderBook]? {
         let cartKey = "cart"
-        cart = UserDefaults.standard.array(forKey: cartKey) as? [Int] ?? []
+        /*if let cart = UserDefaults.standard.value(forKey: cartKey) as? Data {
+            let decoder = JSONDecoder()
+            if let decodedCart = try? decoder.decode(Array.self, from: cart) as [LenderBook] {
+                self.cart = decodedCart
+            }
+         }*/
+        if let data = UserDefaults.standard.data(forKey: cartKey) {
+            do {
+                // Create JSON Decoder
+                let decoder = JSONDecoder()
+
+                // Decode Note
+                let lenderBook = try decoder.decode([LenderBook].self, from: data)
+                return lenderBook
+            } catch {
+                print("Unable to Decode Notes (\(error))")
+            }
+        }
+        return nil
+    }
+    
+    func getCart() -> [LenderBook] {
+        return cart
     }
     
     private func decode(jwtToken jwt: String) throws -> [String: Any] {

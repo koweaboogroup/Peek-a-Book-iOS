@@ -19,6 +19,7 @@ struct XIBConstant {
     static let RegisterLenderViewController = "RegisterLenderViewController"
     static let ProfileTokoViewController = "ProfileTokoViewController"
     static let EditProfileLenderViewController = "EditProfileLenderViewController"
+    static let CheckOutViewController = "CheckOutViewController"
 
     static let LoginContentView = "LoginContentView"
     static let AddressMapsView = "AddressMapsView"
@@ -39,6 +40,8 @@ struct XIBConstant {
     static let ItemKeranjangTableViewCell = "ItemKeranjangTableViewCell"
     
     static let SearchView = "SearchView"
+    
+    static let RentBookItemTableViewCell = "RentBookItemTableViewCell"
 }
 
 

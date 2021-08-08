@@ -27,6 +27,20 @@ class DetailBookViewModel {
             self.loading.onNext(false)
             self.error.onNext(error.errorDescription ?? "Error")
         }
-
+    }
+    
+    func addToCart(_ cart: [LenderBook], _ lenderBook: LenderBook, onSuccessCompletion: @escaping ([LenderBook]) -> Void, onErrorCompletion: @escaping () -> Void) {
+        
+        if cart.isEmpty {
+            DataManager.shared.addItemToCart(lenderBook: lenderBook)
+            onSuccessCompletion(DataManager.shared.getCart())
+        }else{
+            if lenderBook.lender?.id == cart[0].lender?.id {
+                DataManager.shared.addItemToCart(lenderBook: lenderBook)
+                onSuccessCompletion(DataManager.shared.getCart())
+            }else{
+                onErrorCompletion()
+            }
+        }
     }
 }
