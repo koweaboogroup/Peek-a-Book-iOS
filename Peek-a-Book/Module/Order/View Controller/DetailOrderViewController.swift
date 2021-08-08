@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class DetailOrderViewController: UIViewController {
 
@@ -34,7 +36,8 @@ class DetailOrderViewController: UIViewController {
     @IBOutlet weak var tanggalBatasSewaLabel: UILabel!
     
     var orderId: Int?
-    let viewModel = DetailOrderViewModel()
+    private let viewModel = DetailOrderViewModel()
+    private let disposeBag = DisposeBag()
     
     init(orderId: Int, nibName: String) {
         super.init(nibName: nibName, bundle: nil)
@@ -56,8 +59,8 @@ class DetailOrderViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBar()
-        
-        viewModel.getDetailOrder(orderId: orderId ?? -1)
+        setView()
+        setRx()
     }
     
     
@@ -75,6 +78,70 @@ class DetailOrderViewController: UIViewController {
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = .clear
     }
+    
+    func setView(){
+        detailBukuTableView.layer.applyShadow(color: .black, alpha: 0.1, x: 0, y: 2, blur: 5, spread: 0)
+    }
+    
+    
+    func setRx(){
+        viewModel.getDetailOrder(orderId: orderId ?? -1)
+      
+//        nomorOrderPenyewaanLabel.rx.text.map {
+//            $0 ?? ""
+//        }.bind(to: viewModel.order)
+//        .disposed(by: disposeBag)
+        
+        viewModel.order.asObserver().map { order in
+            "\(order.id ?? -1)"
+        }.bind(to: nomorOrderPenyewaanLabel.rx.text)
+        .disposed(by: disposeBag)
+        
+        viewModel.order.asObserver().map { order in
+            order.rent?.user?.username
+        }.bind(to: namaPenyewaLabel.rx.text)
+        .disposed(by: disposeBag)
+        
+        viewModel.order.asObserver().map { order in
+            order.rent?.alamat
+        }.bind(to: jalanPenyewaLabel.rx.text)
+        .disposed(by: disposeBag)
+        
+        viewModel.order.asObserver().map { order in
+            order.rent?.user?.phoneNumber
+        }.bind(to: nomorTeleponPenyewaLabel.rx.text)
+        .disposed(by: disposeBag)
+        
+        viewModel.order.asObserver().map { order in
+            "\(order.rent?.periodOfTime ?? -1)"
+        }.bind(to: durasiSewaLabel.rx.text)
+        .disposed(by: disposeBag)
+        
+        viewModel.order.asObserver().map { order in
+            order.rent?.shippingMethods
+        }.bind(to: metodePengirimanLabel.rx.text)
+        .disposed(by: disposeBag)
+        
+        viewModel.order.asObserver().map { order in
+            order.rent?.user?.username
+        }.bind(to: profileNameLabel.rx.text)
+        .disposed(by: disposeBag)
+
+        detailBukuTableView.register(UINib(nibName: XIBConstant.ItemKeranjangTableViewCell, bundle: nil), forCellReuseIdentifier: String(describing: ItemKeranjangTableViewCell.self))
+        
+        viewModel.order.asObservable().map{ order in
+            order.lenderBooks ?? []
+        }.bind(to: detailBukuTableView.rx.items(cellIdentifier: "ItemKeranjangTableViewCell", cellType: ItemKeranjangTableViewCell.self)){(row, lenderBook, cell) in
+            let url = URL(string: Constant.Network.baseUrl + (lenderBook.images?[0].url ?? ""))
+            cell.bookImage.kf.setImage(with: url)
+            cell.bookTitle.text = lenderBook.book?.title
+            cell.bookWriter.text = lenderBook.book?.author
+            
+        }.disposed(by: disposeBag)
+    }
+    
+    
+    
     
 
 

@@ -12,7 +12,7 @@ import Kingfisher
 import RxKingfisher
 
 class DetailBooksViewController: UIViewController {
-
+    
     var id: Int = 0
     
     // MARK: -Header View
@@ -36,28 +36,39 @@ class DetailBooksViewController: UIViewController {
     
     
     // MARK: -Bottom View
-    @IBOutlet weak var DetailTotalBookLabel: UILabel!
+    @IBOutlet weak var detailTotalBookLabel: UILabel!
     @IBOutlet weak var totalBookButtonView: UIView!
     @IBOutlet weak var tambahKeranjangButton: UIButton!
     
     private var viewModel = DetailBookViewModel()
     private var disposeBag = DisposeBag()
     
-    
-    
+    private let cart = DataManager.shared.getCart()
+    private var lenderBook: LenderBook?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.getDetailBook(id: String(id))
         totalBookButtonView.isHidden = true
         
-    
-
         setNavigationBar()
+        setupCart(cart)
         setupRx()
     }
     
+    private func setupCart(_ item: [LenderBook]){
+        if !item.isEmpty {
+            totalBookButtonView.isHidden = false
+            detailTotalBookLabel.text = String(item.count)
+        }else{
+            totalBookButtonView.isHidden = true
+        }
+    }
+    
     func setupRx() {
+        viewModel.bookDetail.subscribe(onNext: { item in
+            self.lenderBook = item
+        }).disposed(by: disposeBag)
         // MARK: -Setup Header View
         viewModel.bookDetail.subscribe (onNext: { book in
             let url = URL(string: Constant.Network.baseUrl + (book.images?[0].url ?? ""))
@@ -128,24 +139,34 @@ class DetailBooksViewController: UIViewController {
         .disposed(by: disposeBag)
     }
     
-    
-
-    
     @IBAction func lenderProfileGetTapped(_ sender: UITapGestureRecognizer) {
         print("aww Shit")
     }
     
     @IBAction func totalBukuGetTapped(_ sender: UITapGestureRecognizer) {
         print("aww mantab")
+        DataManager.shared.saveCartToUserDefaults()
+        
+        let vc = ModuleBuilder.shared.goToCheckOutViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     @IBAction func kondisiBukuInformationTouched(_ sender: UIButton) {
         print("Ini dah ngeleg banget bund")
     }
     
     @IBAction func tambahKeranjangButtonPressed(_ sender: UIButton) {
-        totalBookButtonView.isHidden = false
         tambahKeranjangButton.isEnabled = false
-        print("aww geli")
+        
+        //LOGIC IN HERE
+        if let lenderBook = lenderBook {
+            viewModel.addToCart(cart, lenderBook) { item in
+                print("Item \(item.count)")
+                self.tambahKeranjangButton.isEnabled = false
+                self.setupCart(item)
+            } onErrorCompletion: {
+                self.tambahKeranjangButton.isEnabled = true
+            }
+        }
     }
     
     
@@ -154,12 +175,10 @@ class DetailBooksViewController: UIViewController {
         self.navigationItem.title = "Detail Buku"
         
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "DM Serif Text", size: 19)!]
-  
+        
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = .clear
     }
-
-
 }

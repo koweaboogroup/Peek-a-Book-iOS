@@ -75,4 +75,11 @@ class ModuleBuilder {
         
         return vc
     }
+    
+    func goToCheckOutViewController() -> CheckOutViewController {
+        let vc = CheckOutViewController(nibName: XIBConstant.CheckOutViewController, bundle: nil)
+        
+        return vc
+    }
+
 }

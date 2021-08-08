@@ -22,7 +22,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailBooksViewController" customModule="Peek_a_Book" customModuleProvider="target">
             <connections>
-                <outlet property="DetailTotalBookLabel" destination="hKN-Ny-gAF" id="s4m-bd-Xd7"/>
                 <outlet property="detailBookBahasaLabel" destination="Ur1-Fp-fNN" id="lVx-7O-i8L"/>
                 <outlet property="detailBookConditionLabel" destination="CfC-FJ-eJJ" id="6XP-Cx-SD1"/>
                 <outlet property="detailBookGenreLabel" destination="VGa-88-rPZ" id="uze-1V-akN"/>
@@ -33,6 +32,7 @@
                 <outlet property="detailBookSinopsisLabel" destination="B5P-s9-oWh" id="PfE-uF-l9M"/>
                 <outlet property="detailBookTitleLabel" destination="2MF-da-k63" id="1Wn-If-rj2"/>
                 <outlet property="detailBookWriterLabel" destination="bq2-Ml-u9e" id="NyD-zY-z9k"/>
+                <outlet property="detailTotalBookLabel" destination="hKN-Ny-gAF" id="s4m-bd-Xd7"/>
                 <outlet property="lenderImage" destination="q4c-5P-BGG" id="bae-V6-SZx"/>
                 <outlet property="lenderStoreLocationLabel" destination="und-64-r1U" id="cPq-0i-SGj"/>
                 <outlet property="lenderStoreNameLabel" destination="MM4-R8-dbW" id="Q2B-h2-U1J"/>

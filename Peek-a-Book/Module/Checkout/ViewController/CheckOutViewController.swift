@@ -7,13 +7,12 @@
 
 import UIKit
 
-class CheckOutViewController: UIViewController {
+class CheckOutViewController: UIViewController, UITableViewDataSource {
 
     //MARK: -Header
     @IBOutlet weak var lenderImageView: UIImageView!
     @IBOutlet weak var lenderNameLabel: UILabel!
     @IBOutlet weak var detailBukuTableView: UITableView!
-    
     
     //MARK: -Durasi Penyewaan
     @IBOutlet weak var durasiPenyewaanLabel: UILabel!
@@ -31,14 +30,14 @@ class CheckOutViewController: UIViewController {
     //MARK: -Button
     @IBOutlet weak var sewaSekarangButton: UIButton!
     
-    
+    private let cart: [LenderBook]? = DataManager.shared.loadCartFromUserDefaults()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setNavigationBar()
-        
+        setupNavigationBar()
+        lenderImageView.image = #imageLiteral(resourceName: "store")
+        setupView()
     }
-
 
     @IBAction func durasiPenyewaanGetTapped(_ sender: UITapGestureRecognizer) {
         print("picker")
@@ -56,37 +55,7 @@ class CheckOutViewController: UIViewController {
         print("cabut")
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    func setNavigationBar(){
+    private func setupNavigationBar(){
         self.navigationItem.title = "Keranjang"
         
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "DM Serif Text", size: 19)!]
@@ -99,4 +68,35 @@ class CheckOutViewController: UIViewController {
         self.navigationController?.view.backgroundColor = .clear
     }
 
+    private func setupView(){
+        if let cart = cart {
+            let lenderName = cart[0].lender?.name
+            let lenderImage = Constant.Network.baseUrl + (cart[0].lender?.images?[0].url ?? "")
+            
+            lenderNameLabel.text = lenderName
+            detailBukuTableView.register(UINib(nibName: XIBConstant.ItemKeranjangTableViewCell, bundle: nil), forCellReuseIdentifier: "ItemKeranjangTableViewCell")
+            detailBukuTableView.dataSource = self
+            
+            var price = 0
+            for item in cart {
+                if let priceCart = item.price {
+                    price = price + priceCart
+                }
+            }
+            
+            hargaPenyewaanLabel.text = "Rp. \(price.toRupiah())/minggu"
+            biayaSewaBukuLabel.text = "Rp. \(price.toRupiah())"
+            
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return cart?.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = detailBukuTableView.dequeueReusableCell(withIdentifier: "ItemKeranjangTableViewCell", for: indexPath) as! ItemKeranjangTableViewCell
+        cell.response = cart?[indexPath.row]
+        return cell
+    }
 }
