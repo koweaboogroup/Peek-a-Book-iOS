@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditProfileLenderViewController" customModule="Peek_a_Book" customModuleProvider="target">
+            <connections>
+                <outlet property="circleImageView" destination="cKq-ki-8Sd" id="3Kz-JK-ur8"/>
+                <outlet property="containerView" destination="yBi-VN-SYu" id="J0Y-L8-xiL"/>
+                <outlet property="fieldStoreBio" destination="7Jt-SB-Ur6" id="NAM-Iq-Ewl"/>
+                <outlet property="fieldStoreName" destination="fJU-h3-jzL" id="K68-dK-qnV"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cKq-ki-8Sd" customClass="CircleImageView" customModule="Peek_a_Book" customModuleProvider="target">
+                    <rect key="frame" x="140.66666666666666" y="64" width="109" height="109"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="109" id="OvK-uE-Sej"/>
+                        <constraint firstAttribute="height" constant="109" id="SfV-4o-5DO"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fje-pm-JBD">
+                    <rect key="frame" x="140.66666666666666" y="183" width="109" height="30"/>
+                    <state key="normal" title="Edit"/>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yBi-VN-SYu">
+                    <rect key="frame" x="20" y="233" width="350" height="182"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fJU-h3-jzL" customClass="CustomTextField" customModule="Peek_a_Book" customModuleProvider="target">
+                            <rect key="frame" x="10" y="10" width="330" height="50"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="fJU-h3-jzL" secondAttribute="height" multiplier="33:5" id="Qdz-P8-JUz"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dI2-sx-tvX">
+                            <rect key="frame" x="0.0" y="60" width="350" height="1"/>
+                            <color key="backgroundColor" red="0.74509803919999995" green="0.74509803919999995" blue="0.75294117650000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="086-cs-mPM"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Jt-SB-Ur6" customClass="CustomTextField" customModule="Peek_a_Book" customModuleProvider="target">
+                            <rect key="frame" x="10" y="61" width="330" height="50"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="7Jt-SB-Ur6" secondAttribute="height" multiplier="33:5" id="mcp-Ke-Dl8"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GSJ-LO-dkx">
+                            <rect key="frame" x="0.0" y="111" width="350" height="1"/>
+                            <color key="backgroundColor" red="0.74509803919999995" green="0.74509803919999995" blue="0.75294117650000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="6bc-Ff-zSc"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5rU-GM-HF7" customClass="CustomTextField" customModule="Peek_a_Book" customModuleProvider="target">
+                            <rect key="frame" x="10" y="112" width="330" height="50"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="5rU-GM-HF7" secondAttribute="height" multiplier="33:5" id="rew-vA-ojP"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="GSJ-LO-dkx" firstAttribute="leading" secondItem="yBi-VN-SYu" secondAttribute="leading" id="3Vm-0z-iLl"/>
+                        <constraint firstItem="5rU-GM-HF7" firstAttribute="top" secondItem="GSJ-LO-dkx" secondAttribute="bottom" id="5Ie-Z0-Hp4"/>
+                        <constraint firstItem="5rU-GM-HF7" firstAttribute="leading" secondItem="yBi-VN-SYu" secondAttribute="leading" constant="10" id="Alt-Av-D3O"/>
+                        <constraint firstItem="7Jt-SB-Ur6" firstAttribute="centerX" secondItem="yBi-VN-SYu" secondAttribute="centerX" id="DXO-EP-9rD"/>
+                        <constraint firstAttribute="trailing" secondItem="fJU-h3-jzL" secondAttribute="trailing" constant="10" id="Du0-ZN-TRb"/>
+                        <constraint firstItem="GSJ-LO-dkx" firstAttribute="top" secondItem="7Jt-SB-Ur6" secondAttribute="bottom" id="Efw-JU-BQz"/>
+                        <constraint firstItem="fJU-h3-jzL" firstAttribute="centerX" secondItem="yBi-VN-SYu" secondAttribute="centerX" id="FEe-ad-kPu"/>
+                        <constraint firstItem="7Jt-SB-Ur6" firstAttribute="leading" secondItem="yBi-VN-SYu" secondAttribute="leading" constant="10" id="H8X-sr-6db"/>
+                        <constraint firstAttribute="trailing" secondItem="7Jt-SB-Ur6" secondAttribute="trailing" constant="10" id="M8f-IV-HaV"/>
+                        <constraint firstItem="dI2-sx-tvX" firstAttribute="top" secondItem="fJU-h3-jzL" secondAttribute="bottom" id="Ofz-r1-V16"/>
+                        <constraint firstItem="fJU-h3-jzL" firstAttribute="leading" secondItem="yBi-VN-SYu" secondAttribute="leading" constant="10" id="Qzj-St-QbO"/>
+                        <constraint firstAttribute="trailing" secondItem="dI2-sx-tvX" secondAttribute="trailing" id="W1u-ex-YAc"/>
+                        <constraint firstAttribute="trailing" secondItem="5rU-GM-HF7" secondAttribute="trailing" constant="10" id="a70-eJ-kDk"/>
+                        <constraint firstAttribute="trailing" secondItem="GSJ-LO-dkx" secondAttribute="trailing" id="cXP-Hi-CRm"/>
+                        <constraint firstAttribute="bottom" secondItem="5rU-GM-HF7" secondAttribute="bottom" constant="20" id="eeE-i6-fVl"/>
+                        <constraint firstItem="fJU-h3-jzL" firstAttribute="top" secondItem="yBi-VN-SYu" secondAttribute="top" constant="10" id="ejG-ZI-Ahc"/>
+                        <constraint firstItem="7Jt-SB-Ur6" firstAttribute="top" secondItem="dI2-sx-tvX" secondAttribute="bottom" id="fNd-nM-lWB"/>
+                        <constraint firstItem="dI2-sx-tvX" firstAttribute="leading" secondItem="yBi-VN-SYu" secondAttribute="leading" id="fqh-Yh-eqA"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="fje-pm-JBD" firstAttribute="leading" secondItem="cKq-ki-8Sd" secondAttribute="leading" id="Niz-ni-yhA"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="yBi-VN-SYu" secondAttribute="trailing" constant="20" id="SIJ-VW-3yf"/>
+                <constraint firstItem="fje-pm-JBD" firstAttribute="top" secondItem="cKq-ki-8Sd" secondAttribute="bottom" constant="10" id="UTx-hd-xFD"/>
+                <constraint firstItem="fje-pm-JBD" firstAttribute="trailing" secondItem="cKq-ki-8Sd" secondAttribute="trailing" id="V6l-Wb-Hy9"/>
+                <constraint firstItem="yBi-VN-SYu" firstAttribute="top" secondItem="fje-pm-JBD" secondAttribute="bottom" constant="20" id="Vd2-j0-D0h"/>
+                <constraint firstItem="cKq-ki-8Sd" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="W7S-WQ-f6d"/>
+                <constraint firstItem="cKq-ki-8Sd" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="auF-Tb-heY"/>
+                <constraint firstItem="yBi-VN-SYu" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="sk5-j1-d23"/>
+            </constraints>
+            <point key="canvasLocation" x="-71" y="109"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
