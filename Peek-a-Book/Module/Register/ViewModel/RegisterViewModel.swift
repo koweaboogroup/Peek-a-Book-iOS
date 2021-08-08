@@ -42,7 +42,6 @@ struct RegisterViewModel {
         print("Masuk sini gaje")
         RegisterService.register(registerRequest: registerRequest) { registerResponse in
             
-            print("Masuk Sini \(registerResponse)")
             self.loading.onNext(false)
             let jwtUserDefaults = "jwt"
             UserDefaults.standard.string(forKey: jwtUserDefaults)
@@ -57,7 +56,6 @@ struct RegisterViewModel {
 
         } failCompletion: { error in
             
-            print("Masuk Sini \(error)")
             self.loading.onNext(false)
             self.error.onNext(error.errorDescription ?? "Error")
             fatalError()
