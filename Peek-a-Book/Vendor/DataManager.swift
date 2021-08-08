@@ -6,12 +6,14 @@
 //
 
 import Foundation
+import RxSwift
 
 class DataManager {
     
     static let shared = DataManager()
+    let isUserFetched: PublishSubject<Bool> = PublishSubject()
     
-    var user: User?
+    private var user: User?
     var lender: Lender?
     
     // MARK: Cart is array of lenderBookId
@@ -36,16 +38,27 @@ class DataManager {
         return -1
     }
     
+    func fetchUser() {
+        self.isUserFetched.onNext(false)
+        ProfileService.getProfile { user in
+            self.user = user
+            self.isUserFetched.onNext(true)
+        } failCompletion: { error in
+            print(error)
+        }
+
+    }
+    
     func getUser() -> User? {
         return user
     }
     
-    func getLenderId() -> Int {
-        lender?.id ?? -1
-    }
-    
     func setUser(user: User) {
         self.user = user
+    }
+    
+    func getLenderId() -> Int {
+        lender?.id ?? -1
     }
 
     func addItemToCart(lenderBook: LenderBook) {

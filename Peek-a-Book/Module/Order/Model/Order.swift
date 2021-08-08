@@ -10,7 +10,7 @@ import Foundation
 // MARK: - Order
 struct Order: Codable {
     let id: Int?
-    let rent: RentResponse?
+    let rent: Rent?
     let publishedAt, createdAt, updatedAt: String?
     let lenderBooks: [LenderBook]?
 
