@@ -19,7 +19,6 @@ class EditProfileLenderViewController: UIViewController {
     private let viewModel = ProfileLenderViewModel()
     private let disposeBag = DisposeBag()
     
-    var delegate: ProfileTokoDelegate?
     var lenderId: Int?
     
     override func viewWillAppear(_ animated: Bool) {
@@ -80,8 +79,5 @@ class EditProfileLenderViewController: UIViewController {
         viewModel.editLenderProfile(lenderId: lenderId ?? -1, name: fieldStoreName.text, bio: fieldStoreBio.text, user: nil, alamat: nil, provinsi: nil, kota: nil, kelurahan: nil, kecamatan: nil, longtitude: nil, latitude: nil) {
             self.navigationController?.popViewController(animated: true)
         }
-//        delegate?.fetchProfile()
-        
-        
     }
 }

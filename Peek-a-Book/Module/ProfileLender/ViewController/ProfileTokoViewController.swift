@@ -69,7 +69,6 @@ class ProfileTokoViewController: UIViewController {
     @objc func editTapped(){
         let vc = ModuleBuilder.shared.goToEditProfileLenderViewController()
         vc.lenderId = self.lenderId
-        vc.delegate = self
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

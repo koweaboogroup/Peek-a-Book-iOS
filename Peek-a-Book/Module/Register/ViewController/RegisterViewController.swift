@@ -170,6 +170,10 @@ class RegisterViewController: UIViewController {
                 self.provName = $0[4]
             })
             .disposed(by: disposeBag)
+        
+        viewModel.user.subscribe(onNext: { user in
+            self.changeToProfileVC()
+        }).disposed(by: disposeBag)
     }
     
     private func setupUI() {
@@ -210,8 +214,7 @@ class RegisterViewController: UIViewController {
             present(alert ?? UIAlertController(), animated: true, completion: nil)
             return
         }
-        
-        viewModel.register(alamat: address, provinsi: provName, kota: cityName, kelurahan: urbanVillage, kecamatan: districtName, longtitude: 0.0, latitude: 0.0)
+        viewModel.register(name: name, email: email, whatsappNumber: whatsappNumber, password: password, alamat: address, provinsi: provName, kota: cityName, kelurahan: urbanVillage, kecamatan: districtName, longtitude: 0.0, latitude: 0.0)
         
     }
     
@@ -265,6 +268,13 @@ extension RegisterViewController: UITextFieldDelegate {
         }
         
         return true
+    }
+    
+    private func changeToProfileVC() {
+        let profileVC = UINavigationController(rootViewController: ProfileViewController())
+        profileVC.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person.crop.circle.fill"), tag: 1)
+
+        self.tabBarController?.viewControllers?[1] = profileVC
     }
 }
 
