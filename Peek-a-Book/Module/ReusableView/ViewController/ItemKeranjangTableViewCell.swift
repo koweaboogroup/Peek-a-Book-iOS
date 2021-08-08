@@ -12,11 +12,6 @@ class ItemKeranjangTableViewCell: UITableViewCell {
     @IBOutlet weak var bookTitle:UILabel!
     @IBOutlet weak var bookWriter:UILabel!
     
-    
-    
-    
-    
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -29,4 +24,11 @@ class ItemKeranjangTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    public var response: LenderBook! {
+        didSet {
+            self.bookImage.kf.setImage(with: URL(string: Constant.Network.baseUrl + (response.images?[0].url ?? "")))
+            self.bookTitle.text = response.book?.title
+            self.bookWriter.text = response.book?.author
+        }
+    }
 }

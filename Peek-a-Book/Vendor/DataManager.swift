@@ -56,19 +56,32 @@ class DataManager {
         let cartKey = "cart"
         let encoder = JSONEncoder()
         if let encoded = try? encoder.encode(cart){
-         UserDefaults.standard.set(encoded, forKey: "cart")
+            UserDefaults.standard.set(encoded, forKey: cartKey)
         }
-        UserDefaults.standard.set(cart, forKey: cartKey)
+        //UserDefaults.standard.set(cart, forKey: cartKey)
     }
     
-    func loadCartFromUserDefaults() {
+    func loadCartFromUserDefaults() -> [LenderBook]? {
         let cartKey = "cart"
-        if let cart = UserDefaults.standard.value(forKey: cartKey) as? Data {
+        /*if let cart = UserDefaults.standard.value(forKey: cartKey) as? Data {
             let decoder = JSONDecoder()
             if let decodedCart = try? decoder.decode(Array.self, from: cart) as [LenderBook] {
                 self.cart = decodedCart
             }
-         }
+         }*/
+        if let data = UserDefaults.standard.data(forKey: cartKey) {
+            do {
+                // Create JSON Decoder
+                let decoder = JSONDecoder()
+
+                // Decode Note
+                let lenderBook = try decoder.decode([LenderBook].self, from: data)
+                return lenderBook
+            } catch {
+                print("Unable to Decode Notes (\(error))")
+            }
+        }
+        return nil
     }
     
     func getCart() -> [LenderBook] {
