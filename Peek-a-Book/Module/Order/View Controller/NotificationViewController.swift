@@ -17,7 +17,7 @@ class NotificationViewController: UIViewController {
         setSegmentedControl()
     }
     
-    func setNavigationBar(){
+    private func setNavigationBar(){
         self.navigationItem.title = "Notifikasi"
         
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "DM Serif Text", size: 19)!]
@@ -30,7 +30,7 @@ class NotificationViewController: UIViewController {
         self.navigationController?.view.backgroundColor = .clear
     }
     
-    func setSegmentedControl(){
+    private func setSegmentedControl(){
         notificationSegmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.systemBlue], for: UIControl.State.selected)
         notificationSegmentedControl.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "Graphik", size: 14)!], for: .normal)
     }

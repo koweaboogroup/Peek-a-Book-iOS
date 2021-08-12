@@ -16,12 +16,12 @@ class DetailOrderViewController: UIViewController {
     @IBOutlet weak var nomorOrderPenyewaanLabel: UILabel!
     
     // MARK: - Detail Penyewa
-    @IBOutlet weak var namaPenyewaLabel: UILabel!
-    @IBOutlet weak var jalanPenyewaLabel: UILabel!
-    @IBOutlet weak var kelurahanPenyewaLabel: UILabel!
-    @IBOutlet weak var kecamatanPenyewaLabel: UILabel!
-    @IBOutlet weak var negaraPenyewaLabel: UILabel!
-    @IBOutlet weak var nomorTeleponPenyewaLabel: UILabel!
+    @IBOutlet weak var renterNameLabel: UILabel!
+    @IBOutlet weak var renterStreetLabel: UILabel!
+    @IBOutlet weak var renterSubDistrictLabel: UILabel!
+    @IBOutlet weak var renterDistrictLabel: UILabel!
+    @IBOutlet weak var renterCountryLabel: UILabel!
+    @IBOutlet weak var renterPhoneLabel: UILabel!
     
     // MARK: - Detail Buku
     @IBOutlet weak var profileImage: UIImageView!
@@ -29,11 +29,11 @@ class DetailOrderViewController: UIViewController {
     @IBOutlet weak var detailBukuTableView: UITableView!
     
     // MARK: - Detail Sewa
-    @IBOutlet weak var durasiSewaLabel: UILabel!
-    @IBOutlet weak var metodePengirimanLabel: UILabel!
-    @IBOutlet weak var biayaPengirimanLabel: UILabel!
-    @IBOutlet weak var totalBiayaLabel: UILabel!
-    @IBOutlet weak var tanggalBatasSewaLabel: UILabel!
+    @IBOutlet weak var rentDurationLabel: UILabel!
+    @IBOutlet weak var rentDeliveryMethodLabel: UILabel!
+    @IBOutlet weak var rentDeliveryFeeLabel: UILabel!
+    @IBOutlet weak var rentFeeLabel: UILabel!
+    @IBOutlet weak var rentDeadlineDateLabel: UILabel!
     
     var orderId: Int?
     private let viewModel = DetailOrderViewModel()
@@ -48,14 +48,6 @@ class DetailOrderViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBar()
@@ -63,10 +55,7 @@ class DetailOrderViewController: UIViewController {
         setRx()
     }
     
-    
-    
-    
-    func setNavigationBar(){
+    private func setNavigationBar(){
         self.navigationItem.title = "Detail Order"
         
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "DM Serif Text", size: 19)!]
@@ -79,12 +68,12 @@ class DetailOrderViewController: UIViewController {
         self.navigationController?.view.backgroundColor = .clear
     }
     
-    func setView(){
+    private func setView(){
         detailBukuTableView.layer.applyShadow(color: .black, alpha: 0.1, x: 0, y: 2, blur: 5, spread: 0)
     }
     
     
-    func setRx(){
+    private func setRx(){
         viewModel.getDetailOrder(orderId: orderId ?? -1)
       
 //        nomorOrderPenyewaanLabel.rx.text.map {
@@ -99,27 +88,27 @@ class DetailOrderViewController: UIViewController {
         
         viewModel.order.asObserver().map { order in
             order.rent?.user?.username
-        }.bind(to: namaPenyewaLabel.rx.text)
+        }.bind(to: renterNameLabel.rx.text)
         .disposed(by: disposeBag)
         
         viewModel.order.asObserver().map { order in
             order.rent?.alamat
-        }.bind(to: jalanPenyewaLabel.rx.text)
+        }.bind(to: renterStreetLabel.rx.text)
         .disposed(by: disposeBag)
         
         viewModel.order.asObserver().map { order in
             order.rent?.user?.phoneNumber
-        }.bind(to: nomorTeleponPenyewaLabel.rx.text)
+        }.bind(to: renterPhoneLabel.rx.text)
         .disposed(by: disposeBag)
         
         viewModel.order.asObserver().map { order in
             "\(order.rent?.periodOfTime ?? -1)"
-        }.bind(to: durasiSewaLabel.rx.text)
+        }.bind(to: rentDurationLabel.rx.text)
         .disposed(by: disposeBag)
         
         viewModel.order.asObserver().map { order in
             order.rent?.shippingMethods
-        }.bind(to: metodePengirimanLabel.rx.text)
+        }.bind(to: rentDeliveryMethodLabel.rx.text)
         .disposed(by: disposeBag)
         
         viewModel.order.asObserver().map { order in
@@ -140,14 +129,7 @@ class DetailOrderViewController: UIViewController {
         }.disposed(by: disposeBag)
     }
     
-    
-    
-    
-
-
-    @IBAction func kembaliKeHomepagePressed(_ sender: UIButton) {
-        print("To homepage")
-        
+    @IBAction func backToHomePageButtonPressed(_ sender: UIButton) {
     }
     
 
