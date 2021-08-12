@@ -33,7 +33,7 @@ class ProfileViewController: UIViewController {
         
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "DM Serif Text", size: 19)!]
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "bell.fill"), style: .done, target: self, action: #selector(saveTapped))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "bell.fill"), style: .done, target: self, action: #selector(notificationTapped))
         
         UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "DM Serif Text", size: 19.0)!], for: .normal)
         
@@ -43,7 +43,7 @@ class ProfileViewController: UIViewController {
         self.navigationController?.view.backgroundColor = .clear
     }
     
-    @objc func addTapped(_ sender: UINavigationItem){
+    @objc private func notificationTapped(_ sender: UINavigationItem){
         print("to notification")
     }
     
@@ -84,11 +84,11 @@ class ProfileViewController: UIViewController {
         
     }
     
-    @IBAction func tapRiwayatPenyewaan(_ sender: UITapGestureRecognizer) {
+    @IBAction func rentHistoryTapped(_ sender: UITapGestureRecognizer) {
         
     }
     
-    @IBAction func tapMulaiSewakanBuku(_ sender: UITapGestureRecognizer) {
+    @IBAction func startRentTapped(_ sender: UITapGestureRecognizer) {
         if userObj.lender != nil {
             let vc = ModuleBuilder.shared.goToProfileLenderViewController()
             vc.setLenderId(id: userObj.lender?.id ?? 0)
@@ -99,13 +99,13 @@ class ProfileViewController: UIViewController {
         }
     }
     
-    @IBAction func tapSyaratDanKetentuan(_ sender: UITapGestureRecognizer) {
+    @IBAction func tncTapped(_ sender: UITapGestureRecognizer) {
         let safariViewController = SFSafariViewController(url: URL(string: Constant.termsAndConditionsLink) ?? URL(fileURLWithPath: ""))
         
         self.present(safariViewController, animated: true, completion: nil)
     }
     
-    @IBAction func tapKeluar(_ sender: UITapGestureRecognizer) {
+    @IBAction func logoutTapped(_ sender: UITapGestureRecognizer) {
         profileViewModel.logout()
         let vc = ModuleBuilder.shared.goToLoginViewController()
         self.navigationController?.pushViewController(vc, animated: true)

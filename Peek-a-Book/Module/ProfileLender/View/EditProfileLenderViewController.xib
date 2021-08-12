@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditProfileLenderViewController" customModule="Peek_a_Book" customModuleProvider="target">
             <connections>
-                <outlet property="circleImageView" destination="cKq-ki-8Sd" id="3Kz-JK-ur8"/>
+                <outlet property="circleStoreImageView" destination="cKq-ki-8Sd" id="3Kz-JK-ur8"/>
                 <outlet property="containerView" destination="yBi-VN-SYu" id="J0Y-L8-xiL"/>
                 <outlet property="fieldStoreBio" destination="7Jt-SB-Ur6" id="NAM-Iq-Ewl"/>
                 <outlet property="fieldStoreName" destination="fJU-h3-jzL" id="K68-dK-qnV"/>

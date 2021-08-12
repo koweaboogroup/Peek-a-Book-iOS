@@ -11,7 +11,7 @@ import RxCocoa
 
 class EditProfileLenderViewController: UIViewController {
 
-    @IBOutlet weak var circleImageView: CircleImageView!
+    @IBOutlet weak var circleStoreImageView: CircleImageView!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var fieldStoreName: CustomTextField!
     @IBOutlet weak var fieldStoreBio: CustomTextField!

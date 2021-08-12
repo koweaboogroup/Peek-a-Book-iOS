@@ -72,7 +72,7 @@ class EditProfileViewController: UIViewController {
         
     }
     
-    @objc func saveTapped(_ sender: UINavigationItem){
+    @objc private func saveTapped(_ sender: UINavigationItem){
     }
     
     @IBAction func detailAddressGetTapped(_ sender: UITapGestureRecognizer) {

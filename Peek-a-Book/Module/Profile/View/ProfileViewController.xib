@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -21,20 +20,20 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ymq-tT-Z6j" customClass="CircleImageView" customModule="Peek_a_Book" customModuleProvider="target">
-                    <rect key="frame" x="132" y="106" width="150" height="150"/>
+                    <rect key="frame" x="132" y="62" width="150" height="150"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="150" id="Rsb-Th-fqD"/>
                         <constraint firstAttribute="height" constant="150" id="WGM-dR-Pky"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="John Doe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uad-kU-2Vc">
-                    <rect key="frame" x="153.5" y="314" width="107.5" height="31.5"/>
+                    <rect key="frame" x="153.5" y="270" width="107.5" height="31.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="26"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dlN-qs-1dL">
-                    <rect key="frame" x="166" y="355.5" width="82" height="33"/>
+                    <rect key="frame" x="166" y="311.5" width="82" height="33"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <state key="normal" title="Edit Profile"/>
                     <connections>
@@ -42,7 +41,7 @@
                     </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cVt-dq-74j">
-                    <rect key="frame" x="32" y="408.5" width="350" height="196"/>
+                    <rect key="frame" x="32" y="364.5" width="350" height="196"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="kpb-fe-sXa">
                             <rect key="frame" x="0.0" y="10" width="350" height="176"/>
@@ -248,22 +247,22 @@
         </view>
         <tapGestureRecognizer id="VWZ-Vj-62c">
             <connections>
-                <action selector="tapRiwayatPenyewaan:" destination="-1" id="052-pR-9cY"/>
+                <action selector="rentHistoryTapped:" destination="-1" id="052-pR-9cY"/>
             </connections>
         </tapGestureRecognizer>
         <tapGestureRecognizer id="9q2-kM-2Hl">
             <connections>
-                <action selector="tapMulaiSewakanBuku:" destination="-1" id="hvf-G5-2JE"/>
+                <action selector="startRentTapped:" destination="-1" id="hvf-G5-2JE"/>
             </connections>
         </tapGestureRecognizer>
         <tapGestureRecognizer id="KGl-UX-dKc">
             <connections>
-                <action selector="tapSyaratDanKetentuan:" destination="-1" id="hAD-GB-ExU"/>
+                <action selector="tncTapped:" destination="-1" id="hAD-GB-ExU"/>
             </connections>
         </tapGestureRecognizer>
         <tapGestureRecognizer id="lWf-ea-8k2">
             <connections>
-                <action selector="tapKeluar:" destination="-1" id="IRz-Wh-KUz"/>
+                <action selector="logoutTapped:" destination="-1" id="IRz-Wh-KUz"/>
             </connections>
         </tapGestureRecognizer>
     </objects>

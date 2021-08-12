@@ -11,15 +11,13 @@ import RxCocoa
 import Kingfisher
 import RxKingfisher
 
-class ProfileTokoViewController: UIViewController {
+class ProfileLenderViewController: UIViewController {
 
-    @IBOutlet weak var profilTokoImage: CircleImageView!
-    @IBOutlet weak var namaTokoLabel: UILabel!
-    @IBOutlet weak var bioTokoLabel: UILabel!
-    
-    @IBOutlet weak var lokasiTokoLabel: UILabel!
-    
-    @IBOutlet weak var koleksiBukuCollectionView: UICollectionView!
+    @IBOutlet weak var circleLenderImageView: CircleImageView!
+    @IBOutlet weak var lenderNameLabel: UILabel!
+    @IBOutlet weak var lenderBioLabel: UILabel!
+    @IBOutlet weak var lenderLocationLabel: UILabel!
+    @IBOutlet weak var BooksCollectionView: UICollectionView!
     
     private let viewModel = ProfileLenderViewModel()
     private let disposeBag = DisposeBag()
@@ -46,23 +44,23 @@ class ProfileTokoViewController: UIViewController {
         
         //MARK: - Setup View Detail Toko
         viewModel.lenderProfile.subscribe (onNext: { response in
-            self.profilTokoImage.setImage(fromUrl: Constant.Network.baseUrl + (response.images?[0].url ?? ""))
+            self.circleLenderImageView.setImage(fromUrl: Constant.Network.baseUrl + (response.images?[0].url ?? ""))
         }).disposed(by: disposeBag)
         
         viewModel.lenderProfile.asObservable().map { response in
             response.name
-        }.bind(to: namaTokoLabel.rx.text)
+        }.bind(to: lenderNameLabel.rx.text)
         .disposed(by: disposeBag)
         
         viewModel.lenderProfile.asObservable().map { response in
             response.bio ?? ""
-        }.bind(to: bioTokoLabel.rx.text)
+        }.bind(to: lenderBioLabel.rx.text)
         .disposed(by: disposeBag)
         
         //MARK: Ini mapping lokasinya mau pake Kota aja ya?
         viewModel.lenderProfile.asObservable().map { response in
             response.kota
-        }.bind(to: lokasiTokoLabel.rx.text)
+        }.bind(to: lenderLocationLabel.rx.text)
         .disposed(by: disposeBag)
     }
     
