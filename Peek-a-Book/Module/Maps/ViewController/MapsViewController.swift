@@ -116,8 +116,8 @@ class MapsViewController: UIViewController, CLLocationManagerDelegate {
             let location = [self.districtName, self.cityName, self.provName, self.countryName]
             let administrativePlaceName = location.filter { !$0.isEmpty }.joined(separator: ", ")
             
-            self.addressMapsView.labelAlamat.text = self.streetName
-            self.addressMapsView.labelDetailAlamat.text = administrativePlaceName
+            self.addressMapsView.labelAddress.text = self.streetName
+            self.addressMapsView.labelDetailAddress.text = administrativePlaceName
         }
     }
     
