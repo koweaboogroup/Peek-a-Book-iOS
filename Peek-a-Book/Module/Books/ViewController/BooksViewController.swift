@@ -19,6 +19,7 @@ class BooksViewController: UIViewController, CLLocationManagerDelegate {
     let disposeBag = DisposeBag()
     let locationManager = CLLocationManager()
     
+    // MARK: LIFECYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,6 +28,14 @@ class BooksViewController: UIViewController, CLLocationManagerDelegate {
         setupView()
         cellSelectedIndex()
         print("\(DateTime.getTimeStamp())")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
     private func setupView(){
@@ -38,7 +47,6 @@ class BooksViewController: UIViewController, CLLocationManagerDelegate {
         
         nonFictionBookCollectionView.register(UINib(nibName: XIBConstant.BooksHomescreenCollectionViewCell, bundle: nil), forCellWithReuseIdentifier: XIBConstant.BooksHomescreenCollectionViewCell)
         
-
         viewModel.listBookFiction.bind(to: fictionBookCollectionView.rx.items(cellIdentifier: XIBConstant.BooksHomescreenCollectionViewCell, cellType: BooksHomescreenCollectionViewCell.self)){ (row,book,cell) in
             cell.response = book
         }.disposed(by: disposeBag)
@@ -53,19 +61,7 @@ class BooksViewController: UIViewController, CLLocationManagerDelegate {
         
     }
     
-    func cellSelectedIndex(){
-        
-        fictionBookCollectionView.rx.itemSelected.subscribe(onNext: { (model) in
-            print(model.row)
-        }).disposed(by: disposeBag)
-        
-        nonFictionBookCollectionView.rx.itemSelected.subscribe(onNext: { (model) in
-            print(model.row)
-        }).disposed(by: disposeBag)
-        
-        nearestBookCollectionView.rx.itemSelected.subscribe(onNext: { (model) in
-            print(model.row)
-        }).disposed(by: disposeBag)
+    private func cellSelectedIndex(){
         
         nearestBookCollectionView.rx.modelSelected(LenderBook.self)
             .subscribe(onNext: { model in
@@ -95,15 +91,6 @@ class BooksViewController: UIViewController, CLLocationManagerDelegate {
             .disposed(by: disposeBag)
 
 
-    }
-    
-
-    override func viewWillAppear(_ animated: Bool) {
-        navigationController?.setNavigationBarHidden(true, animated: false)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
     private func checkLocationServices() {
