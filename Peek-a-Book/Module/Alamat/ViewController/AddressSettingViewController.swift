@@ -140,12 +140,4 @@ class AddressSettingViewController: UIViewController {
             self.checkButton.setImage(UIImage(systemName: "checkmark.square"), for: .normal)
         }
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        self.tabBarController?.tabBar.isHidden = true
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        self.tabBarController?.tabBar.isHidden = false
-    }
 }

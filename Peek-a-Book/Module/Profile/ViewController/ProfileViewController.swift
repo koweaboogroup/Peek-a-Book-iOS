@@ -67,21 +67,19 @@ class ProfileViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        navigationController?.setNavigationBarHidden(true, animated: false)
+        showNavigation(true)
         self.tabBarController?.tabBar.isHidden = false
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        navigationController?.setNavigationBarHidden(false, animated: false)
+        showNavigation(false)
     }
     
     // MARK: -Deklarasi Action Button
-    @IBAction func ButtonEditProfileTouched(_ sender: UIButton) {
-        
+    @IBAction func editProfileButtonPressed(_ sender: UIButton) {
         let vc = ModuleBuilder.shared.goToEditProfileViewController()
         vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
-        
     }
     
     @IBAction func rentHistoryTapped(_ sender: UITapGestureRecognizer) {
@@ -91,10 +89,12 @@ class ProfileViewController: UIViewController {
     @IBAction func startRentTapped(_ sender: UITapGestureRecognizer) {
         if userObj.lender != nil {
             let vc = ModuleBuilder.shared.goToProfileLenderViewController()
+            vc.hidesBottomBarWhenPushed = true
             vc.setLenderId(id: userObj.lender?.id ?? 0)
             self.navigationController?.pushViewController(vc, animated: true)
         } else {
             let vc = ModuleBuilder.shared.goToRegisterLenderViewController()
+            vc.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
