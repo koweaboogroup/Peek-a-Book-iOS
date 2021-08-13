@@ -58,7 +58,6 @@ struct RegisterViewModel {
             
             self.loading.onNext(false)
             self.error.onNext(error.errorDescription ?? "Error")
-            fatalError()
             
         }
         
