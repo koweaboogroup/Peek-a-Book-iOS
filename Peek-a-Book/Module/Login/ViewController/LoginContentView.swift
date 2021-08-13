@@ -11,14 +11,19 @@ import UIKit
 
 class LoginContentView: UIView {
     
-    @IBOutlet weak var loginContentView: UIView!
+    // MARK: - Variable (Outlet)
     
+    @IBOutlet weak var loginContentView: UIView!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var fieldContainer: UIView!
     @IBOutlet weak var identifierTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
+    // MARK: - Variable
+    
     var viewModel: LoginViewModel?
+    
+    // MARK: - Init
     
     func initViewModel(_ viewModel: LoginViewModel) {
         self.viewModel = viewModel
@@ -34,11 +39,15 @@ class LoginContentView: UIView {
         commonInit()
     }
     
+    // MARK: - Life Cycle
+    
     override func awakeFromNib() {
         setupCornerRadius()
         
         setupTextFieldDelegate()
     }
+    
+    // MARK: - Private function
     
     private func setupCornerRadius() {
         layer.cornerRadius = 36
@@ -93,6 +102,8 @@ class LoginContentView: UIView {
         viewModel?.login(identifier: identifier, password: password)
     }
     
+    // MARK: - IBAction
+    
     @IBAction func loginBtnPressed(_ sender: UIButton) {
         processLogin()
     }
@@ -102,6 +113,8 @@ class LoginContentView: UIView {
     }
     
 }
+
+// MARK: - UITextFieldDelegate
 
 extension LoginContentView: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
