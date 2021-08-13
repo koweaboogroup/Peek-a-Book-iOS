@@ -10,21 +10,45 @@ import RxSwift
 
 class LoginViewController: UIViewController {
     
-    @IBOutlet weak var loginViewContent: LoginContentView!
+    // MARK: - Variable (Outlet)
     
+    @IBOutlet weak var loginViewContent: LoginContentView!
     @IBOutlet weak var loginViewContentBottomConstraint: NSLayoutConstraint!
+    
+    // MARK: - Variable
     
     let viewModel = LoginViewModel()
     let disposeBag = DisposeBag()
     
+    // MARK: - Life Cycle
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-//        MARK: set title to be empty for back button when pushed
         self.navigationItem.backButtonTitle = ""
         
         showNavigation(true)
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        loginViewContent.initViewModel(viewModel)
+        
+        self.hideKeyboardWhenTappedAround()
+        
+        self.setupKeyboardListener(selector: #selector(handleKeyboardNotification))
+        
+        setupRx()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        showNavigation(false)
+    }
+    
+    // MARK: - Private Function
     
     private func setupRx() {
         loginViewContent.identifierTextField.rx.text
@@ -87,24 +111,8 @@ class LoginViewController: UIViewController {
         vc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        loginViewContent.initViewModel(viewModel)
-        
-        self.hideKeyboardWhenTappedAround()
-        
-        self.setupKeyboardListener(selector: #selector(handleKeyboardNotification))
-        
-        setupRx()
-    }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-
-        showNavigation(false)
-    }
+    // MARK: - Private Function (Selector)
     
     @objc func handleKeyboardNotification(notification: NSNotification) {
         if let userInfo = notification.userInfo {
