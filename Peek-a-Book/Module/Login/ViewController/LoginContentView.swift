@@ -21,7 +21,7 @@ class LoginContentView: UIView {
     
     // MARK: - Variable
     
-    var viewModel: LoginViewModel?
+    private var viewModel: LoginViewModel?
     
     // MARK: - Init
     
