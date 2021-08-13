@@ -36,7 +36,6 @@ struct ProfileLenderViewModel {
         } failCompletion: { error in
             self.loading.onNext(false)
             self.error.onNext(error.errorDescription ?? "Error")
-            fatalError()
         }
 
     }
