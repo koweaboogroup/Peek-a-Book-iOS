@@ -22,8 +22,8 @@ class LoginViewController: UIViewController {
         
 //        MARK: set title to be empty for back button when pushed
         self.navigationItem.backButtonTitle = ""
-
-        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        
+        showNavigation(true)
     }
     
     private func setupRx() {
@@ -84,6 +84,7 @@ class LoginViewController: UIViewController {
     
     private func changeToRegisterVC(){
         let vc = ModuleBuilder.shared.goToRegisterViewController()
+        vc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
 
@@ -102,7 +103,7 @@ class LoginViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 
-        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        showNavigation(false)
     }
     
     @objc func handleKeyboardNotification(notification: NSNotification) {

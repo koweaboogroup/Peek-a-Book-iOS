@@ -27,19 +27,21 @@ class BooksHomescreenCollectionViewCell: UICollectionViewCell {
         )
     }
     
-    public var response: LenderBook! {
+    public var response: LenderBook? {
         didSet {
-            self.lenderStoreImage.setImage(fromUrl: Constant.Network.baseUrl + (response.lender?.images?[0].url ?? ""))
-            self.lenderStoreName.text = response.lender?.name
-            if response.distance == 0 {
-                self.lenderStoreLocation.text = response.lender?.kota
-            }else{
-                self.lenderStoreLocation.text = "\(response.lender?.kota ?? "") (\(response.distance)m)"
+            if let response = response {
+                self.lenderStoreImage.setImage(fromUrl: Constant.Network.baseUrl + (response.lender?.images?[0].url ?? ""))
+                self.lenderStoreName.text = response.lender?.name
+                if response.distance == 0 {
+                    self.lenderStoreLocation.text = response.lender?.kota
+                }else{
+                    self.lenderStoreLocation.text = "\(response.lender?.kota ?? "") (\(response.distance)m)"
+                }
+                self.bookTitle.text = response.book?.title
+                self.bookWriter.text = response.book?.author
+                self.bookRentPrice.text = "\(response.price?.toRupiah() ?? "")/minggu"
+                self.bookImage.kf.setImage(with: URL(string: Constant.Network.baseUrl + (response.images?[0].url ?? "")))
             }
-            self.bookTitle.text = response.book?.title
-            self.bookWriter.text = response.book?.author
-            self.bookRentPrice.text = "\(response.price?.toRupiah() ?? "")/minggu"
-            self.bookImage.kf.setImage(with: URL(string: Constant.Network.baseUrl + (response.images?[0].url ?? "")))
         }
     }
 }

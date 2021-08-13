@@ -13,33 +13,30 @@ import SafariServices
 class RegisterViewController: UIViewController {
     
     @IBOutlet weak var fieldContainer: UIView!
-    
     @IBOutlet weak var registerButton: UIButton!
-    
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var whatsappNumberTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
     @IBOutlet weak var addressDetailButton: UIButton!
-    
     @IBOutlet weak var termsAndConditionsBottomConstraint: NSLayoutConstraint!
     
     private let viewModel = RegisterViewModel()
     private var addressViewModel = AddressViewModel()
     private let disposeBag = DisposeBag()
     
-    var name = ""
-    var email = ""
-    var whatsappNumber = ""
-    var password = ""
-    var confirmPassword = ""
+    private var name = ""
+    private var email = ""
+    private var whatsappNumber = ""
+    private var password = ""
+    private var confirmPassword = ""
     
-    var address = ""
-    var urbanVillage = ""
-    var districtName = ""
-    var cityName = ""
-    var provName = ""
+    private var address = ""
+    private var urbanVillage = ""
+    private var districtName = ""
+    private var cityName = ""
+    private var provName = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,14 +44,6 @@ class RegisterViewController: UIViewController {
         setupUI()
         setupRx()
         self.setupKeyboardListener(selector: #selector(handleKeyboardNotification))
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        self.tabBarController?.tabBar.isHidden = true
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        self.tabBarController?.tabBar.isHidden = false
     }
     
     @objc func handleKeyboardNotification(notification: NSNotification) {
@@ -81,7 +70,7 @@ class RegisterViewController: UIViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    @IBAction func alamatBtnPressed(_ sender: Any) {
+    @IBAction func addressButtonPressed(_ sender: Any) {
         goToAlamatViewController()
     }
     

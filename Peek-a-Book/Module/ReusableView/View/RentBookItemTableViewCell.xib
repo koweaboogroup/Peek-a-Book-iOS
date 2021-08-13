@@ -187,11 +187,6 @@
             <point key="canvasLocation" x="123.18840579710145" y="322.76785714285711"/>
         </tableViewCell>
     </objects>
-    <designables>
-        <designable name="XQ9-zN-Gmo">
-            <size key="intrinsicContentSize" width="18" height="20"/>
-        </designable>
-    </designables>
     <resources>
         <image name="clock" catalog="system" width="128" height="121"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>

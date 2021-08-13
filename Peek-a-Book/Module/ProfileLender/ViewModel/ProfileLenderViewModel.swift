@@ -22,7 +22,7 @@ struct ProfileLenderViewModel {
             }.startWith(false)
     }
     
-    public func editLenderProfile(lenderId: Int, name: String?, bio: String?, user: String?, alamat: String?, provinsi: String?, kota: String?, kelurahan: String?, kecamatan: String?, longtitude: Float?, latitude: Float?, successCompletion: @escaping () -> Void) {
+    func editLenderProfile(lenderId: Int, name: String?, bio: String?, user: String?, alamat: String?, provinsi: String?, kota: String?, kelurahan: String?, kecamatan: String?, longtitude: Float?, latitude: Float?, successCompletion: @escaping () -> Void) {
         
         self.loading.onNext(true)
         
@@ -41,7 +41,7 @@ struct ProfileLenderViewModel {
 
     }
     
-    public func getLenderProfile(lenderId: Int) {
+    func getLenderProfile(lenderId: Int) {
         
         self.loading.onNext(true)
         

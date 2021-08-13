@@ -51,7 +51,7 @@ class LoginContentView: UIView {
         passwordTextField.delegate = self
     }
     
-    func commonInit() {
+    private func commonInit() {
         loginContentView = loadViewFromNib(nibName: XIBConstant.LoginContentView)
         loginContentView.frame = self.bounds
         
@@ -86,7 +86,7 @@ class LoginContentView: UIView {
         )
     }
     
-    func processLogin() {
+    private func processLogin() {
         let identifier = identifierTextField.text ?? ""
         let password = passwordTextField.text ?? ""
         

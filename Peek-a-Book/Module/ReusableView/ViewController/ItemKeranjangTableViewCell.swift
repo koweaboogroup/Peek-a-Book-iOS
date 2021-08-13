@@ -24,11 +24,13 @@ class ItemKeranjangTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    public var response: LenderBook! {
+    public var response: LenderBook? {
         didSet {
-            self.bookImage.kf.setImage(with: URL(string: Constant.Network.baseUrl + (response.images?[0].url ?? "")))
-            self.bookTitle.text = response.book?.title
-            self.bookWriter.text = response.book?.author
+            if let response = response {
+                self.bookImage.kf.setImage(with: URL(string: Constant.Network.baseUrl + (response.images?[0].url ?? "")))
+                self.bookTitle.text = response.book?.title
+                self.bookWriter.text = response.book?.author
+            }
         }
     }
 }

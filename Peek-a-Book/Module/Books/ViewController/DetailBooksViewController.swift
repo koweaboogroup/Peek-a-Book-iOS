@@ -140,11 +140,9 @@ class DetailBooksViewController: UIViewController {
     }
     
     @IBAction func lenderProfileGetTapped(_ sender: UITapGestureRecognizer) {
-        print("aww Shit")
     }
     
     @IBAction func totalBukuGetTapped(_ sender: UITapGestureRecognizer) {
-        print("aww mantab")
         DataManager.shared.saveCartToUserDefaults()
         
         let vc = ModuleBuilder.shared.goToCheckOutViewController()

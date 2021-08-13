@@ -11,8 +11,7 @@ import RxCocoa
 
 class RegisterLenderViewController: UIViewController {
 
-    @IBOutlet weak var circleImageView: CircleImageView!
-    
+    @IBOutlet weak var circleProfileImageView: CircleImageView!
     @IBOutlet weak var buttonRegisterLender: UIButton!
     @IBOutlet weak var registerContentView: RegisterContentView!
     
@@ -56,8 +55,8 @@ class RegisterLenderViewController: UIViewController {
         self.navigationItem.title = "Buka Penyewaan"
         self.navigationItem.backButtonTitle = ""
 
-        circleImageView.setPlaceHolderImage(image: #imageLiteral(resourceName: "store"))
-        circleImageView.setBackgroundColor(color: #colorLiteral(red: 0.9058823529, green: 0.9568627451, blue: 1, alpha: 1))
+        circleProfileImageView.setPlaceHolderImage(image: #imageLiteral(resourceName: "store"))
+        circleProfileImageView.setBackgroundColor(color: #colorLiteral(red: 0.9058823529, green: 0.9568627451, blue: 1, alpha: 1))
         registerContentView.cornerRadius(10)
         registerContentView.layer.applyShadow(
             color: .black,
@@ -69,13 +68,5 @@ class RegisterLenderViewController: UIViewController {
         )
         buttonRegisterLender.cornerRadius(10)
         
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        self.tabBarController?.tabBar.isHidden = true
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        self.tabBarController?.tabBar.isHidden = false
     }
 }

@@ -11,8 +11,8 @@ import UIKit
 class AddressMapsView: UIView {
 
     @IBOutlet weak var addressMapView: UIView!
-    @IBOutlet weak var labelAlamat: UILabel!
-    @IBOutlet weak var labelDetailAlamat: UILabel!
+    @IBOutlet weak var labelAddress: UILabel!
+    @IBOutlet weak var labelDetailAddress: UILabel!
     @IBOutlet weak var buttonDone: UIButton!
     @IBOutlet weak var buttonSearch: UIImageView!
     
