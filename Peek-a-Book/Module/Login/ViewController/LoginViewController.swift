@@ -114,7 +114,7 @@ class LoginViewController: UIViewController {
     
     // MARK: - Private Function (Selector)
     
-    @objc func handleKeyboardNotification(notification: NSNotification) {
+    @objc private func handleKeyboardNotification(notification: NSNotification) {
         if let userInfo = notification.userInfo {
             let keyboardFrameValue = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)
             let keyboardFrame = keyboardFrameValue?.cgRectValue
