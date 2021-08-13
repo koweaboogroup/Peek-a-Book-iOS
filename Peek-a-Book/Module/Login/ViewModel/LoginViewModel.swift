@@ -9,18 +9,23 @@ import Foundation
 import RxSwift
 
 struct LoginViewModel {
-    public let user : PublishSubject<User> = PublishSubject()
-    public let loading : PublishSubject<Bool> = PublishSubject()
-    public let error : PublishSubject<String> = PublishSubject()
+    
+    // MARK: - Variable
+    
+    let user : PublishSubject<User> = PublishSubject()
+    let loading : PublishSubject<Bool> = PublishSubject()
+    let error : PublishSubject<String> = PublishSubject()
     
     let identifier: PublishSubject<String> = PublishSubject()
     let password: PublishSubject<String> = PublishSubject()
     
-    public let buttonLoginPressed = PublishSubject<Bool>()
-    public let buttonRegisterPressed = PublishSubject<Bool>()
+    let buttonLoginPressed = PublishSubject<Bool>()
+    let buttonRegisterPressed = PublishSubject<Bool>()
+    
+    // MARK: Function
 
-    public func login(identifier: String, password: String) {
-        
+    func login(identifier: String, password: String) {
+
         self.loading.onNext(true)
         
         let loginRequest = LoginRequest(identifier: identifier, password: password)
