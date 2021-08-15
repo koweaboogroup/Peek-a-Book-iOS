@@ -573,9 +573,9 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Rk-6h-gzJ">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="thh-vA-di3">
+                        <view alpha="0.65000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="thh-vA-di3">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="627"/>
-                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2g2-FT-Vm1">
                             <rect key="frame" x="0.0" y="627" width="414" height="269"/>
@@ -637,7 +637,7 @@
                             </constraints>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="thh-vA-di3" firstAttribute="top" secondItem="2Rk-6h-gzJ" secondAttribute="top" id="AN4-Lf-haz"/>
                         <constraint firstItem="thh-vA-di3" firstAttribute="leading" secondItem="2Rk-6h-gzJ" secondAttribute="leading" id="IIl-T3-TCg"/>

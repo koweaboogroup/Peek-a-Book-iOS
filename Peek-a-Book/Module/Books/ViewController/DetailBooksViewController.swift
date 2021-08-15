@@ -150,8 +150,30 @@ class DetailBooksViewController: UIViewController {
         let vc = ModuleBuilder.shared.goToCheckOutViewController()
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    
     @IBAction func kondisiBukuInformationTouched(_ sender: UIButton) {
-        print("Ini dah ngeleg banget bund")
+        let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
+        switch detailBookConditionLabel.text {
+        case "Seperti Baru":
+            alert.title = "Kondisi Buku Seperti Baru"
+            alert.message = "Tidak ada coretan, noda, ataupun lipatan pada buku. Halaman utuh dan teks dapat dibaca dengan baik."
+        case "Baik":
+            alert.title = "Kondisi Buku Baik"
+            alert.message = "Sedikit coretan, noda, ataupun lipatan. Halaman utuh dan teks dapat dibaca dengan baik."
+        case "Cukup Baik":
+            alert.title = "Kondisi Buku Cukup Baik"
+            alert.message = "Ada coretan, noda, ataupun lipatan. Kertas sedikit menguning namun teks dapat dibaca dengan baik."
+        case "Buku Lama":
+            alert.title = "Kondisi Buku Buku Lama"
+            alert.message = "Halaman robek, lepas, atau bergelombang. Kertas menguning ataupun terkena noda."
+        default:
+            alert.title = "Kondisi Buku Tidak Ada"
+            alert.message = "Data kondisi buku tidak ditemukan"
+        }
+  
+        alert.addAction(UIAlertAction(title: "Mengerti", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+
     }
     
     @IBAction func tambahKeranjangButtonPressed(_ sender: UIButton) {

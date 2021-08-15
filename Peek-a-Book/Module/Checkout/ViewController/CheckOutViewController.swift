@@ -27,7 +27,7 @@ class CheckOutViewController: UIViewController, UITableViewDataSource {
     
     //MARK: -Total Biaya Sewa
     @IBOutlet weak var biayaSewaBukuLabel: UILabel!
-    @IBOutlet weak var biayaOngkirLabel: NSLayoutConstraint!
+    @IBOutlet weak var biayaOngkirLabel: UILabel!
     @IBOutlet weak var estimasiTotalLabel: UILabel!
     
     //MARK: -Button
@@ -47,7 +47,6 @@ class CheckOutViewController: UIViewController, UITableViewDataSource {
     override func viewWillLayoutSubviews() {
         super.updateViewConstraints()
         self.tableHeight?.constant = self.detailBukuTableView.contentSize.height - 4
-    
     }
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         self.viewWillLayoutSubviews()
@@ -89,8 +88,9 @@ class CheckOutViewController: UIViewController, UITableViewDataSource {
             }
         }
         
-        hargaPenyewaanLabel.text = "Rp. \(price.toRupiah())/minggu"
-        biayaSewaBukuLabel.text = "Rp. \(price.toRupiah())"
+        hargaPenyewaanLabel.text = "Rp\(price.toRupiah())/minggu"
+        biayaSewaBukuLabel.text = "Rp\(price.toRupiah())"
+        estimasiTotalLabel.text = "Rp\(price.toRupiah())"
         
         //MARK: - Setup Picker
         
@@ -111,8 +111,8 @@ class CheckOutViewController: UIViewController, UITableViewDataSource {
         
         pickerDurasiSewa.rx.itemSelected
                         .subscribe(onNext: { (row, compenent) in
-                            self.biayaSewaBukuLabel.text = "\(price*(row+1))"
-                            self.estimasiTotalLabel.text = "\(price*(row+1))"
+                            self.biayaSewaBukuLabel.text = "Rp\(price*(row+1))"
+                            self.estimasiTotalLabel.text = "Rp\(price*(row+1))"
                         })
                         .disposed(by: disposeBag)
         pickerDurasiSewa.selectRow(0, inComponent: 0, animated: true)
@@ -146,6 +146,7 @@ class CheckOutViewController: UIViewController, UITableViewDataSource {
     //MARK: - Button Setup
     
     @IBAction func durasiPenyewaanGetTapped(_ sender: UITapGestureRecognizer) {
+        pickerTitle.text = "Durasi Penyewaan"
         pickerDurasiSewa.isHidden = false
         pickerMetodePengiriman.isHidden = true
         pickerFullView.isHidden = false
@@ -156,16 +157,19 @@ class CheckOutViewController: UIViewController, UITableViewDataSource {
     }
     
     @IBAction func metodePengirimanGetTapped(_ sender: UITapGestureRecognizer) {
+        pickerTitle.text = "Metode Pengiriman"
         pickerDurasiSewa.isHidden = true
         pickerMetodePengiriman.isHidden = false
         pickerFullView.isHidden = false
+    }
+    
+    @IBAction func donePickerButtonPressed(_ sender: UIButton){
+        pickerFullView.isHidden = true
     }
     
     @IBAction func sewaSekarangButtonPressed(_ sender: UIButton) {
     
     }
     
-    @IBAction func donePickerButtonPressed(_ sender: UIButton){
-        pickerFullView.isHidden = true
-    }
+
 }
