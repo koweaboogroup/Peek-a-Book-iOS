@@ -43,7 +43,7 @@ class DetailBooksViewController: UIViewController {
     private var viewModel = DetailBookViewModel()
     private var disposeBag = DisposeBag()
     
-    private let cart = DataManager.shared.getCart()
+    private let dataManager = DataManager.shared
     private var lenderBook: LenderBook?
     
     override func viewDidLoad() {
@@ -52,16 +52,22 @@ class DetailBooksViewController: UIViewController {
         totalBookButtonView.isHidden = true
         
         setNavigationBar()
-        setupCart(cart)
+        setupCart()
         setupRx()
     }
     
-    private func setupCart(_ item: [LenderBook]){
-        if !item.isEmpty {
+    private func setupCart(){
+        if !dataManager.getCart().isEmpty {
             totalBookButtonView.isHidden = false
-            detailTotalBookLabel.text = String(item.count)
-        }else{
+            detailTotalBookLabel.text = String(dataManager.getCart().count)
+        } else {
             totalBookButtonView.isHidden = true
+        }
+        
+        dataManager.getCart().forEach { item in
+            if item.id == id {
+                self.tambahKeranjangButton.isEnabled = false
+            }
         }
     }
     
@@ -153,17 +159,11 @@ class DetailBooksViewController: UIViewController {
     }
     
     @IBAction func tambahKeranjangButtonPressed(_ sender: UIButton) {
-        tambahKeranjangButton.isEnabled = false
         
         //LOGIC IN HERE
         if let lenderBook = lenderBook {
-            viewModel.addToCart(cart, lenderBook) { item in
-                print("Item \(item.count)")
-                self.tambahKeranjangButton.isEnabled = false
-                self.setupCart(item)
-            } onErrorCompletion: {
-                self.tambahKeranjangButton.isEnabled = true
-            }
+            dataManager.addItemToCart(lenderBook: lenderBook)
+            setupCart()
         }
     }
     
