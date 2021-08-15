@@ -32,14 +32,15 @@ class CheckOutViewController: UIViewController, UITableViewDataSource {
     
     //MARK: -Button
     @IBOutlet weak var sewaSekarangButton: UIButton!
-    @IBOutlet weak var pickerReuse: UIPickerView!
+    @IBOutlet weak var pickerDurasiSewa: UIPickerView!
+    @IBOutlet weak var pickerMetodePengiriman: UIPickerView!
     @IBOutlet weak var pickerTitle: UILabel!
     @IBOutlet weak var pickerFullView: UIView!
     
     
     let disposeBag = DisposeBag()
-    var durasiSewa = Observable.of(["Row1", "Row2", "Row3"])
-    var items: Observable<[String]> = Observable.of([])
+    var itemsDurasiSewa: Observable<[String]> = Observable.of(["1 Minggu", "2 Minggu", "3 Minggu", "4 Minggu"])
+    var itemsMetodePengiriman: Observable<[String]> = Observable.of(["Pilih","Kurir", "Self Pickup", "COD"])
     
     private let cart: [LenderBook] = DataManager.shared.getCart()
     
@@ -55,9 +56,8 @@ class CheckOutViewController: UIViewController, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
-        lenderImageView.image = #imageLiteral(resourceName: "store")
+        lenderImageView.image = #imageLiteral(resourceName: "empty-state")
         setupView()
-        setupPicker()
     }
     
     private func setupNavigationBar(){
@@ -74,6 +74,7 @@ class CheckOutViewController: UIViewController, UITableViewDataSource {
     }
 
     private func setupView(){
+        
         let lenderName = cart[0].lender?.name
         let lenderImage = Constant.Network.baseUrl + (cart[0].lender?.images?[0].url ?? "")
         
@@ -91,25 +92,42 @@ class CheckOutViewController: UIViewController, UITableViewDataSource {
         hargaPenyewaanLabel.text = "Rp. \(price.toRupiah())/minggu"
         biayaSewaBukuLabel.text = "Rp. \(price.toRupiah())"
         
+        //MARK: - Setup Picker
         
-
-    }
-    
-    private func setupPicker(){
         pickerFullView.isHidden = true
-        items = durasiSewa
+        pickerDurasiSewa.isHidden = true
+        pickerMetodePengiriman.isHidden = true
         
-        items.bind(to: pickerReuse.rx.itemTitles) { (row, element) in
+        itemsDurasiSewa.bind(to: pickerDurasiSewa.rx.itemTitles) { (row, element) in
             return element
         }
         .disposed(by: disposeBag)
 
-        pickerReuse.rx.modelSelected(String.self)
+        pickerDurasiSewa.rx.modelSelected(String.self)
             .subscribe(onNext: { models in
-                print("models selected 1: \(models)")
+                self.durasiPenyewaanLabel.text = models.joined()
             })
             .disposed(by: disposeBag)
-        pickerReuse.selectRow(1, inComponent: 0, animated: true)
+        
+        pickerDurasiSewa.rx.itemSelected
+                        .subscribe(onNext: { (row, compenent) in
+                            self.biayaSewaBukuLabel.text = "\(price*(row+1))"
+                            self.estimasiTotalLabel.text = "\(price*(row+1))"
+                        })
+                        .disposed(by: disposeBag)
+        pickerDurasiSewa.selectRow(0, inComponent: 0, animated: true)
+        
+        itemsMetodePengiriman.bind(to: pickerMetodePengiriman.rx.itemTitles) { (row, element) in
+            return element
+        }
+        .disposed(by: disposeBag)
+
+        pickerMetodePengiriman.rx.modelSelected(String.self)
+            .subscribe(onNext: { models in
+                self.metodePengirimanLabel.text = models.joined()
+            })
+            .disposed(by: disposeBag)
+        pickerMetodePengiriman.selectRow(0, inComponent: 0, animated: true)
     }
     
     
@@ -128,19 +146,23 @@ class CheckOutViewController: UIViewController, UITableViewDataSource {
     //MARK: - Button Setup
     
     @IBAction func durasiPenyewaanGetTapped(_ sender: UITapGestureRecognizer) {
+        pickerDurasiSewa.isHidden = false
+        pickerMetodePengiriman.isHidden = true
         pickerFullView.isHidden = false
     }
     
     @IBAction func detailAlamatGetTapped(_ sender: UITapGestureRecognizer) {
-        pickerFullView.isHidden = false
+        
     }
     
     @IBAction func metodePengirimanGetTapped(_ sender: UITapGestureRecognizer) {
-        print("Picker")
+        pickerDurasiSewa.isHidden = true
+        pickerMetodePengiriman.isHidden = false
+        pickerFullView.isHidden = false
     }
     
     @IBAction func sewaSekarangButtonPressed(_ sender: UIButton) {
-        print("cabut")
+    
     }
     
     @IBAction func donePickerButtonPressed(_ sender: UIButton){

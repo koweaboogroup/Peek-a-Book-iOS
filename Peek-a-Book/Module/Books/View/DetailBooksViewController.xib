@@ -249,8 +249,8 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Su1-GW-VSG">
                                                             <rect key="frame" x="0.0" y="100" width="378" height="22"/>
                                                             <subviews>
-                                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fd4-9P-8tQ">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="123" height="22"/>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Fd4-9P-8tQ">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="22"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Kondisi Buku" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kbj-7z-YGh">
                                                                             <rect key="frame" x="0.0" y="0.0" width="102" height="22"/>
@@ -259,7 +259,7 @@
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="761" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GFw-8t-4DD">
-                                                                            <rect key="frame" x="102" y="0.0" width="21" height="22"/>
+                                                                            <rect key="frame" x="107" y="0.0" width="21" height="22"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="width" constant="21" id="MyE-bR-51x"/>
                                                                                 <constraint firstAttribute="height" constant="22" id="yf0-hg-zQs"/>
@@ -272,7 +272,7 @@
                                                                     </subviews>
                                                                 </stackView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Baik" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CfC-FJ-eJJ" userLabel="Baik">
-                                                                    <rect key="frame" x="131" y="0.0" width="247" height="22"/>
+                                                                    <rect key="frame" x="136" y="0.0" width="242" height="22"/>
                                                                     <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>

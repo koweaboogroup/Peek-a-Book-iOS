@@ -31,8 +31,9 @@
                 <outlet property="lenderImageView" destination="KhI-EU-D7g" id="hiA-C6-ghd"/>
                 <outlet property="lenderNameLabel" destination="4y5-4C-W5h" id="PaE-S4-RkI"/>
                 <outlet property="metodePengirimanLabel" destination="g1a-h3-j9S" id="mzl-Ok-ga4"/>
+                <outlet property="pickerDurasiSewa" destination="beP-yg-OlH" id="Utd-4R-Adi"/>
                 <outlet property="pickerFullView" destination="2Rk-6h-gzJ" id="kR2-aZ-7k5"/>
-                <outlet property="pickerReuse" destination="beP-yg-OlH" id="AqV-fj-Lrm"/>
+                <outlet property="pickerMetodePengiriman" destination="hyQ-B0-8mu" id="NrC-wi-Ng8"/>
                 <outlet property="pickerTitle" destination="k9T-9G-VbQ" id="RpI-d8-1zV"/>
                 <outlet property="sewaSekarangButton" destination="how-J6-Q18" id="BXj-YR-R89"/>
                 <outlet property="tableHeight" destination="fX3-O7-zBc" id="PYA-z0-VZ5"/>
@@ -118,8 +119,8 @@
                                                                         <constraint firstAttribute="height" constant="22" id="ygo-NM-iQp"/>
                                                                     </constraints>
                                                                 </imageView>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2 Minggu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hD9-rs-7cK">
-                                                                    <rect key="frame" x="271.5" y="13.5" width="74.5" height="17"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 Minggu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hD9-rs-7cK">
+                                                                    <rect key="frame" x="274" y="13.5" width="72" height="17"/>
                                                                     <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                                                     <color key="textColor" systemColor="systemBlueColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -267,8 +268,8 @@
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Self Pick Up" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g1a-h3-j9S">
-                                                                    <rect key="frame" x="266" y="13.5" width="95" height="17"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pilih" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g1a-h3-j9S">
+                                                                    <rect key="frame" x="327.5" y="13.5" width="33.5" height="17"/>
                                                                     <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                                                     <color key="textColor" systemColor="systemBlueColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -586,14 +587,14 @@
                                     </constraints>
                                 </pickerView>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5ju-yj-BiY" userLabel="View Garis">
-                                    <rect key="frame" x="28" y="58" width="358" height="1"/>
+                                    <rect key="frame" x="28" y="48" width="358" height="1"/>
                                     <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="1" id="i3V-rx-uqy"/>
                                     </constraints>
                                 </view>
                                 <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tZP-CD-CIa">
-                                    <rect key="frame" x="344" y="35" width="42" height="13"/>
+                                    <rect key="frame" x="344" y="25" width="42" height="13"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="42" id="UDr-RV-ILg"/>
                                         <constraint firstAttribute="height" constant="13" id="rDd-ZY-5mf"/>
@@ -605,24 +606,33 @@
                                     </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Perusahaan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k9T-9G-VbQ">
-                                    <rect key="frame" x="28" y="31" width="92" height="17"/>
+                                    <rect key="frame" x="28" y="21" width="92" height="17"/>
                                     <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hyQ-B0-8mu">
+                                    <rect key="frame" x="28" y="49" width="358" height="220"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="220" id="e1B-ug-D1l"/>
+                                    </constraints>
+                                </pickerView>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
+                                <constraint firstAttribute="trailing" secondItem="hyQ-B0-8mu" secondAttribute="trailing" constant="28" id="D2c-VA-KgC"/>
                                 <constraint firstItem="beP-yg-OlH" firstAttribute="leading" secondItem="2g2-FT-Vm1" secondAttribute="leading" constant="28" id="E2t-7i-K8R"/>
                                 <constraint firstItem="k9T-9G-VbQ" firstAttribute="leading" secondItem="beP-yg-OlH" secondAttribute="leading" id="Fhc-1V-I2o"/>
+                                <constraint firstAttribute="bottom" secondItem="hyQ-B0-8mu" secondAttribute="bottom" id="K4r-bY-Xs6"/>
                                 <constraint firstItem="tZP-CD-CIa" firstAttribute="trailing" secondItem="beP-yg-OlH" secondAttribute="trailing" id="LD3-ug-WJg"/>
                                 <constraint firstAttribute="bottom" secondItem="beP-yg-OlH" secondAttribute="bottom" id="LeC-Nq-EyF"/>
-                                <constraint firstItem="beP-yg-OlH" firstAttribute="top" secondItem="5ju-yj-BiY" secondAttribute="bottom" constant="-10" id="T2k-kY-g7k"/>
+                                <constraint firstItem="beP-yg-OlH" firstAttribute="top" secondItem="5ju-yj-BiY" secondAttribute="bottom" id="T2k-kY-g7k"/>
                                 <constraint firstItem="5ju-yj-BiY" firstAttribute="leading" secondItem="beP-yg-OlH" secondAttribute="leading" id="TWO-uO-neX"/>
                                 <constraint firstAttribute="height" constant="269" id="XVe-SA-BRr"/>
                                 <constraint firstItem="5ju-yj-BiY" firstAttribute="trailing" secondItem="beP-yg-OlH" secondAttribute="trailing" id="XhZ-e0-YTz"/>
                                 <constraint firstItem="5ju-yj-BiY" firstAttribute="top" secondItem="tZP-CD-CIa" secondAttribute="bottom" constant="10" id="cyk-w2-uQB"/>
                                 <constraint firstAttribute="trailing" secondItem="beP-yg-OlH" secondAttribute="trailing" constant="28" id="qTT-Hk-Dyx"/>
+                                <constraint firstItem="hyQ-B0-8mu" firstAttribute="leading" secondItem="2g2-FT-Vm1" secondAttribute="leading" constant="28" id="stX-lw-75s"/>
                                 <constraint firstItem="5ju-yj-BiY" firstAttribute="top" secondItem="k9T-9G-VbQ" secondAttribute="bottom" constant="10" id="wov-qa-Jf7"/>
                             </constraints>
                         </view>
