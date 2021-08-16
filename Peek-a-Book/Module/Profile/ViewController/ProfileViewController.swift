@@ -83,7 +83,10 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func rentHistoryTapped(_ sender: UITapGestureRecognizer) {
-        
+        let vc = ModuleBuilder.shared.goToTransactionViewController()
+        vc.hidesBottomBarWhenPushed = true
+        vc.setUserID(id: DataManager.shared.getUserIdByJwt())
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func startRentTapped(_ sender: UITapGestureRecognizer) {

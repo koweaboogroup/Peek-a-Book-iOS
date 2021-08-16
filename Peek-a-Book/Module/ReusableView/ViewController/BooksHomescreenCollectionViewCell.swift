@@ -27,7 +27,7 @@ class BooksHomescreenCollectionViewCell: UICollectionViewCell {
         )
     }
     
-    public var response: LenderBook? {
+    var response: LenderBook? {
         didSet {
             if let response = response {
                 self.lenderStoreImage.setImage(fromUrl: Constant.Network.baseUrl + (response.lender?.images?[0].url ?? ""))

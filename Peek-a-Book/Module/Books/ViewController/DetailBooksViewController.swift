@@ -128,10 +128,10 @@ class DetailBooksViewController: UIViewController {
         }.bind(to: detailBookConditionLabel.rx.text)
         .disposed(by: disposeBag)
         
-        viewModel.bookDetail.asObserver().map { book in
+        /*viewModel.bookDetail.asObserver().map { book in
             book.book?.bookGenre == 1 ? "Fiksi" : "Non Fiksi"
         }.bind(to: detailBookGenreLabel.rx.text)
-        .disposed(by: disposeBag)
+        .disposed(by: disposeBag)*/
         
         viewModel.bookDetail.asObserver().map { book in
             book.book?.sinopsis

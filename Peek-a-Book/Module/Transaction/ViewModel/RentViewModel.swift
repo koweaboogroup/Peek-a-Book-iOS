@@ -9,17 +9,26 @@ import Foundation
 import RxSwift
 
 struct RentViewModel{
-    public let orders: PublishSubject<[Order]> = PublishSubject()
+    public let orders: PublishSubject<[Rent]> = PublishSubject()
     let error: PublishSubject<String> = PublishSubject()
     
     func getListRentAsUser(id: Int){
-        RentService.getListRentTransaction(id: id) { rentResponse in
+        RentService.getListRenterTransaction(id: id) { rentResponse in
+            self.orders.onNext(rentResponse)
+        } failCompletion: { error in
+            self.error.onNext(error.errorDescription!)
+        }
+    }
+
+    func getListRentAsLender(id: Int){
+        RentService.getListLenderTransaction(id: id) { rentResponse in
             self.orders.onNext(rentResponse)
         } failCompletion: { error in
             self.error.onNext(error.errorDescription!)
         }
     }
     
+    /*
     func getAwatingRents() -> Observable<[Order]> {
         return orders.asObservable().map { orders in
             orders.filter { order in
@@ -58,5 +67,5 @@ struct RentViewModel{
                 order.rent?.status == 4
             }
         }
-    }
+    }*/
 }
