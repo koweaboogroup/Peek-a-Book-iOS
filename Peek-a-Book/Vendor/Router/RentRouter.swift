@@ -11,7 +11,7 @@ enum RentRouter: URLRequestConvertible {
 
     case getForRenter(id: Int)
     case getForLender(id: Int)
-    case putForChangeStatus(id: Int)
+    case putForChangeStatus(idRent: Int, statusRent: Int)
 
     var method: HTTPMethod {
         switch self {
@@ -25,7 +25,7 @@ enum RentRouter: URLRequestConvertible {
             switch self {
             case let .getForRenter(id): return String(id)
             case let .getForLender(id): return String(id)
-            case let .putForChangeStatus(id): return String(id)
+            case let .putForChangeStatus(idRent, _): return String(idRent)
                 
             }
         }

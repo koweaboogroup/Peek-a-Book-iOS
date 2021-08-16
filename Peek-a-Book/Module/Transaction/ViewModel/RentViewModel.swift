@@ -28,4 +28,8 @@ struct RentViewModel{
         }
     }
     
+    func changeStatus(id: Int) {
+        
+    }
+    
 }

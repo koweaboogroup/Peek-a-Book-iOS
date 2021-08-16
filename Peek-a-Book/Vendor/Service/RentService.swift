@@ -39,8 +39,8 @@ class RentService {
         }
     }
 
-    static func changeStatus(id: Int, successCompletion: @escaping ([Rent]) -> Void, failCompletion: @escaping (AFError) -> Void) {
-        BaseRequest.put(router: RentRouter.putForChangeStatus(id: id)) { request in
+    static func changeStatus(idRent: Int, statusRent: Int, successCompletion: @escaping ([Rent]) -> Void, failCompletion: @escaping (AFError) -> Void) {
+        BaseRequest.put(router: RentRouter.putForChangeStatus(idRent: idRent, statusRent: statusRent)) { request in
             request.responseDecodable(of: [Rent].self) { response in
                 switch response.result {
                 case .success(let rentResponse):
