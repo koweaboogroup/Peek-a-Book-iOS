@@ -64,8 +64,8 @@ class ModuleBuilder {
         return vc
     }
 
-    func goToProfileLenderViewController() -> ProfileTokoViewController {
-        let vc = ProfileTokoViewController(nibName: XIBConstant.ProfileTokoViewController, bundle: nil)
+    func goToProfileLenderViewController() -> ProfileLenderViewController {
+        let vc = ProfileLenderViewController(nibName: XIBConstant.ProfileTokoViewController, bundle: nil)
         
         return vc
     }

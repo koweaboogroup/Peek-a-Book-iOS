@@ -22,22 +22,22 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailOrderViewController" customModule="Peek_a_Book" customModuleProvider="target">
             <connections>
-                <outlet property="biayaPengirimanLabel" destination="Wn9-YY-VQC" id="Xgo-Pb-112"/>
                 <outlet property="detailBukuTableView" destination="RCq-Ys-vZG" id="eoH-L1-KEb"/>
-                <outlet property="durasiSewaLabel" destination="OsM-p5-Zo4" id="ibD-tB-cS1"/>
                 <outlet property="informationStatusLabel" destination="e5e-lH-0zV" id="E8J-kX-4ID"/>
-                <outlet property="jalanPenyewaLabel" destination="aMc-Hl-kbb" id="MiN-j1-wmR"/>
-                <outlet property="kecamatanPenyewaLabel" destination="qaR-M5-KPB" id="THU-UG-Byw"/>
-                <outlet property="kelurahanPenyewaLabel" destination="I78-IK-gJ9" id="tLM-xf-5hO"/>
-                <outlet property="metodePengirimanLabel" destination="Qf1-3g-9su" id="duN-Ki-sli"/>
-                <outlet property="namaPenyewaLabel" destination="FM6-Xd-r09" id="I64-Y2-Coa"/>
-                <outlet property="negaraPenyewaLabel" destination="2jB-vw-hKB" id="8O0-sd-vHf"/>
                 <outlet property="nomorOrderPenyewaanLabel" destination="f1O-E6-wUf" id="Vw4-w9-3tX"/>
-                <outlet property="nomorTeleponPenyewaLabel" destination="5pa-MN-r2b" id="MZJ-IJ-i9K"/>
                 <outlet property="profileImage" destination="JvD-lH-Saa" id="oxN-po-sTS"/>
                 <outlet property="profileNameLabel" destination="71y-JV-IHD" id="Xw0-yp-93Y"/>
-                <outlet property="tanggalBatasSewaLabel" destination="NDH-NR-tWx" id="Pvl-1s-FLm"/>
-                <outlet property="totalBiayaLabel" destination="fo3-xB-HhS" id="cVc-Kc-leX"/>
+                <outlet property="rentDeadlineDateLabel" destination="NDH-NR-tWx" id="Pvl-1s-FLm"/>
+                <outlet property="rentDeliveryFeeLabel" destination="Wn9-YY-VQC" id="Xgo-Pb-112"/>
+                <outlet property="rentDeliveryMethodLabel" destination="Qf1-3g-9su" id="duN-Ki-sli"/>
+                <outlet property="rentDurationLabel" destination="OsM-p5-Zo4" id="ibD-tB-cS1"/>
+                <outlet property="rentFeeLabel" destination="fo3-xB-HhS" id="cVc-Kc-leX"/>
+                <outlet property="renterCountryLabel" destination="2jB-vw-hKB" id="8O0-sd-vHf"/>
+                <outlet property="renterDistrictLabel" destination="qaR-M5-KPB" id="THU-UG-Byw"/>
+                <outlet property="renterNameLabel" destination="FM6-Xd-r09" id="I64-Y2-Coa"/>
+                <outlet property="renterPhoneLabel" destination="5pa-MN-r2b" id="MZJ-IJ-i9K"/>
+                <outlet property="renterStreetLabel" destination="aMc-Hl-kbb" id="MiN-j1-wmR"/>
+                <outlet property="renterSubDistrictLabel" destination="I78-IK-gJ9" id="tLM-xf-5hO"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -50,16 +50,16 @@
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zpo-6b-1sC" userLabel="Content View">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="974.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="979.5"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Pl-2b-7nw" userLabel="Background View">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="974.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="979.5"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eZA-JY-5Gg">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="72"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="66"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pesanan baru dari Arif Al-Kadrun suka makan sayur di ladang pak erte" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e5e-lH-0zV">
-                                                    <rect key="frame" x="20" y="16" width="374" height="40"/>
+                                                    <rect key="frame" x="20" y="16" width="374" height="34"/>
                                                     <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -74,19 +74,19 @@
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Order Penyewaan: 14045" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f1O-E6-wUf">
-                                            <rect key="frame" x="20" y="92" width="374" height="17.5"/>
+                                            <rect key="frame" x="20" y="86" width="374" height="15"/>
                                             <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="15"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detail Penyewa" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cGs-dO-Eqg">
-                                            <rect key="frame" x="20" y="129.5" width="374" height="26"/>
+                                            <rect key="frame" x="20" y="121" width="374" height="30.5"/>
                                             <fontDescription key="fontDescription" name="DMSerifText-Regular" family="DM Serif Text" pointSize="22"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pEk-6R-Uls">
-                                            <rect key="frame" x="20" y="165.5" width="374" height="221"/>
+                                            <rect key="frame" x="20" y="161.5" width="374" height="221"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gOv-H0-nCo" userLabel="Nama View">
                                                     <rect key="frame" x="0.0" y="10" width="374" height="44"/>
@@ -243,8 +243,8 @@
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </view>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="uph-r9-WUM">
-                                            <rect key="frame" x="20" y="614.5" width="374" height="320"/>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6aR-Vn-6Ve">
+                                            <rect key="frame" x="20" y="619.5" width="374" height="240"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6aR-Vn-6Ve">
                                                     <rect key="frame" x="0.0" y="0.0" width="374" height="240"/>
@@ -488,13 +488,13 @@
                                             </subviews>
                                         </stackView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detail Buku" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TZf-Vh-Gg9">
-                                            <rect key="frame" x="20" y="406.5" width="374" height="26"/>
+                                            <rect key="frame" x="20" y="402.5" width="374" height="30.5"/>
                                             <fontDescription key="fontDescription" name="DMSerifText-Regular" family="DM Serif Text" pointSize="22"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h2W-R3-1Ks">
-                                            <rect key="frame" x="28" y="442.5" width="252" height="22"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="h2W-R3-1Ks">
+                                            <rect key="frame" x="28" y="443" width="358" height="22"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty-state" translatesAutoresizingMaskIntoConstraints="NO" id="JvD-lH-Saa">
                                                     <rect key="frame" x="0.0" y="0.0" width="22" height="22"/>
@@ -517,7 +517,7 @@
                                             </subviews>
                                         </stackView>
                                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RCq-Ys-vZG">
-                                            <rect key="frame" x="20" y="474.5" width="374" height="84"/>
+                                            <rect key="frame" x="20" y="475" width="374" height="84"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="84" id="DkQ-jz-4lA"/>
@@ -529,13 +529,14 @@
                                             </userDefinedRuntimeAttributes>
                                         </tableView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detail Sewa" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PUH-sR-iK3">
-                                            <rect key="frame" x="20" y="578.5" width="374" height="26"/>
+                                            <rect key="frame" x="20" y="579" width="374" height="30.5"/>
                                             <fontDescription key="fontDescription" name="DMSerifText-Regular" family="DM Serif Text" pointSize="22"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bfe-oZ-vmq">
-                                            <rect key="frame" x="290" y="442.5" width="104" height="22"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J1b-sO-Gsi">
+                                            <rect key="frame" x="30" y="889.5" width="354" height="50"/>
+                                            <color key="backgroundColor" name="primary-1"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="104" id="GG0-sz-0N4"/>
                                                 <constraint firstAttribute="height" constant="22" id="MjP-z6-bJP"/>
@@ -543,7 +544,7 @@
                                             <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                             <state key="normal" title="Lihat Alamat"/>
                                             <connections>
-                                                <action selector="buttonLihatAlamatPressed:" destination="-1" eventType="touchUpInside" id="dAN-MY-sRy"/>
+                                                <action selector="backToHomePageButtonPressed:" destination="-1" eventType="touchUpInside" id="A3N-Vt-tkU"/>
                                             </connections>
                                         </button>
                                     </subviews>

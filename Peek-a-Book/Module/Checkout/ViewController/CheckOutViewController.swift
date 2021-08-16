@@ -30,7 +30,7 @@ class CheckOutViewController: UIViewController, UITableViewDataSource {
     //MARK: -Button
     @IBOutlet weak var sewaSekarangButton: UIButton!
     
-    private let cart: [LenderBook]? = DataManager.shared.loadCartFromUserDefaults()
+    private let cart: [LenderBook]? = DataManager.shared.getCart()
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -8,6 +8,7 @@ import Foundation
 import RxSwift
 
 struct RegisterViewModel {
+    
     let name: PublishSubject<String> = PublishSubject()
     let email: PublishSubject<String> = PublishSubject()
     let whatsappNumber: PublishSubject<String> = PublishSubject()
@@ -39,7 +40,6 @@ struct RegisterViewModel {
 
         let registerRequest = RegisterRequest(username: name, email: email, password: password, phoneNumber: whatsappNumber, alamat: alamat, provinsi: provinsi, kota: kota, kelurahan: kelurahan, kecamatan: kecamatan, longtitude: longtitude, latitude: latitude)
         
-        print("Masuk sini gaje")
         RegisterService.register(registerRequest: registerRequest) { registerResponse in
             
             self.loading.onNext(false)
@@ -58,15 +58,8 @@ struct RegisterViewModel {
             
             self.loading.onNext(false)
             self.error.onNext(error.errorDescription ?? "Error")
-            fatalError()
             
         }
-        
-        /*Observable.combineLatest(name.asObservable(), email.asObservable(), whatsappNumber.asObservable(), password.asObservable()) { name, email, whatsappNumber, password in
-
-        }.subscribe()
-        .disposed(by: disposeBag)*/
-        
-        
     }
+    
 }

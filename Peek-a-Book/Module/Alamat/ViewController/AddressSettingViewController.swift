@@ -11,11 +11,11 @@ import RxSwift
 
 class AddressSettingViewController: UIViewController {
     
-    @IBOutlet weak var kecamatanTextField: UITextField!
-    @IBOutlet weak var kelurahanTextField: UITextField!
-    @IBOutlet weak var kotaTextField: UITextField!
-    @IBOutlet weak var provinsiTextField: UITextField!
-    @IBOutlet weak var jalanTextField: UITextField!
+    @IBOutlet weak var districtTextField: UITextField!
+    @IBOutlet weak var subDistrictTextField: UITextField!
+    @IBOutlet weak var cityTextField: UITextField!
+    @IBOutlet weak var provTextField: UITextField!
+    @IBOutlet weak var streetTextField: UITextField!
     @IBOutlet weak var checkButton: UIButton!
     @IBOutlet weak var checkBoxView: UIStackView!
     
@@ -54,61 +54,61 @@ class AddressSettingViewController: UIViewController {
         
         mapsViewModel.streetName
             .subscribe(onNext: {
-                self.jalanTextField.text = $0
-                self.jalanTextField.sendActions(for: .allEditingEvents)
+                self.streetTextField.text = $0
+                self.streetTextField.sendActions(for: .allEditingEvents)
             })
             .disposed(by: disposeBag)
         
         mapsViewModel.cityName
             .subscribe(onNext: {
-                self.kotaTextField.text = $0
-                self.kotaTextField.sendActions(for: .allEditingEvents)
+                self.cityTextField.text = $0
+                self.cityTextField.sendActions(for: .allEditingEvents)
             })
             .disposed(by: disposeBag)
         
         mapsViewModel.districtName
             .subscribe(onNext: {
-                self.kecamatanTextField.text = $0
-                self.kecamatanTextField.sendActions(for: .allEditingEvents)
+                self.districtTextField.text = $0
+                self.districtTextField.sendActions(for: .allEditingEvents)
             })
             .disposed(by: disposeBag)
         
         mapsViewModel.provName
             .subscribe(onNext: {
-                self.provinsiTextField.text = $0
-                self.provinsiTextField.sendActions(for: .allEditingEvents)
+                self.provTextField.text = $0
+                self.provTextField.sendActions(for: .allEditingEvents)
             })
             .disposed(by: disposeBag)
         
-        kelurahanTextField.rx.text
+        subDistrictTextField.rx.text
             .map {
                 $0?.trimmingCharacters(in: .whitespaces) ?? ""
             }
             .bind(to: addressViewModel?.urbanVillage ?? PublishSubject<String>())
             .disposed(by: disposeBag)
         
-        kecamatanTextField.rx.text
+        districtTextField.rx.text
             .map {
                 $0?.trimmingCharacters(in: .whitespaces) ?? ""
             }
             .bind(to: addressViewModel?.districtName ?? PublishSubject<String>())
             .disposed(by: disposeBag)
         
-        kotaTextField.rx.text
+        cityTextField.rx.text
             .map {
                 $0?.trimmingCharacters(in: .whitespaces) ?? ""
             }
             .bind(to: addressViewModel?.cityName ?? PublishSubject<String>())
             .disposed(by: disposeBag)
         
-        provinsiTextField.rx.text
+        provTextField.rx.text
             .map {
                 $0?.trimmingCharacters(in: .whitespaces) ?? ""
             }
             .bind(to: addressViewModel?.provName ?? PublishSubject<String>())
             .disposed(by: disposeBag)
         
-        jalanTextField.rx.text
+        streetTextField.rx.text
             .map {
                 $0?.trimmingCharacters(in: .whitespaces) ?? ""
             }
@@ -139,30 +139,5 @@ class AddressSettingViewController: UIViewController {
         }else {
             self.checkButton.setImage(UIImage(systemName: "checkmark.square"), for: .normal)
         }
-    }
-    
-    func insertAllAlamat(){
-        let user = DataManager.shared.getUser()
-        kecamatanTextField.text = user?.kecamatan
-        kelurahanTextField.text = user?.kelurahan
-        kotaTextField.text = user?.kota
-        provinsiTextField.text = user?.provinsi
-        jalanTextField.text = user?.alamat
-    }
-    
-    func removeAllAlamat(){
-        kecamatanTextField.text = ""
-        kelurahanTextField.text = ""
-        kotaTextField.text = ""
-        provinsiTextField.text = ""
-        jalanTextField.text = ""
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        self.tabBarController?.tabBar.isHidden = true
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        self.tabBarController?.tabBar.isHidden = false
     }
 }
