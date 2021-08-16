@@ -9,11 +9,13 @@ import Alamofire
 
 class RentService {
     
-    static func getListRentTransaction(id: Int, successCompletion: @escaping ([Order]) -> Void, failCompletion: @escaping (AFError) -> Void) {
-        
-        BaseRequest.get(router: RentRouter.get(id: id)) { request in
-            request.responseDecodable(of: [Order].self) { response in
-                
+    static func getListRenterTransaction(id: Int, successCompletion: @escaping ([Rent]) -> Void, failCompletion: @escaping (AFError) -> Void) {
+        BaseRequest.get(router: RentRouter.getForRenter(id: id)) { request in
+            request.responseJSON { item in
+                print("item mantap \(item)")
+            }
+            request.responseDecodable(of: [Rent].self) { response in
+                debugPrint(response)
                 switch response.result {
                 case .success(let rentResponse):
                     successCompletion(rentResponse)
@@ -23,4 +25,31 @@ class RentService {
             }
         }
     }
+    
+    static func getListLenderTransaction(id: Int, successCompletion: @escaping ([Rent]) -> Void, failCompletion: @escaping (AFError) -> Void) {
+        BaseRequest.get(router: RentRouter.getForLender(id: id)) { request in
+            request.responseDecodable(of: [Rent].self) { response in
+                switch response.result {
+                case .success(let rentResponse):
+                    successCompletion(rentResponse)
+                case .failure(let error):
+                    failCompletion(error)
+                }
+            }
+        }
+    }
+
+    static func changeStatus(id: Int, successCompletion: @escaping ([Rent]) -> Void, failCompletion: @escaping (AFError) -> Void) {
+        BaseRequest.put(router: RentRouter.putForChangeStatus(id: id)) { request in
+            request.responseDecodable(of: [Rent].self) { response in
+                switch response.result {
+                case .success(let rentResponse):
+                    successCompletion(rentResponse)
+                case .failure(let error):
+                    failCompletion(error)
+                }
+            }
+        }
+    }
+
 }

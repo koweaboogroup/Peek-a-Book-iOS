@@ -75,6 +75,9 @@ class ProfileLenderViewController: UIViewController {
     }
     
     @IBAction func kelolaPenyewaanGetTapped(_ sender: UITapGestureRecognizer) {
-        print("Kelola Penyewaan")
+        let vc = ModuleBuilder.shared.goToTransactionViewController()
+        vc.hidesBottomBarWhenPushed = true
+        vc.setLenderID(id: 6)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }

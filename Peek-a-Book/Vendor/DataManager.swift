@@ -65,6 +65,10 @@ class DataManager {
         cart.append(lenderBook)
     }
     
+    func deleteCart() {
+        cart = []
+    }
+    
     func saveCartToUserDefaults() {
         let cartKey = "cart"
         let encoder = JSONEncoder()

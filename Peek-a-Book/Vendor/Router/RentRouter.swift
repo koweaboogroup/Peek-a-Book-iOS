@@ -8,25 +8,37 @@
 import Alamofire
 
 enum RentRouter: URLRequestConvertible {
-    //nunggu parsing jwt -> id dari data manager
-    //nunggu pembeda user dengan lender dari backend
-    
-    case get(id: Int)
-    
+
+    case getForRenter(id: Int)
+    case getForLender(id: Int)
+    case putForChangeStatus(id: Int)
+
     var method: HTTPMethod {
         switch self {
-        case .get: return .get
+        case .getForRenter: return .get
+        case .getForLender: return .get
+        case .putForChangeStatus: return .put
         }
     }
     
     var parameterId: String {
             switch self {
-            case let .get(id): return String(id)
+            case let .getForRenter(id): return String(id)
+            case let .getForLender(id): return String(id)
+            case let .putForChangeStatus(id): return String(id)
+                
             }
         }
     
     var url: URL {
-        return URL(string: Constant.Network.baseUrl + "/rent-details?lender_books.lender.id=\(parameterId)")!
+        switch self {
+        case .getForRenter:
+            return URL(string: Constant.Network.baseUrl + "/rents?user.id=\(parameterId)")!
+        case .getForLender:
+            return URL(string: Constant.Network.baseUrl + "/rents?lender_books.lender.id=\(parameterId)")!
+        case .putForChangeStatus:
+            return URL(string: Constant.Network.baseUrl + "/rents/\(parameterId)")!
+        }
     }
     
     func asURLRequest() throws -> URLRequest {
