@@ -28,44 +28,4 @@ struct RentViewModel{
         }
     }
     
-    /*
-    func getAwatingRents() -> Observable<[Order]> {
-        return orders.asObservable().map { orders in
-            orders.filter { order in
-                order.rent?.status == 0
-            }
-        }
-    }
-    
-    func getShippingRents() -> Observable<[Order]> {
-        return orders.asObservable().map { orders in
-            orders.filter { order in
-                order.rent?.status == 1
-            }
-        }
-    }
-    
-    func getOngoingRents() -> Observable<[Order]> {
-        return orders.asObservable().map { orders in
-            orders.filter { order in
-                order.rent?.status == 2
-            }
-        }
-    }
-
-    func getReturningRents() -> Observable<[Order]> {
-        return orders.asObservable().map { orders in
-            orders.filter { order in
-                order.rent?.status == 3
-            }
-        }
-    }
-    
-    func getDoneRents() -> Observable<[Order]> {
-        return orders.asObservable().map { orders in
-            orders.filter { order in
-                order.rent?.status == 4
-            }
-        }
-    }*/
 }
