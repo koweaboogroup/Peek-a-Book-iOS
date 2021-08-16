@@ -27,6 +27,7 @@ class DetailOrderViewController: UIViewController {
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var profileNameLabel: UILabel!
     @IBOutlet weak var detailBukuTableView: UITableView!
+    @IBOutlet var detailBukuTableHeight: NSLayoutConstraint!
     
     // MARK: - Detail Sewa
     @IBOutlet weak var rentDurationLabel: UILabel!
@@ -34,6 +35,14 @@ class DetailOrderViewController: UIViewController {
     @IBOutlet weak var rentDeliveryFeeLabel: UILabel!
     @IBOutlet weak var rentFeeLabel: UILabel!
     @IBOutlet weak var rentDeadlineDateLabel: UILabel!
+    
+    override func viewWillLayoutSubviews() {
+        super.updateViewConstraints()
+        self.detailBukuTableHeight?.constant = self.detailBukuTableView.contentSize.height - 4
+    }
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        self.viewWillLayoutSubviews()
+    }
     
     var orderId: Int?
     private let viewModel = DetailOrderViewModel()

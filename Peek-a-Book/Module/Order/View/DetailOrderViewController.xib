@@ -22,6 +22,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailOrderViewController" customModule="Peek_a_Book" customModuleProvider="target">
             <connections>
+                <outlet property="biayaPengirimanLabel" destination="Wn9-YY-VQC" id="Xgo-Pb-112"/>
+                <outlet property="detailBukuTableHeight" destination="DkQ-jz-4lA" id="2je-Ah-8xI"/>
                 <outlet property="detailBukuTableView" destination="RCq-Ys-vZG" id="eoH-L1-KEb"/>
                 <outlet property="informationStatusLabel" destination="e5e-lH-0zV" id="E8J-kX-4ID"/>
                 <outlet property="nomorOrderPenyewaanLabel" destination="f1O-E6-wUf" id="Vw4-w9-3tX"/>
@@ -243,8 +245,8 @@
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </view>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6aR-Vn-6Ve">
-                                            <rect key="frame" x="20" y="619.5" width="374" height="240"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="uph-r9-WUM">
+                                            <rect key="frame" x="20" y="619.5" width="374" height="320"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6aR-Vn-6Ve">
                                                     <rect key="frame" x="0.0" y="0.0" width="374" height="240"/>
@@ -493,8 +495,8 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="h2W-R3-1Ks">
-                                            <rect key="frame" x="28" y="443" width="358" height="22"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h2W-R3-1Ks">
+                                            <rect key="frame" x="28" y="443" width="252" height="22"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty-state" translatesAutoresizingMaskIntoConstraints="NO" id="JvD-lH-Saa">
                                                     <rect key="frame" x="0.0" y="0.0" width="22" height="22"/>
@@ -534,9 +536,8 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J1b-sO-Gsi">
-                                            <rect key="frame" x="30" y="889.5" width="354" height="50"/>
-                                            <color key="backgroundColor" name="primary-1"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bfe-oZ-vmq">
+                                            <rect key="frame" x="290" y="443" width="104" height="22"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="104" id="GG0-sz-0N4"/>
                                                 <constraint firstAttribute="height" constant="22" id="MjP-z6-bJP"/>
