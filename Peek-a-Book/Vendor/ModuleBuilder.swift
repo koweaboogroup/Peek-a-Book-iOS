@@ -82,4 +82,9 @@ class ModuleBuilder {
         return vc
     }
 
+    func goToTransactionViewController() -> TransactionViewController {
+        let vc = TransactionViewController(nibName: XIBConstant.TransactionViewController, bundle: nil)
+        
+        return vc
+    }
 }
