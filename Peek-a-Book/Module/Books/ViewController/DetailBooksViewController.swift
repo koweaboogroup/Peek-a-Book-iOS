@@ -15,6 +15,7 @@ class DetailBooksViewController: UIViewController {
     
     var id: Int = 0
     
+    
     // MARK: -Header View
     @IBOutlet weak var detailBookImages: UIImageView!
     @IBOutlet weak var detailBookTitleLabel: UILabel!
@@ -34,7 +35,6 @@ class DetailBooksViewController: UIViewController {
     @IBOutlet weak var detailBookConditionLabel: UILabel!
     @IBOutlet weak var detailBookSinopsisLabel: UILabel!
     
-    
     // MARK: -Bottom View
     @IBOutlet weak var detailTotalBookLabel: UILabel!
     @IBOutlet weak var totalBookButtonView: UIView!
@@ -47,6 +47,7 @@ class DetailBooksViewController: UIViewController {
     private var lenderBook: LenderBook?
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         viewModel.getDetailBook(id: String(id))
         totalBookButtonView.isHidden = true
@@ -56,6 +57,7 @@ class DetailBooksViewController: UIViewController {
         updateCart()
         
         setupRx()
+        
     }
     
     private func updateCart() {
@@ -83,6 +85,7 @@ class DetailBooksViewController: UIViewController {
         viewModel.bookDetail.subscribe(onNext: { item in
             self.lenderBook = item
         }).disposed(by: disposeBag)
+        
         // MARK: -Setup Header View
         viewModel.bookDetail.subscribe (onNext: { book in
             let url = URL(string: Constant.Network.baseUrl + (book.images?[0].url ?? ""))
@@ -143,9 +146,9 @@ class DetailBooksViewController: UIViewController {
         .disposed(by: disposeBag)
         
         /*viewModel.bookDetail.asObserver().map { book in
-            book.book?.bookGenre == 1 ? "Fiksi" : "Non Fiksi"
-        }.bind(to: detailBookGenreLabel.rx.text)
-        .disposed(by: disposeBag)*/
+         book.book?.bookGenre == 1 ? "Fiksi" : "Non Fiksi"
+         }.bind(to: detailBookGenreLabel.rx.text)
+         .disposed(by: disposeBag)*/
         
         viewModel.bookDetail.asObserver().map { book in
             book.book?.sinopsis
@@ -154,6 +157,7 @@ class DetailBooksViewController: UIViewController {
     }
     
     @IBAction func lenderProfileGetTapped(_ sender: UITapGestureRecognizer) {
+        print("Sambung ke lender")
     }
     
     @IBAction func totalBukuGetTapped(_ sender: UITapGestureRecognizer) {
@@ -161,9 +165,11 @@ class DetailBooksViewController: UIViewController {
         
         let vc = ModuleBuilder.shared.goToCheckOutViewController()
         self.navigationController?.pushViewController(vc, animated: true)
+        
     }
     
     @IBAction func kondisiBukuInformationTouched(_ sender: UIButton) {
+        
         let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
         switch detailBookConditionLabel.text {
         case "Seperti Baru":
@@ -182,14 +188,13 @@ class DetailBooksViewController: UIViewController {
             alert.title = "Kondisi Buku Tidak Ada"
             alert.message = "Data kondisi buku tidak ditemukan"
         }
-  
+        
         alert.addAction(UIAlertAction(title: "Mengerti", style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
-
+        
     }
     
     @IBAction func tambahKeranjangButtonPressed(_ sender: UIButton) {
-        
         if dataManager.isLoggedIn() {
             if dataManager.getCart().isEmpty {
                 addItemToCart()
@@ -198,14 +203,14 @@ class DetailBooksViewController: UIViewController {
             
             if lenderBook?.lender?.id != dataManager.getCart()[0].lender?.id {
                 let alert = UIAlertController(title: "Hapus Keranjang?", message: "Keranjang yang kamu buat sebelumnya akan dihapus", preferredStyle: .alert)
-
+                
                 alert.addAction(UIAlertAction(title: "Hapus", style: .destructive, handler: { action in
                     self.dataManager.deleteCart()
                     self.addItemToCart()
                 }))
                 
                 alert.addAction(UIAlertAction(title: "Kembali", style: .cancel, handler: nil))
-
+                
                 self.present(alert, animated: true, completion: nil)
             } else {
                 addItemToCart()
@@ -213,6 +218,7 @@ class DetailBooksViewController: UIViewController {
         } else {
             tabBarController?.selectedIndex = 1
         }
+        
     }
     
     private func addItemToCart() {
@@ -232,5 +238,6 @@ class DetailBooksViewController: UIViewController {
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = .clear
+        
     }
 }

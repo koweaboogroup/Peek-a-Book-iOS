@@ -87,4 +87,11 @@ class ModuleBuilder {
         
         return vc
     }
+    
+    func goToDetailOrderViewController() -> DetailOrderViewController {
+        let vc = DetailOrderViewController(nibName: XIBConstant.DetailOrderVC, bundle: nil)
+        
+        return vc
+    }
+
 }
