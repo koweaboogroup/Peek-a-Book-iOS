@@ -21,6 +21,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CheckOutViewController" customModule="Peek_a_Book" customModuleProvider="target">
             <connections>
+                <outlet property="addressLabel" destination="VhT-rA-0Xa" id="WDy-kW-RLT"/>
                 <outlet property="biayaOngkirLabel" destination="UYC-dO-Q35" id="Jov-OL-NAu"/>
                 <outlet property="biayaSewaBukuLabel" destination="cUZ-QM-MIY" id="59x-iw-Db2"/>
                 <outlet property="detailAlamatLabel" destination="VhT-rA-0Xa" id="vut-s8-MjL"/>
