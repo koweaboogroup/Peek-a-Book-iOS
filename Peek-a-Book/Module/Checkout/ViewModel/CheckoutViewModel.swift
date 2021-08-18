@@ -27,10 +27,10 @@ struct CheckoutViewModel {
     func isAllFieldsFilled() -> Observable<Bool> {
         Observable.combineLatest(
             periodOfTime.asObservable().startWith(0),
-            shippingMethod.asObservable().startWith("cod")
+            shippingMethod.asObservable().startWith("")
         )
         .map { periodOfTime, shippingMethod in
-            return periodOfTime != 0 && !shippingMethod.isEmpty
+            return periodOfTime != 0 && !shippingMethod.isEmpty && shippingMethod != "Pilih"
         }
         .startWith(false)
     }
