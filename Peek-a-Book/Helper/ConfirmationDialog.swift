@@ -14,12 +14,12 @@ class ConfirmationDialog {
             message: subtitle,
             preferredStyle: .alert
         )
-        alert.addAction(UIAlertAction(title: negativeText, style: .destructive) { _ in
-            negativeCompletion()
-        })
-        
         alert.addAction(UIAlertAction(title: positiveText, style: .default) { _ in
             positiveCompletion()
+        })
+
+        alert.addAction(UIAlertAction(title: negativeText, style: .destructive) { _ in
+            negativeCompletion()
         })
         
         viewController.present(alert, animated: true)

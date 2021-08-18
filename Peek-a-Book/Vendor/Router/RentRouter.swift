@@ -7,11 +7,15 @@
 
 import Alamofire
 
+struct ChangeStatusRequest: Codable {
+    var status: Int
+}
+
 enum RentRouter: URLRequestConvertible {
 
     case getForRenter(id: Int)
     case getForLender(id: Int)
-    case putForChangeStatus(idRent: Int, statusRent: Int)
+    case putForChangeStatus(id: Int, changeStatusRent: ChangeStatusRequest)
 
     var method: HTTPMethod {
         switch self {
@@ -48,6 +52,13 @@ enum RentRouter: URLRequestConvertible {
         request.headers.add(.accept("application/json"))
         if let jwt = UserDefaults.standard.string(forKey: "jwt"){
             request.headers.add(.authorization(bearerToken: jwt))
+        }
+        
+        switch self {
+        case .putForChangeStatus(_, let changeStatusRequest):
+            request.httpBody = try JSONEncoder().encode(changeStatusRequest)
+        default:
+            break
         }
         
         request.method = method
