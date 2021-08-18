@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 
 class CheckOutViewController: UIViewController, UITableViewDataSource {
-
+    
     //MARK: -Header
     @IBOutlet weak var lenderImageView: UIImageView!
     @IBOutlet weak var lenderNameLabel: UILabel!
@@ -36,7 +36,6 @@ class CheckOutViewController: UIViewController, UITableViewDataSource {
     @IBOutlet weak var pickerMetodePengiriman: UIPickerView!
     @IBOutlet weak var pickerTitle: UILabel!
     @IBOutlet weak var pickerFullView: UIView!
-    
     
     let disposeBag = DisposeBag()
     var itemsDurasiSewa: Observable<[String]> = Observable.of(["1 Minggu", "2 Minggu", "3 Minggu", "4 Minggu"])
@@ -71,7 +70,7 @@ class CheckOutViewController: UIViewController, UITableViewDataSource {
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = .clear
     }
-
+    
     private func setupView(){
         
         let lenderName = cart[0].lender?.name
@@ -102,7 +101,7 @@ class CheckOutViewController: UIViewController, UITableViewDataSource {
             return element
         }
         .disposed(by: disposeBag)
-
+        
         pickerDurasiSewa.rx.modelSelected(String.self)
             .subscribe(onNext: { models in
                 self.durasiPenyewaanLabel.text = models.joined()
@@ -110,18 +109,18 @@ class CheckOutViewController: UIViewController, UITableViewDataSource {
             .disposed(by: disposeBag)
         
         pickerDurasiSewa.rx.itemSelected
-                        .subscribe(onNext: { (row, compenent) in
-                            self.biayaSewaBukuLabel.text = "Rp\(price*(row+1))"
-                            self.estimasiTotalLabel.text = "Rp\(price*(row+1))"
-                        })
-                        .disposed(by: disposeBag)
+            .subscribe(onNext: { (row, compenent) in
+                self.biayaSewaBukuLabel.text = "Rp\(price*(row+1))"
+                self.estimasiTotalLabel.text = "Rp\(price*(row+1))"
+            })
+            .disposed(by: disposeBag)
         pickerDurasiSewa.selectRow(0, inComponent: 0, animated: true)
         
         itemsMetodePengiriman.bind(to: pickerMetodePengiriman.rx.itemTitles) { (row, element) in
             return element
         }
         .disposed(by: disposeBag)
-
+        
         pickerMetodePengiriman.rx.modelSelected(String.self)
             .subscribe(onNext: { models in
                 self.metodePengirimanLabel.text = models.joined()
@@ -168,8 +167,7 @@ class CheckOutViewController: UIViewController, UITableViewDataSource {
     }
     
     @IBAction func sewaSekarangButtonPressed(_ sender: UIButton) {
-    
-    }
-    
-
+        let vc = ModuleBuilder.shared.goToDetailOrderViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }    
 }

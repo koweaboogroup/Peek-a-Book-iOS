@@ -29,12 +29,12 @@ class DetailOrderViewController: UIViewController {
     @IBOutlet weak var nomorOrderPenyewaanLabel: UILabel!
     
     // MARK: - Detail Penyewa
-    @IBOutlet weak var namaPenyewaLabel: UILabel!
-    @IBOutlet weak var jalanPenyewaLabel: UILabel!
-    @IBOutlet weak var kelurahanPenyewaLabel: UILabel!
-    @IBOutlet weak var kecamatanPenyewaLabel: UILabel!
-    @IBOutlet weak var negaraPenyewaLabel: UILabel!
-    @IBOutlet weak var nomorTeleponPenyewaLabel: UILabel!
+    @IBOutlet weak var renterNameLabel: UILabel!
+    @IBOutlet weak var renterStreetLabel: UILabel!
+    @IBOutlet weak var renterSubDistrictLabel: UILabel!
+    @IBOutlet weak var renterDistrictLabel: UILabel!
+    @IBOutlet weak var renterCountryLabel: UILabel!
+    @IBOutlet weak var renterPhoneLabel: UILabel!
     
     // MARK: - Detail Buku
     @IBOutlet weak var profileImage: UIImageView!
@@ -43,11 +43,11 @@ class DetailOrderViewController: UIViewController {
     @IBOutlet var detailBukuTableHeight: NSLayoutConstraint!
     
     // MARK: - Detail Sewa
-    @IBOutlet weak var durasiSewaLabel: UILabel!
-    @IBOutlet weak var metodePengirimanLabel: UILabel!
-    @IBOutlet weak var biayaPengirimanLabel: UILabel!
-    @IBOutlet weak var totalBiayaLabel: UILabel!
-    @IBOutlet weak var tanggalBatasSewaLabel: UILabel!
+    @IBOutlet weak var rentDurationLabel: UILabel!
+    @IBOutlet weak var rentDeliveryMethodLabel: UILabel!
+    @IBOutlet weak var rentDeliveryFeeLabel: UILabel!
+    @IBOutlet weak var rentFeeLabel: UILabel!
+    @IBOutlet weak var rentDeadlineDateLabel: UILabel!
     
     override func viewWillLayoutSubviews() {
         super.updateViewConstraints()
@@ -57,26 +57,13 @@ class DetailOrderViewController: UIViewController {
         self.viewWillLayoutSubviews()
     }
     
-    var orderId: Int?
+    private var orderId: Int?
     private let viewModel = DetailOrderViewModel()
     private let disposeBag = DisposeBag()
     
-    init(orderId: Int, nibName: String) {
-        super.init(nibName: nibName, bundle: nil)
+    func setOrderId(orderId: Int) {
         self.orderId = orderId
     }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    
-
-    
-    
-    
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,10 +74,7 @@ class DetailOrderViewController: UIViewController {
         
     }
     
-    
-    
-    
-    func setNavigationBar(){
+    private func setNavigationBar(){
         self.navigationItem.title = "Detail Order"
         
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "DM Serif Text", size: 19)!]
@@ -103,12 +87,12 @@ class DetailOrderViewController: UIViewController {
         self.navigationController?.view.backgroundColor = .clear
     }
     
-    func setView(){
+    private func setView(){
         detailBukuTableView.layer.applyShadow(color: .black, alpha: 0.1, x: 0, y: 2, blur: 5, spread: 0)
     }
     
     
-    func setRx(){
+    private func setRx(){
         viewModel.getDetailOrder(orderId: orderId ?? -1)
     
         //Header
@@ -122,32 +106,32 @@ class DetailOrderViewController: UIViewController {
         
         viewModel.order.asObserver().map { order in
             order.rent?.user?.username
-        }.bind(to: namaPenyewaLabel.rx.text)
+        }.bind(to: renterNameLabel.rx.text)
         .disposed(by: disposeBag)
         
         viewModel.order.asObserver().map { order in
             order.rent?.alamat
-        }.bind(to: jalanPenyewaLabel.rx.text)
+        }.bind(to: renterStreetLabel.rx.text)
         .disposed(by: disposeBag)
         
         viewModel.order.asObserver().map { order in
             order.rent?.kelurahan
-        }.bind(to: kelurahanPenyewaLabel.rx.text)
+        }.bind(to: renterSubDistrictLabel.rx.text)
         .disposed(by: disposeBag)
         
         viewModel.order.asObserver().map { order in
             order.rent?.kecamatan
-        }.bind(to: kecamatanPenyewaLabel.rx.text)
+        }.bind(to: renterDistrictLabel.rx.text)
         .disposed(by: disposeBag)
         
         viewModel.order.asObserver().map { order in
             order.rent?.provinsi
-        }.bind(to: negaraPenyewaLabel.rx.text)
+        }.bind(to: renterCountryLabel.rx.text)
         .disposed(by: disposeBag)
         
         viewModel.order.asObserver().map { order in
             order.rent?.user?.phoneNumber
-        }.bind(to: nomorTeleponPenyewaLabel.rx.text)
+        }.bind(to: renterPhoneLabel.rx.text)
         .disposed(by: disposeBag)
         
         //Detail buku
@@ -162,12 +146,12 @@ class DetailOrderViewController: UIViewController {
         
         viewModel.order.asObserver().map { order in
             "\(order.rent?.periodOfTime ?? -1)"
-        }.bind(to: durasiSewaLabel.rx.text)
+        }.bind(to: rentDurationLabel.rx.text)
         .disposed(by: disposeBag)
         
         viewModel.order.asObserver().map { order in
             order.rent?.shippingMethods
-        }.bind(to: metodePengirimanLabel.rx.text)
+        }.bind(to: rentDeliveryMethodLabel.rx.text)
         .disposed(by: disposeBag)
         
        
@@ -185,8 +169,7 @@ class DetailOrderViewController: UIViewController {
             
         }.disposed(by: disposeBag)
     }
-    
-    
+        
     func swcase(){
         switch messageStatusPemberiSewaEnum {
         case .penyewaanBaru:
@@ -239,10 +222,9 @@ class DetailOrderViewController: UIViewController {
 
     @IBAction func kembaliKeHomepagePressed(_ sender: UIButton) {
         print("To homepage")
-        
     }
     
-    @IBAction func buttonLihatAlamatPressed(_ sender: UIButton) {
+    @IBAction func backToHomePageButtonPressed(_ sender: UIButton) {
     }
-
+    
 }

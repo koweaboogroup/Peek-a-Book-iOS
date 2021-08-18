@@ -11,9 +11,9 @@ import RxSwift
 class EditProfileViewController: UIViewController {
     
     @IBOutlet weak var imageProfile: CircleImageView!
-    @IBOutlet weak var namaLengkapTextField: UITextField!
+    @IBOutlet weak var fullNameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var noWhatsappTextField: UITextField!
+    @IBOutlet weak var whatsappNumberTextField: UITextField!
     
     private var profileViewModel = ProfileViewModel()
     private var disposedBag = DisposeBag()
@@ -27,12 +27,12 @@ class EditProfileViewController: UIViewController {
         setupRx()
     }
     
-    func setNavigationBar(){
+    private func setNavigationBar(){
         self.navigationItem.title = "Edit Profil"
         
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "DM Serif Text", size: 19)!]
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Simpan", style: .done, target: self, action: #selector(addTapped))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Simpan", style: .done, target: self, action: #selector(saveTapped))
         
         UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "DM Serif Text", size: 19.0)!], for: .normal)
         
@@ -53,7 +53,7 @@ class EditProfileViewController: UIViewController {
             .map{ user in
                 user.username
             }
-            .bind(to: namaLengkapTextField.rx.text)
+            .bind(to: fullNameTextField.rx.text)
             .disposed(by: disposedBag)
         
         profileViewModel.user.asObserver()
@@ -67,17 +67,15 @@ class EditProfileViewController: UIViewController {
             .map{ user in
                 user.phoneNumber
             }
-            .bind(to: noWhatsappTextField.rx.text)
+            .bind(to: whatsappNumberTextField.rx.text)
             .disposed(by: disposedBag)
         
     }
     
-    @objc func addTapped(_ sender: UINavigationItem){
-        print("Simpan")
+    @objc private func saveTapped(_ sender: UINavigationItem){
     }
     
-    @IBAction func detailAlamatGetTap(_ sender: UITapGestureRecognizer) {
-        print("Pindah Ke maps")
+    @IBAction func detailAddressGetTapped(_ sender: UITapGestureRecognizer) {
     }
     
 }

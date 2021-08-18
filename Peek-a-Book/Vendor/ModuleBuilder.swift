@@ -64,8 +64,8 @@ class ModuleBuilder {
         return vc
     }
 
-    func goToProfileLenderViewController() -> ProfileTokoViewController {
-        let vc = ProfileTokoViewController(nibName: XIBConstant.ProfileTokoViewController, bundle: nil)
+    func goToProfileLenderViewController() -> ProfileLenderViewController {
+        let vc = ProfileLenderViewController(nibName: XIBConstant.ProfileTokoViewController, bundle: nil)
         
         return vc
     }
@@ -78,6 +78,18 @@ class ModuleBuilder {
     
     func goToCheckOutViewController() -> CheckOutViewController {
         let vc = CheckOutViewController(nibName: XIBConstant.CheckOutViewController, bundle: nil)
+        
+        return vc
+    }
+
+    func goToTransactionViewController() -> TransactionViewController {
+        let vc = TransactionViewController(nibName: XIBConstant.TransactionViewController, bundle: nil)
+        
+        return vc
+    }
+    
+    func goToDetailOrderViewController() -> DetailOrderViewController {
+        let vc = DetailOrderViewController(nibName: XIBConstant.DetailOrderVC, bundle: nil)
         
         return vc
     }

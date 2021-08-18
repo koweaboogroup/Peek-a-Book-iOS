@@ -13,7 +13,7 @@ import RxKingfisher
 
 class DetailBooksViewController: UIViewController {
     
-    private var id: Int = 0
+    var id: Int = 0
     
     
     // MARK: -Header View
@@ -43,7 +43,7 @@ class DetailBooksViewController: UIViewController {
     private var viewModel = DetailBookViewModel()
     private var disposeBag = DisposeBag()
     
-    private let cart = DataManager.shared.getCart()
+    private let dataManager = DataManager.shared
     private var lenderBook: LenderBook?
     
     override func viewDidLoad() {
@@ -53,21 +53,35 @@ class DetailBooksViewController: UIViewController {
         totalBookButtonView.isHidden = true
         
         setNavigationBar()
-        setupCart(cart)
+        setupCart()
+        updateCart()
+        
         setupRx()
         
     }
     
-    private func setupCart(_ item: [LenderBook]){
-        if !item.isEmpty {
+    private func updateCart() {
+        if !dataManager.getCart().isEmpty {
             totalBookButtonView.isHidden = false
-            detailTotalBookLabel.text = String(item.count)
-        }else{
+            detailTotalBookLabel.text = String(dataManager.getCart().count)
+        } else {
             totalBookButtonView.isHidden = true
         }
     }
     
-    func setupRx() {
+    private func setupCart() {
+        if !dataManager.getCart().isEmpty {
+            dataManager.getCart().forEach { item in
+                if item.id == id {
+                    print("im here 2")
+                    tambahKeranjangButton.isEnabled = false
+                    return
+                }
+            }
+        }
+    }
+    
+    private func setupRx() {
         viewModel.bookDetail.subscribe(onNext: { item in
             self.lenderBook = item
         }).disposed(by: disposeBag)
@@ -131,10 +145,10 @@ class DetailBooksViewController: UIViewController {
         }.bind(to: detailBookConditionLabel.rx.text)
         .disposed(by: disposeBag)
         
-        viewModel.bookDetail.asObserver().map { book in
-            book.book?.bookGenre == 1 ? "Fiksi" : "Non Fiksi"
-        }.bind(to: detailBookGenreLabel.rx.text)
-        .disposed(by: disposeBag)
+        /*viewModel.bookDetail.asObserver().map { book in
+         book.book?.bookGenre == 1 ? "Fiksi" : "Non Fiksi"
+         }.bind(to: detailBookGenreLabel.rx.text)
+         .disposed(by: disposeBag)*/
         
         viewModel.bookDetail.asObserver().map { book in
             book.book?.sinopsis
@@ -143,13 +157,10 @@ class DetailBooksViewController: UIViewController {
     }
     
     @IBAction func lenderProfileGetTapped(_ sender: UITapGestureRecognizer) {
-
         print("Sambung ke lender")
-        
     }
     
     @IBAction func totalBukuGetTapped(_ sender: UITapGestureRecognizer) {
-        
         DataManager.shared.saveCartToUserDefaults()
         
         let vc = ModuleBuilder.shared.goToCheckOutViewController()
@@ -177,33 +188,48 @@ class DetailBooksViewController: UIViewController {
             alert.title = "Kondisi Buku Tidak Ada"
             alert.message = "Data kondisi buku tidak ditemukan"
         }
-  
+        
         alert.addAction(UIAlertAction(title: "Mengerti", style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
-
+        
     }
     
     @IBAction func tambahKeranjangButtonPressed(_ sender: UIButton) {
-        
-        tambahKeranjangButton.isEnabled = false
-        
-        //LOGIC IN HERE
-        if let lenderBook = lenderBook {
-            viewModel.addToCart(cart, lenderBook) { item in
-                print("Item \(item.count)")
-                self.tambahKeranjangButton.isEnabled = false
-                self.setupCart(item)
-            } onErrorCompletion: {
-                self.tambahKeranjangButton.isEnabled = true
+        if dataManager.isLoggedIn() {
+            if dataManager.getCart().isEmpty {
+                addItemToCart()
+                return
             }
+            
+            if lenderBook?.lender?.id != dataManager.getCart()[0].lender?.id {
+                let alert = UIAlertController(title: "Hapus Keranjang?", message: "Keranjang yang kamu buat sebelumnya akan dihapus", preferredStyle: .alert)
+                
+                alert.addAction(UIAlertAction(title: "Hapus", style: .destructive, handler: { action in
+                    self.dataManager.deleteCart()
+                    self.addItemToCart()
+                }))
+                
+                alert.addAction(UIAlertAction(title: "Kembali", style: .cancel, handler: nil))
+                
+                self.present(alert, animated: true, completion: nil)
+            } else {
+                addItemToCart()
+            }
+        } else {
+            tabBarController?.selectedIndex = 1
         }
         
     }
     
+    private func addItemToCart() {
+        if let lenderBook = lenderBook {
+            dataManager.addItemToCart(lenderBook: lenderBook)
+            updateCart()
+            tambahKeranjangButton.isEnabled = false
+        }
+    }
     
-    
-    func setNavigationBar(){
-        
+    private func setNavigationBar(){
         self.navigationItem.title = "Detail Buku"
         
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "DM Serif Text", size: 19)!]
