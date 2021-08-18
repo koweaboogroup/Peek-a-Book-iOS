@@ -19,7 +19,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailOrderViewController" customModule="Peek_a_Book" customModuleProvider="target">
             <connections>
-                <outlet property="biayaPengirimanLabel" destination="Wn9-YY-VQC" id="Xgo-Pb-112"/>
                 <outlet property="detailBukuTableHeight" destination="DkQ-jz-4lA" id="2je-Ah-8xI"/>
                 <outlet property="detailBukuTableView" destination="RCq-Ys-vZG" id="eoH-L1-KEb"/>
                 <outlet property="informationStatusLabel" destination="e5e-lH-0zV" id="E8J-kX-4ID"/>
@@ -27,6 +26,7 @@
                 <outlet property="profileImage" destination="JvD-lH-Saa" id="oxN-po-sTS"/>
                 <outlet property="profileNameLabel" destination="71y-JV-IHD" id="Xw0-yp-93Y"/>
                 <outlet property="rentDeadlineDateLabel" destination="NDH-NR-tWx" id="Pvl-1s-FLm"/>
+                <outlet property="rentDeliveryFeeLabel" destination="Wn9-YY-VQC" id="zKw-6b-Gef"/>
                 <outlet property="rentDeliveryMethodLabel" destination="Qf1-3g-9su" id="duN-Ki-sli"/>
                 <outlet property="rentDurationLabel" destination="OsM-p5-Zo4" id="ibD-tB-cS1"/>
                 <outlet property="rentFeeLabel" destination="fo3-xB-HhS" id="cVc-Kc-leX"/>
@@ -512,7 +512,7 @@
                                             <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                             <state key="normal" title="Lihat Alamat"/>
                                             <connections>
-                                                <action selector="backToHomePageButtonPressed:" destination="-1" eventType="touchUpInside" id="A3N-Vt-tkU"/>
+                                                <action selector="buttonLihatAlamatPressed:" destination="-1" eventType="touchUpInside" id="R5f-iA-2Tb"/>
                                             </connections>
                                         </button>
                                     </subviews>
