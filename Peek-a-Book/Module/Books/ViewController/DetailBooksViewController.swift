@@ -13,7 +13,8 @@ import RxKingfisher
 
 class DetailBooksViewController: UIViewController {
     
-    var id: Int = 0
+    private var id: Int = 0
+    
     
     // MARK: -Header View
     @IBOutlet weak var detailBookImages: UIImageView!
@@ -34,7 +35,6 @@ class DetailBooksViewController: UIViewController {
     @IBOutlet weak var detailBookConditionLabel: UILabel!
     @IBOutlet weak var detailBookSinopsisLabel: UILabel!
     
-    
     // MARK: -Bottom View
     @IBOutlet weak var detailTotalBookLabel: UILabel!
     @IBOutlet weak var totalBookButtonView: UIView!
@@ -47,6 +47,7 @@ class DetailBooksViewController: UIViewController {
     private var lenderBook: LenderBook?
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         viewModel.getDetailBook(id: String(id))
         totalBookButtonView.isHidden = true
@@ -54,6 +55,7 @@ class DetailBooksViewController: UIViewController {
         setNavigationBar()
         setupCart(cart)
         setupRx()
+        
     }
     
     private func setupCart(_ item: [LenderBook]){
@@ -69,6 +71,7 @@ class DetailBooksViewController: UIViewController {
         viewModel.bookDetail.subscribe(onNext: { item in
             self.lenderBook = item
         }).disposed(by: disposeBag)
+        
         // MARK: -Setup Header View
         viewModel.bookDetail.subscribe (onNext: { book in
             let url = URL(string: Constant.Network.baseUrl + (book.images?[0].url ?? ""))
@@ -140,18 +143,22 @@ class DetailBooksViewController: UIViewController {
     }
     
     @IBAction func lenderProfileGetTapped(_ sender: UITapGestureRecognizer) {
-        print("aww Shit")
+
+        print("Sambung ke lender")
+        
     }
     
     @IBAction func totalBukuGetTapped(_ sender: UITapGestureRecognizer) {
-        print("aww mantab")
+        
         DataManager.shared.saveCartToUserDefaults()
         
         let vc = ModuleBuilder.shared.goToCheckOutViewController()
         self.navigationController?.pushViewController(vc, animated: true)
+        
     }
     
     @IBAction func kondisiBukuInformationTouched(_ sender: UIButton) {
+        
         let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
         switch detailBookConditionLabel.text {
         case "Seperti Baru":
@@ -177,6 +184,7 @@ class DetailBooksViewController: UIViewController {
     }
     
     @IBAction func tambahKeranjangButtonPressed(_ sender: UIButton) {
+        
         tambahKeranjangButton.isEnabled = false
         
         //LOGIC IN HERE
@@ -189,11 +197,13 @@ class DetailBooksViewController: UIViewController {
                 self.tambahKeranjangButton.isEnabled = true
             }
         }
+        
     }
     
     
     
     func setNavigationBar(){
+        
         self.navigationItem.title = "Detail Buku"
         
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "DM Serif Text", size: 19)!]
@@ -202,5 +212,6 @@ class DetailBooksViewController: UIViewController {
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = .clear
+        
     }
 }
