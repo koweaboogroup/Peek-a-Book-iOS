@@ -12,7 +12,7 @@ class ProfileViewModel {
     public let error: PublishSubject<String> = PublishSubject()
 
     func fetchProfile() {
-        ProfileService.getProfile { user in
+        ProfileService.getProfile(userId: DataManager.shared.getUserIdByJwt()) { user in
             self.user.onNext(user)
         } failCompletion: { error in
             self.error.onNext(error.errorDescription ?? "Data Tidak Ditemukan")
