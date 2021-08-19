@@ -81,16 +81,17 @@ class DetailOrderViewController: UIViewController {
         viewModel.getDetailOrder(orderId: orderId ?? -1)
         //Header
         
-//        viewModel.order.subscribe(onNext: { item in
-//            self.viewModel.getProfilLender(lenderId: item.lenderBooks?[0].lender?.id ?? -1)
-//            
-//        }).disposed(by: disposeBag)
-//        
-//        viewModel.lenderProfile.subscribe(onNext: { profile in
-//            profile.
-//        }).disposed(by: disposeBag)
+        viewModel.order
+            .subscribe(onNext: { item in
+                self.viewModel.getProfile(userId: item.lenderBooks?[0].lender?.user ?? -1)
+            })
+            .disposed(by: disposeBag)
         
-        
+        viewModel.user
+            .subscribe(onNext: { profile in
+                self.nomerTelponPemberiSewa = profile.phoneNumber
+            })
+            .disposed(by: disposeBag)
         
         viewModel.order.asObserver().map { order in
             "No Order Penyewaan: \(order.id ?? -1)"
@@ -159,14 +160,6 @@ class DetailOrderViewController: UIViewController {
         }.bind(to: rentFeeLabel.rx.text)
         .disposed(by: disposeBag)
         
-        //        viewModel.order.asObserver().map { order in
-        //            order.lenderBooks.
-        //            let url = URL(string: Constant.Network.baseUrl + (view.images?[0].url ?? ""))
-        //
-        //        }
-        
-        
-        
         detailBukuTableView.register(UINib(nibName: XIBConstant.ItemKeranjangTableViewCell, bundle: nil), forCellReuseIdentifier: String(describing: ItemKeranjangTableViewCell.self))
         
         viewModel.order.asObservable().map{ order in
@@ -179,33 +172,20 @@ class DetailOrderViewController: UIViewController {
             
         }.disposed(by: disposeBag)
         
-       
         viewModel.order.asObserver().map { order in
             "\(String(describing: order.status!.name))"
         }.bind(to: informationStatusLabel.rx.text)
         .disposed(by: disposeBag)
         
-        
-        
     }
-    
-    
     
     @IBAction func lihatAlamatButtonPressed(_ sender: UIButton) {
         let vc = ModalDetailOrderViewController()
-//        vc.nomerTelpPemberiSewaLabel
-//            
-//            
-//            present(ModalDetailOrderViewController, animated: true, completion: )
+        vc.nomerTelpPemberiSewaLabel.text = nomerTelponPemberiSewa
         
-        
+        present(vc, animated: true, completion: nil)
     }
-    
-    
-    
 }
-
-
 
 extension DetailOrderViewController{
     private enum MessageStatusPemberiSewa {

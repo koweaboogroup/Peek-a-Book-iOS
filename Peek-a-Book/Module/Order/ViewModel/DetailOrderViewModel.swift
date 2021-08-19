@@ -11,7 +11,7 @@ import RxSwift
 struct DetailOrderViewModel {
     let loading: PublishSubject<Bool> = PublishSubject()
     let error: PublishSubject<String> = PublishSubject()
-    let lenderProfile: PublishSubject<RegisterLenderResponse> = PublishSubject()
+    let user: PublishSubject<User> = PublishSubject()
     
     let order: PublishSubject<Rent> = PublishSubject()
     
@@ -27,11 +27,11 @@ struct DetailOrderViewModel {
         }
     }
     
-//    func getProfile() {
-//        ProfileService.getProfile { user in
-//            self.user.onNext(user)
-//        } failCompletion: { error in
-//            self.error.onNext(error.errorDescription ?? "Data Tidak Ditemukan")
-//        }
-//    }
+    func getProfile(userId: Int) {
+        ProfileService.getProfile(userId: userId) { user in
+            self.user.onNext(user)
+        } failCompletion: { error in
+            self.error.onNext(error.errorDescription ?? "Data Tidak Ditemukan")
+        }
+    }
 }
