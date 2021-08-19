@@ -81,14 +81,14 @@ class DetailOrderViewController: UIViewController {
         viewModel.getDetailOrder(orderId: orderId ?? -1)
         //Header
         
-        viewModel.order.subscribe(onNext: { item in
-            self.viewModel.getProfilLender(lenderId: item.lenderBooks?[0].lender?.id ?? -1)
-            
-        }).disposed(by: disposeBag)
-        
-        viewModel.lenderProfile.subscribe(onNext: { profile in
-            profile.
-        }).disposed(by: disposeBag)
+//        viewModel.order.subscribe(onNext: { item in
+//            self.viewModel.getProfilLender(lenderId: item.lenderBooks?[0].lender?.id ?? -1)
+//            
+//        }).disposed(by: disposeBag)
+//        
+//        viewModel.lenderProfile.subscribe(onNext: { profile in
+//            profile.
+//        }).disposed(by: disposeBag)
         
         
         
@@ -193,10 +193,10 @@ class DetailOrderViewController: UIViewController {
     
     @IBAction func lihatAlamatButtonPressed(_ sender: UIButton) {
         let vc = ModalDetailOrderViewController()
-        vc.nomerTelpPemberiSewaLabel
-            
-            
-            present(ModalDetailOrderViewController, animated: true, completion: <#T##(() -> Void)?##(() -> Void)?##() -> Void#>)
+//        vc.nomerTelpPemberiSewaLabel
+//            
+//            
+//            present(ModalDetailOrderViewController, animated: true, completion: )
         
         
     }

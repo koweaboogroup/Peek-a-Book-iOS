@@ -27,11 +27,11 @@ struct DetailOrderViewModel {
         }
     }
     
-    func getProfile() {
-        ProfileService.getProfile { user in
-            self.user.onNext(user)
-        } failCompletion: { error in
-            self.error.onNext(error.errorDescription ?? "Data Tidak Ditemukan")
-        }
-    }
+//    func getProfile() {
+//        ProfileService.getProfile { user in
+//            self.user.onNext(user)
+//        } failCompletion: { error in
+//            self.error.onNext(error.errorDescription ?? "Data Tidak Ditemukan")
+//        }
+//    }
 }
