@@ -10,7 +10,7 @@ import Alamofire
 
 enum ProfileRouter: URLRequestConvertible {
     
-    case get
+    case get(userId: Int)
     
     var method: HTTPMethod {
         switch self {
@@ -19,7 +19,10 @@ enum ProfileRouter: URLRequestConvertible {
     }
     
     var url: URL {
-        return URL(string: Constant.Network.baseUrl + "/users/\(DataManager.shared.getUserIdByJwt())")!
+        switch self {
+        case .get(let userId):
+            return URL(string: Constant.Network.baseUrl + "/users/\(userId)")!
+        }
     }
 
     func asURLRequest() throws -> URLRequest {

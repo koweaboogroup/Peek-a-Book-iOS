@@ -40,7 +40,7 @@ class DataManager {
     
     func fetchUser() {
         self.isUserFetched.onNext(false)
-        ProfileService.getProfile { user in
+        ProfileService.getProfile(userId: user?.id ?? -1) { user in
             self.user = user
             self.isUserFetched.onNext(true)
         } failCompletion: { error in
