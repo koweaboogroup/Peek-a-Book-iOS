@@ -21,6 +21,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CheckOutViewController" customModule="Peek_a_Book" customModuleProvider="target">
             <connections>
+                <outlet property="addressLabel" destination="VhT-rA-0Xa" id="WDy-kW-RLT"/>
                 <outlet property="biayaOngkirLabel" destination="UYC-dO-Q35" id="Jov-OL-NAu"/>
                 <outlet property="biayaSewaBukuLabel" destination="cUZ-QM-MIY" id="59x-iw-Db2"/>
                 <outlet property="detailAlamatLabel" destination="VhT-rA-0Xa" id="vut-s8-MjL"/>
@@ -45,6 +46,84 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Rk-6h-gzJ">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <subviews>
+                        <view alpha="0.65000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="thh-vA-di3">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="627"/>
+                            <color key="backgroundColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2g2-FT-Vm1">
+                            <rect key="frame" x="0.0" y="627" width="414" height="269"/>
+                            <subviews>
+                                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="beP-yg-OlH">
+                                    <rect key="frame" x="28" y="49" width="358" height="220"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="220" id="7yF-KY-Fuq"/>
+                                    </constraints>
+                                </pickerView>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5ju-yj-BiY" userLabel="View Garis">
+                                    <rect key="frame" x="28" y="48" width="358" height="1"/>
+                                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="1" id="i3V-rx-uqy"/>
+                                    </constraints>
+                                </view>
+                                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tZP-CD-CIa">
+                                    <rect key="frame" x="344" y="25" width="42" height="13"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="42" id="UDr-RV-ILg"/>
+                                        <constraint firstAttribute="height" constant="13" id="rDd-ZY-5mf"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
+                                    <state key="normal" title="Done"/>
+                                    <connections>
+                                        <action selector="donePickerButtonPressed:" destination="-1" eventType="touchUpInside" id="qIS-0E-MuY"/>
+                                    </connections>
+                                </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Perusahaan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k9T-9G-VbQ">
+                                    <rect key="frame" x="28" y="21" width="92" height="17"/>
+                                    <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hyQ-B0-8mu">
+                                    <rect key="frame" x="28" y="49" width="358" height="220"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="220" id="e1B-ug-D1l"/>
+                                    </constraints>
+                                </pickerView>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="hyQ-B0-8mu" secondAttribute="trailing" constant="28" id="D2c-VA-KgC"/>
+                                <constraint firstItem="beP-yg-OlH" firstAttribute="leading" secondItem="2g2-FT-Vm1" secondAttribute="leading" constant="28" id="E2t-7i-K8R"/>
+                                <constraint firstItem="k9T-9G-VbQ" firstAttribute="leading" secondItem="beP-yg-OlH" secondAttribute="leading" id="Fhc-1V-I2o"/>
+                                <constraint firstAttribute="bottom" secondItem="hyQ-B0-8mu" secondAttribute="bottom" id="K4r-bY-Xs6"/>
+                                <constraint firstItem="tZP-CD-CIa" firstAttribute="trailing" secondItem="beP-yg-OlH" secondAttribute="trailing" id="LD3-ug-WJg"/>
+                                <constraint firstAttribute="bottom" secondItem="beP-yg-OlH" secondAttribute="bottom" id="LeC-Nq-EyF"/>
+                                <constraint firstItem="beP-yg-OlH" firstAttribute="top" secondItem="5ju-yj-BiY" secondAttribute="bottom" id="T2k-kY-g7k"/>
+                                <constraint firstItem="5ju-yj-BiY" firstAttribute="leading" secondItem="beP-yg-OlH" secondAttribute="leading" id="TWO-uO-neX"/>
+                                <constraint firstAttribute="height" constant="269" id="XVe-SA-BRr"/>
+                                <constraint firstItem="5ju-yj-BiY" firstAttribute="trailing" secondItem="beP-yg-OlH" secondAttribute="trailing" id="XhZ-e0-YTz"/>
+                                <constraint firstItem="5ju-yj-BiY" firstAttribute="top" secondItem="tZP-CD-CIa" secondAttribute="bottom" constant="10" id="cyk-w2-uQB"/>
+                                <constraint firstAttribute="trailing" secondItem="beP-yg-OlH" secondAttribute="trailing" constant="28" id="qTT-Hk-Dyx"/>
+                                <constraint firstItem="hyQ-B0-8mu" firstAttribute="leading" secondItem="2g2-FT-Vm1" secondAttribute="leading" constant="28" id="stX-lw-75s"/>
+                                <constraint firstItem="5ju-yj-BiY" firstAttribute="top" secondItem="k9T-9G-VbQ" secondAttribute="bottom" constant="10" id="wov-qa-Jf7"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="thh-vA-di3" firstAttribute="top" secondItem="2Rk-6h-gzJ" secondAttribute="top" id="AN4-Lf-haz"/>
+                        <constraint firstItem="thh-vA-di3" firstAttribute="leading" secondItem="2Rk-6h-gzJ" secondAttribute="leading" id="IIl-T3-TCg"/>
+                        <constraint firstItem="2g2-FT-Vm1" firstAttribute="top" secondItem="thh-vA-di3" secondAttribute="bottom" id="hNR-dB-bMO"/>
+                        <constraint firstAttribute="trailing" secondItem="thh-vA-di3" secondAttribute="trailing" id="lA0-0g-xJy"/>
+                        <constraint firstAttribute="bottom" secondItem="2g2-FT-Vm1" secondAttribute="bottom" id="sDb-tr-KHc"/>
+                        <constraint firstAttribute="trailing" secondItem="2g2-FT-Vm1" secondAttribute="trailing" id="x5D-s1-p1w"/>
+                        <constraint firstItem="2g2-FT-Vm1" firstAttribute="leading" secondItem="2Rk-6h-gzJ" secondAttribute="leading" id="yzC-UW-Xr1"/>
+                    </constraints>
+                </view>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8KJ-hj-ESz">
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <subviews>
@@ -570,84 +649,6 @@
                         <constraint firstAttribute="bottom" secondItem="6E7-tB-R9z" secondAttribute="bottom" id="pcQ-bt-SQ0"/>
                     </constraints>
                 </scrollView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Rk-6h-gzJ">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                    <subviews>
-                        <view alpha="0.65000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="thh-vA-di3">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="627"/>
-                            <color key="backgroundColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                        </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2g2-FT-Vm1">
-                            <rect key="frame" x="0.0" y="627" width="414" height="269"/>
-                            <subviews>
-                                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="beP-yg-OlH">
-                                    <rect key="frame" x="28" y="49" width="358" height="220"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="220" id="7yF-KY-Fuq"/>
-                                    </constraints>
-                                </pickerView>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5ju-yj-BiY" userLabel="View Garis">
-                                    <rect key="frame" x="28" y="48" width="358" height="1"/>
-                                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="1" id="i3V-rx-uqy"/>
-                                    </constraints>
-                                </view>
-                                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tZP-CD-CIa">
-                                    <rect key="frame" x="344" y="25" width="42" height="13"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="42" id="UDr-RV-ILg"/>
-                                        <constraint firstAttribute="height" constant="13" id="rDd-ZY-5mf"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
-                                    <state key="normal" title="Done"/>
-                                    <connections>
-                                        <action selector="donePickerButtonPressed:" destination="-1" eventType="touchUpInside" id="qIS-0E-MuY"/>
-                                    </connections>
-                                </button>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Perusahaan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k9T-9G-VbQ">
-                                    <rect key="frame" x="28" y="21" width="92" height="17"/>
-                                    <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hyQ-B0-8mu">
-                                    <rect key="frame" x="28" y="49" width="358" height="220"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="220" id="e1B-ug-D1l"/>
-                                    </constraints>
-                                </pickerView>
-                            </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            <constraints>
-                                <constraint firstAttribute="trailing" secondItem="hyQ-B0-8mu" secondAttribute="trailing" constant="28" id="D2c-VA-KgC"/>
-                                <constraint firstItem="beP-yg-OlH" firstAttribute="leading" secondItem="2g2-FT-Vm1" secondAttribute="leading" constant="28" id="E2t-7i-K8R"/>
-                                <constraint firstItem="k9T-9G-VbQ" firstAttribute="leading" secondItem="beP-yg-OlH" secondAttribute="leading" id="Fhc-1V-I2o"/>
-                                <constraint firstAttribute="bottom" secondItem="hyQ-B0-8mu" secondAttribute="bottom" id="K4r-bY-Xs6"/>
-                                <constraint firstItem="tZP-CD-CIa" firstAttribute="trailing" secondItem="beP-yg-OlH" secondAttribute="trailing" id="LD3-ug-WJg"/>
-                                <constraint firstAttribute="bottom" secondItem="beP-yg-OlH" secondAttribute="bottom" id="LeC-Nq-EyF"/>
-                                <constraint firstItem="beP-yg-OlH" firstAttribute="top" secondItem="5ju-yj-BiY" secondAttribute="bottom" id="T2k-kY-g7k"/>
-                                <constraint firstItem="5ju-yj-BiY" firstAttribute="leading" secondItem="beP-yg-OlH" secondAttribute="leading" id="TWO-uO-neX"/>
-                                <constraint firstAttribute="height" constant="269" id="XVe-SA-BRr"/>
-                                <constraint firstItem="5ju-yj-BiY" firstAttribute="trailing" secondItem="beP-yg-OlH" secondAttribute="trailing" id="XhZ-e0-YTz"/>
-                                <constraint firstItem="5ju-yj-BiY" firstAttribute="top" secondItem="tZP-CD-CIa" secondAttribute="bottom" constant="10" id="cyk-w2-uQB"/>
-                                <constraint firstAttribute="trailing" secondItem="beP-yg-OlH" secondAttribute="trailing" constant="28" id="qTT-Hk-Dyx"/>
-                                <constraint firstItem="hyQ-B0-8mu" firstAttribute="leading" secondItem="2g2-FT-Vm1" secondAttribute="leading" constant="28" id="stX-lw-75s"/>
-                                <constraint firstItem="5ju-yj-BiY" firstAttribute="top" secondItem="k9T-9G-VbQ" secondAttribute="bottom" constant="10" id="wov-qa-Jf7"/>
-                            </constraints>
-                        </view>
-                    </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstItem="thh-vA-di3" firstAttribute="top" secondItem="2Rk-6h-gzJ" secondAttribute="top" id="AN4-Lf-haz"/>
-                        <constraint firstItem="thh-vA-di3" firstAttribute="leading" secondItem="2Rk-6h-gzJ" secondAttribute="leading" id="IIl-T3-TCg"/>
-                        <constraint firstItem="2g2-FT-Vm1" firstAttribute="top" secondItem="thh-vA-di3" secondAttribute="bottom" id="hNR-dB-bMO"/>
-                        <constraint firstAttribute="trailing" secondItem="thh-vA-di3" secondAttribute="trailing" id="lA0-0g-xJy"/>
-                        <constraint firstAttribute="bottom" secondItem="2g2-FT-Vm1" secondAttribute="bottom" id="sDb-tr-KHc"/>
-                        <constraint firstAttribute="trailing" secondItem="2g2-FT-Vm1" secondAttribute="trailing" id="x5D-s1-p1w"/>
-                        <constraint firstItem="2g2-FT-Vm1" firstAttribute="leading" secondItem="2Rk-6h-gzJ" secondAttribute="leading" id="yzC-UW-Xr1"/>
-                    </constraints>
-                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>

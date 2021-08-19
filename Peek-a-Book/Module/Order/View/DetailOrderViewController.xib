@@ -25,7 +25,7 @@
                 <outlet property="nomorOrderPenyewaanLabel" destination="f1O-E6-wUf" id="Vw4-w9-3tX"/>
                 <outlet property="profileImage" destination="JvD-lH-Saa" id="oxN-po-sTS"/>
                 <outlet property="profileNameLabel" destination="71y-JV-IHD" id="Xw0-yp-93Y"/>
-                <outlet property="rentDeliveryFeeLabel" destination="Wn9-YY-VQC" id="bGi-py-eT8"/>
+                <outlet property="rentDeliveryFeeLabel" destination="Wn9-YY-VQC" id="zKw-6b-Gef"/>
                 <outlet property="rentDeliveryMethodLabel" destination="Qf1-3g-9su" id="duN-Ki-sli"/>
                 <outlet property="rentDurationLabel" destination="OsM-p5-Zo4" id="ibD-tB-cS1"/>
                 <outlet property="rentFeeLabel" destination="fo3-xB-HhS" id="cVc-Kc-leX"/>
@@ -498,7 +498,7 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <state key="normal" title="Lihat Alamat"/>
                                             <connections>
-                                                <action selector="lihatAlamatButtonPressed:" destination="-1" eventType="touchUpInside" id="vLV-BR-9Uf"/>
+                                                <action selector="buttonLihatAlamatPressed:" destination="-1" eventType="touchUpInside" id="R5f-iA-2Tb"/>
                                             </connections>
                                         </button>
                                     </subviews>

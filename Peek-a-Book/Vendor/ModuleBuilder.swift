@@ -41,7 +41,7 @@ class ModuleBuilder {
     }
 
     func goToAlamatViewController() -> AddressSettingViewController {
-        let vc = AddressSettingViewController(nibName: XIBConstant.AlamatSettingVC, bundle: nil)
+        let vc = AddressSettingViewController(nibName: XIBConstant.AddressSettingViewController, bundle: nil)
         
         return vc
     }

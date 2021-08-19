@@ -11,7 +11,7 @@ import RxCocoa
 
 class DetailOrderViewController: UIViewController {
     
-    
+    var nomerTelponPemberiSewa: String?
     private var messageStatusPemberiSewaEnum: MessageStatusPemberiSewa?
     private var messageStatusPenyewaEnum: MessageStatusPenyewa?
     
@@ -81,6 +81,17 @@ class DetailOrderViewController: UIViewController {
         viewModel.getDetailOrder(orderId: orderId ?? -1)
         //Header
         
+        viewModel.order.subscribe(onNext: { item in
+            self.viewModel.getProfilLender(lenderId: item.lenderBooks?[0].lender?.id ?? -1)
+            
+        }).disposed(by: disposeBag)
+        
+        viewModel.lenderProfile.subscribe(onNext: { profile in
+            profile.
+        }).disposed(by: disposeBag)
+        
+        
+        
         viewModel.order.asObserver().map { order in
             "No Order Penyewaan: \(order.id ?? -1)"
         }.bind(to: nomorOrderPenyewaanLabel.rx.text)
@@ -138,11 +149,11 @@ class DetailOrderViewController: UIViewController {
         }.bind(to: rentDeliveryMethodLabel.rx.text)
         .disposed(by: disposeBag)
         
-        var totalPrice = 0
         viewModel.order.asObserver().map { order in
-            let cart: [LenderBook] = order.lenderBooks ?? []
-            for price in cart{
-                totalPrice = totalPrice + price.price!
+            var totalPrice = 0
+            let items: [LenderBook] = order.lenderBooks ?? []
+            for item in items{
+                totalPrice += item.price ?? 0
             }
             return "Rp \(totalPrice)"
         }.bind(to: rentFeeLabel.rx.text)
@@ -181,7 +192,13 @@ class DetailOrderViewController: UIViewController {
     
     
     @IBAction func lihatAlamatButtonPressed(_ sender: UIButton) {
-        print("goto alamat")
+        let vc = ModalDetailOrderViewController()
+        vc.nomerTelpPemberiSewaLabel
+            
+            
+            present(ModalDetailOrderViewController, animated: true, completion: <#T##(() -> Void)?##(() -> Void)?##() -> Void#>)
+        
+        
     }
     
     
