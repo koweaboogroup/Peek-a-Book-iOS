@@ -168,6 +168,7 @@ class CheckOutViewController: UIViewController, UITableViewDataSource {
     
     @IBAction func sewaSekarangButtonPressed(_ sender: UIButton) {
         let vc = ModuleBuilder.shared.goToDetailOrderViewController()
+        vc.setOrderId(orderId: 3)
         self.navigationController?.pushViewController(vc, animated: true)
     }    
 }

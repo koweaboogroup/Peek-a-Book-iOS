@@ -12,7 +12,7 @@ struct DetailOrderViewModel {
     let loading: PublishSubject<Bool> = PublishSubject()
     let error: PublishSubject<String> = PublishSubject()
     
-    let order: PublishSubject<Order> = PublishSubject()
+    let order: PublishSubject<Rent> = PublishSubject()
     
     func getDetailOrder(orderId: Int) {
         self.loading.onNext(true)

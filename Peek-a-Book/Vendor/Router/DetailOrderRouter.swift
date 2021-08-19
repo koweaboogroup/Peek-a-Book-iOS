@@ -18,7 +18,7 @@ enum DetailOrderRouter: URLRequestConvertible {
     }
     
     var baseUrl: URL {
-        return URL(string: Constant.Network.baseUrl + "/rent-details")!
+        return URL(string: Constant.Network.baseUrl + "/rents")!
     }
     
     var path: String {
@@ -36,6 +36,11 @@ enum DetailOrderRouter: URLRequestConvertible {
         request.headers.add(.accept("application/json"))
         
         request.method = method
+        
+        if let jwt = UserDefaults.standard.string(forKey: "jwt"){
+            request.headers.add(.authorization(bearerToken: jwt))
+        }
+        
         
         return request
     }
