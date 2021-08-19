@@ -8,9 +8,9 @@
 import Alamofire
 
 class LoginService {
-    static func login(loginRequest: LoginRequest, successCompletion: @escaping (LoginResponse) -> Void, failCompletion: @escaping (AFError) -> Void) {
+    static func login(parameters: [String: String], successCompletion: @escaping (LoginResponse) -> Void, failCompletion: @escaping (AFError) -> Void) {
         
-        BaseRequest.post(router: LoginRouter.post(loginRequest)) { request in
+        BaseRequest.post(router: LoginRouter.post(parameters)) { request in
             request.responseDecodable(of: LoginResponse.self) { response in
                 
                 switch response.result {

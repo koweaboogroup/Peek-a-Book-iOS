@@ -99,7 +99,7 @@ class LoginContentView: UIView {
         let identifier = identifierTextField.text ?? ""
         let password = passwordTextField.text ?? ""
         
-        viewModel?.login(identifier: identifier, password: password)
+        viewModel?.login(parameters: ["identifier": identifier, "password": password])
     }
     
     // MARK: - IBAction
