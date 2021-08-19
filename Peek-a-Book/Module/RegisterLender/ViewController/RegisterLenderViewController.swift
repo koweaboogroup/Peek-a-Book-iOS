@@ -10,19 +10,49 @@ import RxSwift
 import RxCocoa
 
 class RegisterLenderViewController: UIViewController {
-
+    
+    //MARK: - IBOutlet
     @IBOutlet weak var circleProfileImageView: CircleImageView!
     @IBOutlet weak var buttonRegisterLender: UIButton!
     @IBOutlet weak var registerContentView: RegisterContentView!
     
+    //MARK: - IBActions
+    @IBAction func buttonRegisterLenderPressed(_ sender: Any) {
+        processRegisterLender()
+    }
+    
+    
+    //MARK: - Variable
     private let viewModel = RegisterLenderViewModel()
+    private let alamatViewModel = AddressViewModel()
     private let disposeBag = DisposeBag()
     
+    
+    
+    let alamat: String = ""
+    let provinsi = ""
+    let kota = ""
+    let kelurahan = ""
+    let kecamatan = ""
+    let longitude:Float = 0.0
+    let latitude:Float = 0.0
+    
+    //MARK: - Functions
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupView()
         setupRx()
+    }
+    
+    private func processRegisterLender() {
+        let name = registerContentView.storeNameTextField.text ?? ""
+        let bio = registerContentView.storeBioTextField.text ?? ""
+        let user = String(DataManager.shared.getUserIdByJwt())
+        
+        
+        
+        viewModel.registerLender(name: name, bio: bio, user: user, alamat: alamat, provinsi: provinsi, kota: kota, kelurahan: kelurahan, kecamatan: kecamatan, longtitude: longitude, latitude: latitude)
     }
     
     private func setupRx() {
@@ -39,6 +69,11 @@ class RegisterLenderViewController: UIViewController {
             return $0 ? 1 : 0.5
         }.bind(to: buttonRegisterLender.rx.alpha)
         .disposed(by: disposeBag)
+        
+        alamatViewModel.address
+            .bind(to: registerContentView.detailAddressLabel.rx.text)
+            .disposed(by: disposeBag)
+        
         
         viewModel.detailAddressPressed.asObserver()
             .subscribe(onNext: { pressed in
@@ -67,6 +102,8 @@ class RegisterLenderViewController: UIViewController {
             spread: 0
         )
         buttonRegisterLender.cornerRadius(10)
+        
+        
         
     }
 }

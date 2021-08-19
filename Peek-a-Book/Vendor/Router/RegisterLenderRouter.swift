@@ -18,8 +18,7 @@ enum RegisterLenderRouter: URLRequestConvertible {
     }
     
     var url: URL {
-                                                        //ganti link
-        return URL(string: Constant.Network.baseUrl + "/auth/local")!
+        return URL(string: Constant.Network.baseUrl + "/lenders")!
     }
     
     func asURLRequest() throws -> URLRequest {
