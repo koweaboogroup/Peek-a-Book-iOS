@@ -24,13 +24,11 @@ struct LoginViewModel {
     
     // MARK: Function
 
-    func login(identifier: String, password: String) {
+    func login(parameters: [String: String]) {
 
         self.loading.onNext(true)
         
-        let loginRequest = LoginRequest(identifier: identifier, password: password)
-        
-        LoginService.login(loginRequest: loginRequest) { loginResponse in
+        LoginService.login(parameters: parameters) { loginResponse in
             self.loading.onNext(false)
             
             let jwtUserDefaults = "jwt"
