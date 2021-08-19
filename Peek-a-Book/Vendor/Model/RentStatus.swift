@@ -15,6 +15,7 @@ enum RentStatus: String {
     case returning = "Sedang Dikembalikan"
     case done = "Selesai"
     case unfinish = "Tidak Selesai"
+    case waitingConfirmation = "Menunggu Konfirmasi"
     
     func getID() -> Int {
         
@@ -33,6 +34,8 @@ enum RentStatus: String {
             return 7
         case .unfinish:
             return 8
+        case .waitingConfirmation:
+            return 9
         }
         
     }

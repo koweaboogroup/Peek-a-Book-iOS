@@ -10,6 +10,7 @@ import SafariServices
 
 class RentBookItemTableViewCell: UITableViewCell{
     
+    @IBOutlet weak var rootView: UIView!
     @IBOutlet weak var imageProfileLenders: CircleImageView!
     @IBOutlet weak var lendersName: UILabel!
     @IBOutlet weak var statusRent: UILabel!
@@ -36,6 +37,17 @@ class RentBookItemTableViewCell: UITableViewCell{
     
     func setViewController(viewController: UIViewController) {
         self.viewController = viewController
+    }
+    
+    override func awakeFromNib() {
+        rootView.layer.applyShadow(
+            color: .black,
+            alpha: 0.1,
+            x: 0,
+            y: 6,
+            blur: 30,
+            spread: 0
+        )
     }
     
     var response : Rent? {
@@ -106,10 +118,13 @@ class RentBookItemTableViewCell: UITableViewCell{
                     }
                 } else {
                     switch idStatusRent {
-                    case RentStatus.awaiting.getID():
+                    case RentStatus.waitingConfirmation.getID():
                         manipulateButtonView(button: warningButton, isHidden: false, text: "Tolak")
                         manipulateButtonView(button: activeButton, isHidden: false, text: "Terima")
                         break
+                    case RentStatus.awaiting.getID():
+                        manipulateButtonView(button: warningButton, isHidden: true)
+                        manipulateButtonView(button: activeButton, isHidden: false, text: "Kirim Buku")
                     case RentStatus.shipping.getID():
                         manipulateButtonView(button: warningButton, isHidden: true)
                         manipulateButtonView(button: activeButton, isHidden: false, text: "Menunggu Diterima", alpha: 0.5, isEnabled: false)
@@ -153,9 +168,10 @@ class RentBookItemTableViewCell: UITableViewCell{
                 }
             } else {
                 switch idStatusRent {
-                case RentStatus.awaiting.getID():
+                case RentStatus.waitingConfirmation.getID():
                     ConfirmationDialog.showAlertPositive(viewController: view, title: "Terima Penyewaan", subtitle: "Apakah anda setuju untuk menyewakan buku terhadap penyewa? \n\n Anda akan diarahkan ke WhatsApp untuk berkomunikasi dengan penyewa", positiveText: "Konfirmasi", negativeText: "Kembali") {
                         //TODO: OPEN WHATSAPP, CHANGE STATUS
+                        self.viewModel?.changeStatus(id: self.id, statusRent: RentStatus.awaiting.getID())
                         view.dismiss(animated: true, completion: nil)
                         let safariViewController = SFSafariViewController(url: WhatsappGenerator(rawValue: self.shippingMethod)!.getURL(order: self.response!))
                         view.present(safariViewController, animated: true, completion: nil)
@@ -163,6 +179,8 @@ class RentBookItemTableViewCell: UITableViewCell{
                         view.dismiss(animated: true, completion: nil)
                     }
                     break
+                case RentStatus.awaiting.getID():
+                    self.viewModel?.changeStatus(id: self.id, statusRent: RentStatus.shipping.getID())
                 case RentStatus.returning.getID():
                     self.viewModel?.changeStatus(id: self.id, statusRent: RentStatus.done.getID())
                     break
