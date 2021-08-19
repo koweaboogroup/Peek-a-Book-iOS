@@ -52,4 +52,19 @@ class RentService {
         }
     }
 
+    
+    static func createRent(rentRequest: RentRequest, successCompletion: @escaping (Rent) -> Void, failCompletion: @escaping(AFError) -> Void) {
+        
+        BaseRequest.post(router: RentRouter.createRent(rentRequest: rentRequest)) { request in
+            request.responseDecodable(of: Rent.self) { response in
+                switch response.result {
+                case .success(let rentResponse):
+                    successCompletion(rentResponse)
+                case .failure(let error):
+                    failCompletion(error)
+                }
+            }
+        }
+        
+    }
 }

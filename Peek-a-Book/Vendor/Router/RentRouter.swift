@@ -12,27 +12,29 @@ struct ChangeStatusRequest: Codable {
 }
 
 enum RentRouter: URLRequestConvertible {
-
+    
     case getForRenter(id: Int)
     case getForLender(id: Int)
     case putForChangeStatus(id: Int, changeStatusRent: ChangeStatusRequest)
-
+    case createRent(rentRequest: RentRequest)
+    
     var method: HTTPMethod {
         switch self {
         case .getForRenter: return .get
         case .getForLender: return .get
         case .putForChangeStatus: return .put
+        case .createRent: return .post
         }
     }
     
     var parameterId: String {
-            switch self {
-            case let .getForRenter(id): return String(id)
-            case let .getForLender(id): return String(id)
-            case let .putForChangeStatus(idRent, _): return String(idRent)
-                
-            }
+        switch self {
+        case let .getForRenter(id): return String(id)
+        case let .getForLender(id): return String(id)
+        case let .putForChangeStatus(idRent, _): return String(idRent)
+        case .createRent: return ""
         }
+    }
     
     var url: URL {
         switch self {
@@ -42,6 +44,8 @@ enum RentRouter: URLRequestConvertible {
             return URL(string: Constant.Network.baseUrl + "/rents?lender_books.lender.id=\(parameterId)")!
         case .putForChangeStatus:
             return URL(string: Constant.Network.baseUrl + "/rents/\(parameterId)")!
+        case .createRent:
+            return URL(string: Constant.Network.baseUrl + "/rents") ?? URL(fileURLWithPath: "")
         }
     }
     
@@ -50,15 +54,18 @@ enum RentRouter: URLRequestConvertible {
         
         request.headers.add(.contentType("application/json"))
         request.headers.add(.accept("application/json"))
+        
         if let jwt = UserDefaults.standard.string(forKey: "jwt"){
             request.headers.add(.authorization(bearerToken: jwt))
         }
         
         switch self {
+        case .getForRenter: break
+        case .getForLender: break
         case .putForChangeStatus(_, let changeStatusRequest):
             request.httpBody = try JSONEncoder().encode(changeStatusRequest)
-        default:
-            break
+        case let .createRent(rentRequest):
+            request.httpBody = try JSONEncoder().encode(rentRequest)
         }
         
         request.method = method

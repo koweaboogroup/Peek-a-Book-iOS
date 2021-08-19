@@ -18,7 +18,6 @@ enum RentStatus: String {
     case waitingConfirmation = "Menunggu Konfirmasi"
     
     func getID() -> Int {
-        
         switch self {
         case .allStatus:
             return 2
@@ -37,6 +36,5 @@ enum RentStatus: String {
         case .waitingConfirmation:
             return 9
         }
-        
     }
 }
