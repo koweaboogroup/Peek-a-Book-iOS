@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class RentBookItemTableViewCell: UITableViewCell{
     
@@ -24,6 +25,7 @@ class RentBookItemTableViewCell: UITableViewCell{
     private var id: Int = 0
     private var isFromRenter = true
     private var idStatusRent: Int? = 0
+    private var shippingMethod = ""
     
     private var viewModel: RentViewModel?
     private var viewController: UIViewController?
@@ -54,6 +56,7 @@ class RentBookItemTableViewCell: UITableViewCell{
                 var price = 0
                 isFromRenter = response.isFromRenter
                 idStatusRent = response.status?.id
+                shippingMethod = response.shippingMethods ?? ""
                 
                 if countBooks > 1 {
                     bookItemMoreThanOne.isHidden = false
@@ -135,36 +138,55 @@ class RentBookItemTableViewCell: UITableViewCell{
     }
     
     @IBAction func activeButtonPressed(_ sender: UIButton) {
-        if isFromRenter {
-            switch idStatusRent {
-            case RentStatus.shipping.getID():
-                //TODO: Tampilkan date picker
-                break
-            case RentStatus.ongoing.getID():
-                //TODO: Ubah status aja
-                break
-            default:
-                break
+        if let view = viewController {
+            if isFromRenter {
+                switch idStatusRent {
+                case RentStatus.shipping.getID():
+                    //TODO: Tampilkan date picker
+                    break
+                case RentStatus.ongoing.getID():
+                    //TODO: Ubah status aja
+                    self.viewModel?.changeStatus(id: self.id, statusRent: RentStatus.returning.getID())
+                    break
+                default:
+                    break
+                }
+            } else {
+                switch idStatusRent {
+                case RentStatus.awaiting.getID():
+                    ConfirmationDialog.showAlertPositive(viewController: view, title: "Terima Penyewaan", subtitle: "Apakah anda setuju untuk menyewakan buku terhadap penyewa? \n\n Anda akan diarahkan ke WhatsApp untuk berkomunikasi dengan penyewa", positiveText: "Konfirmasi", negativeText: "Kembali") {
+                        //TODO: OPEN WHATSAPP, CHANGE STATUS
+                        view.dismiss(animated: true, completion: nil)
+                        let safariViewController = SFSafariViewController(url: WhatsappGenerator(rawValue: self.shippingMethod)!.getURL(order: self.response!))
+                        view.present(safariViewController, animated: true, completion: nil)
+                    } negativeCompletion: {
+                        view.dismiss(animated: true, completion: nil)
+                    }
+                    break
+                case RentStatus.returning.getID():
+                    self.viewModel?.changeStatus(id: self.id, statusRent: RentStatus.done.getID())
+                    break
+                default:
+                    break
+                }
             }
-        }else{
-            
         }
     }
     
     @IBAction func warningButtonPressed(_ sender: UIButton) {
         if let view = viewController {
             if !isFromRenter {
-                ConfirmationDialog.showAlert(viewController: view, title: "Tolak Penyewaan", subtitle: "Apakah Anda yakin menolak menyewakan buku terhadap penyewa?", positiveText: "Kembali", negativeText: "Tolak") {
+                ConfirmationDialog.showAlertNegative(viewController: view, title: "Tolak Penyewaan", subtitle: "Apakah Anda yakin menolak menyewakan buku terhadap penyewa?", positiveText: "Kembali", negativeText: "Tolak") {
                     view.dismiss(animated: true, completion: nil)
                 } negativeCompletion: {
-                    self.viewModel?.changeStatus(id: self.id, statusRent: 8)
+                    self.viewModel?.changeStatus(id: self.id, statusRent: RentStatus.unfinish.getID())
                     view.dismiss(animated: true, completion: nil)
                 }
             } else {
-                ConfirmationDialog.showAlert(viewController: view, title: "Batalkan Penyewaan", subtitle: "Apakah Anda yakin membatalkan penyewaan?", positiveText: "Kembali", negativeText: "Batal") {
+                ConfirmationDialog.showAlertNegative(viewController: view, title: "Batalkan Penyewaan", subtitle: "Apakah Anda yakin membatalkan penyewaan?", positiveText: "Kembali", negativeText: "Batalkan") {
                     view.dismiss(animated: true, completion: nil)
                 } negativeCompletion: {
-                    self.viewModel?.changeStatus(id: self.id, statusRent: 8)
+                    self.viewModel?.changeStatus(id: self.id, statusRent: RentStatus.unfinish.getID())
                     view.dismiss(animated: true, completion: nil)
                 }
             }
