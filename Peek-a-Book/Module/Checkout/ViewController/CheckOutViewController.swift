@@ -263,7 +263,7 @@ class CheckOutViewController: UIViewController, UITableViewDataSource {
     }
     
     @IBAction func sewaSekarangButtonPressed(_ sender: UIButton) {
-        let rentRequest = RentRequest(periodOfTime: periodOfTime, user: dataManager.getUser()?.id ?? -1, shippingMethods: shippingMethod, status: "3", alamat: address, provinsi: provName, kota: cityName, kelurahan: urbanVillage, kecamatan: districtName, longtitude: 0, latitude: 0, lenderBooks: cart)
+        let rentRequest = RentRequest(periodOfTime: periodOfTime, user: dataManager.getUser()?.id ?? -1, shippingMethods: shippingMethod, status: "9", alamat: address, provinsi: provName, kota: cityName, kelurahan: urbanVillage, kecamatan: districtName, longtitude: 0, latitude: 0, lenderBooks: cart)
 
         viewModel.createNewRent(rentRequest: rentRequest) { orderId in
             let vc = ModuleBuilder.shared.goToDetailOrderViewController()
