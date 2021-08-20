@@ -16,7 +16,29 @@ struct LenderBook: Codable {
     let page: Int?
     let language, publishedAt, createdAt, updatedAt: String?
     let images: [ImageObject]?
-    var distance : Double = 0.0
+    var distance: Double = 0.0
+    
+
+    enum CodingKeys: String, CodingKey {
+        case id, price
+        case bookCondition = "book_condition"
+        case lender, book, page, language
+        case publishedAt = "published_at"
+        case createdAt = "created_at"
+        case updatedAt = "updated_at"
+        case images
+    }
+}
+
+struct LenderBookWithLenderId: Codable {
+    let id, price: Int?
+    let bookCondition: Int?
+    let lender: Int?
+    let book: Int?
+    let page: Int?
+    let language, publishedAt, createdAt, updatedAt: String?
+    let images: [ImageObject]?
+    var distance: Double = 0.0
     
 
     enum CodingKeys: String, CodingKey {
