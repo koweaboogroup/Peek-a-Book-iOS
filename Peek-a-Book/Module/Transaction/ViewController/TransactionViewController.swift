@@ -53,8 +53,21 @@ class TransactionViewController: UIViewController {
     private func setupView(){
         transactionTableView.register(UINib(nibName: XIBConstant.RentBookItemTableViewCell, bundle: nil), forCellReuseIdentifier: XIBConstant.RentBookItemTableViewCell)
 
-        viewModel.orders.bind(to: transactionTableView.rx.items(cellIdentifier: XIBConstant.RentBookItemTableViewCell, cellType: RentBookItemTableViewCell.self)) {  (row, transaction, cell) in
-            cell.response = transaction
-            }.disposed(by: disposeBag)
+        switch flagFrom {
+        case .riwayatPenyewaan:
+            viewModel.ordersForRenter.bind(to: transactionTableView.rx.items(cellIdentifier: XIBConstant.RentBookItemTableViewCell, cellType: RentBookItemTableViewCell.self)) {  (row, transaction, cell) in
+                cell.setViewModel(viewModel: self.viewModel)
+                cell.setViewController(viewController: self)
+                cell.response = transaction
+                }.disposed(by: disposeBag)
+        case .kelolaPenyewaan:
+            viewModel.ordersForLender.bind(to: transactionTableView.rx.items(cellIdentifier: XIBConstant.RentBookItemTableViewCell, cellType: RentBookItemTableViewCell.self)) {  (row, transaction, cell) in
+                cell.setViewModel(viewModel: self.viewModel)
+                cell.setViewController(viewController: self)
+                cell.response = transaction
+                }.disposed(by: disposeBag)
+        case .none:
+            break
+        }
     }
 }

@@ -18,6 +18,7 @@ struct Rent: Codable {
     let publishedAt, createdAt, updatedAt: String?
     let lenderBooks: [LenderBook]?
     let name, bio: String?
+    var isFromRenter: Bool = true
 
     enum CodingKeys: String, CodingKey {
         case id, periodOfTime, shippingMethods, status, user, alamat, provinsi, kota, kelurahan, kecamatan, longtitude, latitude
