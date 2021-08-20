@@ -34,7 +34,7 @@ class DetailOrderViewController: UIViewController {
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var profileNameLabel: UILabel!
     @IBOutlet weak var detailBukuTableView: UITableView!
-    @IBOutlet var detailBukuTableHeight: NSLayoutConstraint!
+    @IBOutlet weak var detailBukuTableHeight: NSLayoutConstraint!
     
     // MARK: - Detail Sewa
     @IBOutlet weak var rentDurationLabel: UILabel!
@@ -46,6 +46,7 @@ class DetailOrderViewController: UIViewController {
         super.updateViewConstraints()
         self.detailBukuTableHeight?.constant = self.detailBukuTableView.contentSize.height - 4
     }
+    
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         self.viewWillLayoutSubviews()
     }
@@ -75,8 +76,10 @@ class DetailOrderViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setNavigationBar()
+        
         setRx()
+        viewModel.getDetailOrder(orderId: orderId ?? -1)
+        setNavigationBar()
     }
     
     private func setNavigationBar(){
@@ -93,9 +96,7 @@ class DetailOrderViewController: UIViewController {
     }
     
     
-    private func setRx(){
-
-        viewModel.getDetailOrder(orderId: orderId ?? -1)
+    private func setRx() {
         //Header
         
         viewModel.order
@@ -199,30 +200,16 @@ class DetailOrderViewController: UIViewController {
         
         viewModel.order
             .subscribe(onNext: { order in
-                self.durasiSewa = order.periodOfTime
-            })
-            .disposed(by: disposeBag)
-        
-        viewModel.order
-            .subscribe(onNext: { order in
                 self.mulaiSewa = order.updatedAt
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ssZZZ"
                 self.date = dateFormatter.date(from: self.mulaiSewa ?? "")
+                self.durasiSewa = order.periodOfTime
             })
             .disposed(by: disposeBag)
-       
         
 //        let components = Calendar.current.dateComponents([.year, .month, .day, .hour], from: date)
-        
-        
-        
-        
     }
-   
-    
-    
-    
     
     // MARK: - countdown
     @objc func updateTime() {
@@ -246,33 +233,6 @@ class DetailOrderViewController: UIViewController {
         Timer.scheduledTimer(timeInterval: 3600, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     @IBAction func lihatAlamatButtonPressed(_ sender: UIButton) {
         let vc = ModuleBuilder.shared.goToModalDetailOrderViewController()
 //        vc.nomerTelpPemberiSewaLabel.text = nomerTelponPemberiSewa ?? "08"
@@ -281,32 +241,7 @@ class DetailOrderViewController: UIViewController {
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-extension DetailOrderViewController{
+extension DetailOrderViewController {
     private enum MessageStatusPemberiSewa: String {
         case penyewaanBaru = "Menunggu Konfirmasi"
         case penyewaanDibatalkan = "Tidak Selesai"
