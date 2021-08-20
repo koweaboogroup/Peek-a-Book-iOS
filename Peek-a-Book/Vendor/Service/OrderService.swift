@@ -11,13 +11,10 @@ class OrderService {
     static func getDetailOrder(orderId: Int, successCompletion: @escaping (Rent) -> Void, failCompletion: @escaping (AFError) -> Void) {
         
         BaseRequest.get(router: DetailOrderRouter.get(orderId: orderId)) { request in
-            request.responseJSON { item in
-                print(item)
-            }
-            request.responseDecodable(of: [Rent].self) { response in
+            request.responseDecodable(of: Rent.self) { response in
                 switch response.result {
                 case .success(let order):
-                    successCompletion(order[0])
+                    successCompletion(order)
                 case .failure(let error):
                     failCompletion(error)
                 }
