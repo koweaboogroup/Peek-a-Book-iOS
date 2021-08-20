@@ -91,7 +91,7 @@ class RentBookItemTableViewCell: UITableViewCell{
                 if isFromRenter {
                     switch idStatusRent {
                     case RentStatus.awaiting.getID():
-                        manipulateButtonView(button: warningButton, isHidden: false, text: "Tolak")
+                        manipulateButtonView(button: warningButton, isHidden: false, text: "Batalkan")
                         manipulateButtonView(button: activeButton, isHidden: true)
                         break
                     case RentStatus.shipping.getID():
