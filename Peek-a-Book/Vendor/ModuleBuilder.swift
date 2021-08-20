@@ -93,5 +93,10 @@ class ModuleBuilder {
         
         return vc
     }
-
+    
+    func goToModalDetailOrderViewController() -> ModalDetailOrderViewController {
+        let vc = ModalDetailOrderViewController(nibName: XIBConstant.ModalDetailOrderVC, bundle: nil)
+        
+        return vc
+    }
 }
