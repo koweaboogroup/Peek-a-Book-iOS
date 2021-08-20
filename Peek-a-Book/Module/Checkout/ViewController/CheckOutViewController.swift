@@ -43,7 +43,7 @@ class CheckOutViewController: UIViewController, UITableViewDataSource {
     
     var itemsDurasiSewa: Observable<[String]> = Observable.of(["1 Minggu", "2 Minggu", "3 Minggu", "4 Minggu"])
     
-    var itemsMetodePengiriman: Observable<[String]> = Observable.of(["Pilih","Kurir", "Self Pickup", "COD"])
+    var itemsMetodePengiriman: Observable<[String]> = Observable.of(["Pilih", "kurir", "self_pickup", "cod"])
     
     private let dataManager = DataManager.shared
     
@@ -60,6 +60,8 @@ class CheckOutViewController: UIViewController, UITableViewDataSource {
     private var periodOfTime = 1
     private var shippingMethod = ""
     
+    private var itemsPrice = 0
+    private var shippingCost = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -119,8 +121,6 @@ class CheckOutViewController: UIViewController, UITableViewDataSource {
     
     private func setupRx() {
         
-        var itemsPrice = 0
-        
         viewModel.itemsPrice
             .map { itemsPrice in
                 "Rp\(itemsPrice.toRupiah())/minggu"
@@ -149,7 +149,6 @@ class CheckOutViewController: UIViewController, UITableViewDataSource {
             .bind(to: durasiPenyewaanLabel.rx.text)
             .disposed(by: disposeBag)
         
-        
         itemsDurasiSewa
             .bind(to: pickerDurasiSewa.rx.itemTitles) { (row, element) in
                 return element
@@ -158,15 +157,18 @@ class CheckOutViewController: UIViewController, UITableViewDataSource {
         
         pickerDurasiSewa.rx.itemSelected
             .subscribe(onNext: { (row, _) in
-                self.periodOfTime = row + 1
-                self.viewModel.periodOfTime.onNext(row + 1)
-                self.viewModel.bookRentalFee.onNext(itemsPrice * (row + 1))
+                let periodOfTime = row + 1
+                let bookRentalFee = self.itemsPrice * periodOfTime
+                self.periodOfTime = periodOfTime
+                self.viewModel.periodOfTime.onNext(periodOfTime)
+                self.viewModel.bookRentalFee.onNext(bookRentalFee)
+                self.viewModel.feeTotalEstimation.onNext(bookRentalFee + self.shippingCost)
             })
             .disposed(by: disposeBag)
         
         itemsMetodePengiriman
             .bind(to: pickerMetodePengiriman.rx.itemTitles) { (row, element) in
-                return element
+                return Shipment(rawValue: element)?.getTitle()
             }
             .disposed(by: disposeBag)
         
@@ -174,13 +176,16 @@ class CheckOutViewController: UIViewController, UITableViewDataSource {
             .modelSelected(String.self)
             .subscribe(onNext: { value in
                 if value.joined() != "Pilih" {
-//                    self.shippingMethod = Shipment(rawValue: value.joined())?.getServerAttributeName() ?? "cod"
+                    self.shippingMethod = value.joined()
                     self.viewModel.shippingMethod.onNext(value.joined())
                 }
             })
             .disposed(by: disposeBag)
         
         viewModel.shippingMethod
+            .map({
+                Shipment(rawValue: $0)?.getTitle()
+            })
             .bind(to: metodePengirimanLabel.rx.text)
             .disposed(by: disposeBag)
         
@@ -263,12 +268,13 @@ class CheckOutViewController: UIViewController, UITableViewDataSource {
     }
     
     @IBAction func sewaSekarangButtonPressed(_ sender: UIButton) {
-        let rentRequest = RentRequest(periodOfTime: periodOfTime, user: dataManager.getUser()?.id ?? -1, shippingMethods: shippingMethod, status: "9", alamat: address, provinsi: provName, kota: cityName, kelurahan: urbanVillage, kecamatan: districtName, longtitude: 0, latitude: 0, lenderBooks: cart)
+        let rentRequest = RentRequest(periodOfTime: periodOfTime, user: dataManager.getUser()?.id ?? -1, shippingMethods: shippingMethod, status: "3", alamat: address, provinsi: provName, kota: cityName, kelurahan: urbanVillage, kecamatan: districtName, longtitude: 0, latitude: 0, lenderBooks: cart)
 
         viewModel.createNewRent(rentRequest: rentRequest) { orderId in
             let vc = ModuleBuilder.shared.goToDetailOrderViewController()
             
-            vc.setOrderId(orderId: 3)
+            vc.setOrderId(orderId: orderId)
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
         
