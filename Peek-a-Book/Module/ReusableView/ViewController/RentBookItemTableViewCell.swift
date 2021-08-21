@@ -157,10 +157,10 @@ class RentBookItemTableViewCell: UITableViewCell{
             if isFromRenter {
                 switch idStatusRent {
                 case RentStatus.shipping.getID():
-                    //TODO: Tampilkan date picker
+                    viewModel?.showDatePicker.onNext(true)
+                    viewModel?.selectedId.onNext(self.id)
                     break
                 case RentStatus.ongoing.getID():
-                    //TODO: Ubah status aja
                     self.viewModel?.changeStatus(id: self.id, statusRent: RentStatus.returning.getID())
                     break
                 default:
@@ -170,7 +170,6 @@ class RentBookItemTableViewCell: UITableViewCell{
                 switch idStatusRent {
                 case RentStatus.waitingConfirmation.getID():
                     ConfirmationDialog.showAlertPositive(viewController: view, title: "Terima Penyewaan", subtitle: "Apakah anda setuju untuk menyewakan buku terhadap penyewa? \n\n Anda akan diarahkan ke WhatsApp untuk berkomunikasi dengan penyewa", positiveText: "Konfirmasi", negativeText: "Kembali") {
-                        //TODO: OPEN WHATSAPP, CHANGE STATUS
                         self.viewModel?.changeStatus(id: self.id, statusRent: RentStatus.awaiting.getID())
                         view.dismiss(animated: true, completion: nil)
                         let safariViewController = SFSafariViewController(url: WhatsappGenerator(rawValue: self.shippingMethod)!.getURL(order: self.response!))
