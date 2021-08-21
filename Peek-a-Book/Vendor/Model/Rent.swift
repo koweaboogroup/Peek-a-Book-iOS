@@ -34,7 +34,7 @@ struct RentPostResponse: Codable {
     let id, periodOfTime: Int?
     let shippingMethods: String?
     let status: Status?
-    let user: User?
+    let user: UserWithLenderId?
     let alamat, provinsi, kota, kelurahan: String?
     let kecamatan: String?
     let longtitude, latitude: Double?
