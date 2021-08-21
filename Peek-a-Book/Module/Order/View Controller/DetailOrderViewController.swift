@@ -51,6 +51,7 @@ class DetailOrderViewController: UIViewController {
         self.viewWillLayoutSubviews()
     }
     
+    private var order: Rent?
     private var orderId: Int?
     private let viewModel = DetailOrderViewModel()
     private let disposeBag = DisposeBag()
@@ -101,6 +102,7 @@ class DetailOrderViewController: UIViewController {
         
         viewModel.order
             .subscribe(onNext: { item in
+                self.order = item
                 self.viewModel.getProfile(userId: item.lenderBooks?[0].lender?.user ?? -1)
             })
             .disposed(by: disposeBag)
@@ -235,7 +237,8 @@ class DetailOrderViewController: UIViewController {
     
     @IBAction func lihatAlamatButtonPressed(_ sender: UIButton) {
         let vc = ModuleBuilder.shared.goToModalDetailOrderViewController()
-//        vc.nomerTelpPemberiSewaLabel.text = nomerTelponPemberiSewa ?? "08"
+        vc.order = order
+        vc.nomerTelpPemberiSewa = nomerTelponPemberiSewa ?? "08"
         
         present(vc, animated: true, completion: nil)
     }
