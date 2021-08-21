@@ -18,44 +18,23 @@ class ModalDetailOrderViewController: UIViewController {
     @IBOutlet weak var negaraPemberiSewaLabel: UILabel!
     @IBOutlet weak var nomerTelpPemberiSewaLabel: UILabel!
     
-    private var orderId: Int?
-    private let viewModel = DetailOrderViewModel()
+    var order: Rent?
+    var nomerTelpPemberiSewa: String = ""
     private let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.getDetailOrder(orderId: orderId ?? -1)
-        //Header
-
-        viewModel.order.asObserver().map { order in
-            "\(String(describing: order.name))"
-        }.bind(to: namaPemberiSewaLabel.rx.text)
-        .disposed(by: disposeBag)
-
-        viewModel.order.asObserver().map { order in
-            "\(String(describing: order.alamat))"
-        }.bind(to: jalanPemberiSewaLabel.rx.text)
-        .disposed(by: disposeBag)
-
-        viewModel.order.asObserver().map { order in
-            "\(String(describing: order.kelurahan))"
-        }.bind(to: kelurahanPemberiSewaLabel.rx.text)
-        .disposed(by: disposeBag)
-
-        viewModel.order.asObserver().map { order in
-            "\(String(describing: order.kecamatan))"
-        }.bind(to: kecamatanPemberiSewaLabel.rx.text)
-        .disposed(by: disposeBag)
-
-        viewModel.order.asObserver().map { order in
-            "\(String(describing: order.kota))"
-        }.bind(to: negaraPemberiSewaLabel.rx.text)
-        .disposed(by: disposeBag)
-
-        viewModel.order.asObserver().map { order in
-            "\((order.lenderBooks![0].lender?.user)!)"
-        }.bind(to: namaPemberiSewaLabel.rx.text)
-        .disposed(by: disposeBag)
+     
+        setupUI()
+    }
+    
+    private func setupUI() {
+        nomerTelpPemberiSewaLabel.text = nomerTelpPemberiSewa
+        namaPemberiSewaLabel.text = order?.lenderBooks?[0].lender?.name
+        jalanPemberiSewaLabel.text = order?.alamat
+        kelurahanPemberiSewaLabel.text = order?.kelurahan
+        kecamatanPemberiSewaLabel.text = order?.kecamatan
+        negaraPemberiSewaLabel.text = order?.provinsi
     }
 
 
