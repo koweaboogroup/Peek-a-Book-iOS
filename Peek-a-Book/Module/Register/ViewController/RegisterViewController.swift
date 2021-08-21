@@ -141,10 +141,6 @@ class RegisterViewController: UIViewController {
             .bind(to: addressDetailButton.rx.title(for: .normal))
             .disposed(by: disposeBag)
         
-        addressViewModel.getAllAddressFieldsObservable().subscribe(onNext: {
-            print($0)
-        }).disposed(by: disposeBag)
-        
         Observable.combineLatest(viewModel.isAllTextFieldFilled(), addressViewModel.isAllAddressFieldsFilled())
             .map { registerTextFields, addressTextFields in
                 return registerTextFields && addressTextFields
