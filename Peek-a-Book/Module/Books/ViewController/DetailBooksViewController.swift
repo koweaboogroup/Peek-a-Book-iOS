@@ -73,7 +73,6 @@ class DetailBooksViewController: UIViewController {
         if !dataManager.getCart().isEmpty {
             dataManager.getCart().forEach { item in
                 if item.id == id {
-                    print("im here 2")
                     tambahKeranjangButton.isEnabled = false
                     return
                 }
