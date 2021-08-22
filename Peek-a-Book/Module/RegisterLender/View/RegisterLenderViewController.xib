@@ -11,7 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RegisterLenderViewController" customModule="Peek_a_Book" customModuleProvider="target">
             <connections>
                 <outlet property="buttonRegisterLender" destination="ULx-Lr-Byk" id="yUt-Mm-JuW"/>
-                <outlet property="circleImageView" destination="YJh-tO-mtI" id="wro-dA-IYu"/>
+                <outlet property="circleProfileImageView" destination="YJh-tO-mtI" id="wro-dA-IYu"/>
                 <outlet property="registerContentView" destination="fGc-N6-mtB" id="sja-fk-uic"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

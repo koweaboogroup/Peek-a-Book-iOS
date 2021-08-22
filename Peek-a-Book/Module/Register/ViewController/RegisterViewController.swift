@@ -12,34 +12,38 @@ import SafariServices
 
 class RegisterViewController: UIViewController {
     
+    // MARK: - Variable (Outlet)
+    
     @IBOutlet weak var fieldContainer: UIView!
-    
     @IBOutlet weak var registerButton: UIButton!
-    
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var whatsappNumberTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
     @IBOutlet weak var addressDetailButton: UIButton!
-    
     @IBOutlet weak var termsAndConditionsBottomConstraint: NSLayoutConstraint!
+    
+    
+    // MARK: - Variable
     
     private let viewModel = RegisterViewModel()
     private var addressViewModel = AddressViewModel()
     private let disposeBag = DisposeBag()
     
-    var name = ""
-    var email = ""
-    var whatsappNumber = ""
-    var password = ""
-    var confirmPassword = ""
+    private var name = ""
+    private var email = ""
+    private var whatsappNumber = ""
+    private var password = ""
+    private var confirmPassword = ""
     
-    var address = ""
-    var urbanVillage = ""
-    var districtName = ""
-    var cityName = ""
-    var provName = ""
+    private var address = ""
+    private var urbanVillage = ""
+    private var districtName = ""
+    private var cityName = ""
+    private var provName = ""
+    
+    // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,12 +53,20 @@ class RegisterViewController: UIViewController {
         self.setupKeyboardListener(selector: #selector(handleKeyboardNotification))
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        self.tabBarController?.tabBar.isHidden = true
+    // MARK: - IBAction
+    
+    @IBAction func registerBtnPressed(_ sender: UIButton) {
+        processRegister()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        self.tabBarController?.tabBar.isHidden = false
+    @IBAction func addressButtonPressed(_ sender: Any) {
+        goToAlamatViewController()
+    }
+    
+    @IBAction func termsAndConditionsButtonPressed(_ sender: UIButton) {
+        let safariViewController = SFSafariViewController(url: URL(string: Constant.termsAndConditionsLink) ?? URL(fileURLWithPath: ""))
+        
+        self.present(safariViewController, animated: true, completion: nil)
     }
     
     @objc func handleKeyboardNotification(notification: NSNotification) {
@@ -70,19 +82,13 @@ class RegisterViewController: UIViewController {
         }
     }
     
-    @IBAction func registerBtnPressed(_ sender: UIButton) {
-        processRegister()
-    }
+    // MARK: - Function (private)
     
     private func goToAlamatViewController() {
         let vc = ModuleBuilder.shared.goToAlamatViewController()
         vc.initViewModel(viewModel: addressViewModel)
         
         self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    @IBAction func alamatBtnPressed(_ sender: Any) {
-        goToAlamatViewController()
     }
     
     private func setupRx() {
@@ -134,10 +140,6 @@ class RegisterViewController: UIViewController {
         addressViewModel.address
             .bind(to: addressDetailButton.rx.title(for: .normal))
             .disposed(by: disposeBag)
-        
-        addressViewModel.getAllAddressFieldsObservable().subscribe(onNext: {
-            print($0)
-        }).disposed(by: disposeBag)
         
         Observable.combineLatest(viewModel.isAllTextFieldFilled(), addressViewModel.isAllAddressFieldsFilled())
             .map { registerTextFields, addressTextFields in
@@ -233,13 +235,9 @@ class RegisterViewController: UIViewController {
         
         return alert
     }
-    
-    @IBAction func termsAndConditionsButtonPressed(_ sender: UIButton) {
-        let safariViewController = SFSafariViewController(url: URL(string: Constant.termsAndConditionsLink) ?? URL(fileURLWithPath: ""))
-        
-        self.present(safariViewController, animated: true, completion: nil)
-    }
 }
+
+// MARK: - UITextFieldDelegate
 
 extension RegisterViewController: UITextFieldDelegate {
     
@@ -277,6 +275,8 @@ extension RegisterViewController: UITextFieldDelegate {
         self.tabBarController?.viewControllers?[1] = profileVC
     }
 }
+
+// MARK: - RegisterErrorValidationType
 
 extension RegisterViewController {
     enum RegisterErrorValidationType {

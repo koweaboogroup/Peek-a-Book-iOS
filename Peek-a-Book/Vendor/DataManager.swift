@@ -40,7 +40,7 @@ class DataManager {
     
     func fetchUser() {
         self.isUserFetched.onNext(false)
-        ProfileService.getProfile { user in
+        ProfileService.getProfile(userId: getUserIdByJwt()) { user in
             self.user = user
             self.isUserFetched.onNext(true)
         } failCompletion: { error in
@@ -65,36 +65,33 @@ class DataManager {
         cart.append(lenderBook)
     }
     
+    func deleteCart() {
+        cart = []
+        let cartKey = "cart"
+        UserDefaults.standard.removeObject(forKey: cartKey)
+    }
+    
     func saveCartToUserDefaults() {
         let cartKey = "cart"
         let encoder = JSONEncoder()
         if let encoded = try? encoder.encode(cart){
             UserDefaults.standard.set(encoded, forKey: cartKey)
         }
-        //UserDefaults.standard.set(cart, forKey: cartKey)
     }
     
-    func loadCartFromUserDefaults() -> [LenderBook]? {
+    func loadCartFromUserDefaults() {
         let cartKey = "cart"
-        /*if let cart = UserDefaults.standard.value(forKey: cartKey) as? Data {
-            let decoder = JSONDecoder()
-            if let decodedCart = try? decoder.decode(Array.self, from: cart) as [LenderBook] {
-                self.cart = decodedCart
-            }
-         }*/
+        
         if let data = UserDefaults.standard.data(forKey: cartKey) {
-            do {
-                // Create JSON Decoder
-                let decoder = JSONDecoder()
+    
+            // Create JSON Decoder
+            let decoder = JSONDecoder()
 
-                // Decode Note
-                let lenderBook = try decoder.decode([LenderBook].self, from: data)
-                return lenderBook
-            } catch {
-                print("Unable to Decode Notes (\(error))")
-            }
+            // Decode Note
+            let lenderBook = try? decoder.decode([LenderBook].self, from: data)
+            
+            self.cart = lenderBook ?? []
         }
-        return nil
     }
     
     func getCart() -> [LenderBook] {

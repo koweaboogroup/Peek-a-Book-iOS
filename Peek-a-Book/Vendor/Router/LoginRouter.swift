@@ -9,7 +9,7 @@ import Alamofire
 
 enum LoginRouter: URLRequestConvertible {
     
-    case post(LoginRequest)
+    case post([String: String])
     
     var method: HTTPMethod {
         switch self {
@@ -25,8 +25,8 @@ enum LoginRouter: URLRequestConvertible {
         var request = URLRequest(url: url)
         
         switch self {
-        case let .post(loginRequest):
-            request.httpBody = try JSONEncoder().encode(loginRequest)
+        case let .post(parameters):
+            request = try JSONParameterEncoder().encode(parameters, into: request)
         }
         
         request.headers.add(.contentType("application/json"))

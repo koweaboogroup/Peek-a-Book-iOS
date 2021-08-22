@@ -32,21 +32,11 @@ struct RegisterLenderViewModel {
         
         RegisterLenderService.registerLender(registerLenderRequest: registerLenderRequest) { registerLenderResponse in
             self.loading.onNext(false)
-            
-//            if let responseUser = registerLenderResponse {
-                self.user.onNext(registerLenderResponse)
-//            } else {
-//                self.error.onNext("Data Tidak Ditemukan")
-//            }
+            self.user.onNext(registerLenderResponse)
             
         } failCompletion: { error in
             self.loading.onNext(false)
             self.error.onNext(error.errorDescription ?? "Error")
-            fatalError()
         }
-
-        
-        
-        
     }
 }

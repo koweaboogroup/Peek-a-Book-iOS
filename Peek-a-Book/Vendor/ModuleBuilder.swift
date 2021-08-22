@@ -41,7 +41,7 @@ class ModuleBuilder {
     }
 
     func goToAlamatViewController() -> AddressSettingViewController {
-        let vc = AddressSettingViewController(nibName: XIBConstant.AlamatSettingVC, bundle: nil)
+        let vc = AddressSettingViewController(nibName: XIBConstant.AddressSettingViewController, bundle: nil)
         
         return vc
     }
@@ -64,8 +64,8 @@ class ModuleBuilder {
         return vc
     }
 
-    func goToProfileLenderViewController() -> ProfileTokoViewController {
-        let vc = ProfileTokoViewController(nibName: XIBConstant.ProfileTokoViewController, bundle: nil)
+    func goToProfileLenderViewController() -> ProfileLenderViewController {
+        let vc = ProfileLenderViewController(nibName: XIBConstant.ProfileTokoViewController, bundle: nil)
         
         return vc
     }
@@ -82,4 +82,21 @@ class ModuleBuilder {
         return vc
     }
 
+    func goToTransactionViewController() -> TransactionViewController {
+        let vc = TransactionViewController(nibName: XIBConstant.TransactionViewController, bundle: nil)
+        
+        return vc
+    }
+    
+    func goToDetailOrderViewController() -> DetailOrderViewController {
+        let vc = DetailOrderViewController(nibName: XIBConstant.DetailOrderVC, bundle: nil)
+        
+        return vc
+    }
+    
+    func goToModalDetailOrderViewController() -> ModalDetailOrderViewController {
+        let vc = ModalDetailOrderViewController(nibName: XIBConstant.ModalDetailOrderVC, bundle: nil)
+        
+        return vc
+    }
 }
