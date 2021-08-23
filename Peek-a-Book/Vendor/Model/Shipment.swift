@@ -8,7 +8,18 @@
 import Foundation
 
 enum Shipment: String {
-    case selfPickup = "Self Pickup"
-    case COD = "COD"
-    case kurir = "Kurir"
+    case selfPickup = "self_pickup"
+    case cod = "cod"
+    case kurir = "kurir"
+    
+    func getTitle() -> String {
+        switch self {
+        case .selfPickup:
+            return "Self Pickup"
+        case .cod:
+            return "COD"
+        case .kurir:
+            return "Kurir"
+        }
+    }
 }
