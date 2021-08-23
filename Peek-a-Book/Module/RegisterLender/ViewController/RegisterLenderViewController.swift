@@ -21,67 +21,49 @@ class RegisterLenderViewController: UIViewController {
         processRegisterLender()
     }
     
-    
     //MARK: - Variable
     private let viewModel = RegisterLenderViewModel()
-    private let alamatViewModel = AddressViewModel()
+    private let addressViewModel = AddressViewModel()
     private let disposeBag = DisposeBag()
     
-    
-    
-    let alamat: String = ""
-    let provinsi = ""
-    let kota = ""
-    let kelurahan = ""
-    let kecamatan = ""
-    let longitude:Float = 0.0
-    let latitude:Float = 0.0
+    private var address: String = ""
+    private var provName = ""
+    private var cityName = ""
+    private var urbanVillage = ""
+    private var districtName = ""
+    private let longitude:Float = 0.0
+    private let latitude:Float = 0.0
     
     //MARK: - Functions
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupView()
         setupRx()
-    }
-    
-    private func processRegisterLender() {
-        let name = registerContentView.storeNameTextField.text ?? ""
-        let bio = registerContentView.storeBioTextField.text ?? ""
-        let user = String(DataManager.shared.getUserIdByJwt())
-        
-        
-        
-        viewModel.registerLender(name: name, bio: bio, user: user, alamat: alamat, provinsi: provinsi, kota: kota, kelurahan: kelurahan, kecamatan: kecamatan, longtitude: longitude, latitude: latitude)
+        setupListener()
     }
     
     private func setupRx() {
+        addressViewModel.getAllAddressFieldsObservable()
+            .subscribe(onNext: {
+                self.address = $0[0]
+                self.urbanVillage = $0[1]
+                self.districtName = $0[2]
+                self.cityName = $0[3]
+                self.provName = $0[4]
+            })
+            .disposed(by: disposeBag)
+
         registerContentView.storeNameTextField.rx.text.map({
             return $0 ?? ""
         }).bind(to: viewModel.storeName)
         .disposed(by: disposeBag)
-        
-        viewModel.isStoreNameFilled()
-            .bind(to: buttonRegisterLender.rx.isEnabled)
-            .disposed(by: disposeBag)
-        
-        viewModel.isStoreNameFilled().map {
-            return $0 ? 1 : 0.5
-        }.bind(to: buttonRegisterLender.rx.alpha)
-        .disposed(by: disposeBag)
-        
-        alamatViewModel.address
+                
+        addressViewModel.address
             .bind(to: registerContentView.detailAddressLabel.rx.text)
             .disposed(by: disposeBag)
         
-        
-        viewModel.detailAddressPressed.asObserver()
-            .subscribe(onNext: { pressed in
-                if pressed {
-                    let vc = ModuleBuilder.shared.goToAlamatViewController()                    
-                    self.navigationController?.pushViewController(vc, animated: true)
-                }
-            })
+        addressViewModel.address
+            .bind(to: viewModel.addressName)
             .disposed(by: disposeBag)
     }
 
@@ -102,8 +84,46 @@ class RegisterLenderViewController: UIViewController {
             spread: 0
         )
         buttonRegisterLender.cornerRadius(10)
+    }
+    
+    private func setupListener(){
+        viewModel.isAllTextFieldFilled()
+            .bind(to: buttonRegisterLender.rx.isEnabled)
+            .disposed(by: disposeBag)
         
+        viewModel.isAllTextFieldFilled().map {
+            return $0 ? 1 : 0.5
+        }.bind(to: buttonRegisterLender.rx.alpha)
+        .disposed(by: disposeBag)
+
+        viewModel.detailAddressPressed.asObserver()
+            .subscribe(onNext: { pressed in
+                if pressed {
+                    let vc = ModuleBuilder.shared.goToAlamatViewController()
+                    vc.initViewModel(viewModel: self.addressViewModel)
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
+            })
+            .disposed(by: disposeBag)
         
+        viewModel.user.subscribe(onNext: { item in
+            self.changeToProfileLender(item.id ?? 0)
+        }).disposed(by: disposeBag)
+    }
+    
+    private func processRegisterLender() {
+        let name = registerContentView.storeNameTextField.text ?? ""
+        let bio = registerContentView.storeBioTextField.text ?? ""
+        let user = String(DataManager.shared.getUserIdByJwt())
         
+        viewModel.registerLender(name: name, bio: bio, user: user, alamat: address, provinsi: provName, kota: cityName, kelurahan: urbanVillage, kecamatan: districtName, longtitude: longitude, latitude: latitude)
+    }
+    
+    private func changeToProfileLender(_ id: Int){
+        self.navigationController?.popViewController(animated: true)
+        let vc = ModuleBuilder.shared.goToProfileLenderViewController()
+        vc.hidesBottomBarWhenPushed = true
+        vc.setLenderId(id: id)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }

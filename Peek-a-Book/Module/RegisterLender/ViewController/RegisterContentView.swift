@@ -21,8 +21,6 @@ class RegisterContentView: UIView {
     
     private var viewModel: RegisterLenderViewModel?
     
-    
-    
     func initViewModel(viewModel: RegisterLenderViewModel) {
         self.viewModel = viewModel
     }
@@ -40,9 +38,6 @@ class RegisterContentView: UIView {
     func commonInit() {
         registerContentView = loadViewFromNib(nibName: XIBConstant.RegisterContentView)
         registerContentView.frame = self.bounds
-        
-        
-        
         self.addSubview(registerContentView)
     }
     
