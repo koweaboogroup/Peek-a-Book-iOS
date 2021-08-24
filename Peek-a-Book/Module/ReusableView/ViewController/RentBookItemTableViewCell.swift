@@ -17,8 +17,9 @@ class RentBookItemTableViewCell: UITableViewCell{
     @IBOutlet weak var bookImage: UIImageView!
     @IBOutlet weak var bookTitle: UILabel!
     @IBOutlet weak var bookItemMoreThanOne: UILabel!
-    @IBOutlet weak var rentDuration: UIButton!
+    @IBOutlet weak var rentDuration: UILabel!
     @IBOutlet weak var rentPrice: UILabel!
+    @IBOutlet weak var rentDeadline: UILabel!
     
     @IBOutlet weak var warningButton: UIButton!
     @IBOutlet weak var activeButton: UIButton!
@@ -77,7 +78,7 @@ class RentBookItemTableViewCell: UITableViewCell{
                 }
                 
                 bookItemMoreThanOne.text = "+\(countBooks - 1) buku lainnya"
-                rentDuration.setTitle("\(response.periodOfTime ?? 0) Minggu", for: .normal)
+                rentDuration.text = "\(response.periodOfTime ?? 0) Minggu"
                 
                 if let books = response.lenderBooks {
                     for item in books {
@@ -91,26 +92,35 @@ class RentBookItemTableViewCell: UITableViewCell{
                 if isFromRenter {
                     switch idStatusRent {
                     case RentStatus.awaiting.getID():
+                        rentDeadline.isHidden = true
                         manipulateButtonView(button: warningButton, isHidden: false, text: "Batalkan")
                         manipulateButtonView(button: activeButton, isHidden: true)
                         break
                     case RentStatus.shipping.getID():
+                        rentDeadline.isHidden = true
                         manipulateButtonView(button: warningButton, isHidden: true)
                         manipulateButtonView(button: activeButton, isHidden: false, text: "Diterima")
                         break
                     case RentStatus.ongoing.getID():
+                        if let date = response.updatedAt?.toDate() {
+                            rentDeadline.isHidden = false
+                            rentDeadline.text = "Kembalikan Sebelum \(calculateDeadline(date: date, duration: response.periodOfTime ?? 0))"
+                        }
                         manipulateButtonView(button: warningButton, isHidden: true)
                         manipulateButtonView(button: activeButton, isHidden: false, text: "Kembalikan")
                         break
                     case RentStatus.returning.getID():
+                        rentDeadline.isHidden = false
                         manipulateButtonView(button: warningButton, isHidden: true)
                         manipulateButtonView(button: activeButton, isHidden: false, text: "Menunggu Selesai", alpha: 0.5, isEnabled: false)
                         break
                     case RentStatus.done.getID():
+                        rentDeadline.isHidden = true
                         manipulateButtonView(button: warningButton, isHidden: true)
                         manipulateButtonView(button: activeButton, isHidden: true)
                         break
                     case RentStatus.unfinish.getID():
+                        rentDeadline.isHidden = true
                         manipulateButtonView(button: warningButton, isHidden: true)
                         manipulateButtonView(button: activeButton, isHidden: true)
                         break
@@ -119,29 +129,42 @@ class RentBookItemTableViewCell: UITableViewCell{
                 } else {
                     switch idStatusRent {
                     case RentStatus.waitingConfirmation.getID():
+                        rentDeadline.isHidden = true
                         manipulateButtonView(button: warningButton, isHidden: false, text: "Tolak")
                         manipulateButtonView(button: activeButton, isHidden: false, text: "Terima")
                         break
                     case RentStatus.awaiting.getID():
+                        rentDeadline.isHidden = true
                         manipulateButtonView(button: warningButton, isHidden: true)
                         manipulateButtonView(button: activeButton, isHidden: false, text: "Kirim Buku")
                     case RentStatus.shipping.getID():
+                        rentDeadline.isHidden = true
                         manipulateButtonView(button: warningButton, isHidden: true)
                         manipulateButtonView(button: activeButton, isHidden: false, text: "Menunggu Diterima", alpha: 0.5, isEnabled: false)
                         break
                     case RentStatus.ongoing.getID():
+                        if let date = response.updatedAt?.toDate() {
+                            rentDeadline.isHidden = false
+                            rentDeadline.text = "Dikirim Kembali Sebelum \(calculateDeadline(date: date, duration: response.periodOfTime ?? 0))"
+                        }
                         manipulateButtonView(button: warningButton, isHidden: true)
                         manipulateButtonView(button: activeButton, isHidden: false, text: "Menunggu Kembali", alpha: 0.5, isEnabled: false)
                         break
                     case RentStatus.returning.getID():
+                        if let date = response.updatedAt?.toDate() {
+                            rentDeadline.isHidden = false
+                            rentDeadline.text = "Dikirim Kembali Sebelum \(calculateDeadline(date: date, duration: 0))"
+                        }
                         manipulateButtonView(button: warningButton, isHidden: true)
                         manipulateButtonView(button: activeButton, isHidden: false, text: "Diterima")
                         break
                     case RentStatus.done.getID():
+                        rentDeadline.isHidden = true
                         manipulateButtonView(button: warningButton, isHidden: true)
                         manipulateButtonView(button: activeButton, isHidden: true)
                         break
                     case RentStatus.unfinish.getID():
+                        rentDeadline.isHidden = true
                         manipulateButtonView(button: warningButton, isHidden: true)
                         manipulateButtonView(button: activeButton, isHidden: true)
                         break
@@ -216,5 +239,13 @@ class RentBookItemTableViewCell: UITableViewCell{
         button.setTitle(text, for: .normal)
         button.alpha = alpha
         button.isEnabled = isEnabled
+    }
+    
+    private func calculateDeadline(date: Date, duration: Int) -> String {
+        if let deadline = Calendar.current.date(byAdding: .weekOfMonth, value: duration, to: date){
+            return deadline.toString(dateFormat: "yyyy-MM-dd hh:mm:ss", toFormat: "dd MMMM yyyy")
+        }else{
+            return ""
+        }
     }
 }
