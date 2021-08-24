@@ -9,6 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RegisterContentView" customModule="Peek_a_Book" customModuleProvider="target">
             <connections>
+                <outlet property="detailAddressLabel" destination="4NL-sp-aXx" id="bzg-OH-6DS"/>
                 <outlet property="registerContentView" destination="NN4-9B-uoI" id="lXr-nK-zc7"/>
                 <outlet property="storeBioTextField" destination="rTY-Ld-gQ6" id="ViQ-5w-ZtW"/>
                 <outlet property="storeNameTextField" destination="OqY-VT-jdT" id="Rq0-9e-k0L"/>

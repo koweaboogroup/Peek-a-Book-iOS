@@ -40,7 +40,11 @@ class BooksHomescreenCollectionViewCell: UICollectionViewCell {
                 self.bookTitle.text = response.book?.title
                 self.bookWriter.text = response.book?.author
                 self.bookRentPrice.text = "\(response.price?.toRupiah() ?? "")/minggu"
-                self.bookImage.kf.setImage(with: URL(string: Constant.Network.baseUrl + (response.images?[0].url ?? "")))
+                if !response.images!.isEmpty {
+                    self.bookImage.kf.setImage(with: URL(string: Constant.Network.baseUrl + (response.images?[0].url ?? "")))
+                } else {
+                    self.bookImage.image = #imageLiteral(resourceName: "login")
+                }
             }
         }
     }
