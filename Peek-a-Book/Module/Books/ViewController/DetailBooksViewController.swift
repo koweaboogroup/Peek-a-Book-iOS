@@ -94,6 +94,8 @@ class DetailBooksViewController: UIViewController {
                 }else{
                     self.detailBookImages.image = UIImage (systemName: "book.fill")
                 }
+            }else{
+                self.detailBookImages.image = UIImage (systemName: "book.fill")
             }
         }).disposed(by: disposeBag)
         
@@ -121,6 +123,8 @@ class DetailBooksViewController: UIViewController {
                 } else {
                     self.lenderImage.image = UIImage(systemName: "person")
                 }
+            }else {
+                self.lenderImage.image = UIImage(systemName: "person")
             }
         }).disposed(by: disposeBag)
         

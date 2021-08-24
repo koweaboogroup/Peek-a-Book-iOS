@@ -33,6 +33,8 @@ class ItemKeranjangTableViewCell: UITableViewCell {
                     }else{
                         self.bookImage.image = UIImage(systemName: "book.fill")
                     }
+                }else{
+                    self.bookImage.image = UIImage(systemName: "book.fill")
                 }
                 self.bookTitle.text = response.book?.title
                 self.bookWriter.text = response.book?.author

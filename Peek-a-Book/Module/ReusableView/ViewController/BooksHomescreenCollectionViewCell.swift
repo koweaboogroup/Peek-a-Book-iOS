@@ -37,6 +37,9 @@ class BooksHomescreenCollectionViewCell: UICollectionViewCell {
                         self.lenderStoreImage.backgroundColor = #colorLiteral(red: 0.9058823529, green: 0.9568627451, blue: 1, alpha: 1)
                         self.lenderStoreImage.setPlaceHolderImage(image: UIImage(systemName: "person")!)
                     }
+                }else{
+                    self.lenderStoreImage.backgroundColor = #colorLiteral(red: 0.9058823529, green: 0.9568627451, blue: 1, alpha: 1)
+                    self.lenderStoreImage.setPlaceHolderImage(image: UIImage(systemName: "person")!)
                 }
                 self.lenderStoreName.text = response.lender?.name
                 if response.distance == 0 {
@@ -53,7 +56,8 @@ class BooksHomescreenCollectionViewCell: UICollectionViewCell {
                     } else {
                         self.bookImage.image = UIImage(systemName: "book.fill")
                     }
-
+                }else {
+                    self.bookImage.image = UIImage(systemName: "book.fill")
                 }
             }
         }

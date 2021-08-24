@@ -51,6 +51,9 @@ class ProfileLenderViewController: UIViewController {
                     self.circleLenderImageView.setBackgroundColor(color: #colorLiteral(red: 0.9058823529, green: 0.9568627451, blue: 1, alpha: 1))
                     self.circleLenderImageView.setPlaceHolderImage(image: #imageLiteral(resourceName: "store"))
                 }
+            }else {
+                self.circleLenderImageView.setBackgroundColor(color: #colorLiteral(red: 0.9058823529, green: 0.9568627451, blue: 1, alpha: 1))
+                self.circleLenderImageView.setPlaceHolderImage(image: #imageLiteral(resourceName: "store"))
             }
         }).disposed(by: disposeBag)
         

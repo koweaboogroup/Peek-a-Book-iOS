@@ -192,6 +192,8 @@ class DetailOrderViewController: UIViewController {
                 }else{
                     cell.bookImage.image = UIImage (systemName: "book.fill")
                 }
+            }else{
+                cell.bookImage.image = UIImage (systemName: "book.fill")
             }
             cell.bookTitle.text = lenderBook.book?.title
             cell.bookWriter.text = lenderBook.book?.author

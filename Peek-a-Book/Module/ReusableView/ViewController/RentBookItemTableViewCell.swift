@@ -55,7 +55,7 @@ class RentBookItemTableViewCell: UITableViewCell{
         didSet {
             if let response = response {
                 id = response.id ?? 0
-                if let lenderBooks = response.lenderBooks {
+                if let  lenderBooks = response.lenderBooks {
                     if !lenderBooks.isEmpty {
                         if let imageLender =  lenderBooks[0].lender?.images, let imageBookSample = lenderBooks[0].images{
                             if !imageLender.isEmpty {
@@ -73,9 +73,17 @@ class RentBookItemTableViewCell: UITableViewCell{
                                 bookImage.image = UIImage(systemName: "book.fill")
                             }
                             
+                        }else {
+                            imageProfileLenders.setBackgroundColor(color: #colorLiteral(red: 0.9058823529, green: 0.9568627451, blue: 1, alpha: 1))
+                            imageProfileLenders.setPlaceHolderImage(image: UIImage(systemName: "person")!)
+                            bookImage.image = UIImage(systemName: "book.fill")
                         }
                         lendersName.text = lenderBooks[0].lender?.name
                         bookTitle.text = lenderBooks[0].book?.title
+                    }else {
+                        imageProfileLenders.setBackgroundColor(color: #colorLiteral(red: 0.9058823529, green: 0.9568627451, blue: 1, alpha: 1))
+                        imageProfileLenders.setPlaceHolderImage(image: UIImage(systemName: "person")!)
+                        bookImage.image = UIImage(systemName: "book.fill")
                     }
                 }
                 let countBooks = response.lenderBooks?.count ?? 0
