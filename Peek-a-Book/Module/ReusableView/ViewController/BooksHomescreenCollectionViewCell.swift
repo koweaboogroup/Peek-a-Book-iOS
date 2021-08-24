@@ -30,7 +30,17 @@ class BooksHomescreenCollectionViewCell: UICollectionViewCell {
     var response: LenderBook? {
         didSet {
             if let response = response {
-                self.lenderStoreImage.setImage(fromUrl: Constant.Network.baseUrl + (response.lender?.images?[0].url ?? ""))
+                if let image = response.lender?.images {
+                    if !image.isEmpty {
+                        self.lenderStoreImage.setImage(fromUrl: Constant.Network.baseUrl + (image[0].url ?? ""))
+                    }else{
+                        self.lenderStoreImage.backgroundColor = #colorLiteral(red: 0.9058823529, green: 0.9568627451, blue: 1, alpha: 1)
+                        self.lenderStoreImage.setPlaceHolderImage(image: UIImage(systemName: "person")!)
+                    }
+                }else{
+                    self.lenderStoreImage.backgroundColor = #colorLiteral(red: 0.9058823529, green: 0.9568627451, blue: 1, alpha: 1)
+                    self.lenderStoreImage.setPlaceHolderImage(image: UIImage(systemName: "person")!)
+                }
                 self.lenderStoreName.text = response.lender?.name
                 if response.distance == 0 {
                     self.lenderStoreLocation.text = response.lender?.kota
@@ -40,10 +50,14 @@ class BooksHomescreenCollectionViewCell: UICollectionViewCell {
                 self.bookTitle.text = response.book?.title
                 self.bookWriter.text = response.book?.author
                 self.bookRentPrice.text = "\(response.price?.toRupiah() ?? "")/minggu"
-                if !response.images!.isEmpty {
-                    self.bookImage.kf.setImage(with: URL(string: Constant.Network.baseUrl + (response.images?[0].url ?? "")))
-                } else {
-                    self.bookImage.image = #imageLiteral(resourceName: "login")
+                if let image = response.images {
+                    if !image.isEmpty {
+                        self.bookImage.kf.setImage(with: URL(string: Constant.Network.baseUrl + (image[0].url ?? "")))
+                    } else {
+                        self.bookImage.image = UIImage(systemName: "book.fill")
+                    }
+                }else {
+                    self.bookImage.image = UIImage(systemName: "book.fill")
                 }
             }
         }

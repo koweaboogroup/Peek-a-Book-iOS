@@ -13,6 +13,8 @@ struct RentViewModel{
     public let ordersForLender: PublishSubject<[Rent]> = PublishSubject()
     let error: PublishSubject<String> = PublishSubject()
     let isSuccessChange: PublishSubject<Bool> = PublishSubject()
+    let showDatePicker : PublishSubject<Bool> = PublishSubject()
+    let selectedId: PublishSubject<Int> = PublishSubject()
     
     func getListRentAsUser(id: Int){
         RentService.getListRenterTransaction(id: id) { rentResponse in
@@ -39,6 +41,7 @@ struct RentViewModel{
     }
     
     func changeStatus(id: Int, statusRent: Int) {
+        print("MAntap")
         RentService.changeStatus(idRent: id, statusRent: statusRent) { rentResponse in
             self.isSuccessChange.onNext(true)
         } failCompletion: { error in

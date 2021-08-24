@@ -27,7 +27,6 @@ class BooksViewController: UIViewController, CLLocationManagerDelegate {
         checkLocationServices()
         setupView()
         cellSelectedIndex()
-        print("\(DateTime.getTimeStamp())")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -71,7 +70,7 @@ class BooksViewController: UIViewController, CLLocationManagerDelegate {
                 self.navigationController?.pushViewController(vc, animated: true)
             })
             .disposed(by: disposeBag)
-
+        
         fictionBookCollectionView.rx.modelSelected(LenderBook.self)
             .subscribe(onNext: { model in
                 let vc = ModuleBuilder.shared.goToDetailBooksViewController()
@@ -80,7 +79,7 @@ class BooksViewController: UIViewController, CLLocationManagerDelegate {
                 self.navigationController?.pushViewController(vc, animated: true)
             })
             .disposed(by: disposeBag)
-
+        
         nonFictionBookCollectionView.rx.modelSelected(LenderBook.self)
             .subscribe(onNext: { model in
                 let vc = ModuleBuilder.shared.goToDetailBooksViewController()
@@ -89,8 +88,8 @@ class BooksViewController: UIViewController, CLLocationManagerDelegate {
                 self.navigationController?.pushViewController(vc, animated: true)
             })
             .disposed(by: disposeBag)
-
-
+        
+        
     }
     
     private func checkLocationServices() {
@@ -107,7 +106,7 @@ class BooksViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
     }
-
+    
     private func checkLocationAuthorization() {
         switch locationManager.authorizationStatus {
         case .authorizedWhenInUse:
@@ -133,7 +132,7 @@ class BooksViewController: UIViewController, CLLocationManagerDelegate {
             break
         }
     }
-        
+    
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         checkLocationAuthorization()
     }
