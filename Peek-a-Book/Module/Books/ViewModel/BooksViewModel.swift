@@ -14,6 +14,7 @@ class BooksViewModel {
     public let nearestListBook: PublishSubject<[LenderBook]> = PublishSubject()
     public let listBookNonFiction : PublishSubject<[LenderBook]> = PublishSubject()
     public let listBookFiction : PublishSubject<[LenderBook]> = PublishSubject()
+    public let listBook: PublishSubject<[LenderBook]> = PublishSubject()
     
     func getListBook(){
         BookService.getListBook { book in
@@ -53,6 +54,15 @@ class BooksViewModel {
             self.error.onNext(error.errorDescription ?? "Data Tidak Ditemukan")
         }
         
+    }
+    
+    func getListBook(query: String) {
+        BookService.getListBook(query: query) { book in
+            self.listBook.onNext(book)
+        } failCompletion: { error in
+            self.error.onNext(error.errorDescription ?? "Data Tidak Ditemukan")
+        }
+
     }
 }
 

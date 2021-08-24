@@ -99,4 +99,10 @@ class ModuleBuilder {
         
         return vc
     }
+
+    func goToSearchViewController() -> SearchViewController {
+        let vc = SearchViewController(nibName: XIBConstant.SearchViewController, bundle: nil)
+        
+        return vc
+    }
 }

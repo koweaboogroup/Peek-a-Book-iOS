@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 import CoreLocation
 
-class BooksViewController: UIViewController, CLLocationManagerDelegate {
+class BooksViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDelegate {
     @IBOutlet weak var searchView: SearchView!
     @IBOutlet weak var nearestBookCollectionView: UICollectionView!
     @IBOutlet weak var fictionBookCollectionView: UICollectionView!
@@ -27,6 +27,7 @@ class BooksViewController: UIViewController, CLLocationManagerDelegate {
         checkLocationServices()
         setupView()
         cellSelectedIndex()
+        setupListener()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -135,5 +136,17 @@ class BooksViewController: UIViewController, CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         checkLocationAuthorization()
+    }
+    
+    private func setupListener(){
+        searchView.searchField.addTarget(self, action: #selector(textFieldDidChange), for: .editingDidEndOnExit)
+    }
+    
+    @objc func textFieldDidChange(){
+        let vc = ModuleBuilder.shared.goToSearchViewController()
+        vc.setQuery(query: searchView.searchField.text!)
+        vc.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(vc, animated: true)
+        searchView.searchField.text = ""
     }
 }

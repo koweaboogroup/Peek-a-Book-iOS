@@ -15,7 +15,10 @@ class SearchView: UIView {
     @IBOutlet weak var buttonNotif: UIButton!
     @IBOutlet weak var labelLocation: UILabel!
     @IBOutlet weak var searchView: UIView!
+    @IBOutlet weak var searchField: UITextField!
+    @IBOutlet weak var pinLocation: UIImageView!
     
+    private var vc: UINavigationController?
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -48,4 +51,21 @@ class SearchView: UIView {
         buttonBack.isHidden = isHide
     }
 
+    func hideNotification(_ isHide: Bool) {
+        buttonNotif.isHidden = isHide
+    }
+    
+    func hideLocationLabel(_ isHide: Bool) {
+        labelLocation.isHidden = isHide
+        pinLocation.isHidden = isHide
+    }
+    
+    func setNavigationController(vc: UINavigationController?) {
+        self.vc = vc
+    }
+    
+    @IBAction func backButton(_ sender: UIButton) {
+        vc?.popViewController(animated: true)
+    }
+    
 }
