@@ -498,7 +498,7 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <state key="normal" title="Lihat Alamat"/>
                                             <connections>
-                                                <action selector="buttonLihatAlamatPressed:" destination="-1" eventType="touchUpInside" id="R5f-iA-2Tb"/>
+                                                <action selector="lihatAlamatButtonPressed:" destination="-1" eventType="touchUpInside" id="GZ5-bV-L39"/>
                                             </connections>
                                         </button>
                                     </subviews>

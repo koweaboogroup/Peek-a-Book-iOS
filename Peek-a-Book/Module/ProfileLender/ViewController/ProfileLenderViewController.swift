@@ -44,7 +44,11 @@ class ProfileLenderViewController: UIViewController {
         
         //MARK: - Setup View Detail Toko
         viewModel.lenderProfile.subscribe (onNext: { response in
-            self.circleLenderImageView.setImage(fromUrl: Constant.Network.baseUrl + (response.images?[0].url ?? ""))
+            if let image = response.images {
+                if !image.isEmpty{
+                    self.circleLenderImageView.setImage(fromUrl: Constant.Network.baseUrl + (image[0].url ?? ""))
+                }
+            }
         }).disposed(by: disposeBag)
         
         viewModel.lenderProfile.asObservable().map { response in

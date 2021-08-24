@@ -11,11 +11,7 @@ class RentService {
     
     static func getListRenterTransaction(id: Int, successCompletion: @escaping ([Rent]) -> Void, failCompletion: @escaping (AFError) -> Void) {
         BaseRequest.get(router: RentRouter.getForRenter(id: id)) { request in
-            request.responseJSON { item in
-                print("item mantap \(item)")
-            }
             request.responseDecodable(of: [Rent].self) { response in
-                debugPrint(response)
                 switch response.result {
                 case .success(let rentResponse):
                     successCompletion(rentResponse)
@@ -53,10 +49,10 @@ class RentService {
     }
 
     
-    static func createRent(rentRequest: RentRequest, successCompletion: @escaping (Rent) -> Void, failCompletion: @escaping(AFError) -> Void) {
+    static func createRent(rentRequest: RentRequest, successCompletion: @escaping (RentPostResponse) -> Void, failCompletion: @escaping(AFError) -> Void) {
         
         BaseRequest.post(router: RentRouter.createRent(rentRequest: rentRequest)) { request in
-            request.responseDecodable(of: Rent.self) { response in
+            request.responseDecodable(of: RentPostResponse.self) { response in
                 switch response.result {
                 case .success(let rentResponse):
                     successCompletion(rentResponse)

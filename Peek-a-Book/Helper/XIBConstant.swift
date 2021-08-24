@@ -13,6 +13,7 @@ struct XIBConstant {
     static let LoginViewController = "LoginViewController"
     static let MapsVC = "MapsViewController"
     static let DetailOrderVC = "DetailOrderViewController"
+    static let ModalDetailOrderVC = "ModalDetailOrderViewController"
     static let AddressSettingViewController = "AddressSettingViewController"
     static let EditProfileViewController = "EditProfileViewController"
     static let RegisterViewController = "RegisterViewController"

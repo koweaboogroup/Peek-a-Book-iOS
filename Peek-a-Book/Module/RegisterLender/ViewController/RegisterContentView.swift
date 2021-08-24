@@ -10,10 +10,14 @@ import UIKit
 @IBDesignable
 class RegisterContentView: UIView {
     
+    //MARK: - IBOutlet
     @IBOutlet weak var storeNameTextField: UITextField!
     @IBOutlet weak var storeBioTextField: UITextField!
+    @IBOutlet weak var detailAddressLabel: UILabel!
     
     @IBOutlet var registerContentView: UIView!
+    
+    //MARK: - Variable
     
     private var viewModel: RegisterLenderViewModel?
     
@@ -34,9 +38,10 @@ class RegisterContentView: UIView {
     func commonInit() {
         registerContentView = loadViewFromNib(nibName: XIBConstant.RegisterContentView)
         registerContentView.frame = self.bounds
-        
         self.addSubview(registerContentView)
     }
+    
+    
     @IBAction func buttonAlamatPressed(_ sender: UIButton) {
         viewModel?.detailAddressPressed.onNext(true)
     }

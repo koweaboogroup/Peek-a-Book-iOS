@@ -18,8 +18,7 @@ enum RegisterLenderRouter: URLRequestConvertible {
     }
     
     var url: URL {
-                                                        //ganti link
-        return URL(string: Constant.Network.baseUrl + "/auth/local")!
+        return URL(string: Constant.Network.baseUrl + "/lenders")!
     }
     
     func asURLRequest() throws -> URLRequest {
@@ -32,7 +31,10 @@ enum RegisterLenderRouter: URLRequestConvertible {
         
         request.headers.add(.contentType("application/json"))
         request.headers.add(.accept("application/json"))
-        
+        if let jwt = UserDefaults.standard.string(forKey: "jwt"){
+            request.headers.add(.authorization(bearerToken: jwt))
+        }
+
         request.method = method
         
         return request

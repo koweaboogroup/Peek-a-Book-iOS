@@ -48,6 +48,9 @@
                     <state key="normal" title="Daftar">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
+                    <connections>
+                        <action selector="buttonRegisterLenderPressed:" destination="-1" eventType="touchUpInside" id="4Nf-yM-T6g"/>
+                    </connections>
                 </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
