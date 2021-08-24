@@ -57,12 +57,25 @@ class RentBookItemTableViewCell: UITableViewCell{
                 id = response.id ?? 0
                 if let lenderBooks = response.lenderBooks {
                     if !lenderBooks.isEmpty {
-                        let lenderImage = Constant.Network.baseUrl + (lenderBooks[0].lender?.images?[0].url ?? "")
-                        let sampleLenderBookImage = Constant.Network.baseUrl + (lenderBooks[0].images?[0].url ?? "")
+                        if let imageLender =  lenderBooks[0].lender?.images, let imageBookSample = lenderBooks[0].images{
+                            if !imageLender.isEmpty {
+                                let lenderImage = Constant.Network.baseUrl + (imageLender[0].url ?? "")
+                                imageProfileLenders.setImage(fromUrl: lenderImage)
+                            }else {
+                                imageProfileLenders.setBackgroundColor(color: #colorLiteral(red: 0.9058823529, green: 0.9568627451, blue: 1, alpha: 1))
+                                imageProfileLenders.setPlaceHolderImage(image: UIImage(systemName: "person")!)
+                            }
+                            
+                            if !imageBookSample.isEmpty {
+                                let sampleLenderBookImage = Constant.Network.baseUrl + (imageBookSample[0].url ?? "")
+                                bookImage.kf.setImage(with: URL(string: sampleLenderBookImage))
+                            }else{
+                                bookImage.image = UIImage(systemName: "book.fill")
+                            }
+                            
+                        }
                         lendersName.text = lenderBooks[0].lender?.name
                         bookTitle.text = lenderBooks[0].book?.title
-                        imageProfileLenders.setImage(fromUrl: lenderImage)
-                        bookImage.kf.setImage(with: URL(string: sampleLenderBookImage))
                     }
                 }
                 let countBooks = response.lenderBooks?.count ?? 0

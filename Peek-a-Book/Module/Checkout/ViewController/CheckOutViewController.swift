@@ -102,7 +102,6 @@ class CheckOutViewController: UIViewController, UITableViewDataSource {
     private func setupView() {
         
         let lenderName = cart[0].lender?.name
-        let lenderImage = Constant.Network.baseUrl + (cart[0].lender?.images?[0].url ?? "")
         
         lenderNameLabel.text = lenderName
         detailBukuTableView.register(UINib(nibName: XIBConstant.ItemKeranjangTableViewCell, bundle: nil), forCellReuseIdentifier: "ItemKeranjangTableViewCell")

@@ -87,8 +87,14 @@ class DetailBooksViewController: UIViewController {
         
         // MARK: -Setup Header View
         viewModel.bookDetail.subscribe (onNext: { book in
-            let url = URL(string: Constant.Network.baseUrl + (book.images?[0].url ?? ""))
-            self.detailBookImages.kf.setImage(with: url)
+            if let image = book.images {
+                if !image.isEmpty {
+                    let url = URL(string: Constant.Network.baseUrl + (image[0].url ?? ""))
+                    self.detailBookImages.kf.setImage(with: url)
+                }else{
+                    self.detailBookImages.image = UIImage (systemName: "book.fill")
+                }
+            }
         }).disposed(by: disposeBag)
         
         viewModel.bookDetail.asObserver().map { book in
@@ -108,8 +114,14 @@ class DetailBooksViewController: UIViewController {
         
         // MARK: - Setup Lender Button View
         viewModel.bookDetail.subscribe (onNext: { book in
-            let url = URL(string: Constant.Network.baseUrl + (book.lender?.images?[0].url ?? ""))
-            self.lenderImage.kf.setImage(with: url)
+            if let image = book.lender?.images {
+                if !image.isEmpty {
+                    let url = URL(string: Constant.Network.baseUrl + (image[0].url ?? ""))
+                    self.lenderImage.kf.setImage(with: url)
+                } else {
+                    self.lenderImage.image = UIImage(systemName: "person")
+                }
+            }
         }).disposed(by: disposeBag)
         
         viewModel.bookDetail.asObserver().map { book in
