@@ -34,6 +34,20 @@ class BooksViewController: UIViewController, CLLocationManagerDelegate, UITextFi
         showNavigation(true)
     }
     
+    @IBAction func seeAllFictionTapped(_ sender: UIButton) {
+        let vc = ModuleBuilder.shared.goToSearchViewController()
+        vc.hidesBottomBarWhenPushed = true
+        vc.setQuery(query: "", isFiction: true)
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @IBAction func seeAllNonFictionTapped(_ sender: UIButton) {
+        let vc = ModuleBuilder.shared.goToSearchViewController()
+        vc.hidesBottomBarWhenPushed = true
+        vc.setQuery(query: "", isFiction: false)
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         showNavigation(false)
     }

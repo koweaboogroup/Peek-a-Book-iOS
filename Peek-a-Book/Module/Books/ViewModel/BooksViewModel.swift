@@ -56,13 +56,30 @@ class BooksViewModel {
         
     }
     
-    func getListBook(query: String) {
+    func getListBook(query: String, isFiction: Bool) {
         BookService.getListBook(query: query) { book in
-            self.listBook.onNext(book)
+            var fictionBook = [LenderBook]()
+            var nonFictionBook = [LenderBook]()
+            if !query.isEmpty{
+                self.listBook.onNext(book)
+            } else if isFiction {
+                for item in book {
+                    if item.book?.bookGenre == 1 {
+                        fictionBook.append(item)
+                        self.listBook.onNext(fictionBook)
+                    }
+                }
+            }else{
+                for item in book {
+                    if item.book?.bookGenre == 2 {
+                        nonFictionBook.append(item)
+                        self.listBook.onNext(nonFictionBook)
+                    }
+                }
+            }
         } failCompletion: { error in
             self.error.onNext(error.errorDescription ?? "Data Tidak Ditemukan")
-        }
-
+        }        
     }
 }
 

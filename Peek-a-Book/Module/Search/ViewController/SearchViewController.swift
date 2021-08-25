@@ -17,6 +17,7 @@ class SearchViewController: UIViewController {
     private let viewModel = BooksViewModel()
     private let disposeBag = DisposeBag()
     private var query = ""
+    private var isFiction = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +29,7 @@ class SearchViewController: UIViewController {
     }
     
     private func fetchBook(){
-        viewModel.getListBook(query: query)
+        viewModel.getListBook(query: query, isFiction: isFiction)
     }
     
     private func setupView(){
@@ -70,7 +71,7 @@ class SearchViewController: UIViewController {
 
     
     private func searchBook(query: String){
-        viewModel.getListBook(query: query)
+        viewModel.getListBook(query: query, isFiction: isFiction)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -81,7 +82,8 @@ class SearchViewController: UIViewController {
         showNavigation(false)
     }
     
-    func setQuery(query: String) {
+    func setQuery(query: String, isFiction: Bool = true) {
         self.query = query
+        self.isFiction = isFiction
     }
 }
