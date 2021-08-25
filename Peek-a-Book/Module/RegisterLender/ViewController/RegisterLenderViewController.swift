@@ -15,12 +15,7 @@ class RegisterLenderViewController: UIViewController {
     @IBOutlet weak var circleProfileImageView: CircleImageView!
     @IBOutlet weak var buttonRegisterLender: UIButton!
     @IBOutlet weak var registerContentView: RegisterContentView!
-    
-    //MARK: - IBActions
-    @IBAction func buttonRegisterLenderPressed(_ sender: Any) {
-        processRegisterLender()
-    }
-    
+        
     //MARK: - Variable
     private let viewModel = RegisterLenderViewModel()
     private let addressViewModel = AddressViewModel()
@@ -34,6 +29,17 @@ class RegisterLenderViewController: UIViewController {
     private let longitude:Float = 0.0
     private let latitude:Float = 0.0
     
+    private var imagePicker: ImagePicker?
+    
+    //MARK: - IBActions
+    @IBAction func buttonRegisterLenderPressed(_ sender: Any) {
+        processRegisterLender()
+    }
+    
+    @IBAction func choosePhotoDidTapped(_ sender: UIButton) {
+        imagePicker?.present(from: sender)
+    }
+
     //MARK: - Functions
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,6 +93,8 @@ class RegisterLenderViewController: UIViewController {
     }
     
     private func setupListener(){
+        imagePicker = ImagePicker(presentationController: self, delegate: self)
+        
         viewModel.isAllTextFieldFilled()
             .bind(to: buttonRegisterLender.rx.isEnabled)
             .disposed(by: disposeBag)
@@ -125,5 +133,13 @@ class RegisterLenderViewController: UIViewController {
         vc.hidesBottomBarWhenPushed = true
         vc.setLenderId(id: id)
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+extension RegisterLenderViewController: ImagePickerDelegate {
+    func didSelect(image: UIImage?) {
+        if let image = image {
+            self.circleProfileImageView.setImage(image: image)
+        }
     }
 }
