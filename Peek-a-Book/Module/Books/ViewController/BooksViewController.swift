@@ -10,11 +10,13 @@ import RxSwift
 import RxCocoa
 import CoreLocation
 
-class BooksViewController: UIViewController, CLLocationManagerDelegate {
+class BooksViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDelegate {
     @IBOutlet weak var searchView: SearchView!
     @IBOutlet weak var nearestBookCollectionView: UICollectionView!
     @IBOutlet weak var fictionBookCollectionView: UICollectionView!
     @IBOutlet weak var nonFictionBookCollectionView: UICollectionView!
+    @IBOutlet weak var locationButton: UIButton!
+    @IBOutlet weak var emptyNearestView: UIStackView!
     let viewModel = BooksViewModel()
     let disposeBag = DisposeBag()
     let locationManager = CLLocationManager()
@@ -27,10 +29,36 @@ class BooksViewController: UIViewController, CLLocationManagerDelegate {
         checkLocationServices()
         setupView()
         cellSelectedIndex()
+        setupListener()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         showNavigation(true)
+    }
+    
+    @IBAction func locationButtonTapped(_ sender: UIButton) {
+        ConfirmationDialog.showAlertPositive(viewController: self, title: "Aktifkan GPS", subtitle: "Mohon mengaktifkan GPS agar kami bisa memberikan rekomendasi buku yang ada di dekatmu", positiveText: "Aktifkan", negativeText: "Tolak") {
+            if let bundleId = Bundle.main.bundleIdentifier, let url = URL(string: "\(UIApplication.openSettingsURLString)&path=LOCATION/\(bundleId)") {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+            self.dismiss(animated: true, completion: nil)
+        } negativeCompletion: {
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    @IBAction func seeAllFictionTapped(_ sender: UIButton) {
+        let vc = ModuleBuilder.shared.goToSearchViewController()
+        vc.hidesBottomBarWhenPushed = true
+        vc.setQuery(query: "", isFiction: true)
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @IBAction func seeAllNonFictionTapped(_ sender: UIButton) {
+        let vc = ModuleBuilder.shared.goToSearchViewController()
+        vc.hidesBottomBarWhenPushed = true
+        vc.setQuery(query: "", isFiction: false)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -54,6 +82,11 @@ class BooksViewController: UIViewController, CLLocationManagerDelegate {
             cell.response = book
         }.disposed(by: disposeBag)
         
+        viewModel.nearestListBook.asObserver().map { item in
+            !item.isEmpty
+        }.bind(to: emptyNearestView.rx.isHidden)
+        .disposed(by: disposeBag)
+
         viewModel.nearestListBook.bind(to: nearestBookCollectionView.rx.items(cellIdentifier: XIBConstant.BooksHomescreenCollectionViewCell, cellType: BooksHomescreenCollectionViewCell.self)) {  (row,book,cell) in
             cell.response = book
         }.disposed(by: disposeBag)
@@ -99,6 +132,7 @@ class BooksViewController: UIViewController, CLLocationManagerDelegate {
         } else {
             // the user didn't turn it on
             searchView.labelLocation.text = "Aktifkan Lokasi"
+            isLocationEnabled(false)
         }
     }
     
@@ -116,24 +150,49 @@ class BooksViewController: UIViewController, CLLocationManagerDelegate {
                 }
                 viewModel.getListBook(yourLocation: location)
             }
+            isLocationEnabled(true)
             break
         case .denied:
             // Show alert
             searchView.labelLocation.text = "Aktifkan Lokasi"
+            isLocationEnabled(false)
             break
         case .notDetermined:
             locationManager.requestWhenInUseAuthorization()
+            isLocationEnabled(false)
+            break
         case .restricted:
             // Show alert
+            isLocationEnabled(false)
             break
         case .authorizedAlways:
+            isLocationEnabled(true)
             break
         default:
+            isLocationEnabled(false)
             break
         }
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         checkLocationAuthorization()
+    }
+    
+    private func setupListener(){
+        searchView.searchField.addTarget(self, action: #selector(textFieldDidChange), for: .editingDidEndOnExit)
+    }
+    
+    @objc func textFieldDidChange(){
+        let vc = ModuleBuilder.shared.goToSearchViewController()
+        vc.setQuery(query: searchView.searchField.text!)
+        vc.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(vc, animated: true)
+        searchView.searchField.text = ""
+    }
+    
+    private func isLocationEnabled(_ isEnabled: Bool){
+        locationButton.isHidden = isEnabled
+        emptyNearestView.isHidden = isEnabled
+        nearestBookCollectionView.isHidden = !isEnabled
     }
 }

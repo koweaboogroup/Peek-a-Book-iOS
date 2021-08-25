@@ -87,9 +87,9 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>NSCameraUsageDescription</key>
-	<string>Boleh minta kamera</string>
+	<string>Boleh akses kamera</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Boleh minta gallery</string>
+	<string>Boleh akses gallery</string>
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>
 </dict>
