@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
@@ -29,20 +30,20 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="y3S-BW-qrL">
-                    <rect key="frame" x="30" y="795" width="330" height="29"/>
+                    <rect key="frame" x="30" y="813" width="354" height="29"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Saya setuju dengan" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.20000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="Mt2-go-afL">
-                            <rect key="frame" x="0.0" y="0.0" width="162.5" height="29"/>
+                            <rect key="frame" x="0.0" y="0.0" width="174.5" height="29"/>
                             <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="14"/>
                             <color key="textColor" systemColor="systemGrayColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZQx-vj-9BM">
-                            <rect key="frame" x="167.5" y="0.0" width="162.5" height="29"/>
+                            <rect key="frame" x="179.5" y="0.0" width="174.5" height="29"/>
                             <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="14"/>
                             <state key="normal" title="Syarat &amp; Ketentuan">
                                 <color key="titleColor" name="primary-1"/>
@@ -57,7 +58,7 @@
                     </subviews>
                 </stackView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PJs-jr-59Z">
-                    <rect key="frame" x="30" y="735" width="330" height="50"/>
+                    <rect key="frame" x="30" y="749.5" width="354" height="53.5"/>
                     <color key="backgroundColor" name="primary-1"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="PJs-jr-59Z" secondAttribute="height" multiplier="33:5" id="kx2-Ve-DdW"/>
@@ -70,54 +71,54 @@
                     </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oyn-BG-lJQ">
-                    <rect key="frame" x="20" y="10" width="350" height="284"/>
+                    <rect key="frame" x="20" y="54" width="374" height="303.5"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7pW-qG-3Ay">
-                            <rect key="frame" x="0.0" y="53" width="350" height="1"/>
+                            <rect key="frame" x="0.0" y="56" width="374" height="1"/>
                             <color key="backgroundColor" systemColor="systemGray4Color"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="lap-We-Q0k"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gxl-LQ-zIQ">
-                            <rect key="frame" x="0.0" y="97" width="350" height="1"/>
+                            <rect key="frame" x="0.0" y="103.5" width="374" height="1"/>
                             <color key="backgroundColor" systemColor="systemGray4Color"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="cmx-MH-fC1"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CPx-Zx-sD1">
-                            <rect key="frame" x="0.0" y="141" width="350" height="1"/>
+                            <rect key="frame" x="0.0" y="150.5" width="374" height="1"/>
                             <color key="backgroundColor" systemColor="systemGray4Color"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="bzM-1b-O0B"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f6H-72-U7a">
-                            <rect key="frame" x="0.0" y="185" width="350" height="1"/>
+                            <rect key="frame" x="0.0" y="197.5" width="374" height="1"/>
                             <color key="backgroundColor" systemColor="systemGray4Color"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="SbN-9D-T5F"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x8R-LG-Q3e">
-                            <rect key="frame" x="0.0" y="229" width="350" height="1"/>
+                            <rect key="frame" x="0.0" y="245" width="374" height="1"/>
                             <color key="backgroundColor" systemColor="systemGray4Color"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="4Tf-Hq-Vuj"/>
                             </constraints>
                         </view>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="NV6-j8-KAr">
-                            <rect key="frame" x="12" y="10" width="326" height="43"/>
+                            <rect key="frame" x="12" y="10" width="350" height="46"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nama" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="2k1-wg-qge">
-                                    <rect key="frame" x="0.0" y="0.0" width="45.5" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="45.5" height="46"/>
                                     <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nama Lengkap" textAlignment="right" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="3g4-kt-LuN">
-                                    <rect key="frame" x="69.5" y="0.0" width="256.5" height="43"/>
+                                    <rect key="frame" x="69.5" y="0.0" width="280.5" height="46"/>
                                     <color key="textColor" name="primary-1"/>
                                     <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                     <textInputTraits key="textInputTraits" returnKeyType="continue" textContentType="name"/>
@@ -128,16 +129,16 @@
                             </constraints>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="tVO-bx-I8L">
-                            <rect key="frame" x="12" y="54" width="326" height="43"/>
+                            <rect key="frame" x="12" y="57" width="350" height="46.5"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="hhx-v0-4VY">
-                                    <rect key="frame" x="0.0" y="11.5" width="42" height="20"/>
+                                    <rect key="frame" x="0.0" y="13.5" width="42" height="20"/>
                                     <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="right" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="pzM-0j-O0g">
-                                    <rect key="frame" x="66" y="11" width="260" height="21.5"/>
+                                    <rect key="frame" x="66" y="12.5" width="284" height="21.5"/>
                                     <color key="textColor" name="primary-1"/>
                                     <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                     <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="continue" textContentType="email"/>
@@ -148,16 +149,16 @@
                             </constraints>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="mc3-AR-hbN">
-                            <rect key="frame" x="12" y="98" width="326" height="43"/>
+                            <rect key="frame" x="12" y="104.5" width="350" height="46"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Whatsapp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="Bhd-vy-2qI">
-                                    <rect key="frame" x="0.0" y="0.0" width="104.5" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="104.5" height="46"/>
                                     <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="No Whatsapp" textAlignment="right" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="OpK-Gt-84Z">
-                                    <rect key="frame" x="128.5" y="0.0" width="197.5" height="43"/>
+                                    <rect key="frame" x="128.5" y="0.0" width="221.5" height="46"/>
                                     <color key="textColor" name="primary-1"/>
                                     <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                     <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="continue" textContentType="tel"/>
@@ -168,16 +169,16 @@
                             </constraints>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="Z75-hH-KNm">
-                            <rect key="frame" x="12" y="142" width="326" height="43"/>
+                            <rect key="frame" x="12" y="151.5" width="350" height="46"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="4sk-vj-VGZ">
-                                    <rect key="frame" x="0.0" y="0.0" width="75.5" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="75.5" height="46"/>
                                     <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="right" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="GE2-eU-zvv">
-                                    <rect key="frame" x="99.5" y="0.0" width="226.5" height="43"/>
+                                    <rect key="frame" x="99.5" y="0.0" width="250.5" height="46"/>
                                     <color key="textColor" name="primary-1"/>
                                     <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                     <textInputTraits key="textInputTraits" returnKeyType="continue" secureTextEntry="YES" textContentType="password"/>
@@ -188,16 +189,16 @@
                             </constraints>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="qT6-0t-hQo">
-                            <rect key="frame" x="12" y="186" width="326" height="43"/>
+                            <rect key="frame" x="12" y="198.5" width="350" height="46.5"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Konfirmasi Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="fyb-Q4-L61">
-                                    <rect key="frame" x="0.0" y="0.0" width="161" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="161" height="46.5"/>
                                     <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="right" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="AYE-WU-2qr">
-                                    <rect key="frame" x="185" y="0.0" width="141" height="43"/>
+                                    <rect key="frame" x="185" y="0.0" width="165" height="46.5"/>
                                     <color key="textColor" name="primary-1"/>
                                     <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                     <textInputTraits key="textInputTraits" returnKeyType="continue" secureTextEntry="YES" textContentType="password"/>
@@ -208,16 +209,16 @@
                             </constraints>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="3FK-BS-hfb">
-                            <rect key="frame" x="12" y="230" width="326" height="43"/>
+                            <rect key="frame" x="12" y="246" width="350" height="46"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detail Alamat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="qqo-AI-4wG">
-                                    <rect key="frame" x="0.0" y="0.0" width="101" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="101" height="46"/>
                                     <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="syz-1b-CsL">
-                                    <rect key="frame" x="125" y="0.0" width="201" height="43"/>
+                                    <rect key="frame" x="125" y="0.0" width="225" height="46"/>
                                     <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                     <state key="normal" image="chevron.right" catalog="system">
                                         <color key="titleColor" name="primary-1"/>

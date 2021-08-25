@@ -80,4 +80,6 @@ class EditProfileLenderViewController: UIViewController {
             self.navigationController?.popViewController(animated: true)
         }
     }
+    
 }
+

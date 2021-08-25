@@ -99,4 +99,10 @@ class ModuleBuilder {
         
         return vc
     }
+    
+    func goToInsertBookToLenderCatalogueViewController() -> InsertBookToLenderCatalogueViewController {
+        let vc = InsertBookToLenderCatalogueViewController(nibName: XIBConstant.InsertBookToLenderCatalogueVC, bundle: nil)
+        
+        return vc
+    }
 }

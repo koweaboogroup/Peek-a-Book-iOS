@@ -38,8 +38,9 @@ struct XIBConstant {
     static let InsertBookToLenderCatalogueVC = "InsertBookToLenderCatalogueViewController"
     
     static let BooksHomescreenCollectionViewCell = "BooksHomescreenCollectionViewCell"
-    static let KatalogLenderCollectionViewCell = "KatalogLenderCollectionViewCell"
+    static let LenderKatalogCollectionViewCell = "LenderKatalogCollectionViewCell"
     static let ItemKeranjangTableViewCell = "ItemKeranjangTableViewCell"
+    static let AddCollectionViewCell = "AddCollectionViewCell"
     
     static let SearchView = "SearchView"
     
