@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BooksViewController" customModule="Peek_a_Book" customModuleProvider="target">
             <connections>
+                <outlet property="errorStateView" destination="lFd-fh-TPv" id="WRx-mv-rAC"/>
                 <outlet property="fictionBookCollectionView" destination="oGT-q4-AcU" id="Z5c-dl-D1P"/>
                 <outlet property="nearestBookCollectionView" destination="6K4-LY-Uaa" id="o0G-hG-v2r"/>
                 <outlet property="nonFictionBookCollectionView" destination="KAh-Gt-U9v" id="b7u-iN-3eO"/>
@@ -61,13 +62,21 @@
                                                         <inset key="sectionInset" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
                                                     </collectionViewFlowLayout>
                                                 </collectionView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lFd-fh-TPv" customClass="ErrorStateView" customModule="Peek_a_Book" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="56.5" width="414" height="299"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                </view>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstItem="6K4-LY-Uaa" firstAttribute="leading" secondItem="A3w-K9-LYa" secondAttribute="leading" id="4Pi-f3-VBj"/>
                                                 <constraint firstItem="wVp-S9-Nkp" firstAttribute="leading" secondItem="A3w-K9-LYa" secondAttribute="leading" constant="20" id="BQH-jV-Bou"/>
+                                                <constraint firstItem="lFd-fh-TPv" firstAttribute="height" secondItem="6K4-LY-Uaa" secondAttribute="height" id="U6H-Nn-1e2"/>
                                                 <constraint firstItem="wVp-S9-Nkp" firstAttribute="top" secondItem="A3w-K9-LYa" secondAttribute="top" constant="20" id="Un5-wZ-Iy1"/>
+                                                <constraint firstItem="lFd-fh-TPv" firstAttribute="top" secondItem="wVp-S9-Nkp" secondAttribute="bottom" constant="10" id="Wya-bL-ozR"/>
+                                                <constraint firstItem="lFd-fh-TPv" firstAttribute="centerX" secondItem="A3w-K9-LYa" secondAttribute="centerX" id="gjr-lY-eAe"/>
                                                 <constraint firstAttribute="trailing" secondItem="6K4-LY-Uaa" secondAttribute="trailing" id="hmC-MU-sxM"/>
+                                                <constraint firstItem="lFd-fh-TPv" firstAttribute="width" secondItem="6K4-LY-Uaa" secondAttribute="width" id="owp-ff-LSJ"/>
                                                 <constraint firstItem="6K4-LY-Uaa" firstAttribute="top" secondItem="wVp-S9-Nkp" secondAttribute="bottom" constant="10" id="yAM-7u-LaG"/>
                                             </constraints>
                                         </view>

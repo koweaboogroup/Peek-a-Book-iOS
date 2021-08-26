@@ -15,6 +15,10 @@ class BooksViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var nearestBookCollectionView: UICollectionView!
     @IBOutlet weak var fictionBookCollectionView: UICollectionView!
     @IBOutlet weak var nonFictionBookCollectionView: UICollectionView!
+    
+    @IBOutlet weak var errorStateView: ErrorStateView!
+    
+    
     let viewModel = BooksViewModel()
     let disposeBag = DisposeBag()
     let locationManager = CLLocationManager()
@@ -27,6 +31,7 @@ class BooksViewController: UIViewController, CLLocationManagerDelegate {
         checkLocationServices()
         setupView()
         cellSelectedIndex()
+        setupErrorState()
         print("\(DateTime.getTimeStamp())")
     }
     
@@ -38,8 +43,18 @@ class BooksViewController: UIViewController, CLLocationManagerDelegate {
         showNavigation(false)
     }
     
+    private func setupErrorState(){
+        
+        errorStateView.errorImage?.image = Constant.Ilustration.emptyNotif
+        errorStateView.errorLabel?.text = "Mohon mengaktifkan GPS agar kami bisa memberikan rekomendasi buku yang ada di dekatmu."
+    }
+    
+
+    
     private func setupView(){
         searchView.hideNavigation(true)
+        
+        
         
         nearestBookCollectionView.register(UINib(nibName: XIBConstant.BooksHomescreenCollectionViewCell, bundle: nil), forCellWithReuseIdentifier: XIBConstant.BooksHomescreenCollectionViewCell)
         
@@ -116,18 +131,24 @@ class BooksViewController: UIViewController, CLLocationManagerDelegate {
                     self.searchView.labelLocation.text = placemark?.locality ?? placemark?.subAdministrativeArea ?? placemark?.administrativeArea ?? "Lokasi Tidak Ditemukan"
                 }
                 viewModel.getListBook(yourLocation: location)
+            }else{
+                setupErrorState()
             }
             break
         case .denied:
+            
             // Show alert
             searchView.labelLocation.text = "Aktifkan Lokasi"
             break
         case .notDetermined:
+            
             locationManager.requestWhenInUseAuthorization()
         case .restricted:
+            
             // Show alert
             break
         case .authorizedAlways:
+            errorStateView.isHidden = true
             break
         default:
             break

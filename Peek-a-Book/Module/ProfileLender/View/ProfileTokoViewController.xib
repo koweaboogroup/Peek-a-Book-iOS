@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -23,7 +24,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KR5-Nz-QVe" userLabel="Riwayat Penyewaan View">
-                    <rect key="frame" x="20" y="145" width="374" height="44"/>
+                    <rect key="frame" x="20" y="189" width="374" height="44"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="JFb-mh-fa9">
                             <rect key="frame" x="343" y="9" width="15" height="26.5"/>
@@ -71,7 +72,7 @@
                     </connections>
                 </view>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="y3I-a1-zAk">
-                    <rect key="frame" x="136" y="20" width="258" height="62"/>
+                    <rect key="frame" x="136" y="64" width="258" height="62"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Testing Toko" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uzM-JA-wLq">
                             <rect key="frame" x="0.0" y="0.0" width="258" height="26.5"/>
@@ -88,20 +89,20 @@
                     </subviews>
                 </stackView>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pencil.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="9xB-p9-9hp" customClass="CircleImageView" customModule="Peek_a_Book" customModuleProvider="target">
-                    <rect key="frame" x="20" y="20.5" width="109" height="108"/>
+                    <rect key="frame" x="20" y="64.5" width="109" height="108"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="109" id="TcV-I7-gYe"/>
                         <constraint firstAttribute="width" constant="109" id="dL9-hl-lp4"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Katalog" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XEQ-66-eQL">
-                    <rect key="frame" x="23" y="213" width="72.5" height="26.5"/>
+                    <rect key="frame" x="23" y="257" width="72.5" height="26.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7eH-uk-IpE">
-                    <rect key="frame" x="288" y="213" width="103" height="33"/>
+                    <rect key="frame" x="288" y="257" width="103" height="33"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <state key="normal" title="Semua Genre"/>
                     <connections>
@@ -109,7 +110,7 @@
                     </connections>
                 </button>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Xqr-jR-z6c">
-                    <rect key="frame" x="20" y="262" width="374" height="634"/>
+                    <rect key="frame" x="20" y="306" width="374" height="590"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="q6S-Px-bpg">
                         <size key="itemSize" width="128" height="128"/>
@@ -119,7 +120,7 @@
                     </collectionViewFlowLayout>
                 </collectionView>
                 <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="bI1-UZ-GXA">
-                    <rect key="frame" x="136" y="96" width="114.5" height="14"/>
+                    <rect key="frame" x="136" y="140" width="114.5" height="14"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pin-location" translatesAutoresizingMaskIntoConstraints="NO" id="3rG-gp-plY">
                             <rect key="frame" x="0.0" y="0.0" width="14" height="14"/>
@@ -167,6 +168,11 @@
             </connections>
         </tapGestureRecognizer>
     </objects>
+    <designables>
+        <designable name="9xB-p9-9hp">
+            <size key="intrinsicContentSize" width="20" height="20"/>
+        </designable>
+    </designables>
     <resources>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
         <image name="pencil.circle.fill" catalog="system" width="128" height="121"/>
