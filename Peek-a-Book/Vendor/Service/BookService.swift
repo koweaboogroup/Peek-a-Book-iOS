@@ -24,7 +24,7 @@ class BookService {
         }
     }
     
-    static func getListBook(successCompletion: @escaping ([LenderBook]) -> Void, failCompletion: @escaping (AFError) -> Void){
+    static func getListBook(successCompletion: @escaping ([LenderBook]) -> Void, failCompletion: @escaping (AFError) -> Void) {
         
         BaseRequest.get(router: BookListRouter.get) { request in
             request.responseDecodable(of: [LenderBook].self) { response in
@@ -33,7 +33,6 @@ class BookService {
                 case .success(let bookResponse):
                     successCompletion(bookResponse)
                 case .failure(let error):
-                    debugPrint(error)
                     failCompletion(error)
                 }
             }
@@ -50,6 +49,37 @@ class BookService {
                     successCompletion(bookResponse)
                 case .failure(let error):
                     debugPrint(error)
+                    failCompletion(error)
+                }
+            }
+        }
+    }
+    
+    static func getBookByTitle(title: String, successCompletion: @escaping(BookResponse) -> Void, failCompletion: @escaping(AFError) -> Void, emptyDataCompletion: @escaping() -> Void) {
+        BaseRequest.get(router: BookRouter.getByTitle(title: title)) { request in
+            request.responseDecodable(of: [BookResponse].self) { response in
+                switch response.result {
+                case .success(let bookResponse):
+                    if !bookResponse.isEmpty {
+                        successCompletion(bookResponse[0])
+                    } else {
+                        emptyDataCompletion()
+                    }
+                case .failure(let error):
+                    failCompletion(error)
+                }
+            }
+        }
+        
+    }
+    
+    static func addBook(bookRequest: [String: String], successCompletion: @escaping(Int) -> Void, failCompletion: @escaping(AFError) -> Void) {
+        BaseRequest.post(router: BookRouter.addBook(bookRequest: bookRequest)) { request in
+            request.responseDecodable(of: BookResponse.self) { response in
+                switch response.result {
+                case .success(let bookResponse):
+                    successCompletion(bookResponse.id ?? -1)
+                case .failure(let error):
                     failCompletion(error)
                 }
             }
