@@ -42,6 +42,7 @@ class DataManager {
         self.isUserFetched.onNext(false)
         ProfileService.getProfile(userId: getUserIdByJwt()) { user in
             self.user = user
+            self.lender = user.lender
             self.isUserFetched.onNext(true)
         } failCompletion: { error in
             print(error)
@@ -55,6 +56,7 @@ class DataManager {
     
     func setUser(user: User) {
         self.user = user
+        self.lender = user.lender
     }
     
     func getLenderId() -> Int {

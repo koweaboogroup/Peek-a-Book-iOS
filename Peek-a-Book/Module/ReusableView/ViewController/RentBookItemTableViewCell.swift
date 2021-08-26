@@ -131,7 +131,7 @@ class RentBookItemTableViewCell: UITableViewCell{
                         manipulateButtonView(button: activeButton, isHidden: false, text: "Kembalikan")
                         break
                     case RentStatus.returning.getID():
-                        rentDeadline.isHidden = false
+                        rentDeadline.isHidden = true
                         manipulateButtonView(button: warningButton, isHidden: true)
                         manipulateButtonView(button: activeButton, isHidden: false, text: "Menunggu Selesai", alpha: 0.5, isEnabled: false)
                         break
@@ -166,7 +166,7 @@ class RentBookItemTableViewCell: UITableViewCell{
                     case RentStatus.ongoing.getID():
                         if let date = response.updatedAt?.toDate() {
                             rentDeadline.isHidden = false
-                            rentDeadline.text = "Dikirim Kembali Sebelum \(calculateDeadline(date: date, duration: response.periodOfTime ?? 0))"
+                            rentDeadline.text = "Dikirim kembali sebelum \(calculateDeadline(date: date, duration: response.periodOfTime ?? 0))"
                         }
                         manipulateButtonView(button: warningButton, isHidden: true)
                         manipulateButtonView(button: activeButton, isHidden: false, text: "Menunggu Kembali", alpha: 0.5, isEnabled: false)
@@ -174,7 +174,7 @@ class RentBookItemTableViewCell: UITableViewCell{
                     case RentStatus.returning.getID():
                         if let date = response.updatedAt?.toDate() {
                             rentDeadline.isHidden = false
-                            rentDeadline.text = "Dikirim Kembali Sebelum \(calculateDeadline(date: date, duration: 0))"
+                            rentDeadline.text = "Dikirim kembali sebelum \(calculateDeadline(date: date, duration: 0))"
                         }
                         manipulateButtonView(button: warningButton, isHidden: true)
                         manipulateButtonView(button: activeButton, isHidden: false, text: "Diterima")

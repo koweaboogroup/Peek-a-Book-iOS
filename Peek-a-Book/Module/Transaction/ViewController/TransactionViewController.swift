@@ -15,6 +15,7 @@ class TransactionViewController: UIViewController {
         case riwayatPenyewaan, kelolaPenyewaan
     }
     
+    @IBOutlet weak var loadingView: UIActivityIndicatorView!
     @IBOutlet weak var transactionTableView: UITableView!
     @IBOutlet weak var pickerView: UIView!
     @IBOutlet weak var datePickerView: UIDatePicker!
@@ -31,8 +32,8 @@ class TransactionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchTransaction()
         setupView()
+        fetchTransaction()
         updateStatus()
         showDatePicker()
     }
@@ -59,6 +60,15 @@ class TransactionViewController: UIViewController {
     }
     
     private func setupView(){
+        viewModel.loading.asObserver()
+            .bind(to: loadingView.rx.isAnimating)
+            .disposed(by: disposeBag)
+        
+        viewModel.loading.asObserver().map{ item in
+            !item
+        }.bind(to: loadingView.rx.isHidden)
+            .disposed(by: disposeBag)
+
         confirmationButton.cornerRadius(10)
         confirmationButton.layer.applyShadow(color: .black, alpha: 0.5, x: 0, y: 2, blur: 4, spread: 0)
         

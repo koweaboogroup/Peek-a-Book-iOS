@@ -12,6 +12,7 @@ class LoginViewController: UIViewController {
     
     // MARK: - Variable (Outlet)
     
+    @IBOutlet weak var loadingView: UIActivityIndicatorView!
     @IBOutlet weak var loginViewContent: LoginContentView!
     @IBOutlet weak var loginViewContentBottomConstraint: NSLayoutConstraint!
     
@@ -33,13 +34,14 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupRx()
+
         loginViewContent.initViewModel(viewModel)
         
         self.hideKeyboardWhenTappedAround()
         
         self.setupKeyboardListener(selector: #selector(handleKeyboardNotification))
         
-        setupRx()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -51,6 +53,16 @@ class LoginViewController: UIViewController {
     // MARK: - Private Function
     
     private func setupRx() {
+        viewModel.loading.asObserver()
+            .bind(to: loadingView.rx.isAnimating)
+            .disposed(by: disposeBag)
+        
+        viewModel.loading.asObserver().map{ item in
+            !item
+        }.bind(to: loadingView.rx.isHidden)
+            .disposed(by: disposeBag)
+
+
         loginViewContent.identifierTextField.rx.text
             .map {
                 return $0 ?? ""

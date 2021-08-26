@@ -18,6 +18,7 @@
             <connections>
                 <outlet property="confirmationButton" destination="9Wj-oG-YrB" id="7dl-Jp-uMM"/>
                 <outlet property="datePickerView" destination="Vv3-56-sdZ" id="ZcS-yA-ccT"/>
+                <outlet property="loadingView" destination="QI1-7q-bbw" id="70Y-dV-OOs"/>
                 <outlet property="pickerView" destination="ube-dz-WRh" id="Hgl-2Z-8jW"/>
                 <outlet property="transactionTableView" destination="1FZ-Jl-WM6" id="wEo-6g-gHa"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -48,6 +49,9 @@
                     <rect key="frame" x="20" y="117" width="374" height="725"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="QI1-7q-bbw">
+                    <rect key="frame" x="197" y="438" width="20" height="20"/>
+                </activityIndicatorView>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ube-dz-WRh">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <subviews>
@@ -122,11 +126,13 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="QI1-7q-bbw" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="0Zc-ea-4lQ"/>
                 <constraint firstItem="1FZ-Jl-WM6" firstAttribute="top" secondItem="VZw-45-dYd" secondAttribute="bottom" constant="20" id="2iR-qg-lfx"/>
                 <constraint firstItem="1FZ-Jl-WM6" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="8wl-xB-Ytf"/>
                 <constraint firstItem="ube-dz-WRh" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="LKp-YL-lun"/>
                 <constraint firstAttribute="bottom" secondItem="ube-dz-WRh" secondAttribute="bottom" id="ZfP-FE-TaZ"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="1FZ-Jl-WM6" secondAttribute="bottom" constant="20" id="b3N-s2-Zd4"/>
+                <constraint firstItem="QI1-7q-bbw" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="brk-Gl-3Zo"/>
                 <constraint firstItem="ube-dz-WRh" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="fmh-lp-GdK"/>
                 <constraint firstItem="VZw-45-dYd" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="hdJ-T1-OrA"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="VZw-45-dYd" secondAttribute="trailing" constant="20" id="jzm-JX-o8S"/>

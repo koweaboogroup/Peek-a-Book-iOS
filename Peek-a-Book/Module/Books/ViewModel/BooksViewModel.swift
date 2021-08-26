@@ -10,6 +10,7 @@ import RxSwift
 import CoreLocation
 
 class BooksViewModel {
+    public let loading : PublishSubject<Bool> = PublishSubject()
     public let error : PublishSubject<String> = PublishSubject()
     public let nearestListBook: PublishSubject<[LenderBook]> = PublishSubject()
     public let listBookNonFiction : PublishSubject<[LenderBook]> = PublishSubject()
@@ -17,7 +18,9 @@ class BooksViewModel {
     public let listBook: PublishSubject<[LenderBook]> = PublishSubject()
     
     func getListBook(){
+        loading.onNext(true)
         BookService.getListBook { book in
+            self.loading.onNext(false)
             var fictionBook = [LenderBook]()
             var nonFictionBook = [LenderBook]()
             for item in book {
@@ -31,6 +34,7 @@ class BooksViewModel {
                 }
             }
         } failCompletion: { error in
+            self.loading.onNext(false)
             self.error.onNext(error.errorDescription ?? "Data Tidak Ditemukan")
         }
     }
@@ -57,7 +61,9 @@ class BooksViewModel {
     }
     
     func getListBook(query: String, isFiction: Bool) {
+        //self.loading.onNext(true)
         BookService.getListBook(query: query) { book in
+           // self.loading.onNext(false)
             var fictionBook = [LenderBook]()
             var nonFictionBook = [LenderBook]()
             if !query.isEmpty{
@@ -78,6 +84,7 @@ class BooksViewModel {
                 }
             }
         } failCompletion: { error in
+            //self.loading.onNext(false)
             self.error.onNext(error.errorDescription ?? "Data Tidak Ditemukan")
         }        
     }

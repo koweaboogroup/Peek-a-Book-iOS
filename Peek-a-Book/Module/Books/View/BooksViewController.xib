@@ -13,6 +13,7 @@
             <connections>
                 <outlet property="emptyNearestView" destination="5wO-pw-pre" id="HdN-pK-Isg"/>
                 <outlet property="fictionBookCollectionView" destination="oGT-q4-AcU" id="Z5c-dl-D1P"/>
+                <outlet property="loadingView" destination="Ozp-Sc-Taf" id="gTI-aE-9Ge"/>
                 <outlet property="locationButton" destination="Szm-wC-moN" id="IOn-lP-8nR"/>
                 <outlet property="nearestBookCollectionView" destination="6K4-LY-Uaa" id="o0G-hG-v2r"/>
                 <outlet property="nonFictionBookCollectionView" destination="KAh-Gt-U9v" id="b7u-iN-3eO"/>
@@ -215,13 +216,18 @@
                         <constraint firstItem="KWI-8v-LJM" firstAttribute="top" secondItem="Ndh-y9-1QX" secondAttribute="top" id="led-6c-mUw"/>
                     </constraints>
                 </scrollView>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Ozp-Sc-Taf">
+                    <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                </activityIndicatorView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" name="primary-5"/>
             <constraints>
                 <constraint firstItem="pnN-2M-nMZ" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="4v6-yO-f4A"/>
                 <constraint firstItem="KWI-8v-LJM" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="4zu-7J-db3"/>
+                <constraint firstItem="Ozp-Sc-Taf" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="CkC-bW-VRa"/>
                 <constraint firstItem="Ndh-y9-1QX" firstAttribute="top" secondItem="pnN-2M-nMZ" secondAttribute="bottom" id="FjI-f1-Cwn"/>
+                <constraint firstItem="Ozp-Sc-Taf" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="k62-BB-ULh"/>
                 <constraint firstItem="pnN-2M-nMZ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="kIC-6U-wgx"/>
                 <constraint firstItem="Ndh-y9-1QX" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="lGJ-Rg-i3C"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Ndh-y9-1QX" secondAttribute="bottom" id="t1b-OC-Gaa"/>
