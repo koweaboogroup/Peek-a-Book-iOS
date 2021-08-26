@@ -80,18 +80,18 @@ class TransactionViewController: UIViewController {
         }.bind(to: loadingView.rx.isHidden)
         .disposed(by: disposeBag)
                 
+        viewModel.loading.asObserver()
+            .bind(to: errorStateView.rx.isHidden)
+            .disposed(by: disposeBag)
+                
         confirmationButton.cornerRadius(10)
         confirmationButton.layer.applyShadow(color: .black, alpha: 0.5, x: 0, y: 2, blur: 4, spread: 0)
-        
-        viewModel.error.subscribe(onNext: { error in
-            self.errorStateView.isHidden = true
-            self.errorStateView.setError(errorMessage: "Internet anda busuk \(error)")
-        }).disposed(by: disposeBag)
         
         transactionTableView.register(UINib(nibName: XIBConstant.RentBookItemTableViewCell, bundle: nil), forCellReuseIdentifier: XIBConstant.RentBookItemTableViewCell)
         
         switch flagFrom {
         case .riwayatPenyewaan:
+            self.title = "Riwayat Penyewaan"
             viewModel.ordersForRenter.bind(to: transactionTableView.rx.items(cellIdentifier: XIBConstant.RentBookItemTableViewCell, cellType: RentBookItemTableViewCell.self)) {  (row, transaction, cell) in
                 cell.setViewModel(viewModel: self.viewModel)
                 cell.setViewController(viewController: self)
@@ -105,6 +105,7 @@ class TransactionViewController: UIViewController {
 
             errorStateView.setError(errorMessage: "Transaksi tidak ditemukan 😭 🙏")
         case .kelolaPenyewaan:
+            self.title = "Kelola Penyewaan"
             viewModel.ordersForLender.bind(to: transactionTableView.rx.items(cellIdentifier: XIBConstant.RentBookItemTableViewCell, cellType: RentBookItemTableViewCell.self)) {  (row, transaction, cell) in
                 cell.setViewModel(viewModel: self.viewModel)
                 cell.setViewController(viewController: self)
