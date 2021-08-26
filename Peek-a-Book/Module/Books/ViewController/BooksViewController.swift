@@ -15,15 +15,12 @@ class BooksViewController: UIViewController, CLLocationManagerDelegate, UITextFi
     @IBOutlet weak var nearestBookCollectionView: UICollectionView!
     @IBOutlet weak var fictionBookCollectionView: UICollectionView!
     @IBOutlet weak var nonFictionBookCollectionView: UICollectionView!
-<<<<<<< HEAD
     
     @IBOutlet weak var errorStateView: ErrorStateView!
     
     
-=======
     @IBOutlet weak var locationButton: UIButton!
     @IBOutlet weak var emptyNearestView: UIStackView!
->>>>>>> c2e62208932b6a6958e5540f60a26ddf048a582a
     let viewModel = BooksViewModel()
     let disposeBag = DisposeBag()
     let locationManager = CLLocationManager()
@@ -36,12 +33,9 @@ class BooksViewController: UIViewController, CLLocationManagerDelegate, UITextFi
         checkLocationServices()
         setupView()
         cellSelectedIndex()
-<<<<<<< HEAD
         setupErrorState()
         print("\(DateTime.getTimeStamp())")
-=======
         setupListener()
->>>>>>> c2e62208932b6a6958e5540f60a26ddf048a582a
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -193,11 +187,8 @@ class BooksViewController: UIViewController, CLLocationManagerDelegate, UITextFi
             isLocationEnabled(false)
             break
         case .authorizedAlways:
-<<<<<<< HEAD
             errorStateView.isHidden = true
-=======
             isLocationEnabled(true)
->>>>>>> c2e62208932b6a6958e5540f60a26ddf048a582a
             break
         default:
             isLocationEnabled(false)
