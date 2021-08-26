@@ -11,7 +11,7 @@ import RxCocoa
 import Kingfisher
 import RxKingfisher
 
-class ProfileLenderViewController: UIViewController {
+class ProfileLenderViewController: UIViewController, UICollectionViewDelegateFlowLayout{
     
     @IBOutlet weak var circleLenderImageView: CircleImageView!
     @IBOutlet weak var lenderNameLabel: UILabel!
@@ -39,9 +39,8 @@ class ProfileLenderViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        BooksCollectionView.delegate = self
         setupRx()
-        
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit Profile", style: .plain, target: self, action: #selector(editTapped))
     }
     
@@ -77,7 +76,7 @@ class ProfileLenderViewController: UIViewController {
             response.kota
         }.bind(to: lenderLocationLabel.rx.text)
         .disposed(by: disposeBag)
-                
+        
         
         BooksCollectionView.register(UINib(nibName: XIBConstant.LenderKatalogCollectionViewCell, bundle: nil), forCellWithReuseIdentifier: XIBConstant.LenderKatalogCollectionViewCell)
         
@@ -89,7 +88,7 @@ class ProfileLenderViewController: UIViewController {
             else{
                 cell.rootView.isHidden = false
                 cell.addView.isHidden = true
-
+                
                 if let image = book.images {
                     if !image.isEmpty {
                         cell.katalogBookImage.kf.setImage(with: URL(string: Constant.Network.baseUrl + (image[0].url ?? "")))
@@ -105,8 +104,8 @@ class ProfileLenderViewController: UIViewController {
             }
             
         }.disposed(by: disposeBag)
-
-
+        
+        
         BooksCollectionView.rx.modelSelected(LenderBook.self)
             .subscribe(onNext: { model in
                 if model.price != 0 {
@@ -127,21 +126,21 @@ class ProfileLenderViewController: UIViewController {
         })
         .disposed(by: disposeBag)
         
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-                let width = collectionView.bounds.width
-                let height = collectionView.bounds.height
-                
-                let cellWidth = (width/2) - 5
-                let cellHeight = (height/2.6)
-                
-                return CGSize(width: cellWidth, height: cellHeight)
-                
-            }
-
-            func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-                return CGSize(width: 0, height: 150)
-            }
         
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = BooksCollectionView.bounds.width
+        let height = BooksCollectionView.bounds.height
+        
+        print(width)
+        print(height)
+        
+        let cellWidth = (width/2) - 32
+        let cellHeight = (width/1.5)
+        
+        return CGSize(width: cellWidth, height: cellHeight)
         
     }
     
