@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,7 +19,9 @@
                 <outlet property="buttonBack" destination="oWs-rQ-hYa" id="4vG-Pc-Wr8"/>
                 <outlet property="buttonNotif" destination="OvU-sK-07A" id="f3x-Hy-b4t"/>
                 <outlet property="labelLocation" destination="elr-gW-pbz" id="0tL-Vw-2w7"/>
+                <outlet property="pinLocation" destination="Zc1-Gf-XPa" id="r3E-7f-yhi"/>
                 <outlet property="searchBar" destination="QCo-ES-9Ub" id="XDr-nW-DTh"/>
+                <outlet property="searchField" destination="UGv-FP-XEu" id="d8m-db-Zi1"/>
                 <outlet property="searchView" destination="iN0-l3-epB" id="IQw-lE-sDv"/>
             </connections>
         </placeholder>
@@ -44,6 +47,9 @@
                             </constraints>
                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="24"/>
                             <state key="normal" image="chevron.left" catalog="system"/>
+                            <connections>
+                                <action selector="backButton:" destination="-1" eventType="touchUpInside" id="eR2-aO-NtY"/>
+                            </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QCo-ES-9Ub">
                             <rect key="frame" x="44" y="0.0" width="265" height="50"/>
@@ -53,6 +59,7 @@
                                 </imageView>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Cari Buku" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UGv-FP-XEu">
                                     <rect key="frame" x="40" y="10" width="215" height="30"/>
+                                    <color key="textColor" name="primary-3"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
@@ -110,6 +117,9 @@
         <image name="chevron.left" catalog="system" width="96" height="128"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="pin-location" width="22" height="32"/>
+        <namedColor name="primary-3">
+            <color red="0.40000000000000002" green="0.68627450980392157" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

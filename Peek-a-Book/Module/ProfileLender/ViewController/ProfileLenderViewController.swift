@@ -44,7 +44,17 @@ class ProfileLenderViewController: UIViewController {
         
         //MARK: - Setup View Detail Toko
         viewModel.lenderProfile.subscribe (onNext: { response in
-            self.circleLenderImageView.setImage(fromUrl: Constant.Network.baseUrl + (response.images?[0].url ?? ""))
+            if let image = response.images {
+                if !image.isEmpty{
+                    self.circleLenderImageView.setImage(fromUrl: Constant.Network.baseUrl + (image[0].url ?? ""))
+                }else {
+                    self.circleLenderImageView.setBackgroundColor(color: #colorLiteral(red: 0.9058823529, green: 0.9568627451, blue: 1, alpha: 1))
+                    self.circleLenderImageView.setPlaceHolderImage(image: #imageLiteral(resourceName: "store"))
+                }
+            }else {
+                self.circleLenderImageView.setBackgroundColor(color: #colorLiteral(red: 0.9058823529, green: 0.9568627451, blue: 1, alpha: 1))
+                self.circleLenderImageView.setPlaceHolderImage(image: #imageLiteral(resourceName: "store"))
+            }
         }).disposed(by: disposeBag)
         
         viewModel.lenderProfile.asObservable().map { response in
@@ -77,7 +87,7 @@ class ProfileLenderViewController: UIViewController {
     @IBAction func kelolaPenyewaanGetTapped(_ sender: UITapGestureRecognizer) {
         let vc = ModuleBuilder.shared.goToTransactionViewController()
         vc.hidesBottomBarWhenPushed = true
-        vc.setLenderID(id: 6)
+        vc.setLenderID(id: DataManager.shared.getLenderId())
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

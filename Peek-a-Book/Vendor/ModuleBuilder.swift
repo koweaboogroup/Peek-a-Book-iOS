@@ -41,7 +41,7 @@ class ModuleBuilder {
     }
 
     func goToAlamatViewController() -> AddressSettingViewController {
-        let vc = AddressSettingViewController(nibName: XIBConstant.AlamatSettingVC, bundle: nil)
+        let vc = AddressSettingViewController(nibName: XIBConstant.AddressSettingViewController, bundle: nil)
         
         return vc
     }
@@ -84,6 +84,24 @@ class ModuleBuilder {
 
     func goToTransactionViewController() -> TransactionViewController {
         let vc = TransactionViewController(nibName: XIBConstant.TransactionViewController, bundle: nil)
+        
+        return vc
+    }
+    
+    func goToDetailOrderViewController() -> DetailOrderViewController {
+        let vc = DetailOrderViewController(nibName: XIBConstant.DetailOrderVC, bundle: nil)
+        
+        return vc
+    }
+    
+    func goToModalDetailOrderViewController() -> ModalDetailOrderViewController {
+        let vc = ModalDetailOrderViewController(nibName: XIBConstant.ModalDetailOrderVC, bundle: nil)
+        
+        return vc
+    }
+
+    func goToSearchViewController() -> SearchViewController {
+        let vc = SearchViewController(nibName: XIBConstant.SearchViewController, bundle: nil)
         
         return vc
     }

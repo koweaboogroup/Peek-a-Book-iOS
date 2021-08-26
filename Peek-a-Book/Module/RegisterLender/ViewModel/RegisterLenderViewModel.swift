@@ -10,6 +10,7 @@ import RxSwift
 
 struct RegisterLenderViewModel {
     let storeName: PublishSubject<String> = PublishSubject()
+    let addressName: PublishSubject<String> = PublishSubject()
     let user: PublishSubject<RegisterLenderResponse> = PublishSubject()
     
     let loading: PublishSubject<Bool> = PublishSubject()
@@ -17,6 +18,17 @@ struct RegisterLenderViewModel {
     
     let detailAddressPressed: PublishSubject<Bool> = PublishSubject()
     
+    func isAllTextFieldFilled() -> Observable<Bool> {
+        return Observable.combineLatest(
+            storeName.asObserver().startWith(""),
+            addressName.asObserver().startWith("")
+        )
+        .map { storeName, addressName in
+            return !storeName.isEmpty && !addressName.isEmpty
+        }
+        .startWith(false)
+    }
+
     func isStoreNameFilled() -> Observable<Bool> {
         return storeName.asObserver().startWith("")
             .map { (storeName) in
@@ -25,15 +37,12 @@ struct RegisterLenderViewModel {
     }
     
     public func registerLender(name: String, bio: String, user: String, alamat: String, provinsi: String, kota: String, kelurahan: String, kecamatan: String, longtitude: Float, latitude: Float) {
-        
         self.loading.onNext(true)
-        
         let registerLenderRequest = RegisterLenderRequest(name: name, bio: bio, user: user, alamat: alamat, provinsi: provinsi, kota: kota, kelurahan: kelurahan, kecamatan: kecamatan, longtitude: longtitude, latitude: latitude)
         
         RegisterLenderService.registerLender(registerLenderRequest: registerLenderRequest) { registerLenderResponse in
             self.loading.onNext(false)
             self.user.onNext(registerLenderResponse)
-            
         } failCompletion: { error in
             self.loading.onNext(false)
             self.error.onNext(error.errorDescription ?? "Error")

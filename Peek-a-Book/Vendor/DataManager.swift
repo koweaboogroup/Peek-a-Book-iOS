@@ -40,7 +40,7 @@ class DataManager {
     
     func fetchUser() {
         self.isUserFetched.onNext(false)
-        ProfileService.getProfile { user in
+        ProfileService.getProfile(userId: getUserIdByJwt()) { user in
             self.user = user
             self.isUserFetched.onNext(true)
         } failCompletion: { error in
@@ -67,6 +67,8 @@ class DataManager {
     
     func deleteCart() {
         cart = []
+        let cartKey = "cart"
+        UserDefaults.standard.removeObject(forKey: cartKey)
     }
     
     func saveCartToUserDefaults() {

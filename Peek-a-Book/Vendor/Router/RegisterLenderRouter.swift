@@ -31,7 +31,10 @@ enum RegisterLenderRouter: URLRequestConvertible {
         
         request.headers.add(.contentType("application/json"))
         request.headers.add(.accept("application/json"))
-        
+        if let jwt = UserDefaults.standard.string(forKey: "jwt"){
+            request.headers.add(.authorization(bearerToken: jwt))
+        }
+
         request.method = method
         
         return request
