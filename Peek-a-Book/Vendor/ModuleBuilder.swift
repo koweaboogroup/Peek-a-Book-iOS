@@ -105,4 +105,10 @@ class ModuleBuilder {
         
         return vc
     }
+    
+    func goToInsertBookViewController() -> InsertBookViewController {
+        let vc = InsertBookViewController(nibName: XIBConstant.InsertBookViewController, bundle: nil)
+        
+        return vc
+    }
 }
