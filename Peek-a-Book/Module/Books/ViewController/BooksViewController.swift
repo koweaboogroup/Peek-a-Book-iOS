@@ -17,11 +17,8 @@ class BooksViewController: UIViewController, CLLocationManagerDelegate, UITextFi
     @IBOutlet weak var fictionBookCollectionView: UICollectionView!
     @IBOutlet weak var nonFictionBookCollectionView: UICollectionView!
     
-    @IBOutlet weak var errorStateView: ErrorStateView!
-    
-    
     @IBOutlet weak var locationButton: UIButton!
-    @IBOutlet weak var emptyNearestView: UIStackView!
+    @IBOutlet weak var emptyNearestView: ErrorStateView!
     let viewModel = BooksViewModel()
     let disposeBag = DisposeBag()
     let locationManager = CLLocationManager()
@@ -181,7 +178,6 @@ class BooksViewController: UIViewController, CLLocationManagerDelegate, UITextFi
             isLocationEnabled(false)
             break
         case .authorizedAlways:
-            errorStateView.isHidden = true
             isLocationEnabled(true)
             break
         default:
