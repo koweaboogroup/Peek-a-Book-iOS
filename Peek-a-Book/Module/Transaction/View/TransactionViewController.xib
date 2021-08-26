@@ -18,6 +18,7 @@
             <connections>
                 <outlet property="confirmationButton" destination="9Wj-oG-YrB" id="7dl-Jp-uMM"/>
                 <outlet property="datePickerView" destination="Vv3-56-sdZ" id="ZcS-yA-ccT"/>
+                <outlet property="errorStateView" destination="Aup-TP-Juq" id="HaE-DV-82T"/>
                 <outlet property="loadingView" destination="QI1-7q-bbw" id="70Y-dV-OOs"/>
                 <outlet property="pickerView" destination="ube-dz-WRh" id="Hgl-2Z-8jW"/>
                 <outlet property="statusButton" destination="L6Q-OU-kdy" id="ELN-R0-Zfq"/>
@@ -32,6 +33,10 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="250" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1FZ-Jl-WM6">
+                    <rect key="frame" x="20" y="117" width="374" height="725"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
                 <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="VZw-45-dYd">
                     <rect key="frame" x="20" y="64" width="374" height="33"/>
                     <subviews>
@@ -51,10 +56,10 @@
                         </button>
                     </subviews>
                 </stackView>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="250" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1FZ-Jl-WM6">
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aup-TP-Juq" customClass="ErrorStateView" customModule="Peek_a_Book" customModuleProvider="target">
                     <rect key="frame" x="20" y="117" width="374" height="725"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                </tableView>
+                </view>
                 <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="QI1-7q-bbw">
                     <rect key="frame" x="197" y="438" width="20" height="20"/>
                 </activityIndicatorView>
@@ -94,7 +99,7 @@
                                     </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status Penyewaan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vIL-9U-iNF">
-                                    <rect key="frame" x="28" y="21" width="144.5" height="17"/>
+                                    <rect key="frame" x="28" y="18" width="141.5" height="20"/>
                                     <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -146,20 +151,20 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P8C-MH-hk4">
                             <rect key="frame" x="0.0" y="546" width="414" height="350"/>
                             <subviews>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="klx-Gw-MuJ" userLabel="View Garis">
+                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="klx-Gw-MuJ" userLabel="View Garis">
                                     <rect key="frame" x="20" y="37" width="374" height="1"/>
                                     <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="1" id="qSY-94-WvQ"/>
                                     </constraints>
                                 </view>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Konfirmasi Tanggal Penerimaan Buku" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xL6-Dg-tzy">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Konfirmasi Tanggal Penerimaan Buku" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xL6-Dg-tzy">
                                     <rect key="frame" x="20" y="10" width="374" height="17"/>
                                     <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="Vv3-56-sdZ">
+                                <datePicker contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="Vv3-56-sdZ">
                                     <rect key="frame" x="20" y="48" width="374" height="218"/>
                                 </datePicker>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Wj-oG-YrB">
@@ -215,6 +220,8 @@
                 <constraint firstItem="1FZ-Jl-WM6" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="8wl-xB-Ytf"/>
                 <constraint firstItem="ube-dz-WRh" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="LKp-YL-lun"/>
                 <constraint firstItem="Vog-gB-23a" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="NUf-PQ-IZt"/>
+                <constraint firstItem="Aup-TP-Juq" firstAttribute="bottom" secondItem="1FZ-Jl-WM6" secondAttribute="bottom" id="OBe-dd-UW4"/>
+                <constraint firstItem="Aup-TP-Juq" firstAttribute="trailing" secondItem="1FZ-Jl-WM6" secondAttribute="trailing" id="Qkt-sC-BUJ"/>
                 <constraint firstAttribute="bottom" secondItem="ube-dz-WRh" secondAttribute="bottom" id="ZfP-FE-TaZ"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="1FZ-Jl-WM6" secondAttribute="bottom" constant="20" id="b3N-s2-Zd4"/>
                 <constraint firstItem="QI1-7q-bbw" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="brk-Gl-3Zo"/>
@@ -222,7 +229,9 @@
                 <constraint firstItem="VZw-45-dYd" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="hdJ-T1-OrA"/>
                 <constraint firstItem="Vog-gB-23a" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="i3i-8x-E1D"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="VZw-45-dYd" secondAttribute="trailing" constant="20" id="jzm-JX-o8S"/>
+                <constraint firstItem="Aup-TP-Juq" firstAttribute="leading" secondItem="1FZ-Jl-WM6" secondAttribute="leading" id="kRW-sz-UXk"/>
                 <constraint firstAttribute="bottom" secondItem="Vog-gB-23a" secondAttribute="bottom" id="nYI-YE-yAJ"/>
+                <constraint firstItem="Aup-TP-Juq" firstAttribute="top" secondItem="1FZ-Jl-WM6" secondAttribute="top" id="pbA-VP-VHk"/>
                 <constraint firstItem="VZw-45-dYd" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="rIc-Aq-r67"/>
                 <constraint firstItem="Vog-gB-23a" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="s8v-Zc-gqN"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="1FZ-Jl-WM6" secondAttribute="trailing" constant="20" id="sJQ-1d-cwj"/>

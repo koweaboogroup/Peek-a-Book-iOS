@@ -23,6 +23,7 @@ class TransactionViewController: UIViewController {
     @IBOutlet weak var statusPickerView: UIPickerView!
     @IBOutlet weak var statusView: UIView!
     @IBOutlet weak var statusButton: UIButton!
+    @IBOutlet weak var errorStateView: ErrorStateView!
     
     private let viewModel = RentViewModel()
     private let disposeBag = DisposeBag()
@@ -78,9 +79,14 @@ class TransactionViewController: UIViewController {
             !item
         }.bind(to: loadingView.rx.isHidden)
         .disposed(by: disposeBag)
-        
+                
         confirmationButton.cornerRadius(10)
         confirmationButton.layer.applyShadow(color: .black, alpha: 0.5, x: 0, y: 2, blur: 4, spread: 0)
+        
+        viewModel.error.subscribe(onNext: { error in
+            self.errorStateView.isHidden = true
+            self.errorStateView.setError(errorMessage: "Internet anda busuk \(error)")
+        }).disposed(by: disposeBag)
         
         transactionTableView.register(UINib(nibName: XIBConstant.RentBookItemTableViewCell, bundle: nil), forCellReuseIdentifier: XIBConstant.RentBookItemTableViewCell)
         
@@ -91,12 +97,26 @@ class TransactionViewController: UIViewController {
                 cell.setViewController(viewController: self)
                 cell.response = transaction
                 }.disposed(by: disposeBag)
+            
+            viewModel.ordersForRenter.asObserver().map{ item in
+                !item.isEmpty
+            }.bind(to: errorStateView.rx.isHidden)
+            .disposed(by: disposeBag)
+
+            errorStateView.setError(errorMessage: "Transaksi tidak ditemukan 😭 🙏")
         case .kelolaPenyewaan:
             viewModel.ordersForLender.bind(to: transactionTableView.rx.items(cellIdentifier: XIBConstant.RentBookItemTableViewCell, cellType: RentBookItemTableViewCell.self)) {  (row, transaction, cell) in
                 cell.setViewModel(viewModel: self.viewModel)
                 cell.setViewController(viewController: self)
                 cell.response = transaction
                 }.disposed(by: disposeBag)
+            
+            viewModel.ordersForLender.asObserver().map{ item in
+                !item.isEmpty
+            }.bind(to: errorStateView.rx.isHidden)
+            .disposed(by: disposeBag)
+    
+            errorStateView.setError(errorMessage: "Transaksi tidak ditemukan 😭 🙏")
         case .none:
             break
         }

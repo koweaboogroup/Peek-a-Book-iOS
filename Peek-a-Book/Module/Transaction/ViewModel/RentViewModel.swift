@@ -79,6 +79,7 @@ struct RentViewModel{
             }
             self.ordersForRenter.onNext(rentObj)
         } failCompletion: { error in
+            print("Masuk sini")
             self.loading.onNext(false)
             self.error.onNext(error.errorDescription!)
         }

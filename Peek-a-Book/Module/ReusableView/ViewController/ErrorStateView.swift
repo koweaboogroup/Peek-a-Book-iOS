@@ -24,6 +24,10 @@ class ErrorStateView: UIView {
         commonInit()
     }
     
+    func setError(errorMessage: String) {
+        errorLabel.text = errorMessage
+    }
+    
     func commonInit() {
         errorStateView = loadViewFromNib(nibName: XIBConstant.ErrorStateView)
         errorStateView.frame = self.bounds
