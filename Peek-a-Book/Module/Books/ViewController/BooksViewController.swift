@@ -11,6 +11,7 @@ import RxCocoa
 import CoreLocation
 
 class BooksViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDelegate {
+    @IBOutlet weak var loadingView: UIActivityIndicatorView!
     @IBOutlet weak var searchView: SearchView!
     @IBOutlet weak var nearestBookCollectionView: UICollectionView!
     @IBOutlet weak var fictionBookCollectionView: UICollectionView!
@@ -29,11 +30,10 @@ class BooksViewController: UIViewController, CLLocationManagerDelegate, UITextFi
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupView()
         viewModel.getListBook()
         checkLocationServices()
-        setupView()
         cellSelectedIndex()
-        setupErrorState()
         print("\(DateTime.getTimeStamp())")
         setupListener()
     }
@@ -71,18 +71,17 @@ class BooksViewController: UIViewController, CLLocationManagerDelegate, UITextFi
         showNavigation(false)
     }
     
-    private func setupErrorState(){
-        
-        errorStateView.errorImage?.image = Constant.Ilustration.emptyNotif
-        errorStateView.errorLabel?.text = "Mohon mengaktifkan GPS agar kami bisa memberikan rekomendasi buku yang ada di dekatmu."
-    }
-    
+    private func setupView() {
+        viewModel.loading.asObserver().map{ item in
+            !item
+        }.bind(to: loadingView.rx.isHidden)
+            .disposed(by: disposeBag)
 
-    
-    private func setupView(){
+        viewModel.loading.asObserver()
+            .bind(to: loadingView.rx.isAnimating)
+            .disposed(by: disposeBag)
+
         searchView.hideNavigation(true)
-        
-        
         
         nearestBookCollectionView.register(UINib(nibName: XIBConstant.BooksHomescreenCollectionViewCell, bundle: nil), forCellWithReuseIdentifier: XIBConstant.BooksHomescreenCollectionViewCell)
         
@@ -165,24 +164,19 @@ class BooksViewController: UIViewController, CLLocationManagerDelegate, UITextFi
                     self.searchView.labelLocation.text = placemark?.locality ?? placemark?.subAdministrativeArea ?? placemark?.administrativeArea ?? "Lokasi Tidak Ditemukan"
                 }
                 viewModel.getListBook(yourLocation: location)
-            }else{
-                setupErrorState()
             }
             isLocationEnabled(true)
             break
         case .denied:
-            
             // Show alert
             searchView.labelLocation.text = "Aktifkan Lokasi"
             isLocationEnabled(false)
             break
         case .notDetermined:
-            
             locationManager.requestWhenInUseAuthorization()
             isLocationEnabled(false)
             break
         case .restricted:
-            
             // Show alert
             isLocationEnabled(false)
             break

@@ -14,6 +14,7 @@ class ProfileViewController: UIViewController {
     // MARK: -Deklarasi IBOutlet
     @IBOutlet weak var profileImage: CircleImageView!
     @IBOutlet weak var profileNameLabel: UILabel!
+    @IBOutlet weak var loadingView: UIActivityIndicatorView!
     
     private var disposeBag = DisposeBag()
     
@@ -24,13 +25,11 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBar()
-        fetchProfile()
         setupView()
+        fetchProfile()
     }
     
     func setNavigationBar(){
-        self.navigationItem.title = "Profil Saya"
-        
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "DM Serif Text", size: 19)!]
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "bell.fill"), style: .done, target: self, action: #selector(notificationTapped))
@@ -52,6 +51,15 @@ class ProfileViewController: UIViewController {
     }
     
     private func setupView(){
+        profileViewModel.loading.asObserver()
+            .bind(to: loadingView.rx.isAnimating)
+            .disposed(by: disposeBag)
+        
+        profileViewModel.loading.asObserver().map{ item in
+            !item
+        }.bind(to: loadingView.rx.isHidden)
+            .disposed(by: disposeBag)
+        
         profileImage.setPlaceHolderImage(image: UIImage(systemName: "person.fill")!)
         profileImage.setBackgroundColor(color: #colorLiteral(red: 0.9058823529, green: 0.9568627451, blue: 1, alpha: 1))
         profileViewModel.user.subscribe(onNext: { user in
@@ -73,6 +81,7 @@ class ProfileViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         showNavigation(false)
+        self.title = ""
     }
     
     // MARK: -Deklarasi Action Button

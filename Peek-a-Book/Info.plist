@@ -39,8 +39,12 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>Boleh akses kamera</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Kami akan menggunakan lokasi untuk memberikan rekomendasi buku yang ada di dekat Anda.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Boleh akses gallery</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>DMSerifText-Italic.ttf</string>
@@ -86,10 +90,6 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>NSCameraUsageDescription</key>
-	<string>Boleh akses kamera</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Boleh akses gallery</string>
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>
 </dict>

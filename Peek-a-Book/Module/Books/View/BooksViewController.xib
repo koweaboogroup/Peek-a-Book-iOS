@@ -11,12 +11,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BooksViewController" customModule="Peek_a_Book" customModuleProvider="target">
             <connections>
-<<<<<<< HEAD
-                <outlet property="errorStateView" destination="lFd-fh-TPv" id="WRx-mv-rAC"/>
-=======
                 <outlet property="emptyNearestView" destination="5wO-pw-pre" id="HdN-pK-Isg"/>
->>>>>>> c2e62208932b6a6958e5540f60a26ddf048a582a
                 <outlet property="fictionBookCollectionView" destination="oGT-q4-AcU" id="Z5c-dl-D1P"/>
+                <outlet property="loadingView" destination="Ozp-Sc-Taf" id="gTI-aE-9Ge"/>
                 <outlet property="locationButton" destination="Szm-wC-moN" id="IOn-lP-8nR"/>
                 <outlet property="nearestBookCollectionView" destination="6K4-LY-Uaa" id="o0G-hG-v2r"/>
                 <outlet property="nonFictionBookCollectionView" destination="KAh-Gt-U9v" id="b7u-iN-3eO"/>
@@ -67,12 +64,6 @@
                                                         <inset key="sectionInset" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
                                                     </collectionViewFlowLayout>
                                                 </collectionView>
-<<<<<<< HEAD
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lFd-fh-TPv" customClass="ErrorStateView" customModule="Peek_a_Book" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="56.5" width="414" height="299"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                </view>
-=======
                                                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Szm-wC-moN">
                                                     <rect key="frame" x="290" y="20" width="104" height="30"/>
                                                     <state key="normal" title="Aktifkan Lokasi"/>
@@ -98,7 +89,6 @@
                                                         </label>
                                                     </subviews>
                                                 </stackView>
->>>>>>> c2e62208932b6a6958e5540f60a26ddf048a582a
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
@@ -106,21 +96,14 @@
                                                 <constraint firstItem="6K4-LY-Uaa" firstAttribute="leading" secondItem="A3w-K9-LYa" secondAttribute="leading" id="4Pi-f3-VBj"/>
                                                 <constraint firstItem="5wO-pw-pre" firstAttribute="bottom" secondItem="6K4-LY-Uaa" secondAttribute="bottom" id="9gr-1U-5jp"/>
                                                 <constraint firstItem="wVp-S9-Nkp" firstAttribute="leading" secondItem="A3w-K9-LYa" secondAttribute="leading" constant="20" id="BQH-jV-Bou"/>
-<<<<<<< HEAD
-                                                <constraint firstItem="lFd-fh-TPv" firstAttribute="height" secondItem="6K4-LY-Uaa" secondAttribute="height" id="U6H-Nn-1e2"/>
-                                                <constraint firstItem="wVp-S9-Nkp" firstAttribute="top" secondItem="A3w-K9-LYa" secondAttribute="top" constant="20" id="Un5-wZ-Iy1"/>
-                                                <constraint firstItem="lFd-fh-TPv" firstAttribute="top" secondItem="wVp-S9-Nkp" secondAttribute="bottom" constant="10" id="Wya-bL-ozR"/>
-                                                <constraint firstItem="lFd-fh-TPv" firstAttribute="centerX" secondItem="A3w-K9-LYa" secondAttribute="centerX" id="gjr-lY-eAe"/>
-=======
                                                 <constraint firstItem="Szm-wC-moN" firstAttribute="bottom" secondItem="wVp-S9-Nkp" secondAttribute="bottom" id="GAK-ik-g2U"/>
                                                 <constraint firstItem="wVp-S9-Nkp" firstAttribute="top" secondItem="A3w-K9-LYa" secondAttribute="top" constant="20" id="Un5-wZ-Iy1"/>
                                                 <constraint firstAttribute="trailing" secondItem="Szm-wC-moN" secondAttribute="trailing" constant="20" id="X8b-3A-LiN"/>
                                                 <constraint firstItem="5wO-pw-pre" firstAttribute="top" secondItem="6K4-LY-Uaa" secondAttribute="top" id="Xka-Ur-aun"/>
                                                 <constraint firstItem="Szm-wC-moN" firstAttribute="top" secondItem="wVp-S9-Nkp" secondAttribute="top" id="bkU-N7-0q4"/>
                                                 <constraint firstItem="5wO-pw-pre" firstAttribute="leading" secondItem="6K4-LY-Uaa" secondAttribute="leading" id="fdY-xV-hMf"/>
->>>>>>> c2e62208932b6a6958e5540f60a26ddf048a582a
                                                 <constraint firstAttribute="trailing" secondItem="6K4-LY-Uaa" secondAttribute="trailing" id="hmC-MU-sxM"/>
-                                                <constraint firstItem="lFd-fh-TPv" firstAttribute="width" secondItem="6K4-LY-Uaa" secondAttribute="width" id="owp-ff-LSJ"/>
+                                                <constraint firstAttribute="width" secondItem="6K4-LY-Uaa" secondAttribute="width" id="owp-ff-LSJ"/>
                                                 <constraint firstItem="6K4-LY-Uaa" firstAttribute="top" secondItem="wVp-S9-Nkp" secondAttribute="bottom" constant="10" id="yAM-7u-LaG"/>
                                             </constraints>
                                         </view>
@@ -234,13 +217,18 @@
                         <constraint firstItem="KWI-8v-LJM" firstAttribute="top" secondItem="Ndh-y9-1QX" secondAttribute="top" id="led-6c-mUw"/>
                     </constraints>
                 </scrollView>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Ozp-Sc-Taf">
+                    <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                </activityIndicatorView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" name="primary-5"/>
             <constraints>
                 <constraint firstItem="pnN-2M-nMZ" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="4v6-yO-f4A"/>
                 <constraint firstItem="KWI-8v-LJM" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="4zu-7J-db3"/>
+                <constraint firstItem="Ozp-Sc-Taf" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="CkC-bW-VRa"/>
                 <constraint firstItem="Ndh-y9-1QX" firstAttribute="top" secondItem="pnN-2M-nMZ" secondAttribute="bottom" id="FjI-f1-Cwn"/>
+                <constraint firstItem="Ozp-Sc-Taf" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="k62-BB-ULh"/>
                 <constraint firstItem="pnN-2M-nMZ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="kIC-6U-wgx"/>
                 <constraint firstItem="Ndh-y9-1QX" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="lGJ-Rg-i3C"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Ndh-y9-1QX" secondAttribute="bottom" id="t1b-OC-Gaa"/>
