@@ -41,6 +41,7 @@ class RentBookItemTableViewCell: UITableViewCell{
     }
     
     override func awakeFromNib() {
+        rootView.cornerRadius(20)
         rootView.layer.applyShadow(
             color: .black,
             alpha: 0.1,
@@ -112,10 +113,15 @@ class RentBookItemTableViewCell: UITableViewCell{
                 
                 if isFromRenter {
                     switch idStatusRent {
-                    case RentStatus.awaiting.getID():
+                    case RentStatus.waitingConfirmation.getID():
                         rentDeadline.isHidden = true
                         manipulateButtonView(button: warningButton, isHidden: false, text: "Batalkan")
                         manipulateButtonView(button: activeButton, isHidden: true)
+                        break
+                    case RentStatus.awaiting.getID():
+                        rentDeadline.isHidden = true
+                        manipulateButtonView(button: warningButton, isHidden: true)
+                        manipulateButtonView(button: activeButton, isHidden: false, text: "Menunggu Dikirim", alpha: 0.5, isEnabled: false)
                         break
                     case RentStatus.shipping.getID():
                         rentDeadline.isHidden = true
