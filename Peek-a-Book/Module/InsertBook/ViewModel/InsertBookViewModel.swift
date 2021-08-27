@@ -36,7 +36,7 @@ struct InsertBookViewModel {
             let bookRequest = [
                 "title": title,
                 "isbn": isbn,
-                "genre": String(genre)
+                "book_genre": String(genre)
             ]
             
             BookService.addBook(bookRequest: bookRequest) { id in
