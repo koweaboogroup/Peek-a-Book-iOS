@@ -32,5 +32,18 @@ class BaseRequest {
         
         completionHandler(request)
     }
+    
+//    MARK: - MultiPart
+    static func upload(file: Data, body: Data, completionHandler: @escaping (DataResponse<LenderBook, AFError>) -> Void) {
+        
+        AF.upload(multipartFormData: { multipartFormData in
+            multipartFormData.append(file, withName: "files.images")
+            
+            multipartFormData.append(body, withName: "data")
+        }, to: Constant.Network.baseUrl + "/lender-books")
+            .responseDecodable(of: LenderBook.self) { response in
+                completionHandler(response)
+            }
+    }
 }
 

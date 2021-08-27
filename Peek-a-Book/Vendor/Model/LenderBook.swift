@@ -30,6 +30,19 @@ struct LenderBook: Codable {
     }
 }
 
+struct LenderBookRequest: Codable {
+    let price: Int
+    let bookCondition, lender, book: Int
+    let page: Int
+    let language: String
+
+    enum CodingKeys: String, CodingKey {
+        case price
+        case bookCondition = "book_condition"
+        case lender, book, page, language
+    }
+}
+
 struct LenderBookWithLenderId: Codable {
     let id, price: Int?
     let bookCondition: Int?
