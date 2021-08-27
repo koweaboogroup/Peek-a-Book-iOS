@@ -24,6 +24,9 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fBA-m4-PXZ">
                     <rect key="frame" x="143" y="178" width="104" height="30"/>
                     <state key="normal" title="Edit"/>
+                    <connections>
+                        <action selector="choosePhotoDidTapped:" destination="-1" eventType="touchUpInside" id="QA8-mK-56Y"/>
+                    </connections>
                 </button>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YJh-tO-mtI" customClass="CircleImageView" customModule="Peek_a_Book" customModuleProvider="target">
                     <rect key="frame" x="143" y="64" width="104" height="104"/>

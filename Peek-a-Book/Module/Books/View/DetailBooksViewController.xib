@@ -36,6 +36,7 @@
                 <outlet property="lenderImage" destination="q4c-5P-BGG" id="bae-V6-SZx"/>
                 <outlet property="lenderStoreLocationLabel" destination="und-64-r1U" id="cPq-0i-SGj"/>
                 <outlet property="lenderStoreNameLabel" destination="MM4-R8-dbW" id="Q2B-h2-U1J"/>
+                <outlet property="loadingView" destination="clb-Px-AAD" id="9pg-lX-hOQ"/>
                 <outlet property="tambahKeranjangButton" destination="0TB-zT-6p9" id="zgj-Fw-jHc"/>
                 <outlet property="totalBookButtonView" destination="wlp-nD-z8U" id="6xg-uU-gFJ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -100,7 +101,7 @@
                                                             <rect key="frame" x="18" y="-8" width="194" height="75"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="q4c-5P-BGG">
-                                                                    <rect key="frame" x="0.0" y="18.5" width="38" height="38"/>
+                                                                    <rect key="frame" x="0.0" y="0.5" width="38" height="38"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="38" id="PiU-CB-XsJ"/>
                                                                         <constraint firstAttribute="height" constant="38" id="c5V-zv-2JR"/>
@@ -336,6 +337,9 @@
                         <constraint firstItem="MPz-LW-MOm" firstAttribute="leading" secondItem="aSq-IV-pBI" secondAttribute="leading" id="xOk-2Z-h8r"/>
                     </constraints>
                 </scrollView>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="clb-Px-AAD">
+                    <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                </activityIndicatorView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="de1-YO-Q6r" userLabel="Bottom View">
                     <rect key="frame" x="0.0" y="716" width="414" height="180"/>
                     <subviews>
@@ -424,12 +428,14 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="clb-Px-AAD" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="5fO-lH-79c"/>
                 <constraint firstItem="de1-YO-Q6r" firstAttribute="top" secondItem="aSq-IV-pBI" secondAttribute="bottom" id="AHo-Lh-fai"/>
                 <constraint firstItem="de1-YO-Q6r" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Mwk-jd-jbK"/>
                 <constraint firstItem="MPz-LW-MOm" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="PGV-HF-GDH"/>
                 <constraint firstItem="aSq-IV-pBI" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="QWV-49-uvA"/>
                 <constraint firstAttribute="bottom" secondItem="de1-YO-Q6r" secondAttribute="bottom" id="Y6N-uS-1fK"/>
                 <constraint firstItem="aSq-IV-pBI" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="lSD-lm-0G4"/>
+                <constraint firstItem="clb-Px-AAD" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="lxc-bs-zbv"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="aSq-IV-pBI" secondAttribute="trailing" id="m8M-1S-zsg"/>
                 <constraint firstAttribute="trailing" secondItem="de1-YO-Q6r" secondAttribute="trailing" id="oiE-wT-8Bg"/>
             </constraints>

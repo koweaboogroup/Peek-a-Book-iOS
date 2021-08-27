@@ -188,8 +188,16 @@ class DetailOrderViewController: UIViewController {
         viewModel.order.asObservable().map{ order in
             order.lenderBooks ?? []
         }.bind(to: detailBukuTableView.rx.items(cellIdentifier: "ItemKeranjangTableViewCell", cellType: ItemKeranjangTableViewCell.self)){(row, lenderBook, cell) in
-            let url = URL(string: Constant.Network.baseUrl + (lenderBook.images?[0].url ?? ""))
-            cell.bookImage.kf.setImage(with: url)
+            if let image = lenderBook.images {
+                if !image.isEmpty {
+                    let url = URL(string: Constant.Network.baseUrl + (image[0].url ?? ""))
+                    cell.bookImage.kf.setImage(with: url)
+                }else{
+                    cell.bookImage.image = UIImage (systemName: "book.fill")
+                }
+            }else{
+                cell.bookImage.image = UIImage (systemName: "book.fill")
+            }
             cell.bookTitle.text = lenderBook.book?.title
             cell.bookWriter.text = lenderBook.book?.author
             

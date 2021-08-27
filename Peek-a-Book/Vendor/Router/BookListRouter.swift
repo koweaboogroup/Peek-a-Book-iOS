@@ -11,25 +11,27 @@ import Alamofire
 enum BookListRouter: URLRequestConvertible {
     
     case get
+    case getSearch(query: String)
     
     var method: HTTPMethod {
         switch self {
         case .get: return .get
+        case .getSearch: return .get
         }
     }
     
     var urlBooks: URL {
-        return URL(string: Constant.Network.baseUrl + "/lender-books")!
+        switch self {
+        case .get:
+            return URL(string: Constant.Network.baseUrl + "/lender-books")!
+        case .getSearch(let query):
+            return URL(string: Constant.Network.baseUrl + "/lender-books?book.title_contains=\(query)")!
+        }
     }
     
     func asURLRequest() throws -> URLRequest {
         var request = URLRequest(url: urlBooks)
-        
-        switch self {
-        case .get:
-            break
-        }
-        
+                
         request.headers.add(.contentType("application/json"))
         request.headers.add(.accept("application/json"))
         

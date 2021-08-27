@@ -10,13 +10,17 @@ import RxSwift
 import CoreLocation
 
 class BooksViewModel {
+    public let loading : PublishSubject<Bool> = PublishSubject()
     public let error : PublishSubject<String> = PublishSubject()
     public let nearestListBook: PublishSubject<[LenderBook]> = PublishSubject()
     public let listBookNonFiction : PublishSubject<[LenderBook]> = PublishSubject()
     public let listBookFiction : PublishSubject<[LenderBook]> = PublishSubject()
+    public let listBook: PublishSubject<[LenderBook]> = PublishSubject()
     
     func getListBook(){
+        loading.onNext(true)
         BookService.getListBook { book in
+            self.loading.onNext(false)
             var fictionBook = [LenderBook]()
             var nonFictionBook = [LenderBook]()
             for item in book {
@@ -30,6 +34,7 @@ class BooksViewModel {
                 }
             }
         } failCompletion: { error in
+            self.loading.onNext(false)
             self.error.onNext(error.errorDescription ?? "Data Tidak Ditemukan")
         }
     }
@@ -53,6 +58,35 @@ class BooksViewModel {
             self.error.onNext(error.errorDescription ?? "Data Tidak Ditemukan")
         }
         
+    }
+    
+    func getListBook(query: String, isFiction: Bool) {
+        //self.loading.onNext(true)
+        BookService.getListBook(query: query) { book in
+           // self.loading.onNext(false)
+            var fictionBook = [LenderBook]()
+            var nonFictionBook = [LenderBook]()
+            if !query.isEmpty{
+                self.listBook.onNext(book)
+            } else if isFiction {
+                for item in book {
+                    if item.book?.bookGenre == 1 {
+                        fictionBook.append(item)
+                        self.listBook.onNext(fictionBook)
+                    }
+                }
+            }else{
+                for item in book {
+                    if item.book?.bookGenre == 2 {
+                        nonFictionBook.append(item)
+                        self.listBook.onNext(nonFictionBook)
+                    }
+                }
+            }
+        } failCompletion: { error in
+            //self.loading.onNext(false)
+            self.error.onNext(error.errorDescription ?? "Data Tidak Ditemukan")
+        }        
     }
 }
 

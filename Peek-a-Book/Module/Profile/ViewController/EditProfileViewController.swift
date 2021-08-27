@@ -18,11 +18,14 @@ class EditProfileViewController: UIViewController {
     private var profileViewModel = ProfileViewModel()
     private var disposedBag = DisposeBag()
     
+    private var imagePicker: ImagePicker?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
         setNavigationBar()
+        setupObject()
         fetchProfile()
         setupRx()
     }
@@ -40,6 +43,10 @@ class EditProfileViewController: UIViewController {
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = .clear
+    }
+    
+    private func setupObject(){
+        imagePicker = ImagePicker(presentationController: self, delegate: self)
     }
     
     private func fetchProfile(){
@@ -78,4 +85,15 @@ class EditProfileViewController: UIViewController {
     @IBAction func detailAddressGetTapped(_ sender: UITapGestureRecognizer) {
     }
     
+    @IBAction func editProfileTapped(_ sender: UIButton) {
+        imagePicker?.present(from: sender)
+    }
+}
+
+extension EditProfileViewController: ImagePickerDelegate {
+    func didSelect(image: UIImage?) {
+        if let image = image {
+            self.imageProfile.setImage(image: image)
+        }
+    }
 }
