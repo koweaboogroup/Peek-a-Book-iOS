@@ -23,7 +23,7 @@ class ProfileLenderViewController: UIViewController, UICollectionViewDelegateFlo
     private let viewModel = ProfileLenderViewModel()
     private let disposeBag = DisposeBag()
     private var lenderId: Int = 0
-    private var userPenyewa: Bool = true
+    private var userPenyewa: Bool = false
     
     func setLenderId(id: Int) {
         self.lenderId = id
@@ -37,12 +37,12 @@ class ProfileLenderViewController: UIViewController, UICollectionViewDelegateFlo
         viewModel.getLenderProfile(lenderId: lenderId)
         viewModel.getListBook(lenderId: lenderId, userPenyewa: userPenyewa)
         setView()
+        setupRx()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         BooksCollectionView.delegate = self
-        setupRx()
     }
     
     func setView() {
@@ -97,7 +97,7 @@ class ProfileLenderViewController: UIViewController, UICollectionViewDelegateFlo
                 cell.rootView.isHidden = true
                 cell.addView.isHidden = false
             }
-            else{
+            else {
                 cell.rootView.isHidden = false
                 cell.addView.isHidden = true
                 
@@ -107,7 +107,7 @@ class ProfileLenderViewController: UIViewController, UICollectionViewDelegateFlo
                     } else {
                         cell.katalogBookImage.image = UIImage(systemName: "book.fill")
                     }
-                }else {
+                } else {
                     cell.katalogBookImage.image = UIImage(systemName: "book.fill")
                 }
                 cell.KatalogBookTitle.text = book.book?.title
@@ -141,6 +141,7 @@ class ProfileLenderViewController: UIViewController, UICollectionViewDelegateFlo
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = BooksCollectionView.bounds.width
+        
         let cellWidth = (width/2) - 32
         let cellHeight = (width/1.5)
         

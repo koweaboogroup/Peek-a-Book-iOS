@@ -16,8 +16,15 @@ class BooksViewController: UIViewController, CLLocationManagerDelegate, UITextFi
     @IBOutlet weak var nearestBookCollectionView: UICollectionView!
     @IBOutlet weak var fictionBookCollectionView: UICollectionView!
     @IBOutlet weak var nonFictionBookCollectionView: UICollectionView!
+    
     @IBOutlet weak var locationButton: UIButton!
-    @IBOutlet weak var emptyNearestView: UIStackView!
+    
+    @IBOutlet weak var emptyNearestView: ErrorStateView!
+    
+    @IBOutlet weak var emptyFictionView: ErrorStateView!
+    
+    @IBOutlet weak var emptyNonFictionView: ErrorStateView!
+    
     let viewModel = BooksViewModel()
     let disposeBag = DisposeBag()
     let locationManager = CLLocationManager()
@@ -30,6 +37,7 @@ class BooksViewController: UIViewController, CLLocationManagerDelegate, UITextFi
         viewModel.getListBook()
         checkLocationServices()
         cellSelectedIndex()
+        print("\(DateTime.getTimeStamp())")
         setupListener()
     }
     
@@ -67,7 +75,14 @@ class BooksViewController: UIViewController, CLLocationManagerDelegate, UITextFi
     }
     
     private func setupView() {
-        //loadingView.startAnimating()
+        viewModel.error
+            .subscribe(onNext: { error in
+                if !error.isEmpty {
+                    self.view.backgroundColor = .black
+                }
+        })
+            .disposed(by: disposeBag)
+        
         viewModel.loading.asObserver().map{ item in
             !item
         }.bind(to: loadingView.rx.isHidden)
@@ -87,6 +102,7 @@ class BooksViewController: UIViewController, CLLocationManagerDelegate, UITextFi
         
         viewModel.listBookFiction.bind(to: fictionBookCollectionView.rx.items(cellIdentifier: XIBConstant.BooksHomescreenCollectionViewCell, cellType: BooksHomescreenCollectionViewCell.self)){ (row,book,cell) in
             cell.response = book
+            
         }.disposed(by: disposeBag)
         
         viewModel.listBookNonFiction.bind(to: nonFictionBookCollectionView.rx.items(cellIdentifier: XIBConstant.BooksHomescreenCollectionViewCell, cellType: BooksHomescreenCollectionViewCell.self)){ (row,book,cell) in
@@ -97,6 +113,19 @@ class BooksViewController: UIViewController, CLLocationManagerDelegate, UITextFi
             !item.isEmpty
         }.bind(to: emptyNearestView.rx.isHidden)
         .disposed(by: disposeBag)
+        
+        viewModel.listBookFiction.asObserver()
+            .map { item in
+                !item.isEmpty
+            }.bind(to: emptyFictionView.rx.isHidden)
+            .disposed(by: disposeBag)
+        
+        viewModel.listBookNonFiction.asObserver()
+            .map { item in
+                !item.isEmpty
+            }.bind(to: emptyNonFictionView.rx.isHidden)
+            .disposed(by: disposeBag)
+        
 
         viewModel.nearestListBook.bind(to: nearestBookCollectionView.rx.items(cellIdentifier: XIBConstant.BooksHomescreenCollectionViewCell, cellType: BooksHomescreenCollectionViewCell.self)) {  (row,book,cell) in
             cell.response = book
