@@ -57,7 +57,6 @@ struct ProfileLenderViewModel {
     func getListBook(lenderId: Int, userPenyewa: Bool){
         var books = [LenderBook]()
         if userPenyewa == false {
-            print("asdasdasdsadasdsadsadsssssadasdsadasdsadsadas")
             books.append(LenderBook(id: 0, price: 0, bookCondition: nil, lender: nil, book: nil, page: 0, language: "", publishedAt: "", createdAt: "", updatedAt: "", images: []))
             self.listBook.onNext(books)
         }

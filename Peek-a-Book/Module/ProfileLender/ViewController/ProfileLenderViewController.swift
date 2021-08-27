@@ -37,12 +37,12 @@ class ProfileLenderViewController: UIViewController, UICollectionViewDelegateFlo
         viewModel.getLenderProfile(lenderId: lenderId)
         viewModel.getListBook(lenderId: lenderId, userPenyewa: userPenyewa)
         setView()
-        setupRx()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         BooksCollectionView.delegate = self
+        setupRx()
     }
     
     func setView() {
