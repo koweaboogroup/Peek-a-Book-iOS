@@ -11,6 +11,7 @@ import RxCocoa
 import CoreLocation
 
 class BooksViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDelegate {
+    @IBOutlet weak var loadingView: UIActivityIndicatorView!
     @IBOutlet weak var searchView: SearchView!
     @IBOutlet weak var nearestBookCollectionView: UICollectionView!
     @IBOutlet weak var fictionBookCollectionView: UICollectionView!
@@ -25,9 +26,9 @@ class BooksViewController: UIViewController, CLLocationManagerDelegate, UITextFi
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupView()
         viewModel.getListBook()
         checkLocationServices()
-        setupView()
         cellSelectedIndex()
         setupListener()
     }
@@ -65,7 +66,17 @@ class BooksViewController: UIViewController, CLLocationManagerDelegate, UITextFi
         showNavigation(false)
     }
     
-    private func setupView(){
+    private func setupView() {
+        //loadingView.startAnimating()
+        viewModel.loading.asObserver().map{ item in
+            !item
+        }.bind(to: loadingView.rx.isHidden)
+            .disposed(by: disposeBag)
+
+        viewModel.loading.asObserver()
+            .bind(to: loadingView.rx.isAnimating)
+            .disposed(by: disposeBag)
+
         searchView.hideNavigation(true)
         
         nearestBookCollectionView.register(UINib(nibName: XIBConstant.BooksHomescreenCollectionViewCell, bundle: nil), forCellWithReuseIdentifier: XIBConstant.BooksHomescreenCollectionViewCell)
