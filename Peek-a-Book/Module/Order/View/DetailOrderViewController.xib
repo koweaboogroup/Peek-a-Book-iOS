@@ -47,10 +47,10 @@
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zpo-6b-1sC" userLabel="Content View">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="825.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="814.5"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Pl-2b-7nw" userLabel="Background View">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="825.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="814.5"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eZA-JY-5Gg">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="32"/>
@@ -70,19 +70,19 @@
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Order Penyewaan: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f1O-E6-wUf">
-                                            <rect key="frame" x="20" y="52" width="374" height="15"/>
+                                            <rect key="frame" x="20" y="52" width="374" height="17.5"/>
                                             <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="15"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detail Penyewa" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cGs-dO-Eqg">
-                                            <rect key="frame" x="20" y="87" width="374" height="30.5"/>
+                                            <rect key="frame" x="20" y="89.5" width="374" height="26"/>
                                             <fontDescription key="fontDescription" name="DMSerifText-Regular" family="DM Serif Text" pointSize="22"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pEk-6R-Uls">
-                                            <rect key="frame" x="20" y="127.5" width="374" height="221"/>
+                                            <rect key="frame" x="20" y="125.5" width="374" height="221"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gOv-H0-nCo" userLabel="Nama View">
                                                     <rect key="frame" x="0.0" y="10" width="374" height="44"/>
@@ -240,7 +240,7 @@
                                             </userDefinedRuntimeAttributes>
                                         </view>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="uph-r9-WUM">
-                                            <rect key="frame" x="20" y="589.5" width="374" height="196"/>
+                                            <rect key="frame" x="20" y="578.5" width="374" height="196"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6aR-Vn-6Ve">
                                                     <rect key="frame" x="0.0" y="0.0" width="374" height="196"/>
@@ -417,13 +417,13 @@
                                             </subviews>
                                         </stackView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detail Buku" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TZf-Vh-Gg9">
-                                            <rect key="frame" x="20" y="368.5" width="374" height="30.5"/>
+                                            <rect key="frame" x="20" y="366.5" width="374" height="26"/>
                                             <fontDescription key="fontDescription" name="DMSerifText-Regular" family="DM Serif Text" pointSize="22"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="h2W-R3-1Ks">
-                                            <rect key="frame" x="28" y="409" width="118.5" height="22"/>
+                                            <rect key="frame" x="28" y="402.5" width="118.5" height="22"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty-state" translatesAutoresizingMaskIntoConstraints="NO" id="JvD-lH-Saa">
                                                     <rect key="frame" x="0.0" y="0.0" width="22" height="22"/>
@@ -437,7 +437,7 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Si tuan rumah" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="71y-JV-IHD">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="71y-JV-IHD">
                                                     <rect key="frame" x="27" y="0.0" width="91.5" height="22"/>
                                                     <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="14"/>
                                                     <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -446,13 +446,13 @@
                                             </subviews>
                                         </stackView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detail Sewa" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PUH-sR-iK3">
-                                            <rect key="frame" x="20" y="549" width="374" height="30.5"/>
+                                            <rect key="frame" x="20" y="542.5" width="374" height="26"/>
                                             <fontDescription key="fontDescription" name="DMSerifText-Regular" family="DM Serif Text" pointSize="22"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HTi-wB-VoF">
-                                            <rect key="frame" x="20" y="441" width="374" height="88"/>
+                                            <rect key="frame" x="20" y="434.5" width="374" height="88"/>
                                             <subviews>
                                                 <tableView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" style="plain" separatorStyle="default" rowHeight="84" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RCq-Ys-vZG">
                                                     <rect key="frame" x="0.0" y="2" width="374" height="84"/>
@@ -493,7 +493,7 @@
                                             </userDefinedRuntimeAttributes>
                                         </view>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RUC-j0-wcv">
-                                            <rect key="frame" x="295" y="405.5" width="99" height="29"/>
+                                            <rect key="frame" x="299" y="397.5" width="95" height="32"/>
                                             <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                             <state key="normal" title="Lihat Alamat"/>
                                             <connections>

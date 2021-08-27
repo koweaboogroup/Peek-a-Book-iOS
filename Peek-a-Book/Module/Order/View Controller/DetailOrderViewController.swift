@@ -13,10 +13,8 @@ class DetailOrderViewController: UIViewController {
     
     var nomerTelponPemberiSewa: String?
     var durasiSewa: Int?
-    var mulaiSewa: String?
+    var mulaiSewa: String = ""
     var userPenyewa: Bool = true
-    private var messageStatusPemberiSewaEnum: MessageStatusPemberiSewa?
-    private var messageStatusPenyewaEnum: MessageStatusPenyewa?
     private var messageStatusTemp: String?
     
     
@@ -199,48 +197,73 @@ class DetailOrderViewController: UIViewController {
         
         
         //MARK: -Bikin logic pesan header
+        if self.userPenyewa == true{
+            viewModel.order.asObserver().map { order in
+                MessageStatusPenyewa(rawValue: order.status?.name ?? "Dalam Proses")?.messageStatusPenyewaSetting(namaTokoPemberiSewa: self.profileNameLabel.text ?? "", nomorPesanan: self.nomorOrderPenyewaanLabel.text ?? "", getStatus: self.messageStatusTemp ?? "Penyewaan (nomor penyewaan) sedang berlangsung hingga tanggal (deadline penyewaan).")
+            }.bind(to: informationStatusLabel.rx.text)
+            .disposed(by: disposeBag)
+        }
+        else {
+            viewModel.order.asObserver().map { order in
+                MessageStatusPemberiSewa(rawValue: order.status?.name ?? "Dalam Proses")?.messageStatusPemberiSewaSetting(namaPenyewa: self.profileNameLabel.text ?? "", nomorPesanan: self.nomorOrderPenyewaanLabel.text ?? "", getStatus: self.messageStatusTemp ?? "Penyewaan (nomor penyewaan) sedang berlangsung hingga tanggal (deadline penyewaan).")
+            }.bind(to: informationStatusLabel.rx.text)
+            .disposed(by: disposeBag)
+        }
         
-        viewModel.order.asObserver().map { order in
-            //            if self.userPenyewa {
-            MessageStatusPenyewa(rawValue: order.status?.name ?? "Dalam Proses")?.messageStatusPenyewaSetting(namaTokoPemberiSewa: self.profileNameLabel.text ?? "", nomorPesanan: self.nomorOrderPenyewaanLabel.text ?? "", getStatus: self.messageStatusTemp ?? "Penyewaan (nomor penyewaan) sedang berlangsung hingga tanggal (deadline penyewaan).")
-            //            }
-            //            else {
-            //                MessageStatusPemberiSewa(rawValue: order.status?.name ?? "Dalam Proses")
-            //            }
-            
-            
-        }.bind(to: informationStatusLabel.rx.text)
-        .disposed(by: disposeBag)
+        
+        
+        
+        
+        
         
         viewModel.order
             .subscribe(onNext: { order in
-                self.mulaiSewa = order.updatedAt
+                let ISOdate = order.updatedAt ?? ""
                 let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ssZZZ"
-                self.date = dateFormatter.date(from: self.mulaiSewa ?? "")
+                dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+                dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+                self.date = dateFormatter.date(from: ISOdate)
                 self.durasiSewa = order.periodOfTime
             })
             .disposed(by: disposeBag)
-        
-        //        let components = Calendar.current.dateComponents([.year, .month, .day, .hour], from: date)
     }
     
     // MARK: - countdown
     @objc func updateTime() {
-        let countdown = self.countdown//only compute once per call
+        let countdown = self.countdown
         let day = countdown.day!
         
         if day <= 7 {
             if day <= 3 && day >= 2{
-                messageStatusTemp = "Jangan lupa menyelesaikan buku Anda, dan harap mengembalikan buku maksimal tanggal (tanggal due date + 1)."
+                if userPenyewa {
+                    messageStatusTemp = "Jangan lupa menyelesaikan buku Anda, dan harap mengembalikan buku maksimal tanggal (tanggal due date + 1)."
+                }
+                else {
+                    messageStatusTemp = "Pastikan (nama Penyewa) mengembalikan buku sebelum tanggal (due date + 1).)"
+                }
             }
             else if day == 1 {
-                messageStatusTemp = "Jangan lupa menyelesaikan buku Anda, dan harap mengembalikan buku maksimal tanggal (tanggal due date + 1)."
+                if userPenyewa {
+                    messageStatusTemp = "Jangan lupa menyelesaikan buku Anda, dan harap mengembalikan buku maksimal tanggal (tanggal due date + 1)."
+                }
+                else {
+                    messageStatusTemp = "Jangan lupa menyelesaikan buku Anda, dan harap mengembalikan buku maksimal tanggal (tanggal due date + 1)."
+                }
             }
             else if day == 0 {
-                messageStatusTemp = "Anda harus mengembalikan penyewaan (nomor penyewaan) hari ini. Mohon konfirmasi di halaman Riwayat Penyewaan jika buku sudah dikembalikan."
+                if userPenyewa {
+                    messageStatusTemp = "Anda harus mengembalikan penyewaan (nomor penyewaan) hari ini. Mohon konfirmasi di halaman Riwayat Penyewaan jika buku sudah dikembalikan."
+                }
+                else {
+                    
+                }
             }
-            messageStatusTemp = "Jangan lupa menyelesaikan buku Anda, dan harap mengembalikan buku maksimal tanggal (tanggal due date + 1)."
+            if userPenyewa{
+                messageStatusTemp = "Jangan lupa menyelesaikan buku Anda, dan harap mengembalikan buku maksimal tanggal (tanggal due date + 1)."
+            }
+            else{
+                messageStatusTemp = "Penyewaan (nomor penyewaan) sedang berlangsung hingga tanggal (deadline penyewaan)."
+            }
         }
         messageStatusTemp = "Penyewaan (nomor penyewaan) sedang berlangsung hingga tanggal (deadline penyewaan)."
     }
@@ -258,23 +281,31 @@ class DetailOrderViewController: UIViewController {
     }
     
     @objc func back(sender: UIBarButtonItem) {
-        self.navigationController?.popToRootViewController(animated: true)
+        if userPenyewa{
+            self.navigationController?.popToRootViewController(animated: true)
+        }
+        else{
+            self.navigationController?.popViewController(animated: true)
+        }
     }
 }
 
+
+
+
+
+
 extension DetailOrderViewController {
     private enum MessageStatusPemberiSewa: String {
-        case penyewaanBaru = "Menunggu Konfirmasi"
+        case penyewaanBaru = "Dalam Proses"
         case penyewaanDibatalkan = "Tidak Selesai"
         case penyewaanTerkonfirmasi = "Dalam Pengiriman"
         case bukuSudahDiterima = "Sedang Berlangsung"
-        //        case penyewaanSedangBerlangsung = "Sedang Berlangsung"
-        //        case penyewaanTersisaTigaHari = "Sedang Berlangsung"
         case waktuPenyewaanSudahHabis = "Sedang Dikembalikan"
         case bukuTelahDikembalikan = "Selesai"
         
         
-        func messageStatusPemberiSewaSetting(namaPenyewa: String, nomorPesanan: String) -> String {
+        func messageStatusPemberiSewaSetting(namaPenyewa: String, nomorPesanan: String, getStatus: String) -> String {
             
             switch self {
             case .penyewaanBaru:
@@ -284,11 +315,7 @@ extension DetailOrderViewController {
             case .penyewaanTerkonfirmasi:
                 return "Jangan lupa mengirimkan buku untuk penyewaan \(nomorPesanan). Mohon konfirmasi di halaman Kelola Penyewaan jika buku sudah dikirimkan."
             case .bukuSudahDiterima:
-                return "Jangan lupa mengirimkan buku untuk penyewaan \(nomorPesanan). Mohon konfirmasi di halaman Kelola Penyewaan jika buku sudah dikirimkan."
-            //            case .penyewaanSedangBerlangsung:
-            //                return "Penyewaan (nomor penyewaan) sedang berlangsung hingga tanggal (deadline penyewaan)."
-            //            case .penyewaanTersisaTigaHari:
-            //                return "Pastikan (nama Penyewa) mengembalikan buku sebelum tanggal (due date + 1).)"
+                return getStatus
             case .waktuPenyewaanSudahHabis:
                 return "Pastikan \(namaPenyewa) mengembalikan buku hari Ini."
             case .bukuTelahDikembalikan:
@@ -301,10 +328,7 @@ extension DetailOrderViewController {
         case menungguKonfirmasi = "Dalam Proses"
         case penyewaanDitolak = "Tidak Selesai"
         case penyewaanDikonfirmasi = "Dalam Pengiriman"
-        //        case bukuTelahDikirim = "Sedang Berlangsung"
         case penyewaanSedangBerlangsung = "Sedang Berlangsung"
-        //        case penyewaanTersisaTujuhHariLagi
-        //        case penyewaanTersisaTigaHariLagi
         case waktuPenyewaanSudahHabis
         case waktuPenyewaanSudahLewat
         case penyewaanSudahSelesai
@@ -319,15 +343,8 @@ extension DetailOrderViewController {
                 return "Penyewaan \(nomorPesanan) ditolak oleh \(namaTokoPemberiSewa)"
             case .penyewaanDikonfirmasi:
                 return "Penyewaan \(nomorPesanan) sudah dikonfirmasi oleh \(namaTokoPemberiSewa). Mohon menunggu \(namaTokoPemberiSewa) menghubungi nomor Anda."
-            //            case .bukuTelahDikirim:
-            //                return "Penyewaan (nomor penyewaan) sudah dikirimkan oleh (nama Pemberi Sewa). Mohon konfirmasi di halaman Riwayat Penyewaan jika buku sudah diterima."
             case .penyewaanSedangBerlangsung:
-                
                 return getStatus
-            //            case .penyewaanTersisaTujuhHariLagi:
-            //                return "Jangan lupa menyelesaikan buku Anda, dan harap mengembalikan buku maksimal tanggal (tanggal due date + 1)."
-            //            case .penyewaanTersisaTigaHariLagi:
-            //                return "Jangan lupa menyelesaikan buku Anda, dan harap mengembalikan buku maksimal tanggal (tanggal due date + 1)."
             case .waktuPenyewaanSudahHabis:
                 return "Anda harus mengembalikan penyewaan \(nomorPesanan) hari ini. Mohon konfirmasi di halaman Riwayat Penyewaan jika buku sudah dikembalikan."
             case .waktuPenyewaanSudahLewat:

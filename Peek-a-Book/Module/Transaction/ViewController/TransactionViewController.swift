@@ -18,7 +18,7 @@ class TransactionViewController: UIViewController {
     @IBOutlet weak var transactionTableView: UITableView!
     private let viewModel = RentViewModel()
     private let disposeBag = DisposeBag()
-
+    
     private var id = 0
     private var lenderId = 0
     private var flagFrom: FlagFromPage?
@@ -27,6 +27,7 @@ class TransactionViewController: UIViewController {
         super.viewDidLoad()
         fetchTransaction()
         setupView()
+        selectedIndex()
     }
     
     func setUserID(id: Int){
@@ -52,22 +53,35 @@ class TransactionViewController: UIViewController {
     
     private func setupView(){
         transactionTableView.register(UINib(nibName: XIBConstant.RentBookItemTableViewCell, bundle: nil), forCellReuseIdentifier: XIBConstant.RentBookItemTableViewCell)
-
+        
         switch flagFrom {
         case .riwayatPenyewaan:
             viewModel.ordersForRenter.bind(to: transactionTableView.rx.items(cellIdentifier: XIBConstant.RentBookItemTableViewCell, cellType: RentBookItemTableViewCell.self)) {  (row, transaction, cell) in
                 cell.setViewModel(viewModel: self.viewModel)
                 cell.setViewController(viewController: self)
                 cell.response = transaction
-                }.disposed(by: disposeBag)
+            }.disposed(by: disposeBag)
         case .kelolaPenyewaan:
             viewModel.ordersForLender.bind(to: transactionTableView.rx.items(cellIdentifier: XIBConstant.RentBookItemTableViewCell, cellType: RentBookItemTableViewCell.self)) {  (row, transaction, cell) in
                 cell.setViewModel(viewModel: self.viewModel)
                 cell.setViewController(viewController: self)
                 cell.response = transaction
-                }.disposed(by: disposeBag)
+            }.disposed(by: disposeBag)
         case .none:
             break
         }
+    }
+    
+    
+    
+    func selectedIndex() {
+        transactionTableView.rx.modelSelected(Rent.self)
+            .subscribe(onNext: { model in
+                let vc = ModuleBuilder.shared.goToDetailOrderViewController()
+                vc.setOrderId(orderId: model.id ?? 0)
+                vc.userPenyewa = false
+                self.navigationController?.pushViewController(vc, animated: true)
+            })
+            .disposed(by: disposeBag)
     }
 }
