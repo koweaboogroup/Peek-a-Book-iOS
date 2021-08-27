@@ -41,7 +41,7 @@ class BaseRequest {
                 
                 multipartFormData.append(body, withName: "data")
             
-                multipartFormData.append(file, withName: "files.images")
+                multipartFormData.append(file, withName: "files.images", fileName: "file.jpeg", mimeType: "image/jpeg")
                 
             }, to: Constant.Network.baseUrl + "/lender-books", headers: [.authorization(bearerToken: jwt)])
                 .validate(statusCode: 200..<300)
