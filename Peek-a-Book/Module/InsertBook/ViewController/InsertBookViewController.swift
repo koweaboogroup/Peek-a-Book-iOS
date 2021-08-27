@@ -31,6 +31,8 @@ class InsertBookViewController: UIViewController {
     @IBOutlet private weak var addToCatalogueButton: UIButton!
     @IBOutlet private weak var imagePickerButton: UIButton!
     
+    @IBOutlet private weak var loadingView: UIActivityIndicatorView!
+    
     // MARK: - Variable (private)
     
     private var bookTitle = ""
@@ -68,8 +70,7 @@ class InsertBookViewController: UIViewController {
     
     @IBAction private func addToCatalogueBtnPressed(_ sender: UIButton) {
         insertBookViewModel.addBookToCatalogue(title: bookTitle, isbn: isbn, genre: genre, bookId: bookId, bookCondition: bookCondition, totalPages: totalPages, language: BookLanguage(rawValue: language)?.getTitle() ?? "", rentCost: rentCost, image: image ?? Data()) {
-            print("mantap")
-//            self.navigationController?.popViewController(animated: true)
+            self.navigationController?.popViewController(animated: true)
         }
     }
     
@@ -136,6 +137,20 @@ class InsertBookViewController: UIViewController {
     }
     
     private func setupRx() {
+        
+        insertBookViewModel.loading
+            .bind(to: loadingView.rx.isAnimating)
+            .disposed(by: disposeBag)
+        
+        insertBookViewModel.loading
+            .map { loading in
+                return !loading
+            }
+            .bind(to: loadingView.rx.isHidden)
+            .disposed(by: disposeBag)
+        
+        insertBookViewModel.loading.onNext(false)
+        
         bookTitleTextField.rx.text
             .map {
                 let bookTitle = $0?.trimmingCharacters(in: .whitespaces) ?? ""
