@@ -64,8 +64,8 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="kYa-bT-VkF">
                                             <rect key="frame" x="28" y="60.5" width="358" height="22"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="KhI-EU-D7g">
-                                                    <rect key="frame" x="0.0" y="1.5" width="22" height="19.5"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty-state" translatesAutoresizingMaskIntoConstraints="NO" id="KhI-EU-D7g" customClass="CircleImageView" customModule="Peek_a_Book" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="22" height="22"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="22" id="0Yb-zI-mYc"/>
                                                         <constraint firstAttribute="width" constant="22" id="uC9-zk-ykx"/>
@@ -683,7 +683,7 @@
     </objects>
     <resources>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
-        <image name="person" catalog="system" width="128" height="117"/>
+        <image name="empty-state" width="826.5" height="750"/>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

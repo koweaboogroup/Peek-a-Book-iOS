@@ -12,7 +12,7 @@ import RxCocoa
 class CheckOutViewController: UIViewController, UITableViewDataSource {
     
     //MARK: -Header
-    @IBOutlet weak var lenderImageView: UIImageView!
+    @IBOutlet weak var lenderImageView: CircleImageView!
     @IBOutlet weak var lenderNameLabel: UILabel!
     @IBOutlet weak var detailBukuTableView: UITableView!
     @IBOutlet var tableHeight: NSLayoutConstraint!
@@ -119,6 +119,8 @@ class CheckOutViewController: UIViewController, UITableViewDataSource {
     }
     
     private func setupRx() {
+        
+        lenderImageView.setImage(fromUrl: cart[0].lender?.images?[0].url ?? "")
         
         viewModel.itemsPrice
             .map { itemsPrice in

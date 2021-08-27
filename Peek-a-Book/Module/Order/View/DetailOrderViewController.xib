@@ -425,7 +425,7 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="h2W-R3-1Ks">
                                             <rect key="frame" x="28" y="402.5" width="118.5" height="22"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty-state" translatesAutoresizingMaskIntoConstraints="NO" id="JvD-lH-Saa">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty-state" translatesAutoresizingMaskIntoConstraints="NO" id="JvD-lH-Saa" customClass="CircleImageView" customModule="Peek_a_Book" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="22" height="22"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="22" id="8yB-RF-odD"/>
@@ -566,6 +566,11 @@
             <point key="canvasLocation" x="18.840579710144929" y="84.375"/>
         </view>
     </objects>
+    <designables>
+        <designable name="JvD-lH-Saa">
+            <size key="intrinsicContentSize" width="826.5" height="750"/>
+        </designable>
+    </designables>
     <resources>
         <image name="empty-state" width="826.5" height="750"/>
         <namedColor name="primary-5">

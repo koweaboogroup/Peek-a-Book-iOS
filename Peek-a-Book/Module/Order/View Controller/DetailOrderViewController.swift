@@ -31,7 +31,7 @@ class DetailOrderViewController: UIViewController {
     @IBOutlet weak var renterPhoneLabel: UILabel!
     
     // MARK: - Detail Buku
-    @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var profileImage: CircleImageView!
     @IBOutlet weak var profileNameLabel: UILabel!
     @IBOutlet weak var detailBukuTableView: UITableView!
     @IBOutlet weak var detailBukuTableHeight: NSLayoutConstraint!
@@ -154,6 +154,11 @@ class DetailOrderViewController: UIViewController {
         .disposed(by: disposeBag)
         
         //Detail buku
+        viewModel.order.subscribe(onNext: { order in
+            self.profileImage.setImage(fromUrl: order.lenderBooks?[0].lender?.images?[0].url ?? "")
+        }).disposed(by: disposeBag)
+        
+        
         viewModel.order.asObserver().map { order in
             order.user?.alamat
             
