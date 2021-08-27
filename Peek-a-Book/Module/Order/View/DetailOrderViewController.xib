@@ -431,11 +431,6 @@
                                                         <constraint firstAttribute="height" constant="22" id="8yB-RF-odD"/>
                                                         <constraint firstAttribute="width" constant="22" id="aJ0-fW-rcV"/>
                                                     </constraints>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                            <integer key="value" value="72"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="71y-JV-IHD">
                                                     <rect key="frame" x="27" y="0.0" width="91.5" height="22"/>

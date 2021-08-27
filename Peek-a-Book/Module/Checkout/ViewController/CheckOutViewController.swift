@@ -8,11 +8,12 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import Kingfisher
 
 class CheckOutViewController: UIViewController, UITableViewDataSource {
     
     //MARK: -Header
-    @IBOutlet weak var lenderImageView: CircleImageView!
+    @IBOutlet weak var lenderImage: CircleImageView!
     @IBOutlet weak var lenderNameLabel: UILabel!
     @IBOutlet weak var detailBukuTableView: UITableView!
     @IBOutlet var tableHeight: NSLayoutConstraint!
@@ -66,7 +67,7 @@ class CheckOutViewController: UIViewController, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
-        lenderImageView.image = #imageLiteral(resourceName: "store")
+        lenderImage.image = #imageLiteral(resourceName: "store")
         setupView()
         setupRx()
     }
@@ -102,7 +103,6 @@ class CheckOutViewController: UIViewController, UITableViewDataSource {
     private func setupView() {
         
         let lenderName = cart[0].lender?.name
-        
         lenderNameLabel.text = lenderName
         detailBukuTableView.register(UINib(nibName: XIBConstant.ItemKeranjangTableViewCell, bundle: nil), forCellReuseIdentifier: "ItemKeranjangTableViewCell")
         detailBukuTableView.dataSource = self
@@ -114,13 +114,12 @@ class CheckOutViewController: UIViewController, UITableViewDataSource {
         pickerMetodePengiriman.isHidden = true
         
         pickerDurasiSewa.selectRow(0, inComponent: 0, animated: true)
-        
         pickerMetodePengiriman.selectRow(0, inComponent: 0, animated: true)
     }
     
     private func setupRx() {
         
-        lenderImageView.setImage(fromUrl: cart[0].lender?.images?[0].url ?? "")
+        lenderImage.setImage(fromUrl: Constant.Network.baseUrl + (cart[0].lender?.images?[0].url ?? ""))
         
         viewModel.itemsPrice
             .map { itemsPrice in

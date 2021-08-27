@@ -155,7 +155,7 @@ class DetailOrderViewController: UIViewController {
         
         //Detail buku
         viewModel.order.subscribe(onNext: { order in
-            self.profileImage.setImage(fromUrl: order.lenderBooks?[0].lender?.images?[0].url ?? "")
+            self.profileImage.setImage(fromUrl: Constant.Network.baseUrl + (order.lenderBooks?[0].lender?.images?[0].url ?? ""))
         }).disposed(by: disposeBag)
         
         
