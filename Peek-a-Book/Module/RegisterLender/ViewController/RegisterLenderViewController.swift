@@ -132,6 +132,7 @@ class RegisterLenderViewController: UIViewController {
         let vc = ModuleBuilder.shared.goToProfileLenderViewController()
         vc.hidesBottomBarWhenPushed = true
         vc.setLenderId(id: id)
+        vc.setUserPenyewa(flag: false)
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

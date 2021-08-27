@@ -123,7 +123,7 @@ class DetailBooksViewController: UIViewController {
         .disposed(by: disposeBag)
         
         viewModel.bookDetail.asObserver().map { book in
-            "Rp \(book.price?.toRupiah() ?? "")/Minggu"
+            "Rp\(book.price?.toRupiah() ?? "")/Minggu"
         }.bind(to: detailBookPriceLabel.rx.text)
         .disposed(by: disposeBag)
         

@@ -17,6 +17,7 @@ class ProfileLenderViewController: UIViewController, UICollectionViewDelegateFlo
     @IBOutlet weak var lenderNameLabel: UILabel!
     @IBOutlet weak var lenderBioLabel: UILabel!
     @IBOutlet weak var lenderLocationLabel: UILabel!
+    @IBOutlet weak var rentHistoryView: UIView!
     @IBOutlet weak var BooksCollectionView: UICollectionView!
     
     private let viewModel = ProfileLenderViewModel()
@@ -35,13 +36,24 @@ class ProfileLenderViewController: UIViewController, UICollectionViewDelegateFlo
     override func viewWillAppear(_ animated: Bool) {
         viewModel.getLenderProfile(lenderId: lenderId)
         viewModel.getListBook(lenderId: lenderId, userPenyewa: userPenyewa)
+        setView()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         BooksCollectionView.delegate = self
         setupRx()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit Profile", style: .plain, target: self, action: #selector(editTapped))
+    }
+    
+    func setView() {
+        if !userPenyewa {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit Profile", style: .plain, target: self, action: #selector(editTapped))
+            rentHistoryView.isHidden = false
+        }
+        else {
+            rentHistoryView.isHidden = true
+        }
+        
     }
     
     private func setupRx() {
@@ -129,16 +141,10 @@ class ProfileLenderViewController: UIViewController, UICollectionViewDelegateFlo
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = BooksCollectionView.bounds.width
-        let height = BooksCollectionView.bounds.height
-        
-        print(width)
-        print(height)
-        
         let cellWidth = (width/2) - 32
         let cellHeight = (width/1.5)
         
         return CGSize(width: cellWidth, height: cellHeight)
-        
     }
     
     @objc func editTapped(){
