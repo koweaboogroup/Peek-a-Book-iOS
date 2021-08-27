@@ -119,15 +119,12 @@ class ProfileLenderViewController: UIViewController, UICollectionViewDelegateFlo
         
         BooksCollectionView.rx.itemSelected.subscribe(onNext: { index in
             if index.row == 0 && self.userPenyewa == false {
-                let vc = ModuleBuilder.shared.goToInsertBookToLenderCatalogueViewController()
+                let vc = ModuleBuilder.shared.goToInsertBookViewController()
                 vc.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(vc, animated: true)
             }
         })
         .disposed(by: disposeBag)
-        
-        
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

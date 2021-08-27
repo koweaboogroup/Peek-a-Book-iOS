@@ -100,11 +100,6 @@ class ModuleBuilder {
         return vc
     }
     
-    func goToInsertBookToLenderCatalogueViewController() -> InsertBookToLenderCatalogueViewController {
-        let vc = InsertBookToLenderCatalogueViewController(nibName: XIBConstant.InsertBookToLenderCatalogueVC, bundle: nil)
-        return vc
-    }
-
     func goToSearchViewController() -> SearchViewController {
         let vc = SearchViewController(nibName: XIBConstant.SearchViewController, bundle: nil)
         
