@@ -39,6 +39,7 @@ class TransactionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        selectedIndex()
         fetchTransaction()
         updateStatus()
         showDatePicker()
@@ -90,13 +91,13 @@ class TransactionViewController: UIViewController {
                 cell.setViewModel(viewModel: self.viewModel)
                 cell.setViewController(viewController: self)
                 cell.response = transaction
-                }.disposed(by: disposeBag)
+            }.disposed(by: disposeBag)
         case .kelolaPenyewaan:
             viewModel.ordersForLender.bind(to: transactionTableView.rx.items(cellIdentifier: XIBConstant.RentBookItemTableViewCell, cellType: RentBookItemTableViewCell.self)) {  (row, transaction, cell) in
                 cell.setViewModel(viewModel: self.viewModel)
                 cell.setViewController(viewController: self)
                 cell.response = transaction
-                }.disposed(by: disposeBag)
+            }.disposed(by: disposeBag)
         case .none:
             break
         }
@@ -167,5 +168,18 @@ class TransactionViewController: UIViewController {
     @IBAction func changeStatusButtonTapped(_ sender: UIButton) {
         statusView.isHidden = true
         viewModel.selectedStatus.onNext(selectedStatus)
+    }
+    
+    
+    
+    func selectedIndex() {
+        transactionTableView.rx.modelSelected(Rent.self)
+            .subscribe(onNext: { model in
+                let vc = ModuleBuilder.shared.goToDetailOrderViewController()
+                vc.setOrderId(orderId: model.id ?? 0)
+                vc.userPenyewa = false
+                self.navigationController?.pushViewController(vc, animated: true)
+            })
+            .disposed(by: disposeBag)
     }
 }
