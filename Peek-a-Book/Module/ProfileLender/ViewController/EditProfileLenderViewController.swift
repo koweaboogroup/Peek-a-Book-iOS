@@ -19,7 +19,6 @@ class EditProfileLenderViewController: UIViewController {
     
     private let viewModel = ProfileLenderViewModel()
     private let disposeBag = DisposeBag()
-    
     private var imagePicker: ImagePicker?
     
     var lenderId: Int?
@@ -102,6 +101,7 @@ class EditProfileLenderViewController: UIViewController {
             self.navigationController?.popViewController(animated: true)
         }
     }
+    
 }
 
 extension EditProfileLenderViewController: ImagePickerDelegate {
@@ -111,3 +111,4 @@ extension EditProfileLenderViewController: ImagePickerDelegate {
         }
     }
 }
+
