@@ -14,6 +14,7 @@ class DetailOrderViewController: UIViewController {
     var nomerTelponPemberiSewa: String?
     var durasiSewa: Int?
     var mulaiSewa: String?
+    var userPenyewa: Bool = true
     private var messageStatusPemberiSewaEnum: MessageStatusPemberiSewa?
     private var messageStatusPenyewaEnum: MessageStatusPenyewa?
     private var messageStatusTemp: String?
@@ -71,7 +72,7 @@ class DetailOrderViewController: UIViewController {
         )
         return Calendar.current.date(from: future)!
     }()
-
+    
     var countdown: DateComponents {
         return Calendar.current.dateComponents([.day, .hour], from: Date(), to: futureDate)
     }
@@ -82,6 +83,9 @@ class DetailOrderViewController: UIViewController {
         setRx()
         viewModel.getDetailOrder(orderId: orderId ?? -1)
         setNavigationBar()
+        self.navigationItem.hidesBackButton = true
+        let newBackButton = UIBarButtonItem(title: "Back", style: UIBarButtonItem.Style.plain, target: self, action: #selector(DetailOrderViewController.back(sender:)))
+        self.navigationItem.leftBarButtonItem = newBackButton
     }
     
     private func setNavigationBar(){
@@ -192,12 +196,19 @@ class DetailOrderViewController: UIViewController {
             cell.bookWriter.text = lenderBook.book?.author
             
         }.disposed(by: disposeBag)
-
+        
         
         //MARK: -Bikin logic pesan header
         
         viewModel.order.asObserver().map { order in
+            //            if self.userPenyewa {
             MessageStatusPenyewa(rawValue: order.status?.name ?? "Dalam Proses")?.messageStatusPenyewaSetting(namaTokoPemberiSewa: self.profileNameLabel.text ?? "", nomorPesanan: self.nomorOrderPenyewaanLabel.text ?? "", getStatus: self.messageStatusTemp ?? "Penyewaan (nomor penyewaan) sedang berlangsung hingga tanggal (deadline penyewaan).")
+            //            }
+            //            else {
+            //                MessageStatusPemberiSewa(rawValue: order.status?.name ?? "Dalam Proses")
+            //            }
+            
+            
         }.bind(to: informationStatusLabel.rx.text)
         .disposed(by: disposeBag)
         
@@ -211,14 +222,14 @@ class DetailOrderViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-//        let components = Calendar.current.dateComponents([.year, .month, .day, .hour], from: date)
+        //        let components = Calendar.current.dateComponents([.year, .month, .day, .hour], from: date)
     }
     
     // MARK: - countdown
     @objc func updateTime() {
         let countdown = self.countdown//only compute once per call
         let day = countdown.day!
-    
+        
         if day <= 7 {
             if day <= 3 && day >= 2{
                 messageStatusTemp = "Jangan lupa menyelesaikan buku Anda, dan harap mengembalikan buku maksimal tanggal (tanggal due date + 1)."
@@ -233,7 +244,7 @@ class DetailOrderViewController: UIViewController {
         }
         messageStatusTemp = "Penyewaan (nomor penyewaan) sedang berlangsung hingga tanggal (deadline penyewaan)."
     }
-
+    
     func runCountdown() {
         Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
     }
@@ -245,6 +256,10 @@ class DetailOrderViewController: UIViewController {
         
         present(vc, animated: true, completion: nil)
     }
+    
+    @objc func back(sender: UIBarButtonItem) {
+        self.navigationController?.popToRootViewController(animated: true)
+    }
 }
 
 extension DetailOrderViewController {
@@ -253,8 +268,8 @@ extension DetailOrderViewController {
         case penyewaanDibatalkan = "Tidak Selesai"
         case penyewaanTerkonfirmasi = "Dalam Pengiriman"
         case bukuSudahDiterima = "Sedang Berlangsung"
-//        case penyewaanSedangBerlangsung = "Sedang Berlangsung"
-//        case penyewaanTersisaTigaHari = "Sedang Berlangsung"
+        //        case penyewaanSedangBerlangsung = "Sedang Berlangsung"
+        //        case penyewaanTersisaTigaHari = "Sedang Berlangsung"
         case waktuPenyewaanSudahHabis = "Sedang Dikembalikan"
         case bukuTelahDikembalikan = "Selesai"
         
@@ -270,26 +285,26 @@ extension DetailOrderViewController {
                 return "Jangan lupa mengirimkan buku untuk penyewaan \(nomorPesanan). Mohon konfirmasi di halaman Kelola Penyewaan jika buku sudah dikirimkan."
             case .bukuSudahDiterima:
                 return "Jangan lupa mengirimkan buku untuk penyewaan \(nomorPesanan). Mohon konfirmasi di halaman Kelola Penyewaan jika buku sudah dikirimkan."
-//            case .penyewaanSedangBerlangsung:
-//                return "Penyewaan (nomor penyewaan) sedang berlangsung hingga tanggal (deadline penyewaan)."
-//            case .penyewaanTersisaTigaHari:
-//                return "Pastikan (nama Penyewa) mengembalikan buku sebelum tanggal (due date + 1).)"
+            //            case .penyewaanSedangBerlangsung:
+            //                return "Penyewaan (nomor penyewaan) sedang berlangsung hingga tanggal (deadline penyewaan)."
+            //            case .penyewaanTersisaTigaHari:
+            //                return "Pastikan (nama Penyewa) mengembalikan buku sebelum tanggal (due date + 1).)"
             case .waktuPenyewaanSudahHabis:
                 return "Pastikan \(namaPenyewa) mengembalikan buku hari Ini."
             case .bukuTelahDikembalikan:
                 return "Penyewaan \(nomorPesanan) sudah dikirimkan oleh \(namaPenyewa). Mohon konfirmasi di halaman Kelola Penyewaan jika buku sudah diterima."
             }
         }
-
+        
     }
     private enum MessageStatusPenyewa: String{
         case menungguKonfirmasi = "Dalam Proses"
         case penyewaanDitolak = "Tidak Selesai"
         case penyewaanDikonfirmasi = "Dalam Pengiriman"
-//        case bukuTelahDikirim = "Sedang Berlangsung"
+        //        case bukuTelahDikirim = "Sedang Berlangsung"
         case penyewaanSedangBerlangsung = "Sedang Berlangsung"
-//        case penyewaanTersisaTujuhHariLagi
-//        case penyewaanTersisaTigaHariLagi
+        //        case penyewaanTersisaTujuhHariLagi
+        //        case penyewaanTersisaTigaHariLagi
         case waktuPenyewaanSudahHabis
         case waktuPenyewaanSudahLewat
         case penyewaanSudahSelesai
@@ -304,15 +319,15 @@ extension DetailOrderViewController {
                 return "Penyewaan \(nomorPesanan) ditolak oleh \(namaTokoPemberiSewa)"
             case .penyewaanDikonfirmasi:
                 return "Penyewaan \(nomorPesanan) sudah dikonfirmasi oleh \(namaTokoPemberiSewa). Mohon menunggu \(namaTokoPemberiSewa) menghubungi nomor Anda."
-//            case .bukuTelahDikirim:
-//                return "Penyewaan (nomor penyewaan) sudah dikirimkan oleh (nama Pemberi Sewa). Mohon konfirmasi di halaman Riwayat Penyewaan jika buku sudah diterima."
+            //            case .bukuTelahDikirim:
+            //                return "Penyewaan (nomor penyewaan) sudah dikirimkan oleh (nama Pemberi Sewa). Mohon konfirmasi di halaman Riwayat Penyewaan jika buku sudah diterima."
             case .penyewaanSedangBerlangsung:
                 
                 return getStatus
-//            case .penyewaanTersisaTujuhHariLagi:
-//                return "Jangan lupa menyelesaikan buku Anda, dan harap mengembalikan buku maksimal tanggal (tanggal due date + 1)."
-//            case .penyewaanTersisaTigaHariLagi:
-//                return "Jangan lupa menyelesaikan buku Anda, dan harap mengembalikan buku maksimal tanggal (tanggal due date + 1)."
+            //            case .penyewaanTersisaTujuhHariLagi:
+            //                return "Jangan lupa menyelesaikan buku Anda, dan harap mengembalikan buku maksimal tanggal (tanggal due date + 1)."
+            //            case .penyewaanTersisaTigaHariLagi:
+            //                return "Jangan lupa menyelesaikan buku Anda, dan harap mengembalikan buku maksimal tanggal (tanggal due date + 1)."
             case .waktuPenyewaanSudahHabis:
                 return "Anda harus mengembalikan penyewaan \(nomorPesanan) hari ini. Mohon konfirmasi di halaman Riwayat Penyewaan jika buku sudah dikembalikan."
             case .waktuPenyewaanSudahLewat:

@@ -69,7 +69,6 @@ class EditProfileLenderViewController: UIViewController {
         
         fieldStoreName.setTitleLabel("Nama Toko")
         fieldStoreBio.setTitleLabel("Bio")
-        
         fieldStoreName.setPlaceholderField("Nama Toko")
         fieldStoreBio.setPlaceholderField("Keterangan Toko")
     }

@@ -275,6 +275,7 @@ class CheckOutViewController: UIViewController, UITableViewDataSource {
             
             let vc = ModuleBuilder.shared.goToDetailOrderViewController()
             vc.setOrderId(orderId: orderId)
+            vc.userPenyewa = true
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
