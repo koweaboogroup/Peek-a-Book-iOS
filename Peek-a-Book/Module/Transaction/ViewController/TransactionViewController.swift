@@ -23,6 +23,7 @@ class TransactionViewController: UIViewController {
     @IBOutlet weak var statusPickerView: UIPickerView!
     @IBOutlet weak var statusView: UIView!
     @IBOutlet weak var statusButton: UIButton!
+    @IBOutlet weak var errorStateView: ErrorStateView!
     
     private let viewModel = RentViewModel()
     private let disposeBag = DisposeBag()
@@ -79,7 +80,11 @@ class TransactionViewController: UIViewController {
             !item
         }.bind(to: loadingView.rx.isHidden)
         .disposed(by: disposeBag)
-        
+                
+        viewModel.loading.asObserver()
+            .bind(to: errorStateView.rx.isHidden)
+            .disposed(by: disposeBag)
+                
         confirmationButton.cornerRadius(10)
         confirmationButton.layer.applyShadow(color: .black, alpha: 0.5, x: 0, y: 2, blur: 4, spread: 0)
         
@@ -87,17 +92,33 @@ class TransactionViewController: UIViewController {
         
         switch flagFrom {
         case .riwayatPenyewaan:
+            self.title = "Riwayat Penyewaan"
             viewModel.ordersForRenter.bind(to: transactionTableView.rx.items(cellIdentifier: XIBConstant.RentBookItemTableViewCell, cellType: RentBookItemTableViewCell.self)) {  (row, transaction, cell) in
                 cell.setViewModel(viewModel: self.viewModel)
                 cell.setViewController(viewController: self)
                 cell.response = transaction
-            }.disposed(by: disposeBag)
+                }.disposed(by: disposeBag)
+            
+            viewModel.ordersForRenter.asObserver().map{ item in
+                !item.isEmpty
+            }.bind(to: errorStateView.rx.isHidden)
+            .disposed(by: disposeBag)
+
+            errorStateView.setError(errorMessage: "Transaksi tidak ditemukan 😭 🙏")
         case .kelolaPenyewaan:
+            self.title = "Kelola Penyewaan"
             viewModel.ordersForLender.bind(to: transactionTableView.rx.items(cellIdentifier: XIBConstant.RentBookItemTableViewCell, cellType: RentBookItemTableViewCell.self)) {  (row, transaction, cell) in
                 cell.setViewModel(viewModel: self.viewModel)
                 cell.setViewController(viewController: self)
                 cell.response = transaction
-            }.disposed(by: disposeBag)
+                }.disposed(by: disposeBag)
+            
+            viewModel.ordersForLender.asObserver().map{ item in
+                !item.isEmpty
+            }.bind(to: errorStateView.rx.isHidden)
+            .disposed(by: disposeBag)
+    
+            errorStateView.setError(errorMessage: "Transaksi tidak ditemukan 😭 🙏")
         case .none:
             break
         }
@@ -169,8 +190,6 @@ class TransactionViewController: UIViewController {
         statusView.isHidden = true
         viewModel.selectedStatus.onNext(selectedStatus)
     }
-    
-    
     
     func selectedIndex() {
         transactionTableView.rx.modelSelected(Rent.self)
