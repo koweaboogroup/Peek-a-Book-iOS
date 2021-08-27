@@ -23,6 +23,7 @@ struct XIBConstant {
     static let CheckOutViewController = "CheckOutViewController"
     static let TransactionViewController = "TransactionViewController"
     static let SearchViewController = "SearchViewController"
+    static let InsertBookViewController = "InsertBookViewController"
 
     static let LoginContentView = "LoginContentView"
     static let AddressMapsView = "AddressMapsView"
@@ -39,8 +40,9 @@ struct XIBConstant {
     static let InsertBookToLenderCatalogueVC = "InsertBookToLenderCatalogueViewController"
     
     static let BooksHomescreenCollectionViewCell = "BooksHomescreenCollectionViewCell"
-    static let KatalogLenderCollectionViewCell = "KatalogLenderCollectionViewCell"
+    static let LenderKatalogCollectionViewCell = "LenderKatalogCollectionViewCell"
     static let ItemKeranjangTableViewCell = "ItemKeranjangTableViewCell"
+    static let AddCollectionViewCell = "AddCollectionViewCell"
     
     static let SearchView = "SearchView"
     static let ErrorStateView = "ErrorStateView"
