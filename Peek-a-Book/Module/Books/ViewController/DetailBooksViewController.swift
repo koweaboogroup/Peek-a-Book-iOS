@@ -15,6 +15,7 @@ class DetailBooksViewController: UIViewController {
     
     var id: Int = 0
     
+    @IBOutlet weak var loadingView: UIActivityIndicatorView!
     
     // MARK: -Header View
     @IBOutlet weak var detailBookImages: UIImageView!
@@ -53,12 +54,10 @@ class DetailBooksViewController: UIViewController {
         viewModel.getDetailBook(id: String(id))
         totalBookButtonView.isHidden = true
         
+        setupRx()
         setNavigationBar()
         setupCart()
         updateCart()
-        
-        setupRx()
-        
     }
     
     private func updateCart() {
@@ -82,6 +81,15 @@ class DetailBooksViewController: UIViewController {
     }
     
     private func setupRx() {
+        viewModel.loading.asObserver()
+            .bind(to: loadingView.rx.isAnimating)
+            .disposed(by: disposeBag)
+        
+        viewModel.loading.asObserver().map{ item in
+            !item
+        }.bind(to: loadingView.rx.isHidden)
+            .disposed(by: disposeBag)
+
         viewModel.bookDetail.subscribe(onNext: { item in
             self.lenderBook = item
         }).disposed(by: disposeBag)

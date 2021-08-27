@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfileViewController" customModule="Peek_a_Book" customModuleProvider="target">
             <connections>
+                <outlet property="loadingView" destination="xin-Ej-g9N" id="d3e-xI-kub"/>
                 <outlet property="profileImage" destination="Ymq-tT-Z6j" id="7y2-bp-NDz"/>
                 <outlet property="profileNameLabel" destination="Uad-kU-2Vc" id="kls-Nk-5mv"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -27,12 +28,6 @@
                         <constraint firstAttribute="height" constant="109" id="WGM-dR-Pky"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="John Doe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uad-kU-2Vc">
-                    <rect key="frame" x="153.5" y="273" width="107.5" height="31.5"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dlN-qs-1dL">
                     <rect key="frame" x="166" y="314.5" width="82" height="33"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -41,6 +36,12 @@
                         <action selector="editProfileButtonPressed:" destination="-1" eventType="touchUpInside" id="Ccf-Zu-Kcy"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="John Doe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uad-kU-2Vc">
+                    <rect key="frame" x="153.5" y="273" width="107.5" height="31.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cVt-dq-74j">
                     <rect key="frame" x="32" y="367.5" width="350" height="196"/>
                     <subviews>
@@ -230,6 +231,9 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="xin-Ej-g9N">
+                    <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                </activityIndicatorView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -239,9 +243,11 @@
                 <constraint firstItem="Uad-kU-2Vc" firstAttribute="top" secondItem="Ymq-tT-Z6j" secondAttribute="bottom" constant="58" id="AbM-cc-leP"/>
                 <constraint firstItem="cVt-dq-74j" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="32" id="IK0-yC-dZl"/>
                 <constraint firstItem="dlN-qs-1dL" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="MVV-8P-fL6"/>
+                <constraint firstItem="xin-Ej-g9N" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="bkv-mX-opL"/>
                 <constraint firstItem="Uad-kU-2Vc" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="mCB-lb-jeM"/>
                 <constraint firstItem="dlN-qs-1dL" firstAttribute="top" secondItem="Uad-kU-2Vc" secondAttribute="bottom" constant="10" id="rdd-fu-bKe"/>
                 <constraint firstItem="Ymq-tT-Z6j" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="ucO-lR-W61"/>
+                <constraint firstItem="xin-Ej-g9N" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="vqI-1s-uTI"/>
                 <constraint firstItem="Ymq-tT-Z6j" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="62" id="zDz-Mq-Vfg"/>
             </constraints>
             <point key="canvasLocation" x="18.840579710144929" y="108.48214285714285"/>

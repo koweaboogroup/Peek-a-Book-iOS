@@ -155,6 +155,7 @@ class ProfileLenderViewController: UIViewController, UICollectionViewDelegateFlo
     }
     
     @IBAction func kelolaPenyewaanGetTapped(_ sender: UITapGestureRecognizer) {
+        print("Lender Id \(DataManager.shared.getLenderId())")
         let vc = ModuleBuilder.shared.goToTransactionViewController()
         vc.hidesBottomBarWhenPushed = true
         vc.setLenderID(id: DataManager.shared.getLenderId())

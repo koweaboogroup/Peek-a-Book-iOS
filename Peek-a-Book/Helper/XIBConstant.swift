@@ -22,6 +22,7 @@ struct XIBConstant {
     static let EditProfileLenderViewController = "EditProfileLenderViewController"
     static let CheckOutViewController = "CheckOutViewController"
     static let TransactionViewController = "TransactionViewController"
+    static let SearchViewController = "SearchViewController"
 
     static let LoginContentView = "LoginContentView"
     static let AddressMapsView = "AddressMapsView"
