@@ -267,6 +267,18 @@ extension InsertBookViewController: UITextFieldDelegate {
     internal func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == bookTitleTextField {
             let bookTitle = bookTitleTextField.text?.trimmingCharacters(in: .whitespaces).capitalized ?? ""
+            
+            if !isbnTextField.isEnabled {
+                isbnTextField.text = ""
+                isbnTextField.isEnabled = true
+                isbnTextField.alpha = 1.0
+                
+                bookGenreButton.setTitle("Genre", for: .normal)
+                pickerView.selectRow(0, inComponent: 0, animated: true)
+                bookGenreButton.isEnabled = true
+                bookGenreButton.alpha = 1.0
+            }
+            
             bookTitleTextField.text = bookTitle
             
             insertBookViewModel.getBookByTitle(title: bookTitle) { bookId in
