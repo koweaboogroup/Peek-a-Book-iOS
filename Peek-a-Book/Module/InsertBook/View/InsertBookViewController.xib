@@ -26,6 +26,7 @@
                 <outlet property="bookTitleTextField" destination="Afl-c8-lU5" id="72Y-RM-7uO"/>
                 <outlet property="imagePickerButton" destination="nul-ri-1Gl" id="CSX-8G-WzM"/>
                 <outlet property="isbnTextField" destination="5Zi-Lx-B6b" id="lhn-0H-88X"/>
+                <outlet property="loadingView" destination="kFS-ci-rcE" id="uBk-bh-6bP"/>
                 <outlet property="pickerTitleLabel" destination="ffy-St-Jgv" id="SyU-P8-rrv"/>
                 <outlet property="pickerView" destination="EKf-sX-C30" id="4Mf-cV-o5T"/>
                 <outlet property="pickerViewContainer" destination="n51-CR-ZRf" id="khr-ME-UOX"/>
@@ -128,13 +129,13 @@
                             <rect key="frame" x="12" y="10" width="350" height="46"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Judul" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="uU3-0B-1SI">
-                                    <rect key="frame" x="0.0" y="0.0" width="42" height="46"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="42.5" height="46"/>
                                     <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Judul Buku" textAlignment="right" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="Afl-c8-lU5">
-                                    <rect key="frame" x="66" y="0.0" width="284" height="46"/>
+                                    <rect key="frame" x="66.5" y="0.0" width="283.5" height="46"/>
                                     <color key="textColor" name="primary-1"/>
                                     <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                     <textInputTraits key="textInputTraits" returnKeyType="continue"/>
@@ -148,13 +149,13 @@
                             <rect key="frame" x="12" y="57" width="350" height="46.5"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ISBN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="7HV-uv-IYz">
-                                    <rect key="frame" x="0.0" y="13.5" width="39.5" height="20"/>
+                                    <rect key="frame" x="0.0" y="15" width="38.5" height="17"/>
                                     <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nomor ISBN" textAlignment="right" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="5Zi-Lx-B6b">
-                                    <rect key="frame" x="63.5" y="12.5" width="286.5" height="21.5"/>
+                                    <rect key="frame" x="62.5" y="14" width="287.5" height="18.5"/>
                                     <color key="textColor" name="primary-1"/>
                                     <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                     <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="continue"/>
@@ -168,13 +169,13 @@
                             <rect key="frame" x="12" y="104.5" width="350" height="46"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kondisi Buku" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="Ace-w6-mQ3">
-                                    <rect key="frame" x="0.0" y="0.0" width="101" height="46"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="102" height="46"/>
                                     <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oRv-L7-bBu">
-                                    <rect key="frame" x="125" y="0.0" width="225" height="46"/>
+                                    <rect key="frame" x="126" y="0.0" width="224" height="46"/>
                                     <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                     <state key="normal" title="Kondisi Buku">
                                         <color key="titleColor" name="primary-1"/>
@@ -195,13 +196,13 @@
                             <rect key="frame" x="12" y="151.5" width="350" height="46"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Genre" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="az6-26-125">
-                                    <rect key="frame" x="0.0" y="0.0" width="46" height="46"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="49" height="46"/>
                                     <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wgL-93-93X">
-                                    <rect key="frame" x="70" y="0.0" width="280" height="46"/>
+                                    <rect key="frame" x="73" y="0.0" width="277" height="46"/>
                                     <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                     <state key="normal" title="Genre">
                                         <color key="titleColor" name="primary-1"/>
@@ -222,13 +223,13 @@
                             <rect key="frame" x="12" y="198.5" width="350" height="46.5"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bahasa" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="1aR-Yq-Uzs">
-                                    <rect key="frame" x="0.0" y="0.0" width="57" height="46.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="56.5" height="46.5"/>
                                     <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UtQ-Dm-6da">
-                                    <rect key="frame" x="81" y="0.0" width="269" height="46.5"/>
+                                    <rect key="frame" x="80.5" y="0.0" width="269.5" height="46.5"/>
                                     <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                     <state key="normal" title="Bahasa">
                                         <color key="titleColor" name="primary-1"/>
@@ -249,13 +250,13 @@
                             <rect key="frame" x="12" y="246" width="350" height="46"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jumlah Halaman" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="eb9-QB-RQY">
-                                    <rect key="frame" x="0.0" y="0.0" width="127.5" height="46"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="131" height="46"/>
                                     <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Jumlah Halaman" textAlignment="right" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="RB7-sg-SeV">
-                                    <rect key="frame" x="151.5" y="0.0" width="198.5" height="46"/>
+                                    <rect key="frame" x="155" y="0.0" width="195" height="46"/>
                                     <color key="textColor" name="primary-1"/>
                                     <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                     <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="continue"/>
@@ -269,13 +270,13 @@
                             <rect key="frame" x="12" y="293" width="350" height="46"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Biaya sewa per minggu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="2Fc-wo-Alb">
-                                    <rect key="frame" x="0.0" y="0.0" width="178" height="46"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="184" height="46"/>
                                     <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Rp0" textAlignment="right" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="4ML-R0-iwW">
-                                    <rect key="frame" x="202" y="0.0" width="148" height="46"/>
+                                    <rect key="frame" x="208" y="0.0" width="142" height="46"/>
                                     <color key="textColor" name="primary-1"/>
                                     <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                     <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="continue"/>
@@ -367,7 +368,7 @@
                                     </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Picker Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ffy-St-Jgv">
-                                    <rect key="frame" x="28" y="18" width="84.5" height="20"/>
+                                    <rect key="frame" x="28" y="21" width="87" height="17"/>
                                     <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -406,6 +407,9 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="kFS-ci-rcE">
+                    <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                </activityIndicatorView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -419,10 +423,12 @@
                 <constraint firstItem="UPA-0Q-13W" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="30" id="Th6-9P-Ieg"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="n51-CR-ZRf" secondAttribute="bottom" id="UUL-7d-OVn"/>
                 <constraint firstItem="feH-33-ncm" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="VRl-EA-0Vx"/>
+                <constraint firstItem="kFS-ci-rcE" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="Xek-78-0Jz"/>
                 <constraint firstItem="n51-CR-ZRf" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="YhN-DK-Z3T"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="n51-CR-ZRf" secondAttribute="trailing" id="bUd-l9-xP2"/>
                 <constraint firstItem="nul-ri-1Gl" firstAttribute="top" secondItem="feH-33-ncm" secondAttribute="bottom" constant="10" id="fGV-O2-eLH"/>
                 <constraint firstItem="nul-ri-1Gl" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="gdq-fT-1h4"/>
+                <constraint firstItem="kFS-ci-rcE" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="mFf-pb-eq9"/>
                 <constraint firstItem="feH-33-ncm" firstAttribute="top" secondItem="PLD-Ie-Zgu" secondAttribute="bottom" constant="20" id="ois-Qf-RFs"/>
                 <constraint firstItem="n51-CR-ZRf" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="yF0-h0-h2v"/>
             </constraints>

@@ -31,6 +31,8 @@ class InsertBookViewController: UIViewController {
     @IBOutlet private weak var addToCatalogueButton: UIButton!
     @IBOutlet private weak var imagePickerButton: UIButton!
     
+    @IBOutlet private weak var loadingView: UIActivityIndicatorView!
+    
     // MARK: - Variable (private)
     
     private var bookTitle = ""
@@ -68,8 +70,7 @@ class InsertBookViewController: UIViewController {
     
     @IBAction private func addToCatalogueBtnPressed(_ sender: UIButton) {
         insertBookViewModel.addBookToCatalogue(title: bookTitle, isbn: isbn, genre: genre, bookId: bookId, bookCondition: bookCondition, totalPages: totalPages, language: BookLanguage(rawValue: language)?.getTitle() ?? "", rentCost: rentCost, image: image ?? Data()) {
-            print("mantap")
-//            self.navigationController?.popViewController(animated: true)
+            self.navigationController?.popViewController(animated: true)
         }
     }
     
@@ -136,6 +137,20 @@ class InsertBookViewController: UIViewController {
     }
     
     private func setupRx() {
+        
+        insertBookViewModel.loading
+            .bind(to: loadingView.rx.isAnimating)
+            .disposed(by: disposeBag)
+        
+        insertBookViewModel.loading
+            .map { loading in
+                return !loading
+            }
+            .bind(to: loadingView.rx.isHidden)
+            .disposed(by: disposeBag)
+        
+        insertBookViewModel.loading.onNext(false)
+        
         bookTitleTextField.rx.text
             .map {
                 let bookTitle = $0?.trimmingCharacters(in: .whitespaces) ?? ""
@@ -252,6 +267,18 @@ extension InsertBookViewController: UITextFieldDelegate {
     internal func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == bookTitleTextField {
             let bookTitle = bookTitleTextField.text?.trimmingCharacters(in: .whitespaces).capitalized ?? ""
+            
+            if !isbnTextField.isEnabled {
+                isbnTextField.text = ""
+                isbnTextField.isEnabled = true
+                isbnTextField.alpha = 1.0
+                
+                bookGenreButton.setTitle("Genre", for: .normal)
+                pickerView.selectRow(0, inComponent: 0, animated: true)
+                bookGenreButton.isEnabled = true
+                bookGenreButton.alpha = 1.0
+            }
+            
             bookTitleTextField.text = bookTitle
             
             insertBookViewModel.getBookByTitle(title: bookTitle) { bookId in

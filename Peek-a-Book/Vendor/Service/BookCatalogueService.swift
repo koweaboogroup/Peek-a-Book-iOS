@@ -39,8 +39,6 @@ class BookCatalogueService {
     static func addBookIntoCatalogueWithImage(image: Data, lenderBookRequest: LenderBookRequest, successCompletion: @escaping () -> Void, failCompletion: @escaping (AFError) -> Void) {
         guard let body = try? JSONEncoder().encode(lenderBookRequest) else { return }
         
-        print("ada kok", lenderBookRequest)
-        
         BaseRequest.upload(file: image, body: body) { response in
             switch response.result {
             case .success(_):
