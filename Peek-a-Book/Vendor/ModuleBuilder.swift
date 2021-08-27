@@ -99,9 +99,15 @@ class ModuleBuilder {
         
         return vc
     }
-
+    
     func goToSearchViewController() -> SearchViewController {
         let vc = SearchViewController(nibName: XIBConstant.SearchViewController, bundle: nil)
+        
+        return vc
+    }
+    
+    func goToInsertBookViewController() -> InsertBookViewController {
+        let vc = InsertBookViewController(nibName: XIBConstant.InsertBookViewController, bundle: nil)
         
         return vc
     }

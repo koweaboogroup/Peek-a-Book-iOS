@@ -19,6 +19,9 @@ struct RegisterViewModel {
     let error: PublishSubject<String> = PublishSubject()
     
     private let disposeBag = DisposeBag()
+    init(){
+        loading.onNext(false)
+    }
     
     func isAllTextFieldFilled() -> Observable<Bool> {
         return Observable.combineLatest(

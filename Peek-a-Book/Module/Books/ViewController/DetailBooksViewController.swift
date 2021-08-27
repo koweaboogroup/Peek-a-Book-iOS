@@ -46,6 +46,7 @@ class DetailBooksViewController: UIViewController {
     
     private let dataManager = DataManager.shared
     private var lenderBook: LenderBook?
+    private var lenderId: Int?
     
     override func viewDidLoad() {
         
@@ -91,6 +92,10 @@ class DetailBooksViewController: UIViewController {
 
         viewModel.bookDetail.subscribe(onNext: { item in
             self.lenderBook = item
+        }).disposed(by: disposeBag)
+        
+        viewModel.bookDetail.subscribe(onNext: { book in
+                self.lenderId = book.lender?.id
         }).disposed(by: disposeBag)
         
         // MARK: -Setup Header View
@@ -180,7 +185,10 @@ class DetailBooksViewController: UIViewController {
     }
     
     @IBAction func lenderProfileGetTapped(_ sender: UITapGestureRecognizer) {
-        print("Sambung ke lender")
+        let vc = ModuleBuilder.shared.goToProfileLenderViewController()
+        vc.setLenderId(id: lenderId ?? -1)
+        vc.setUserPenyewa(flag: true)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func totalBukuGetTapped(_ sender: UITapGestureRecognizer) {

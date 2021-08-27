@@ -21,4 +21,33 @@ class BookCatalogueService {
             }
         }
     }
+    
+    static func addBookIntoCatalogue(lenderBookRequest: LenderBookRequest, successCompletion: @escaping () -> Void, failCompletion: @escaping (AFError) -> Void) {
+        BaseRequest.post(router: BookCatalogueRouter.addBookIntoCatalogue(lenderBookRequest: lenderBookRequest)) { request in
+            request.responseDecodable(of: LenderBook.self) { response in
+                switch response.result {
+                case .success(_):
+                    successCompletion()
+                case .failure(let error):
+                    debugPrint("nih catalog", error)
+                    failCompletion(error)
+                }
+            }
+        }
+    }
+    
+    static func addBookIntoCatalogueWithImage(image: Data, lenderBookRequest: LenderBookRequest, successCompletion: @escaping () -> Void, failCompletion: @escaping (AFError) -> Void) {
+        guard let body = try? JSONEncoder().encode(lenderBookRequest) else { return }
+        
+        print("ada kok", lenderBookRequest)
+        
+        BaseRequest.upload(file: image, body: body) { response in
+            switch response.result {
+            case .success(_):
+                successCompletion()
+            case .failure(let error):
+                failCompletion(error)
+            }
+        }
+    }
 }
