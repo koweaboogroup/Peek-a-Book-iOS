@@ -103,6 +103,7 @@ class ProfileViewController: UIViewController {
             let vc = ModuleBuilder.shared.goToProfileLenderViewController()
             vc.hidesBottomBarWhenPushed = true
             vc.setLenderId(id: userObj.lender?.id ?? 0)
+            vc.setUserPenyewa(flag: false)
             self.navigationController?.pushViewController(vc, animated: true)
         } else {
             let vc = ModuleBuilder.shared.goToRegisterLenderViewController()

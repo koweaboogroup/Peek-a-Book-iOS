@@ -37,5 +37,8 @@ class ModalDetailOrderViewController: UIViewController {
         negaraPemberiSewaLabel.text = order?.provinsi
     }
 
-
+    @IBAction func dismisButton(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
 }

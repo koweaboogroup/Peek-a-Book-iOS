@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 
 class EditProfileLenderViewController: UIViewController {
-
+    
     @IBOutlet weak var circleStoreImageView: CircleImageView!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var fieldStoreName: CustomTextField!
@@ -19,7 +19,6 @@ class EditProfileLenderViewController: UIViewController {
     
     private let viewModel = ProfileLenderViewModel()
     private let disposeBag = DisposeBag()
-    
     private var imagePicker: ImagePicker?
     
     var lenderId: Int?
@@ -47,7 +46,7 @@ class EditProfileLenderViewController: UIViewController {
     private func setupView(){
         containerView.layer.applyShadow(color: .black, alpha: 0.5, x: 0, y: 2, blur: 4, spread: 0)
         containerView.cornerRadius(20)
-
+        
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(doneEditing))
         
         fieldStoreName.setTitleLabel("Nama Toko")
@@ -97,11 +96,13 @@ class EditProfileLenderViewController: UIViewController {
         imagePicker?.present(from: sender)
     }
     
+    
     @objc func doneEditing() {
         viewModel.editLenderProfile(lenderId: lenderId ?? -1, name: fieldStoreName.text, bio: fieldStoreBio.text, user: nil, alamat: nil, provinsi: nil, kota: nil, kelurahan: nil, kecamatan: nil, longtitude: nil, latitude: nil) {
             self.navigationController?.popViewController(animated: true)
         }
     }
+    
 }
 
 extension EditProfileLenderViewController: ImagePickerDelegate {
@@ -111,3 +112,4 @@ extension EditProfileLenderViewController: ImagePickerDelegate {
         }
     }
 }
+

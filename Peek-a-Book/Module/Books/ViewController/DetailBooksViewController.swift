@@ -46,6 +46,7 @@ class DetailBooksViewController: UIViewController {
     
     private let dataManager = DataManager.shared
     private var lenderBook: LenderBook?
+    private var lenderId: Int?
     
     override func viewDidLoad() {
         
@@ -93,6 +94,10 @@ class DetailBooksViewController: UIViewController {
             self.lenderBook = item
         }).disposed(by: disposeBag)
         
+        viewModel.bookDetail.subscribe(onNext: { book in
+                self.lenderId = book.lender?.id
+        }).disposed(by: disposeBag)
+        
         // MARK: -Setup Header View
         viewModel.bookDetail.subscribe (onNext: { book in
             if let image = book.images {
@@ -118,7 +123,7 @@ class DetailBooksViewController: UIViewController {
         .disposed(by: disposeBag)
         
         viewModel.bookDetail.asObserver().map { book in
-            "Rp\(book.price?.toRupiah() ?? "")"
+            "Rp \(book.price?.toRupiah() ?? "")/Minggu"
         }.bind(to: detailBookPriceLabel.rx.text)
         .disposed(by: disposeBag)
         
@@ -168,10 +173,10 @@ class DetailBooksViewController: UIViewController {
         }.bind(to: detailBookConditionLabel.rx.text)
         .disposed(by: disposeBag)
         
-        /*viewModel.bookDetail.asObserver().map { book in
+        viewModel.bookDetail.asObserver().map { book in
          book.book?.bookGenre == 1 ? "Fiksi" : "Non Fiksi"
          }.bind(to: detailBookGenreLabel.rx.text)
-         .disposed(by: disposeBag)*/
+         .disposed(by: disposeBag)
         
         viewModel.bookDetail.asObserver().map { book in
             book.book?.sinopsis
@@ -180,7 +185,10 @@ class DetailBooksViewController: UIViewController {
     }
     
     @IBAction func lenderProfileGetTapped(_ sender: UITapGestureRecognizer) {
-        print("Sambung ke lender")
+        let vc = ModuleBuilder.shared.goToProfileLenderViewController()
+        vc.setLenderId(id: lenderId ?? -1)
+        vc.setUserPenyewa(flag: true)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func totalBukuGetTapped(_ sender: UITapGestureRecognizer) {
