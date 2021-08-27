@@ -85,7 +85,7 @@ class ProfileLenderViewController: UIViewController, UICollectionViewDelegateFlo
                 cell.rootView.isHidden = true
                 cell.addView.isHidden = false
             }
-            else{
+            else {
                 cell.rootView.isHidden = false
                 cell.addView.isHidden = true
                 
@@ -95,7 +95,7 @@ class ProfileLenderViewController: UIViewController, UICollectionViewDelegateFlo
                     } else {
                         cell.katalogBookImage.image = UIImage(systemName: "book.fill")
                     }
-                }else {
+                } else {
                     cell.katalogBookImage.image = UIImage(systemName: "book.fill")
                 }
                 cell.KatalogBookTitle.text = book.book?.title
@@ -129,10 +129,6 @@ class ProfileLenderViewController: UIViewController, UICollectionViewDelegateFlo
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = BooksCollectionView.bounds.width
-        let height = BooksCollectionView.bounds.height
-        
-        print(width)
-        print(height)
         
         let cellWidth = (width/2) - 32
         let cellHeight = (width/1.5)
