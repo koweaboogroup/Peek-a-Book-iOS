@@ -8,11 +8,12 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import Kingfisher
 
 class CheckOutViewController: UIViewController, UITableViewDataSource {
     
     //MARK: -Header
-    @IBOutlet weak var lenderImageView: UIImageView!
+    @IBOutlet weak var lenderImage: CircleImageView!
     @IBOutlet weak var lenderNameLabel: UILabel!
     @IBOutlet weak var detailBukuTableView: UITableView!
     @IBOutlet var tableHeight: NSLayoutConstraint!
@@ -66,7 +67,7 @@ class CheckOutViewController: UIViewController, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
-        lenderImageView.image = #imageLiteral(resourceName: "store")
+        lenderImage.image = #imageLiteral(resourceName: "store")
         setupView()
         setupRx()
     }
@@ -102,8 +103,6 @@ class CheckOutViewController: UIViewController, UITableViewDataSource {
     private func setupView() {
         
         let lenderName = cart[0].lender?.name
-        let lenderImage = Constant.Network.baseUrl + (cart[0].lender?.images?[0].url ?? "")
-        
         lenderNameLabel.text = lenderName
         detailBukuTableView.register(UINib(nibName: XIBConstant.ItemKeranjangTableViewCell, bundle: nil), forCellReuseIdentifier: "ItemKeranjangTableViewCell")
         detailBukuTableView.dataSource = self
@@ -115,11 +114,12 @@ class CheckOutViewController: UIViewController, UITableViewDataSource {
         pickerMetodePengiriman.isHidden = true
         
         pickerDurasiSewa.selectRow(0, inComponent: 0, animated: true)
-        
         pickerMetodePengiriman.selectRow(0, inComponent: 0, animated: true)
     }
     
     private func setupRx() {
+        
+        lenderImage.setImage(fromUrl: Constant.Network.baseUrl + (cart[0].lender?.images?[0].url ?? ""))
         
         viewModel.itemsPrice
             .map { itemsPrice in
@@ -268,13 +268,14 @@ class CheckOutViewController: UIViewController, UITableViewDataSource {
     }
     
     @IBAction func sewaSekarangButtonPressed(_ sender: UIButton) {
-        let rentRequest = RentRequest(periodOfTime: periodOfTime, user: dataManager.getUser()?.id ?? -1, shippingMethods: shippingMethod, status: "3", alamat: address, provinsi: provName, kota: cityName, kelurahan: urbanVillage, kecamatan: districtName, longtitude: 0, latitude: 0, lenderBooks: cart)
+        let rentRequest = RentRequest(periodOfTime: periodOfTime, user: dataManager.getUser()?.id ?? -1, shippingMethods: shippingMethod, status: "9", alamat: address, provinsi: provName, kota: cityName, kelurahan: urbanVillage, kecamatan: districtName, longtitude: 0, latitude: 0, lenderBooks: cart)
 
         viewModel.createNewRent(rentRequest: rentRequest) { orderId in
             self.dataManager.deleteCart()
             
             let vc = ModuleBuilder.shared.goToDetailOrderViewController()
             vc.setOrderId(orderId: orderId)
+            vc.userPenyewa = true
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }

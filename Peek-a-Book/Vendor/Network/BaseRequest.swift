@@ -32,5 +32,23 @@ class BaseRequest {
         
         completionHandler(request)
     }
+    
+//    MARK: - MultiPart
+    static func upload(file: Data, body: Data, completionHandler: @escaping (DataResponse<LenderBook, AFError>) -> Void) {
+        
+        if let jwt = UserDefaults.standard.string(forKey: "jwt") {
+            AF.upload(multipartFormData: { multipartFormData in
+                
+                multipartFormData.append(body, withName: "data")
+            
+                multipartFormData.append(file, withName: "files.images", fileName: "file.jpeg", mimeType: "image/jpeg")
+                
+            }, to: Constant.Network.baseUrl + "/lender-books", headers: [.authorization(bearerToken: jwt)])
+                .validate(statusCode: 200..<300)
+                .responseDecodable(of: LenderBook.self) { response in
+                    completionHandler(response)
+                }
+        }
+    }
 }
 

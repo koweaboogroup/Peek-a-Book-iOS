@@ -14,6 +14,7 @@ class RegisterViewController: UIViewController {
     
     // MARK: - Variable (Outlet)
     
+    @IBOutlet weak var loadingView: UIActivityIndicatorView!
     @IBOutlet weak var fieldContainer: UIView!
     @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var nameTextField: UITextField!
@@ -48,8 +49,8 @@ class RegisterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Buat Akun Penyewaanmu"
-        setupUI()
         setupRx()
+        setupUI()
         self.setupKeyboardListener(selector: #selector(handleKeyboardNotification))
     }
     
@@ -172,6 +173,17 @@ class RegisterViewController: UIViewController {
                 self.provName = $0[4]
             })
             .disposed(by: disposeBag)
+        
+        viewModel.loading.asObserver()
+            .bind(to: loadingView.rx.isAnimating)
+            .disposed(by: disposeBag)
+        
+        viewModel.loading.asObserver().map{ item in
+            !item
+        }.bind(to: loadingView.rx.isHidden)
+            .disposed(by: disposeBag)
+        
+        viewModel.loading.onNext(false)
         
         viewModel.user.subscribe(onNext: { user in
             self.changeToProfileVC()

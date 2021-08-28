@@ -27,7 +27,15 @@ class ItemKeranjangTableViewCell: UITableViewCell {
     public var response: LenderBook? {
         didSet {
             if let response = response {
-                self.bookImage.kf.setImage(with: URL(string: Constant.Network.baseUrl + (response.images?[0].url ?? "")))
+                if let image = response.images {
+                    if !image.isEmpty {
+                        self.bookImage.kf.setImage(with: URL(string: Constant.Network.baseUrl + (image[0].url ?? "")))
+                    }else{
+                        self.bookImage.image = UIImage(systemName: "book.fill")
+                    }
+                }else{
+                    self.bookImage.image = UIImage(systemName: "book.fill")
+                }
                 self.bookTitle.text = response.book?.title
                 self.bookWriter.text = response.book?.author
             }

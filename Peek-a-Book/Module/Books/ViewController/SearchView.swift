@@ -15,11 +15,18 @@ class SearchView: UIView {
     @IBOutlet weak var buttonNotif: UIButton!
     @IBOutlet weak var labelLocation: UILabel!
     @IBOutlet weak var searchView: UIView!
+    @IBOutlet weak var searchField: UITextField!
+    @IBOutlet weak var pinLocation: UIImageView!
     
+    private var vc: UINavigationController?
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
+    }
+    
+    override func awakeFromNib() {
+        searchView.backgroundColor = #colorLiteral(red: 0.8, green: 0.9098039216, blue: 1, alpha: 1)
     }
     
     override init(frame: CGRect) {
@@ -30,8 +37,6 @@ class SearchView: UIView {
     private func commonInit(){
         searchView = loadViewFromNib(nibName: XIBConstant.SearchView)
         searchView.frame = self.bounds
-        searchView.cornerRadiusBottom(50)
-        searchView.backgroundColor = #colorLiteral(red: 0.8, green: 0.9098039216, blue: 1, alpha: 1)
         searchBar.cornerRadius(10)
         searchBar.layer.applyShadow(
             color: .black,
@@ -48,4 +53,21 @@ class SearchView: UIView {
         buttonBack.isHidden = isHide
     }
 
+    func hideNotification(_ isHide: Bool) {
+        buttonNotif.isHidden = isHide
+    }
+    
+    func hideLocationLabel(_ isHide: Bool) {
+        labelLocation.isHidden = isHide
+        pinLocation.isHidden = isHide
+    }
+    
+    func setNavigationController(vc: UINavigationController?) {
+        self.vc = vc
+    }
+    
+    @IBAction func backButton(_ sender: UIButton) {
+        vc?.popViewController(animated: true)
+    }
+    
 }

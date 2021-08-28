@@ -31,11 +31,14 @@ class ModalDetailOrderViewController: UIViewController {
     private func setupUI() {
         nomerTelpPemberiSewaLabel.text = nomerTelpPemberiSewa
         namaPemberiSewaLabel.text = order?.lenderBooks?[0].lender?.name
-        jalanPemberiSewaLabel.text = order?.alamat
-        kelurahanPemberiSewaLabel.text = order?.kelurahan
-        kecamatanPemberiSewaLabel.text = order?.kecamatan
-        negaraPemberiSewaLabel.text = order?.provinsi
+        jalanPemberiSewaLabel.text = order?.lenderBooks?[0].lender?.alamat
+        kelurahanPemberiSewaLabel.text = order?.lenderBooks?[0].lender?.kelurahan
+        kecamatanPemberiSewaLabel.text = order?.lenderBooks?[0].lender?.kecamatan
+        negaraPemberiSewaLabel.text = order?.lenderBooks?[0].lender?.provinsi
     }
 
-
+    @IBAction func dismisButton(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
 }

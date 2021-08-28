@@ -29,7 +29,7 @@
                 <outlet property="durasiPenyewaanLabel" destination="hD9-rs-7cK" id="Zts-Pj-RwO"/>
                 <outlet property="estimasiTotalLabel" destination="LIL-91-N85" id="EjP-G4-geB"/>
                 <outlet property="hargaPenyewaanLabel" destination="d6P-qN-cCD" id="Pt7-KU-1xI"/>
-                <outlet property="lenderImageView" destination="KhI-EU-D7g" id="hiA-C6-ghd"/>
+                <outlet property="lenderImage" destination="9Nl-m3-vzN" id="d1T-VG-kqc"/>
                 <outlet property="lenderNameLabel" destination="4y5-4C-W5h" id="PaE-S4-RkI"/>
                 <outlet property="metodePengirimanLabel" destination="g1a-h3-j9S" id="mzl-Ok-ga4"/>
                 <outlet property="pickerDurasiSewa" destination="beP-yg-OlH" id="Utd-4R-Adi"/>
@@ -64,17 +64,12 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="kYa-bT-VkF">
                                             <rect key="frame" x="28" y="60.5" width="358" height="22"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="KhI-EU-D7g">
-                                                    <rect key="frame" x="0.0" y="1.5" width="22" height="19.5"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9Nl-m3-vzN" customClass="CircleImageView" customModule="Peek_a_Book" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="22" height="22"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="22" id="0Yb-zI-mYc"/>
-                                                        <constraint firstAttribute="width" constant="22" id="uC9-zk-ykx"/>
+                                                        <constraint firstAttribute="width" constant="22" id="Rm4-1Q-8oE"/>
+                                                        <constraint firstAttribute="height" constant="22" id="eAv-Wh-INL"/>
                                                     </constraints>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                            <integer key="value" value="72"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4y5-4C-W5h">
                                                     <rect key="frame" x="27" y="0.0" width="331" height="22"/>
@@ -683,7 +678,6 @@
     </objects>
     <resources>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
-        <image name="person" catalog="system" width="128" height="117"/>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

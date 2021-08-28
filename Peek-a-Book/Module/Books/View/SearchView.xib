@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,18 +19,20 @@
                 <outlet property="buttonBack" destination="oWs-rQ-hYa" id="4vG-Pc-Wr8"/>
                 <outlet property="buttonNotif" destination="OvU-sK-07A" id="f3x-Hy-b4t"/>
                 <outlet property="labelLocation" destination="elr-gW-pbz" id="0tL-Vw-2w7"/>
+                <outlet property="pinLocation" destination="Zc1-Gf-XPa" id="r3E-7f-yhi"/>
                 <outlet property="searchBar" destination="QCo-ES-9Ub" id="XDr-nW-DTh"/>
+                <outlet property="searchField" destination="UGv-FP-XEu" id="d8m-db-Zi1"/>
                 <outlet property="searchView" destination="iN0-l3-epB" id="IQw-lE-sDv"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="390" height="150"/>
+            <rect key="frame" x="0.0" y="0.0" width="390" height="114"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mencari lokasi.." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="elr-gW-pbz">
                     <rect key="frame" x="43" y="84" width="327" height="15"/>
-                    <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="17"/>
+                    <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="14"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -44,15 +47,19 @@
                             </constraints>
                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="24"/>
                             <state key="normal" image="chevron.left" catalog="system"/>
+                            <connections>
+                                <action selector="backButton:" destination="-1" eventType="touchUpInside" id="eR2-aO-NtY"/>
+                            </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QCo-ES-9Ub">
-                            <rect key="frame" x="44" y="0.0" width="265" height="50"/>
+                            <rect key="frame" x="44" y="0.0" width="306" height="50"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="magnifyingglass" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="xDF-H3-23d">
                                     <rect key="frame" x="10" y="11" width="20" height="28"/>
                                 </imageView>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Cari Buku" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UGv-FP-XEu">
-                                    <rect key="frame" x="40" y="10" width="215" height="30"/>
+                                    <rect key="frame" x="40" y="10" width="256" height="30"/>
+                                    <color key="textColor" name="primary-3"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
@@ -69,8 +76,8 @@
                                 <constraint firstItem="UGv-FP-XEu" firstAttribute="leading" secondItem="xDF-H3-23d" secondAttribute="trailing" constant="10" id="yW0-VW-Oj1"/>
                             </constraints>
                         </view>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OvU-sK-07A">
-                            <rect key="frame" x="324" y="12" width="26" height="26"/>
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OvU-sK-07A">
+                            <rect key="frame" x="350" y="12" width="26" height="26"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="26" id="UQR-ar-m5k"/>
                                 <constraint firstAttribute="height" constant="26" id="ulN-xn-be7"/>
@@ -93,16 +100,16 @@
             <constraints>
                 <constraint firstItem="elr-gW-pbz" firstAttribute="bottom" secondItem="Zc1-Gf-XPa" secondAttribute="bottom" id="2He-BU-H1o"/>
                 <constraint firstItem="ayt-AF-WiG" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="410-Oz-kNj"/>
+                <constraint firstItem="elr-gW-pbz" firstAttribute="top" secondItem="ayt-AF-WiG" secondAttribute="bottom" constant="14" id="Gdq-G8-pze"/>
                 <constraint firstItem="elr-gW-pbz" firstAttribute="leading" secondItem="Zc1-Gf-XPa" secondAttribute="trailing" constant="8" id="I4F-d2-d33"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="elr-gW-pbz" secondAttribute="trailing" constant="20" id="dvR-4L-BWr"/>
-                <constraint firstItem="Zc1-Gf-XPa" firstAttribute="top" secondItem="ayt-AF-WiG" secondAttribute="bottom" constant="14" id="e24-FQ-1LU"/>
                 <constraint firstItem="ayt-AF-WiG" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="ejZ-8v-Rqo"/>
                 <constraint firstAttribute="trailing" secondItem="ayt-AF-WiG" secondAttribute="trailing" constant="20" id="umY-wW-ok1"/>
                 <constraint firstItem="elr-gW-pbz" firstAttribute="top" secondItem="Zc1-Gf-XPa" secondAttribute="top" id="v3o-B9-UIT"/>
                 <constraint firstItem="Zc1-Gf-XPa" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="wip-qZ-zk9"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="53.623188405797109" y="47.544642857142854"/>
+            <point key="canvasLocation" x="53.623188405797109" y="34.821428571428569"/>
         </view>
     </objects>
     <resources>
@@ -110,6 +117,9 @@
         <image name="chevron.left" catalog="system" width="96" height="128"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="pin-location" width="22" height="32"/>
+        <namedColor name="primary-3">
+            <color red="0.40000000000000002" green="0.68627450980392157" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -15,6 +15,7 @@ class DetailBooksViewController: UIViewController {
     
     var id: Int = 0
     
+    @IBOutlet weak var loadingView: UIActivityIndicatorView!
     
     // MARK: -Header View
     @IBOutlet weak var detailBookImages: UIImageView!
@@ -45,6 +46,7 @@ class DetailBooksViewController: UIViewController {
     
     private let dataManager = DataManager.shared
     private var lenderBook: LenderBook?
+    private var lenderId: Int?
     
     override func viewDidLoad() {
         
@@ -52,12 +54,10 @@ class DetailBooksViewController: UIViewController {
         viewModel.getDetailBook(id: String(id))
         totalBookButtonView.isHidden = true
         
+        setupRx()
         setNavigationBar()
         setupCart()
         updateCart()
-        
-        setupRx()
-        
     }
     
     private func updateCart() {
@@ -81,14 +81,35 @@ class DetailBooksViewController: UIViewController {
     }
     
     private func setupRx() {
+        viewModel.loading.asObserver()
+            .bind(to: loadingView.rx.isAnimating)
+            .disposed(by: disposeBag)
+        
+        viewModel.loading.asObserver().map{ item in
+            !item
+        }.bind(to: loadingView.rx.isHidden)
+            .disposed(by: disposeBag)
+
         viewModel.bookDetail.subscribe(onNext: { item in
             self.lenderBook = item
         }).disposed(by: disposeBag)
         
+        viewModel.bookDetail.subscribe(onNext: { book in
+                self.lenderId = book.lender?.id
+        }).disposed(by: disposeBag)
+        
         // MARK: -Setup Header View
         viewModel.bookDetail.subscribe (onNext: { book in
-            let url = URL(string: Constant.Network.baseUrl + (book.images?[0].url ?? ""))
-            self.detailBookImages.kf.setImage(with: url)
+            if let image = book.images {
+                if !image.isEmpty {
+                    let url = URL(string: Constant.Network.baseUrl + (image[0].url ?? ""))
+                    self.detailBookImages.kf.setImage(with: url)
+                }else{
+                    self.detailBookImages.image = UIImage (systemName: "book.fill")
+                }
+            }else{
+                self.detailBookImages.image = UIImage (systemName: "book.fill")
+            }
         }).disposed(by: disposeBag)
         
         viewModel.bookDetail.asObserver().map { book in
@@ -102,14 +123,22 @@ class DetailBooksViewController: UIViewController {
         .disposed(by: disposeBag)
         
         viewModel.bookDetail.asObserver().map { book in
-            "Rp\(book.price?.toRupiah() ?? "")"
+            "Rp\(book.price?.toRupiah() ?? "")/Minggu"
         }.bind(to: detailBookPriceLabel.rx.text)
         .disposed(by: disposeBag)
         
         // MARK: - Setup Lender Button View
         viewModel.bookDetail.subscribe (onNext: { book in
-            let url = URL(string: Constant.Network.baseUrl + (book.lender?.images?[0].url ?? ""))
-            self.lenderImage.kf.setImage(with: url)
+            if let image = book.lender?.images {
+                if !image.isEmpty {
+                    let url = URL(string: Constant.Network.baseUrl + (image[0].url ?? ""))
+                    self.lenderImage.kf.setImage(with: url)
+                } else {
+                    self.lenderImage.image = UIImage(systemName: "person")
+                }
+            }else {
+                self.lenderImage.image = UIImage(systemName: "person")
+            }
         }).disposed(by: disposeBag)
         
         viewModel.bookDetail.asObserver().map { book in
@@ -144,10 +173,10 @@ class DetailBooksViewController: UIViewController {
         }.bind(to: detailBookConditionLabel.rx.text)
         .disposed(by: disposeBag)
         
-        /*viewModel.bookDetail.asObserver().map { book in
+        viewModel.bookDetail.asObserver().map { book in
          book.book?.bookGenre == 1 ? "Fiksi" : "Non Fiksi"
          }.bind(to: detailBookGenreLabel.rx.text)
-         .disposed(by: disposeBag)*/
+         .disposed(by: disposeBag)
         
         viewModel.bookDetail.asObserver().map { book in
             book.book?.sinopsis
@@ -156,7 +185,10 @@ class DetailBooksViewController: UIViewController {
     }
     
     @IBAction func lenderProfileGetTapped(_ sender: UITapGestureRecognizer) {
-        print("Sambung ke lender")
+        let vc = ModuleBuilder.shared.goToProfileLenderViewController()
+        vc.setLenderId(id: lenderId ?? -1)
+        vc.setUserPenyewa(flag: true)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func totalBukuGetTapped(_ sender: UITapGestureRecognizer) {

@@ -17,8 +17,9 @@ class RentBookItemTableViewCell: UITableViewCell{
     @IBOutlet weak var bookImage: UIImageView!
     @IBOutlet weak var bookTitle: UILabel!
     @IBOutlet weak var bookItemMoreThanOne: UILabel!
-    @IBOutlet weak var rentDuration: UIButton!
+    @IBOutlet weak var rentDuration: UILabel!
     @IBOutlet weak var rentPrice: UILabel!
+    @IBOutlet weak var rentDeadline: UILabel!
     
     @IBOutlet weak var warningButton: UIButton!
     @IBOutlet weak var activeButton: UIButton!
@@ -40,6 +41,7 @@ class RentBookItemTableViewCell: UITableViewCell{
     }
     
     override func awakeFromNib() {
+        rootView.cornerRadius(20)
         rootView.layer.applyShadow(
             color: .black,
             alpha: 0.1,
@@ -54,14 +56,48 @@ class RentBookItemTableViewCell: UITableViewCell{
         didSet {
             if let response = response {
                 id = response.id ?? 0
-                if let lenderBooks = response.lenderBooks {
+                if let  lenderBooks = response.lenderBooks {
                     if !lenderBooks.isEmpty {
-                        let lenderImage = Constant.Network.baseUrl + (lenderBooks[0].lender?.images?[0].url ?? "")
-                        let sampleLenderBookImage = Constant.Network.baseUrl + (lenderBooks[0].images?[0].url ?? "")
-                        lendersName.text = lenderBooks[0].lender?.name
+                        
+                        if let imageLender = lenderBooks[0].lender?.images, let imageBookSample = lenderBooks[0].images {
+                            
+                            if response.isFromRenter {
+                                if !imageLender.isEmpty {
+                                    let lenderImage = Constant.Network.baseUrl + (imageLender[0].url ?? "")
+                                    imageProfileLenders.setImage(fromUrl: lenderImage)
+                                } else {
+                                    imageProfileLenders.setBackgroundColor(color: #colorLiteral(red: 0.9058823529, green: 0.9568627451, blue: 1, alpha: 1))
+                                    imageProfileLenders.setPlaceHolderImage(image: UIImage(systemName: "person")!)
+                                }
+                            } else {
+                                imageProfileLenders.setBackgroundColor(color: #colorLiteral(red: 0.9058823529, green: 0.9568627451, blue: 1, alpha: 1))
+                                imageProfileLenders.setPlaceHolderImage(image: UIImage(systemName: "person")!)
+                            }
+                            
+                            if !imageBookSample.isEmpty {
+                                let sampleLenderBookImage = Constant.Network.baseUrl + (imageBookSample[0].url ?? "")
+                                bookImage.kf.setImage(with: URL(string: sampleLenderBookImage))
+                            }else{
+                                bookImage.image = UIImage(systemName: "book.fill")
+                            }
+                            
+                        } else {
+                            imageProfileLenders.setBackgroundColor(color: #colorLiteral(red: 0.9058823529, green: 0.9568627451, blue: 1, alpha: 1))
+                            imageProfileLenders.setPlaceHolderImage(image: UIImage(systemName: "person")!)
+                            bookImage.image = UIImage(systemName: "book.fill")
+                        }
+                        
+                        if response.isFromRenter {
+                            lendersName.text = lenderBooks[0].lender?.name
+                        } else {
+                            lendersName.text = response.user?.username
+                        }
+                        
                         bookTitle.text = lenderBooks[0].book?.title
-                        imageProfileLenders.setImage(fromUrl: lenderImage)
-                        bookImage.kf.setImage(with: URL(string: sampleLenderBookImage))
+                    }else {
+                        imageProfileLenders.setBackgroundColor(color: #colorLiteral(red: 0.9058823529, green: 0.9568627451, blue: 1, alpha: 1))
+                        imageProfileLenders.setPlaceHolderImage(image: UIImage(systemName: "person")!)
+                        bookImage.image = UIImage(systemName: "book.fill")
                     }
                 }
                 let countBooks = response.lenderBooks?.count ?? 0
@@ -72,12 +108,12 @@ class RentBookItemTableViewCell: UITableViewCell{
                 
                 if countBooks > 1 {
                     bookItemMoreThanOne.isHidden = false
-                }else{
+                } else {
                     bookItemMoreThanOne.isHidden = true
                 }
                 
                 bookItemMoreThanOne.text = "+\(countBooks - 1) buku lainnya"
-                rentDuration.setTitle("\(response.periodOfTime ?? 0) Minggu", for: .normal)
+                rentDuration.text = "\(response.periodOfTime ?? 0) Minggu"
                 
                 if let books = response.lenderBooks {
                     for item in books {
@@ -85,32 +121,48 @@ class RentBookItemTableViewCell: UITableViewCell{
                     }
                 }
                 
+                price *= response.periodOfTime ?? 0
+                
                 rentPrice.text = "Rp \(price.toRupiah())"
                 statusRent.text = response.status?.name
                 
                 if isFromRenter {
                     switch idStatusRent {
-                    case RentStatus.awaiting.getID():
+                    case RentStatus.waitingConfirmation.getID():
+                        rentDeadline.isHidden = true
                         manipulateButtonView(button: warningButton, isHidden: false, text: "Batalkan")
                         manipulateButtonView(button: activeButton, isHidden: true)
                         break
+                    case RentStatus.awaiting.getID():
+                        rentDeadline.isHidden = true
+                        manipulateButtonView(button: warningButton, isHidden: true)
+                        manipulateButtonView(button: activeButton, isHidden: false, text: "Menunggu Dikirim", alpha: 0.5, isEnabled: false)
+                        break
                     case RentStatus.shipping.getID():
+                        rentDeadline.isHidden = true
                         manipulateButtonView(button: warningButton, isHidden: true)
                         manipulateButtonView(button: activeButton, isHidden: false, text: "Diterima")
                         break
                     case RentStatus.ongoing.getID():
+                        if let date = response.updatedAt?.toDate() {
+                            rentDeadline.isHidden = false
+                            rentDeadline.text = "Kembalikan sebelum \(calculateDeadline(date: date, duration: response.periodOfTime ?? 0))"
+                        }
                         manipulateButtonView(button: warningButton, isHidden: true)
                         manipulateButtonView(button: activeButton, isHidden: false, text: "Kembalikan")
                         break
                     case RentStatus.returning.getID():
+                        rentDeadline.isHidden = true
                         manipulateButtonView(button: warningButton, isHidden: true)
                         manipulateButtonView(button: activeButton, isHidden: false, text: "Menunggu Selesai", alpha: 0.5, isEnabled: false)
                         break
                     case RentStatus.done.getID():
+                        rentDeadline.isHidden = true
                         manipulateButtonView(button: warningButton, isHidden: true)
                         manipulateButtonView(button: activeButton, isHidden: true)
                         break
                     case RentStatus.unfinish.getID():
+                        rentDeadline.isHidden = true
                         manipulateButtonView(button: warningButton, isHidden: true)
                         manipulateButtonView(button: activeButton, isHidden: true)
                         break
@@ -119,29 +171,42 @@ class RentBookItemTableViewCell: UITableViewCell{
                 } else {
                     switch idStatusRent {
                     case RentStatus.waitingConfirmation.getID():
+                        rentDeadline.isHidden = true
                         manipulateButtonView(button: warningButton, isHidden: false, text: "Tolak")
                         manipulateButtonView(button: activeButton, isHidden: false, text: "Terima")
                         break
                     case RentStatus.awaiting.getID():
+                        rentDeadline.isHidden = true
                         manipulateButtonView(button: warningButton, isHidden: true)
                         manipulateButtonView(button: activeButton, isHidden: false, text: "Kirim Buku")
                     case RentStatus.shipping.getID():
+                        rentDeadline.isHidden = true
                         manipulateButtonView(button: warningButton, isHidden: true)
                         manipulateButtonView(button: activeButton, isHidden: false, text: "Menunggu Diterima", alpha: 0.5, isEnabled: false)
                         break
                     case RentStatus.ongoing.getID():
+                        if let date = response.updatedAt?.toDate() {
+                            rentDeadline.isHidden = false
+                            rentDeadline.text = "Dikirim kembali sebelum \(calculateDeadline(date: date, duration: response.periodOfTime ?? 0))"
+                        }
                         manipulateButtonView(button: warningButton, isHidden: true)
                         manipulateButtonView(button: activeButton, isHidden: false, text: "Menunggu Kembali", alpha: 0.5, isEnabled: false)
                         break
                     case RentStatus.returning.getID():
+                        if let date = response.updatedAt?.toDate() {
+                            rentDeadline.isHidden = false
+                            rentDeadline.text = "Dikirim kembali sebelum \(calculateDeadline(date: date, duration: 0))"
+                        }
                         manipulateButtonView(button: warningButton, isHidden: true)
                         manipulateButtonView(button: activeButton, isHidden: false, text: "Diterima")
                         break
                     case RentStatus.done.getID():
+                        rentDeadline.isHidden = true
                         manipulateButtonView(button: warningButton, isHidden: true)
                         manipulateButtonView(button: activeButton, isHidden: true)
                         break
                     case RentStatus.unfinish.getID():
+                        rentDeadline.isHidden = true
                         manipulateButtonView(button: warningButton, isHidden: true)
                         manipulateButtonView(button: activeButton, isHidden: true)
                         break
@@ -157,10 +222,10 @@ class RentBookItemTableViewCell: UITableViewCell{
             if isFromRenter {
                 switch idStatusRent {
                 case RentStatus.shipping.getID():
-                    //TODO: Tampilkan date picker
+                    viewModel?.showDatePicker.onNext(true)
+                    viewModel?.selectedId.onNext(self.id)
                     break
                 case RentStatus.ongoing.getID():
-                    //TODO: Ubah status aja
                     self.viewModel?.changeStatus(id: self.id, statusRent: RentStatus.returning.getID())
                     break
                 default:
@@ -170,7 +235,6 @@ class RentBookItemTableViewCell: UITableViewCell{
                 switch idStatusRent {
                 case RentStatus.waitingConfirmation.getID():
                     ConfirmationDialog.showAlertPositive(viewController: view, title: "Terima Penyewaan", subtitle: "Apakah anda setuju untuk menyewakan buku terhadap penyewa? \n\n Anda akan diarahkan ke WhatsApp untuk berkomunikasi dengan penyewa", positiveText: "Konfirmasi", negativeText: "Kembali") {
-                        //TODO: OPEN WHATSAPP, CHANGE STATUS
                         self.viewModel?.changeStatus(id: self.id, statusRent: RentStatus.awaiting.getID())
                         view.dismiss(animated: true, completion: nil)
                         let safariViewController = SFSafariViewController(url: WhatsappGenerator(rawValue: self.shippingMethod)!.getURL(order: self.response!))
@@ -217,5 +281,13 @@ class RentBookItemTableViewCell: UITableViewCell{
         button.setTitle(text, for: .normal)
         button.alpha = alpha
         button.isEnabled = isEnabled
+    }
+    
+    private func calculateDeadline(date: Date, duration: Int) -> String {
+        if let deadline = Calendar.current.date(byAdding: .weekOfMonth, value: duration, to: date) {
+            return deadline.toString(dateFormat: "yyyy-MM-dd hh:mm:ss", toFormat: "dd MMMM yyyy")
+        }else{
+            return ""
+        }
     }
 }

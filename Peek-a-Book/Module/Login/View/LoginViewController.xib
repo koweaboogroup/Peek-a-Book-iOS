@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="Peek_a_Book" customModuleProvider="target">
             <connections>
+                <outlet property="loadingView" destination="kNr-i3-p3D" id="hQR-TO-3lS"/>
                 <outlet property="loginViewContent" destination="MyT-WU-fBI" id="B58-I3-8v5"/>
                 <outlet property="loginViewContentBottomConstraint" destination="fER-T6-ODS" id="BpW-CN-PxD"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -33,11 +34,16 @@
                         <constraint firstAttribute="width" secondItem="MyT-WU-fBI" secondAttribute="height" multiplier="1:1" id="cSg-Bf-phy"/>
                     </constraints>
                 </view>
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="kNr-i3-p3D">
+                    <rect key="frame" x="169" y="387.66666666666669" width="37" height="37"/>
+                </activityIndicatorView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="kNr-i3-p3D" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="433-zj-ARY"/>
                 <constraint firstItem="jkd-Gi-Rv4" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="6Y9-b5-vzC"/>
+                <constraint firstItem="kNr-i3-p3D" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="E8A-DZ-dKr"/>
                 <constraint firstItem="MyT-WU-fBI" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Yud-b6-eRT"/>
                 <constraint firstItem="MyT-WU-fBI" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="b2L-d4-Ynr"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="MyT-WU-fBI" secondAttribute="bottom" id="fER-T6-ODS"/>

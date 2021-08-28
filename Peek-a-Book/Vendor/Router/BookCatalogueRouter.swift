@@ -9,11 +9,12 @@ import Alamofire
 
 enum BookCatalogueRouter: URLRequestConvertible {
     
-    case get
+    case get, addBookIntoCatalogue(lenderBookRequest: LenderBookRequest)
     
     var method: HTTPMethod {
         switch self {
         case .get: return .get
+        case .addBookIntoCatalogue: return .post
         }
     }
     
@@ -27,6 +28,16 @@ enum BookCatalogueRouter: URLRequestConvertible {
         
         request.headers.add(.contentType("application/json"))
         request.headers.add(.accept("application/json"))
+        
+        switch self {
+        case .get: break
+        case .addBookIntoCatalogue(lenderBookRequest: let lenderBookRequest):
+            request.httpBody = try JSONEncoder().encode(lenderBookRequest)
+        }
+        
+        if let jwt = UserDefaults.standard.string(forKey: "jwt"){
+            request.headers.add(.authorization(bearerToken: jwt))
+        }
         
         request.method = method
         
