@@ -35,7 +35,7 @@ class TransactionViewController: UIViewController {
     private var selectedId = 0
     private var selectedStatus = 0
         
-    private var itemsStatus: Observable<[String]> = Observable.of(["Semua Status", "Menunggu Konfirmasi", "Dalam Proses", "Dalam Pengiriman", "Sedang Berlangsung", "Sedang Dikembalikan", "Selesai", "Tidak Selesai"])
+    private var itemsStatus: Observable<[String]> = Observable.of(["Semua Status", "Menunggu Konfirmasi", "Dalam Proses", "Dalam Pengiriman", "Sedang Berlangsung", "Sedang Dikembalikan", "Selesai", "Dibatalkan"])
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,7 +93,7 @@ class TransactionViewController: UIViewController {
         switch flagFrom {
         case .riwayatPenyewaan:
             self.title = "Riwayat Penyewaan"
-            viewModel.ordersForRenter.bind(to: transactionTableView.rx.items(cellIdentifier: XIBConstant.RentBookItemTableViewCell, cellType: RentBookItemTableViewCell.self)) {  (row, transaction, cell) in
+            viewModel.ordersForRenter.bind(to: transactionTableView.rx.items(cellIdentifier: XIBConstant.RentBookItemTableViewCell, cellType: RentBookItemTableViewCell.self)) { (row, transaction, cell) in
                 cell.setViewModel(viewModel: self.viewModel)
                 cell.setViewController(viewController: self)
                 cell.response = transaction
@@ -104,7 +104,7 @@ class TransactionViewController: UIViewController {
             }.bind(to: errorStateView.rx.isHidden)
             .disposed(by: disposeBag)
 
-            errorStateView.setError(errorMessage: "Transaksi tidak ditemukan 😭 🙏")
+            errorStateView.setError(errorMessage: "Tidak ada penyewaan untuk saat ini")
         case .kelolaPenyewaan:
             self.title = "Kelola Penyewaan"
             viewModel.ordersForLender.bind(to: transactionTableView.rx.items(cellIdentifier: XIBConstant.RentBookItemTableViewCell, cellType: RentBookItemTableViewCell.self)) {  (row, transaction, cell) in
@@ -118,7 +118,7 @@ class TransactionViewController: UIViewController {
             }.bind(to: errorStateView.rx.isHidden)
             .disposed(by: disposeBag)
     
-            errorStateView.setError(errorMessage: "Transaksi tidak ditemukan 😭 🙏")
+            errorStateView.setError(errorMessage: "Tidak ada penyewaan untuk saat ini")
         case .none:
             break
         }
