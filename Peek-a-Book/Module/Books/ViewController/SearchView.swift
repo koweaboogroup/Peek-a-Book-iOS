@@ -33,7 +33,6 @@ class SearchView: UIView {
     private func commonInit(){
         searchView = loadViewFromNib(nibName: XIBConstant.SearchView)
         searchView.frame = self.bounds
-        searchView.cornerRadiusBottom(50)
         searchView.backgroundColor = #colorLiteral(red: 0.8, green: 0.9098039216, blue: 1, alpha: 1)
         searchBar.cornerRadius(10)
         searchBar.layer.applyShadow(
