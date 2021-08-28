@@ -17,7 +17,7 @@ class BooksViewModel {
     public let listBookFiction : PublishSubject<[LenderBook]> = PublishSubject()
     public let listBook: PublishSubject<[LenderBook]> = PublishSubject()
     
-    func getListBook(){
+    func getListBook() {
         loading.onNext(true)
         BookService.getListBook { book in
             self.loading.onNext(false)
@@ -61,12 +61,14 @@ class BooksViewModel {
     }
     
     func getListBook(query: String, isFiction: Bool) {
-        //self.loading.onNext(true)
+        let query = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+        
+        self.loading.onNext(true)
         BookService.getListBook(query: query) { book in
-           // self.loading.onNext(false)
+            self.loading.onNext(false)
             var fictionBook = [LenderBook]()
             var nonFictionBook = [LenderBook]()
-            if !query.isEmpty{
+            if !query.isEmpty {
                 self.listBook.onNext(book)
             } else if isFiction {
                 for item in book {
@@ -75,7 +77,7 @@ class BooksViewModel {
                         self.listBook.onNext(fictionBook)
                     }
                 }
-            }else{
+            } else {
                 for item in book {
                     if item.book?.bookGenre == 2 {
                         nonFictionBook.append(item)
@@ -84,7 +86,7 @@ class BooksViewModel {
                 }
             }
         } failCompletion: { error in
-            //self.loading.onNext(false)
+            self.loading.onNext(false)
             self.error.onNext(error.errorDescription ?? "Data Tidak Ditemukan")
         }        
     }

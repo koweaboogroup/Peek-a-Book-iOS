@@ -58,11 +58,18 @@ class RentBookItemTableViewCell: UITableViewCell{
                 id = response.id ?? 0
                 if let  lenderBooks = response.lenderBooks {
                     if !lenderBooks.isEmpty {
-                        if let imageLender =  lenderBooks[0].lender?.images, let imageBookSample = lenderBooks[0].images{
-                            if !imageLender.isEmpty {
-                                let lenderImage = Constant.Network.baseUrl + (imageLender[0].url ?? "")
-                                imageProfileLenders.setImage(fromUrl: lenderImage)
-                            }else {
+                        
+                        if let imageLender = lenderBooks[0].lender?.images, let imageBookSample = lenderBooks[0].images {
+                            
+                            if response.isFromRenter {
+                                if !imageLender.isEmpty {
+                                    let lenderImage = Constant.Network.baseUrl + (imageLender[0].url ?? "")
+                                    imageProfileLenders.setImage(fromUrl: lenderImage)
+                                } else {
+                                    imageProfileLenders.setBackgroundColor(color: #colorLiteral(red: 0.9058823529, green: 0.9568627451, blue: 1, alpha: 1))
+                                    imageProfileLenders.setPlaceHolderImage(image: UIImage(systemName: "person")!)
+                                }
+                            } else {
                                 imageProfileLenders.setBackgroundColor(color: #colorLiteral(red: 0.9058823529, green: 0.9568627451, blue: 1, alpha: 1))
                                 imageProfileLenders.setPlaceHolderImage(image: UIImage(systemName: "person")!)
                             }
@@ -74,12 +81,18 @@ class RentBookItemTableViewCell: UITableViewCell{
                                 bookImage.image = UIImage(systemName: "book.fill")
                             }
                             
-                        }else {
+                        } else {
                             imageProfileLenders.setBackgroundColor(color: #colorLiteral(red: 0.9058823529, green: 0.9568627451, blue: 1, alpha: 1))
                             imageProfileLenders.setPlaceHolderImage(image: UIImage(systemName: "person")!)
                             bookImage.image = UIImage(systemName: "book.fill")
                         }
-                        lendersName.text = lenderBooks[0].lender?.name
+                        
+                        if response.isFromRenter {
+                            lendersName.text = lenderBooks[0].lender?.name
+                        } else {
+                            lendersName.text = response.user?.username
+                        }
+                        
                         bookTitle.text = lenderBooks[0].book?.title
                     }else {
                         imageProfileLenders.setBackgroundColor(color: #colorLiteral(red: 0.9058823529, green: 0.9568627451, blue: 1, alpha: 1))
@@ -95,7 +108,7 @@ class RentBookItemTableViewCell: UITableViewCell{
                 
                 if countBooks > 1 {
                     bookItemMoreThanOne.isHidden = false
-                }else{
+                } else {
                     bookItemMoreThanOne.isHidden = true
                 }
                 
@@ -107,6 +120,8 @@ class RentBookItemTableViewCell: UITableViewCell{
                         price += (item.price ?? 0)
                     }
                 }
+                
+                price *= response.periodOfTime ?? 0
                 
                 rentPrice.text = "Rp \(price.toRupiah())"
                 statusRent.text = response.status?.name
@@ -131,7 +146,7 @@ class RentBookItemTableViewCell: UITableViewCell{
                     case RentStatus.ongoing.getID():
                         if let date = response.updatedAt?.toDate() {
                             rentDeadline.isHidden = false
-                            rentDeadline.text = "Kembalikan Sebelum \(calculateDeadline(date: date, duration: response.periodOfTime ?? 0))"
+                            rentDeadline.text = "Kembalikan sebelum \(calculateDeadline(date: date, duration: response.periodOfTime ?? 0))"
                         }
                         manipulateButtonView(button: warningButton, isHidden: true)
                         manipulateButtonView(button: activeButton, isHidden: false, text: "Kembalikan")
@@ -269,7 +284,7 @@ class RentBookItemTableViewCell: UITableViewCell{
     }
     
     private func calculateDeadline(date: Date, duration: Int) -> String {
-        if let deadline = Calendar.current.date(byAdding: .weekOfMonth, value: duration, to: date){
+        if let deadline = Calendar.current.date(byAdding: .weekOfMonth, value: duration, to: date) {
             return deadline.toString(dateFormat: "yyyy-MM-dd hh:mm:ss", toFormat: "dd MMMM yyyy")
         }else{
             return ""

@@ -59,7 +59,7 @@
                     </subviews>
                 </stackView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PJs-jr-59Z">
-                    <rect key="frame" x="30" y="749.5" width="354" height="53.5"/>
+                    <rect key="frame" x="30" y="752.5" width="354" height="53.5"/>
                     <color key="backgroundColor" name="primary-1"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="PJs-jr-59Z" secondAttribute="height" multiplier="33:5" id="kx2-Ve-DdW"/>
@@ -275,7 +275,7 @@
                         <constraint firstAttribute="width" secondItem="Oyn-BG-lJQ" secondAttribute="height" multiplier="175:142" id="xnH-ZB-E8d"/>
                     </constraints>
                 </view>
-                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="g7Q-dD-YvL">
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="g7Q-dD-YvL">
                     <rect key="frame" x="197" y="438" width="20" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </activityIndicatorView>

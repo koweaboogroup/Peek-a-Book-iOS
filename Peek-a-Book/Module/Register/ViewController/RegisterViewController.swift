@@ -183,6 +183,8 @@ class RegisterViewController: UIViewController {
         }.bind(to: loadingView.rx.isHidden)
             .disposed(by: disposeBag)
         
+        viewModel.loading.onNext(false)
+        
         viewModel.user.subscribe(onNext: { user in
             self.changeToProfileVC()
         }).disposed(by: disposeBag)

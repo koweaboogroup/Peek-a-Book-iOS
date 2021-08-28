@@ -53,14 +53,16 @@ class LoginViewController: UIViewController {
     // MARK: - Private Function
     
     private func setupRx() {
-        viewModel.loading.asObserver()
+        viewModel.loading
             .bind(to: loadingView.rx.isAnimating)
             .disposed(by: disposeBag)
         
-        viewModel.loading.asObserver().map{ item in
+        viewModel.loading.map { item in
             !item
         }.bind(to: loadingView.rx.isHidden)
             .disposed(by: disposeBag)
+        
+        viewModel.loading.onNext(false)
 
 
         loginViewContent.identifierTextField.rx.text
