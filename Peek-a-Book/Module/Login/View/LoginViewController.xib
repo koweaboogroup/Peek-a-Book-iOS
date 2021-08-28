@@ -34,8 +34,8 @@
                         <constraint firstAttribute="width" secondItem="MyT-WU-fBI" secondAttribute="height" multiplier="1:1" id="cSg-Bf-phy"/>
                     </constraints>
                 </view>
-                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="kNr-i3-p3D">
-                    <rect key="frame" x="177.66666666666666" y="396" width="20" height="20"/>
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="kNr-i3-p3D">
+                    <rect key="frame" x="169" y="387.66666666666669" width="37" height="37"/>
                 </activityIndicatorView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
