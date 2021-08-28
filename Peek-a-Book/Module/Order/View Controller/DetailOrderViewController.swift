@@ -160,8 +160,7 @@ class DetailOrderViewController: UIViewController {
         
         
         viewModel.order.asObserver().map { order in
-            order.user?.alamat
-            
+            order.lenderBooks?[0].lender?.name
         }.bind(to: profileNameLabel.rx.text)
         .disposed(by: disposeBag)
         
@@ -184,6 +183,9 @@ class DetailOrderViewController: UIViewController {
             for item in items{
                 totalPrice += item.price ?? 0
             }
+            
+            totalPrice *= order.periodOfTime ?? 0
+            
             return "Rp \(totalPrice)"
         }.bind(to: rentFeeLabel.rx.text)
         .disposed(by: disposeBag)
