@@ -192,11 +192,12 @@ class DetailBooksViewController: UIViewController {
     }
     
     @IBAction func totalBukuGetTapped(_ sender: UITapGestureRecognizer) {
-        DataManager.shared.saveCartToUserDefaults()
-        
-        let vc = ModuleBuilder.shared.goToCheckOutViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
-        
+        if let _ = UserDefaults.standard.string(forKey: "jwt") {
+            let vc = ModuleBuilder.shared.goToCheckOutViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
+        } else {
+            tabBarController?.selectedIndex = 1
+        }
     }
     
     @IBAction func kondisiBukuInformationTouched(_ sender: UIButton) {
