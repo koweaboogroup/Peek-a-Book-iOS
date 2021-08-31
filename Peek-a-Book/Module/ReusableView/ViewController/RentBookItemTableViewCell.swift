@@ -67,11 +67,13 @@ class RentBookItemTableViewCell: UITableViewCell{
                                     imageProfileLenders.setImage(fromUrl: lenderImage)
                                 } else {
                                     imageProfileLenders.setBackgroundColor(color: #colorLiteral(red: 0.9058823529, green: 0.9568627451, blue: 1, alpha: 1))
+                                    imageProfileLenders.setPlaceHolderImageSize(width: imageProfileLenders.frame.size.width/2, height: imageProfileLenders.frame.size.height/2)
                                     imageProfileLenders.setPlaceHolderImage(image: UIImage(systemName: "person")!)
                                 }
                             } else {
                                 imageProfileLenders.setBackgroundColor(color: #colorLiteral(red: 0.9058823529, green: 0.9568627451, blue: 1, alpha: 1))
-                                imageProfileLenders.setPlaceHolderImage(image: UIImage(systemName: "person")!)
+                                imageProfileLenders.setPlaceHolderImageSize(width: imageProfileLenders.frame.size.width/1.5, height: imageProfileLenders.frame.size.height/1.5)
+                                imageProfileLenders.setPlaceHolderImage(image: UIImage(systemName: "person.fill")!)
                             }
                             
                             if !imageBookSample.isEmpty {
@@ -239,6 +241,9 @@ class RentBookItemTableViewCell: UITableViewCell{
                         view.dismiss(animated: true, completion: nil)
                         let safariViewController = SFSafariViewController(url: WhatsappGenerator(rawValue: self.shippingMethod)!.getURL(order: self.response!))
                         view.present(safariViewController, animated: true, completion: nil)
+                        
+                        self.editLenderBooksAvailibility(isAvailable: false)
+                        
                     } negativeCompletion: {
                         view.dismiss(animated: true, completion: nil)
                     }
@@ -246,6 +251,7 @@ class RentBookItemTableViewCell: UITableViewCell{
                 case RentStatus.awaiting.getID():
                     self.viewModel?.changeStatus(id: self.id, statusRent: RentStatus.shipping.getID())
                 case RentStatus.returning.getID():
+                    editLenderBooksAvailibility(isAvailable: true)
                     self.viewModel?.changeStatus(id: self.id, statusRent: RentStatus.done.getID())
                     break
                 default:
@@ -271,6 +277,15 @@ class RentBookItemTableViewCell: UITableViewCell{
                     self.viewModel?.changeStatus(id: self.id, statusRent: RentStatus.unfinish.getID())
                     view.dismiss(animated: true, completion: nil)
                 }
+            }
+        }
+    }
+    
+    // change book availability
+    private func editLenderBooksAvailibility(isAvailable: Bool) {
+        if let lenderBooks = self.response?.lenderBooks {
+            for lenderBook in lenderBooks {
+                self.viewModel?.editAvailability(lenderBookId: lenderBook.id ?? -1, isAvailable: isAvailable)
             }
         }
     }

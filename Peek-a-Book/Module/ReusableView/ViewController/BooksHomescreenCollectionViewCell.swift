@@ -16,6 +16,7 @@ class BooksHomescreenCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var bookTitle:UILabel!
     @IBOutlet weak var bookWriter:UILabel!
     @IBOutlet weak var bookRentPrice:UILabel!
+    
     override func awakeFromNib() {
         rootView.layer.applyShadow(
             color: .black,
@@ -49,7 +50,14 @@ class BooksHomescreenCollectionViewCell: UICollectionViewCell {
                 }
                 self.bookTitle.text = response.book?.title
                 self.bookWriter.text = response.book?.author
-                self.bookRentPrice.text = "\(response.price?.toRupiah() ?? "")/minggu"
+                
+                if response.isAvailable == false {
+                    self.bookRentPrice.font = UIFont(name: self.bookRentPrice.font.familyName, size: 14)
+                    self.bookRentPrice.text = "Dalam Penyewaan"
+                } else {
+                    self.bookRentPrice.text = "Rp\(response.price?.toRupiah() ?? "")/minggu"
+                }
+                
                 if let image = response.images {
                     if !image.isEmpty {
                         self.bookImage.kf.setImage(with: URL(string: Constant.Network.baseUrl + (image[0].url ?? "")))

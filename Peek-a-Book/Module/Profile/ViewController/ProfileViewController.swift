@@ -24,12 +24,22 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setNavigationBar()
         setupView()
         fetchProfile()
     }
     
-    func setNavigationBar(){
+    override func viewWillAppear(_ animated: Bool) {
+        showNavigation(true)
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        showNavigation(false)
+    }
+    
+    func setNavigationBar() {
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "DM Serif Text", size: 19)!]
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "bell.fill"), style: .done, target: self, action: #selector(notificationTapped))
@@ -72,16 +82,6 @@ class ProfileViewController: UIViewController {
             }
             .bind(to: profileNameLabel.rx.text)
             .disposed(by: disposeBag)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        showNavigation(true)
-        self.tabBarController?.tabBar.isHidden = false
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        showNavigation(false)
-        self.title = ""
     }
     
     // MARK: -Deklarasi Action Button

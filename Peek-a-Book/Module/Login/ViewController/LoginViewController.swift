@@ -94,7 +94,7 @@ class LoginViewController: UIViewController {
         viewModel.error.subscribe(onNext: { error in
             let alert = UIAlertController(title: "Tidak Berhasil Masuk", message: "Email atau password Anda salah", preferredStyle: .alert)
 
-            alert.addAction(UIAlertAction(title: "Baiklah!", style: .default, handler: { action in
+            alert.addAction(UIAlertAction(title: "Baik", style: .default, handler: { action in
                 self.loginViewContent.identifierTextField.becomeFirstResponder()
             }))
 

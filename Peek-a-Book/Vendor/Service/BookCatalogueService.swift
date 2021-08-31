@@ -48,4 +48,19 @@ class BookCatalogueService {
             }
         }
     }
+    
+    static func editAvailability(lenderBookId: Int, isAvailable: Bool, successCompletion: @escaping () -> Void, failCompletion: @escaping (AFError) -> Void) {
+        
+        BaseRequest.put(router: BookCatalogueRouter.editAvailability(lenderBookId: lenderBookId, isAvailable: isAvailable)) { request in
+            request.responseJSON { response in
+                switch response.result {
+                case .success(_):
+                    successCompletion()
+                case .failure(let error):
+                    failCompletion(error)
+                }
+            }
+        }
+        
+    }
 }

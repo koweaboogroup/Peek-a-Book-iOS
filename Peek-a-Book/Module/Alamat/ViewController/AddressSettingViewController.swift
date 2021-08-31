@@ -24,6 +24,7 @@ class AddressSettingViewController: UIViewController {
     private var disposeBag = DisposeBag()
     
     private var isClicked = false
+    private var isFilled = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,18 +32,33 @@ class AddressSettingViewController: UIViewController {
         setupView()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        if !isFilled {
+            addressViewModel?.address.onNext("")
+        }
+    }
+    
     func initViewModel(viewModel: AddressViewModel) {
         addressViewModel = viewModel
     }
     
-    private func setupNavigation(){
-        self.title = "Detail Alamat"
-        self.navigationItem.backButtonTitle = ""
+    private func setupNavigation() {
+        title = "Detail Alamat"
+        navigationItem.backButtonTitle = ""
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(doneEditing))
     }
     
     @objc func doneEditing() {
-        self.navigationController?.popViewController(animated: true)
+        if isFilled {
+            self.navigationController?.popViewController(animated: true)
+        } else {
+            let alert = UIAlertController(title: "Detail Alamat Belum Lengkap", message: "Mohon mengisi seluruh detail alamat", preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "Baik", style: .default, handler: nil))
+            
+            self.present(alert, animated: true, completion: nil)
+        }
+        
     }
     
     private func setupView(){
@@ -115,6 +131,12 @@ class AddressSettingViewController: UIViewController {
             .bind(to: addressViewModel?.address ?? PublishSubject<String>())
             .disposed(by: disposeBag)
         
+        addressViewModel?.isAllAddressFieldsFilled()
+            .subscribe(onNext: { isAllAddressFieldsFilled in
+                self.isFilled = isAllAddressFieldsFilled
+            })
+            .disposed(by: disposeBag)
+        
         addressViewModel?.checkBoxClicked.subscribe(onNext: { isClicked in
             if isClicked {
                 self.checkButton.imageView?.image = UIImage(named: "checkmark.square.fill")
@@ -136,8 +158,27 @@ class AddressSettingViewController: UIViewController {
         print(isClicked)
         if isClicked {
             self.checkButton.setImage(UIImage(systemName: "checkmark.square.fill"), for: .normal)
-        }else {
+            setAddress(isFilled: true)
+        } else {
             self.checkButton.setImage(UIImage(systemName: "checkmark.square"), for: .normal)
+            setAddress(isFilled: false)
+        }
+    }
+    
+    private func setAddress(isFilled: Bool){
+        if isFilled {
+            let user = DataManager.shared.getUser()
+            subDistrictTextField.text = user?.kelurahan
+            districtTextField.text = user?.kecamatan
+            cityTextField.text = user?.kota
+            provTextField.text = user?.provinsi
+            streetTextField.text = user?.alamat
+        } else {
+            subDistrictTextField.text = ""
+            districtTextField.text = ""
+            cityTextField.text = ""
+            provTextField.text = ""
+            streetTextField.text = ""
         }
     }
 }

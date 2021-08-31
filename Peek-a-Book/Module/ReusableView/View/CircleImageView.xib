@@ -11,6 +11,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CircleImageView" customModule="Peek_a_Book" customModuleProvider="target">
             <connections>
                 <outlet property="circleImageView" destination="iN0-l3-epB" id="jYD-3h-Y1b"/>
+                <outlet property="placeHolderImageHeight" destination="Khe-Gj-35x" id="htz-IE-uWZ"/>
+                <outlet property="placeHolderImageWidth" destination="IHp-fe-J6g" id="2ye-wQ-b61"/>
                 <outlet property="placeImage" destination="oaH-Fg-mDJ" id="1oW-iq-dOh"/>
                 <outlet property="placeholderImage" destination="ksf-Ak-lgc" id="KHJ-pD-8o7"/>
             </connections>

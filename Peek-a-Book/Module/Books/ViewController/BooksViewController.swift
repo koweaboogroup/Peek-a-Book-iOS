@@ -30,18 +30,18 @@ class BooksViewController: UIViewController, CLLocationManagerDelegate, UITextFi
     let locationManager = CLLocationManager()
     
     // MARK: LIFECYCLE
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupView()
-        viewModel.getListBook()
         checkLocationServices()
         cellSelectedIndex()
-        print("\(DateTime.getTimeStamp())")
         setupListener()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        viewModel.getListBook()
         showNavigation(true)
     }
     
