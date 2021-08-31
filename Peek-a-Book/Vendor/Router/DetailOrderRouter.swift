@@ -40,8 +40,7 @@ enum DetailOrderRouter: URLRequestConvertible {
         if let jwt = UserDefaults.standard.string(forKey: "jwt"){
             request.headers.add(.authorization(bearerToken: jwt))
         }
-        
-        
+         
         return request
     }
     
