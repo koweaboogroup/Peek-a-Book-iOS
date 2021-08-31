@@ -147,6 +147,7 @@
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="Ruz-v7-3gQ" secondAttribute="trailing" id="4g6-Yj-aSJ"/>
                                 <constraint firstAttribute="bottom" secondItem="Ruz-v7-3gQ" secondAttribute="bottom" id="Bhy-nX-Bok"/>
+                                <constraint firstItem="pLp-dD-fcD" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="W5G-wt-0r1" secondAttribute="trailing" constant="20" id="MU4-AD-cE4"/>
                                 <constraint firstAttribute="trailing" secondItem="pLp-dD-fcD" secondAttribute="trailing" constant="15" id="TnT-u1-4Im"/>
                                 <constraint firstItem="W5G-wt-0r1" firstAttribute="top" secondItem="luQ-AY-aM5" secondAttribute="top" constant="15" id="WI4-TN-NfB"/>
                                 <constraint firstItem="pLp-dD-fcD" firstAttribute="top" secondItem="luQ-AY-aM5" secondAttribute="top" constant="15" id="WoD-Fh-KPt"/>
