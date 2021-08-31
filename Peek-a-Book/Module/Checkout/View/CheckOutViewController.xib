@@ -242,6 +242,7 @@
                                                             <constraints>
                                                                 <constraint firstAttribute="trailing" secondItem="UsC-Av-tI5" secondAttribute="trailing" id="0Zu-DD-MMC"/>
                                                                 <constraint firstItem="Eqo-Ip-g8z" firstAttribute="centerY" secondItem="Cwf-Bg-sO7" secondAttribute="centerY" id="3o1-jB-AlT"/>
+                                                                <constraint firstItem="VhT-rA-0Xa" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Eqo-Ip-g8z" secondAttribute="trailing" constant="20" id="5vz-bd-4aq"/>
                                                                 <constraint firstAttribute="trailing" secondItem="56B-an-lYx" secondAttribute="trailing" constant="13" id="794-6U-vmg"/>
                                                                 <constraint firstItem="56B-an-lYx" firstAttribute="leading" secondItem="VhT-rA-0Xa" secondAttribute="trailing" constant="5" id="Flh-HO-EOP"/>
                                                                 <constraint firstItem="VhT-rA-0Xa" firstAttribute="centerY" secondItem="Cwf-Bg-sO7" secondAttribute="centerY" id="TGE-6R-hJQ"/>
