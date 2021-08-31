@@ -41,7 +41,7 @@ class DetailBookViewModel {
         for lenderBook in lenderBooks {
             BookService.getBookDetail(id: String(lenderBook.id ?? -1)) { book in
                 if let bookResponse = book {
-                    dataManager.setCart(lenderBook: bookResponse)
+                    dataManager.addItemToCart(lenderBook: bookResponse)
                 } else {
                     self.error.onNext("Data Tidak Ditemukan")
                 }
