@@ -214,13 +214,13 @@ class DetailOrderViewController: UIViewController {
         //MARK: -Bikin logic pesan header
         if self.userPenyewa == true{
             viewModel.order.asObserver().map { order in
-                MessageStatusPenyewa(rawValue: order.status?.name ?? "Dalam Proses")?.messageStatusPenyewaSetting(namaTokoPemberiSewa: self.profileNameLabel.text ?? "", nomorPesanan: self.nomorOrderPenyewaanLabel.text ?? "", getStatus: self.messageStatusTemp ?? "Penyewaan \(String(describing: self.nomorOrderPenyewaanLabel.text)) sedang berlangsung hingga tanggal 17/9/2021.")
+                MessageStatusPenyewa(rawValue: order.status?.name ?? "Dalam Proses")?.messageStatusPenyewaSetting(namaTokoPemberiSewa: self.profileNameLabel.text ?? "", nomorPesanan: self.nomorOrderPenyewaanLabel.text ?? "", getStatus: self.messageStatusTemp ?? "Penyewaan \(String(describing: self.nomorOrderPenyewaanLabel.text ?? "1")) sedang berlangsung hingga tanggal 17/9/2021.")
             }.bind(to: informationStatusLabel.rx.text)
             .disposed(by: disposeBag)
         }
         else {
             viewModel.order.asObserver().map { order in
-                MessageStatusPemberiSewa(rawValue: order.status?.name ?? "Dalam Proses")?.messageStatusPemberiSewaSetting(namaPenyewa: self.profileNameLabel.text ?? "", nomorPesanan: self.nomorOrderPenyewaanLabel.text ?? "", getStatus: self.messageStatusTemp ?? "Penyewaan \(String(describing: self.nomorOrderPenyewaanLabel.text)) sedang berlangsung hingga tanggal 17/9/2021.")
+                MessageStatusPemberiSewa(rawValue: order.status?.name ?? "Dalam Proses")?.messageStatusPemberiSewaSetting(namaPenyewa: self.profileNameLabel.text ?? "", nomorPesanan: self.nomorOrderPenyewaanLabel.text ?? "", getStatus: self.messageStatusTemp ?? "Penyewaan \(String(describing: self.nomorOrderPenyewaanLabel.text ?? "1")) sedang berlangsung hingga tanggal 17/9/2021.")
             }.bind(to: informationStatusLabel.rx.text)
             .disposed(by: disposeBag)
         }
