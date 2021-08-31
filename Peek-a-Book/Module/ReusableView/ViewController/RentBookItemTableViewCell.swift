@@ -67,11 +67,13 @@ class RentBookItemTableViewCell: UITableViewCell{
                                     imageProfileLenders.setImage(fromUrl: lenderImage)
                                 } else {
                                     imageProfileLenders.setBackgroundColor(color: #colorLiteral(red: 0.9058823529, green: 0.9568627451, blue: 1, alpha: 1))
+                                    imageProfileLenders.setPlaceHolderImageSize(width: imageProfileLenders.frame.size.width/2, height: imageProfileLenders.frame.size.height/2)
                                     imageProfileLenders.setPlaceHolderImage(image: UIImage(systemName: "person")!)
                                 }
                             } else {
                                 imageProfileLenders.setBackgroundColor(color: #colorLiteral(red: 0.9058823529, green: 0.9568627451, blue: 1, alpha: 1))
-                                imageProfileLenders.setPlaceHolderImage(image: UIImage(systemName: "person")!)
+                                imageProfileLenders.setPlaceHolderImageSize(width: imageProfileLenders.frame.size.width/1.5, height: imageProfileLenders.frame.size.height/1.5)
+                                imageProfileLenders.setPlaceHolderImage(image: UIImage(systemName: "person.fill")!)
                             }
                             
                             if !imageBookSample.isEmpty {

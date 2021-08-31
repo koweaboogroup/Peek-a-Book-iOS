@@ -158,8 +158,27 @@ class AddressSettingViewController: UIViewController {
         print(isClicked)
         if isClicked {
             self.checkButton.setImage(UIImage(systemName: "checkmark.square.fill"), for: .normal)
-        }else {
+            setAddress(isFilled: true)
+        } else {
             self.checkButton.setImage(UIImage(systemName: "checkmark.square"), for: .normal)
+            setAddress(isFilled: false)
+        }
+    }
+    
+    private func setAddress(isFilled: Bool){
+        if isFilled {
+            let user = DataManager.shared.getUser()
+            subDistrictTextField.text = user?.kelurahan
+            districtTextField.text = user?.kecamatan
+            cityTextField.text = user?.kota
+            provTextField.text = user?.provinsi
+            streetTextField.text = user?.alamat
+        } else {
+            subDistrictTextField.text = ""
+            districtTextField.text = ""
+            cityTextField.text = ""
+            provTextField.text = ""
+            streetTextField.text = ""
         }
     }
 }

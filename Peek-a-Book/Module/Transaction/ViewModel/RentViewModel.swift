@@ -99,7 +99,7 @@ struct RentViewModel{
     
     func getFilteredRentsForLender(statusId: Int){
         loading.onNext(true)
-        RentService.getListRenterTransaction(id: DataManager.shared.getLenderId()) { rentResponse in
+        RentService.getListLenderTransaction(id: DataManager.shared.getLenderId()) { rentResponse in
             self.loading.onNext(false)
             var rentObj = [Rent]()
             for item in rentResponse {

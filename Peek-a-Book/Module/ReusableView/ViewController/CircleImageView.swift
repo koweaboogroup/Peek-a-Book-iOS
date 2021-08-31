@@ -15,6 +15,8 @@ class CircleImageView: UIImageView {
     @IBOutlet weak var placeImage: UIImageView!
     @IBOutlet weak var placeholderImage: UIImageView!
     @IBOutlet weak var circleImageView: UIView!
+    @IBOutlet weak var placeHolderImageWidth: NSLayoutConstraint!
+    @IBOutlet weak var placeHolderImageHeight: NSLayoutConstraint!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -39,6 +41,11 @@ class CircleImageView: UIImageView {
         placeholderImage.image = image
         placeImage.isHidden = true
         placeholderImage.isHidden = false
+    }
+    
+    func setPlaceHolderImageSize(width: CGFloat, height: CGFloat) {
+        placeHolderImageWidth.constant = width
+        placeHolderImageHeight.constant = height
     }
     
     func setImage(image: UIImage) {
