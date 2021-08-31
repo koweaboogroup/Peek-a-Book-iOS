@@ -52,9 +52,10 @@ class BooksHomescreenCollectionViewCell: UICollectionViewCell {
                 self.bookWriter.text = response.book?.author
                 
                 if response.isAvailable == false {
-                    self.bookRentPrice.font = UIFont(name: self.bookRentPrice.font.familyName, size: 14)
+                    self.bookRentPrice.textColor = .lightGray
                     self.bookRentPrice.text = "Dalam Penyewaan"
                 } else {
+                    self.bookRentPrice.textColor = .black
                     self.bookRentPrice.text = "Rp\(response.price?.toRupiah() ?? "")/minggu"
                 }
                 
