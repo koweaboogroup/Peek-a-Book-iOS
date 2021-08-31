@@ -163,7 +163,6 @@ class RegisterViewController: UIViewController {
             .bind(to: addressDetailButton.rx.buttonComponentsColorFlag)
             .disposed(by: disposeBag)
         
-        
         addressViewModel.getAllAddressFieldsObservable()
             .subscribe(onNext: {
                 self.address = $0[0]
@@ -174,20 +173,37 @@ class RegisterViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        viewModel.loading.asObserver()
+        viewModel.loading
             .bind(to: loadingView.rx.isAnimating)
             .disposed(by: disposeBag)
         
-        viewModel.loading.asObserver().map{ item in
-            !item
-        }.bind(to: loadingView.rx.isHidden)
+        viewModel.loading
+            .map { item in
+                !item
+            }
+            .bind(to: loadingView.rx.isHidden)
             .disposed(by: disposeBag)
         
         viewModel.loading.onNext(false)
         
-        viewModel.user.subscribe(onNext: { user in
-            self.changeToProfileVC()
-        }).disposed(by: disposeBag)
+        viewModel.user
+            .subscribe(onNext: { user in
+                self.changeToProfileVC()
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.error
+            .subscribe(onNext: { error in
+                let alert = UIAlertController(title: error, message: "Mohon gunakan email yang belum pernah didaftarkan", preferredStyle: .alert)
+                
+                alert.addAction(UIAlertAction(title: "Oke", style: .default, handler: { _ in
+                    self.emailTextField.text = ""
+                    self.emailTextField.becomeFirstResponder()
+                }))
+                
+                self.present(alert, animated: true, completion: nil)
+            })
+            .disposed(by: disposeBag)
     }
     
     private func setupUI() {

@@ -27,6 +27,7 @@ class TransactionViewController: UIViewController {
     
     private let viewModel = RentViewModel()
     private let disposeBag = DisposeBag()
+    private let refreshControl = UIRefreshControl()
     
     private var id = 0
     private var lenderId = 0
@@ -34,16 +35,31 @@ class TransactionViewController: UIViewController {
     
     private var selectedId = 0
     private var selectedStatus = 0
-        
+    
     private var itemsStatus: Observable<[String]> = Observable.of(["Semua Status", "Menunggu Konfirmasi", "Dalam Proses", "Dalam Pengiriman", "Sedang Berlangsung", "Sedang Dikembalikan", "Selesai", "Dibatalkan"])
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        fetchTransaction(successCompletion: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
         selectedIndex()
-        fetchTransaction()
         updateStatus()
         showDatePicker()
+        
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
+        transactionTableView.addSubview(refreshControl)
+    }
+    
+    @objc func refresh(_ sender: AnyObject) {
+        fetchTransaction {
+            self.refreshControl.endRefreshing()
+        }
     }
     
     func setUserID(id: Int){
@@ -56,18 +72,22 @@ class TransactionViewController: UIViewController {
         flagFrom = .kelolaPenyewaan
     }
     
-    private func fetchTransaction(){
+    private func fetchTransaction(successCompletion: (() -> Void)? ) {
         switch flagFrom {
         case .riwayatPenyewaan:
-            viewModel.getListRentAsUser(id: id)
+            viewModel.getListRentAsUser(id: id) {
+                successCompletion?()
+            }
         case .kelolaPenyewaan:
-            viewModel.getListRentAsLender(id: lenderId)
+            viewModel.getListRentAsLender(id: lenderId) {
+                successCompletion?()
+            }
         case .none:
             self.navigationController?.popViewController(animated: true)
         }
     }
     
-    private func setupView(){
+    private func setupView() {        
         viewModel.loading.asObserver()
             .bind(to: loadingView.rx.isAnimating)
             .disposed(by: disposeBag)
@@ -80,11 +100,11 @@ class TransactionViewController: UIViewController {
             !item
         }.bind(to: loadingView.rx.isHidden)
         .disposed(by: disposeBag)
-                
+        
         viewModel.loading.asObserver()
             .bind(to: errorStateView.rx.isHidden)
             .disposed(by: disposeBag)
-                
+        
         confirmationButton.cornerRadius(10)
         confirmationButton.layer.applyShadow(color: .black, alpha: 0.5, x: 0, y: 2, blur: 4, spread: 0)
         
@@ -97,13 +117,13 @@ class TransactionViewController: UIViewController {
                 cell.setViewModel(viewModel: self.viewModel)
                 cell.setViewController(viewController: self)
                 cell.response = transaction
-                }.disposed(by: disposeBag)
+            }.disposed(by: disposeBag)
             
             viewModel.ordersForRenter.asObserver().map{ item in
                 !item.isEmpty
             }.bind(to: errorStateView.rx.isHidden)
             .disposed(by: disposeBag)
-
+            
             errorStateView.setError(errorMessage: "Tidak ada penyewaan untuk saat ini")
         case .kelolaPenyewaan:
             self.title = "Kelola Penyewaan"
@@ -111,18 +131,18 @@ class TransactionViewController: UIViewController {
                 cell.setViewModel(viewModel: self.viewModel)
                 cell.setViewController(viewController: self)
                 cell.response = transaction
-                }.disposed(by: disposeBag)
+            }.disposed(by: disposeBag)
             
             viewModel.ordersForLender.asObserver().map{ item in
                 !item.isEmpty
             }.bind(to: errorStateView.rx.isHidden)
             .disposed(by: disposeBag)
-    
+            
             errorStateView.setError(errorMessage: "Tidak ada penyewaan untuk saat ini")
         case .none:
             break
         }
-
+        
         itemsStatus
             .bind(to: statusPickerView.rx.itemTitles) { (row, element) in
                 return element
@@ -163,7 +183,7 @@ class TransactionViewController: UIViewController {
         
         viewModel.isSuccessChange.subscribe(onNext: { isChange in
             if !isChange {
-                self.fetchTransaction()
+                self.fetchTransaction(successCompletion: nil)
             }
         }).disposed(by: disposeBag)
     }

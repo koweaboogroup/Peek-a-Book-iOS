@@ -57,7 +57,10 @@ struct RegisterViewModel {
         } failCompletion: { error in
             
             self.loading.onNext(false)
-            self.error.onNext(error.errorDescription ?? "Error")
+            
+            if error.responseCode == 400 {
+                self.error.onNext("Email Telah Tedaftar")
+            }
             
         }
     }

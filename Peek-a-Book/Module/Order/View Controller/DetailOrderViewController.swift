@@ -214,13 +214,13 @@ class DetailOrderViewController: UIViewController {
         //MARK: -Bikin logic pesan header
         if self.userPenyewa == true{
             viewModel.order.asObserver().map { order in
-                MessageStatusPenyewa(rawValue: order.status?.name ?? "Dalam Proses")?.messageStatusPenyewaSetting(namaTokoPemberiSewa: self.profileNameLabel.text ?? "", nomorPesanan: self.nomorOrderPenyewaanLabel.text ?? "", getStatus: self.messageStatusTemp ?? "Penyewaan (nomor penyewaan) sedang berlangsung hingga tanggal (deadline penyewaan).")
+                MessageStatusPenyewa(rawValue: order.status?.name ?? "Dalam Proses")?.messageStatusPenyewaSetting(namaTokoPemberiSewa: self.profileNameLabel.text ?? "", nomorPesanan: self.nomorOrderPenyewaanLabel.text ?? "", getStatus: self.messageStatusTemp ?? "Penyewaan \(String(describing: self.nomorOrderPenyewaanLabel.text ?? "1")) sedang berlangsung hingga tanggal 17/9/2021.")
             }.bind(to: informationStatusLabel.rx.text)
             .disposed(by: disposeBag)
         }
         else {
             viewModel.order.asObserver().map { order in
-                MessageStatusPemberiSewa(rawValue: order.status?.name ?? "Dalam Proses")?.messageStatusPemberiSewaSetting(namaPenyewa: self.profileNameLabel.text ?? "", nomorPesanan: self.nomorOrderPenyewaanLabel.text ?? "", getStatus: self.messageStatusTemp ?? "Penyewaan (nomor penyewaan) sedang berlangsung hingga tanggal (deadline penyewaan).")
+                MessageStatusPemberiSewa(rawValue: order.status?.name ?? "Dalam Proses")?.messageStatusPemberiSewaSetting(namaPenyewa: self.profileNameLabel.text ?? "", nomorPesanan: self.nomorOrderPenyewaanLabel.text ?? "", getStatus: self.messageStatusTemp ?? "Penyewaan \(String(describing: self.nomorOrderPenyewaanLabel.text ?? "1")) sedang berlangsung hingga tanggal 17/9/2021.")
             }.bind(to: informationStatusLabel.rx.text)
             .disposed(by: disposeBag)
         }
@@ -241,6 +241,7 @@ class DetailOrderViewController: UIViewController {
                 self.durasiSewa = order.periodOfTime
             })
             .disposed(by: disposeBag)
+        
     }
     
     // MARK: - countdown
@@ -251,36 +252,36 @@ class DetailOrderViewController: UIViewController {
         if day <= 7 {
             if day <= 3 && day >= 2{
                 if userPenyewa {
-                    messageStatusTemp = "Jangan lupa menyelesaikan buku Anda, dan harap mengembalikan buku maksimal tanggal (tanggal due date + 1)."
+                    messageStatusTemp = "Jangan lupa menyelesaikan buku Anda, dan harap mengembalikan buku maksimal tanggal \(String(describing: date))."
                 }
                 else {
-                    messageStatusTemp = "Pastikan (nama Penyewa) mengembalikan buku sebelum tanggal (due date + 1).)"
+                    messageStatusTemp = "Pastikan \(String(describing: renterNameLabel)) mengembalikan buku sebelum tanggal \(String(describing: date)).)"
                 }
             }
             else if day == 1 {
                 if userPenyewa {
-                    messageStatusTemp = "Jangan lupa menyelesaikan buku Anda, dan harap mengembalikan buku maksimal tanggal (tanggal due date + 1)."
+                    messageStatusTemp = "Jangan lupa menyelesaikan buku Anda, dan harap mengembalikan buku maksimal tanggal \(String(describing: date))."
                 }
                 else {
-                    messageStatusTemp = "Jangan lupa menyelesaikan buku Anda, dan harap mengembalikan buku maksimal tanggal (tanggal due date + 1)."
+                    messageStatusTemp = "Jangan lupa menyelesaikan buku Anda, dan harap mengembalikan buku maksimal tanggal \(String(describing: date))."
                 }
             }
             else if day == 0 {
                 if userPenyewa {
-                    messageStatusTemp = "Anda harus mengembalikan penyewaan (nomor penyewaan) hari ini. Mohon konfirmasi di halaman Riwayat Penyewaan jika buku sudah dikembalikan."
+                    messageStatusTemp = "Anda harus mengembalikan penyewaan \(String(describing: nomorOrderPenyewaanLabel)) hari ini. Mohon konfirmasi di halaman Riwayat Penyewaan jika buku sudah dikembalikan."
                 }
                 else {
                     
                 }
             }
             if userPenyewa{
-                messageStatusTemp = "Jangan lupa menyelesaikan buku Anda, dan harap mengembalikan buku maksimal tanggal (tanggal due date + 1)."
+                messageStatusTemp = "Jangan lupa menyelesaikan buku Anda, dan harap mengembalikan buku maksimal tanggal \(String(describing: date))."
             }
             else{
-                messageStatusTemp = "Penyewaan (nomor penyewaan) sedang berlangsung hingga tanggal (deadline penyewaan)."
+                messageStatusTemp = "Penyewaan \(String(describing: nomorOrderPenyewaanLabel)) sedang berlangsung hingga tanggal \(String(describing: date))."
             }
         }
-        messageStatusTemp = "Penyewaan (nomor penyewaan) sedang berlangsung hingga tanggal (deadline penyewaan)."
+        messageStatusTemp = "Penyewaan \(String(describing: nomorOrderPenyewaanLabel)) sedang berlangsung hingga tanggal \(String(describing: date))."
     }
     
     func runCountdown() {

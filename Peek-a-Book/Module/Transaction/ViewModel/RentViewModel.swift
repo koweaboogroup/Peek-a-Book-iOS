@@ -18,7 +18,7 @@ struct RentViewModel{
     let selectedId: PublishSubject<Int> = PublishSubject()
     let selectedStatus: PublishSubject<Int> = PublishSubject()
     
-    func getListRentAsUser(id: Int){
+    func getListRentAsUser(id: Int, successCompletion: @escaping() -> Void) {
         loading.onNext(true)
         RentService.getListRenterTransaction(id: id) { rentResponse in
             self.loading.onNext(false)
@@ -27,13 +27,14 @@ struct RentViewModel{
                 rentObj.append(Rent(id: item.id, periodOfTime: item.periodOfTime, shippingMethods: item.shippingMethods, status: item.status, user: item.user, alamat: item.alamat, provinsi: item.provinsi, kota: item.kota, kelurahan: item.kelurahan, kecamatan: item.kecamatan, longtitude: item.longtitude, latitude: item.latitude, publishedAt: item.publishedAt, createdAt: item.createdAt, updatedAt: item.updatedAt, lenderBooks: item.lenderBooks, name: item.name, bio: item.bio, isFromRenter: true))
             }
             self.ordersForRenter.onNext(rentObj)
+            successCompletion()
         } failCompletion: { error in
             self.loading.onNext(false)
             self.error.onNext(error.errorDescription!)
         }
     }
     
-    func getListRentAsLender(id: Int){
+    func getListRentAsLender(id: Int, successCompletion: @escaping() -> Void) {
         self.loading.onNext(true)
         RentService.getListLenderTransaction(id: id) { rentResponse in
             self.loading.onNext(false)
@@ -42,10 +43,22 @@ struct RentViewModel{
                 rentObj.append(Rent(id: item.id, periodOfTime: item.periodOfTime, shippingMethods: item.shippingMethods, status: item.status, user: item.user, alamat: item.alamat, provinsi: item.provinsi, kota: item.kota, kelurahan: item.kelurahan, kecamatan: item.kecamatan, longtitude: item.longtitude, latitude: item.latitude, publishedAt: item.publishedAt, createdAt: item.createdAt, updatedAt: item.updatedAt, lenderBooks: item.lenderBooks, name: item.name, bio: item.bio, isFromRenter: false))
             }
             self.ordersForLender.onNext(rentObj)
+            successCompletion()
         } failCompletion: { error in
             self.loading.onNext(false)
             self.error.onNext(error.errorDescription!)
         }
+    }
+    
+    func editAvailability(lenderBookId: Int, isAvailable: Bool) {
+        self.loading.onNext(true)
+        BookCatalogueService.editAvailability(lenderBookId: lenderBookId, isAvailable: isAvailable) {
+            self.loading.onNext(false)
+        } failCompletion: { error in
+            self.loading.onNext(false)
+            self.error.onNext(error.errorDescription ?? "Error")
+        }
+
     }
     
     func changeStatus(id: Int, statusRent: Int) {
@@ -86,7 +99,7 @@ struct RentViewModel{
     
     func getFilteredRentsForLender(statusId: Int){
         loading.onNext(true)
-        RentService.getListRenterTransaction(id: DataManager.shared.getLenderId()) { rentResponse in
+        RentService.getListLenderTransaction(id: DataManager.shared.getLenderId()) { rentResponse in
             self.loading.onNext(false)
             var rentObj = [Rent]()
             for item in rentResponse {

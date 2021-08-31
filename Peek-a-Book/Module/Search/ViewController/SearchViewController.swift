@@ -8,7 +8,7 @@
 import UIKit
 import RxSwift
 
-class SearchViewController: UIViewController {
+class SearchViewController: UIViewController, UICollectionViewDelegateFlowLayout{
 
     @IBOutlet weak var searchView: SearchView!
     @IBOutlet weak var bookCollectionView: UICollectionView!
@@ -21,7 +21,7 @@ class SearchViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         fetchBook()
         setupView()
         setupCellSelected()
@@ -33,6 +33,7 @@ class SearchViewController: UIViewController {
     }
     
     private func setupView(){
+        bookCollectionView.delegate = self
         searchView.hideNotification(true)
         searchView.hideLocationLabel(true)
         searchView.searchField.text = query
@@ -47,6 +48,15 @@ class SearchViewController: UIViewController {
         viewModel.listBook.bind(to: bookCollectionView.rx.items(cellIdentifier: XIBConstant.BooksHomescreenCollectionViewCell, cellType: BooksHomescreenCollectionViewCell.self)){ (row,book,cell) in
             cell.response = book
         }.disposed(by: disposeBag)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = bookCollectionView.bounds.width
+        
+        let cellWidth = (width/2) - 27
+        let cellHeight = (width/1.5)
+        
+        return CGSize(width: cellWidth, height: cellHeight)
     }
     
     private func setupCellSelected(){
