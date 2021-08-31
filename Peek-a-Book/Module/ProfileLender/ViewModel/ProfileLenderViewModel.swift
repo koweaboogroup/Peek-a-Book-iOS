@@ -57,16 +57,15 @@ struct ProfileLenderViewModel {
     func getListBook(lenderId: Int, userPenyewa: Bool){
         var books = [LenderBook]()
         if userPenyewa == false {
-            books.append(LenderBook(id: 0, price: 0, bookCondition: nil, lender: nil, book: nil, page: 0, language: "", publishedAt: "", createdAt: "", updatedAt: "", images: []))
-            self.listBook.onNext(books)
+            books.append(LenderBook(id: 0, price: 0, bookCondition: nil, lender: nil, book: nil, page: 0, isAvailable: nil, language: "", publishedAt: "", createdAt: "", updatedAt: "", images: []))
         }
         BookService.getListBook { book in
             for item in book {
                 if item.lender?.id == lenderId {
-                    books.append(LenderBook(id: item.id, price: item.price, bookCondition: item.bookCondition, lender: item.lender, book: item.book, page: item.page, language: item.language, publishedAt: item.publishedAt, createdAt: item.createdAt, updatedAt: item.updatedAt, images: item.images))
-                    self.listBook.onNext(books)
+                    books.append(LenderBook(id: item.id, price: item.price, bookCondition: item.bookCondition, lender: item.lender, book: item.book, page: item.page, isAvailable: item.isAvailable, language: item.language, publishedAt: item.publishedAt, createdAt: item.createdAt, updatedAt: item.updatedAt, images: item.images))
                 }
             }
+            self.listBook.onNext(books)
         } failCompletion: { error in
             self.error.onNext(error.errorDescription ?? "Data Tidak Ditemukan")
         }

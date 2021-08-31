@@ -25,11 +25,11 @@ class BooksViewModel {
             var nonFictionBook = [LenderBook]()
             for item in book {
                 if item.book?.bookGenre == 1 {
-                    fictionBook.append(LenderBook(id: item.id, price: item.price, bookCondition: item.bookCondition, lender: item.lender, book: item.book, page: item.page, language: item.language, publishedAt: item.publishedAt, createdAt: item.createdAt, updatedAt: item.updatedAt, images: item.images))
+                    fictionBook.append(LenderBook(id: item.id, price: item.price, bookCondition: item.bookCondition, lender: item.lender, book: item.book, page: item.page, isAvailable: item.isAvailable, language: item.language, publishedAt: item.publishedAt, createdAt: item.createdAt, updatedAt: item.updatedAt, images: item.images))
                     self.listBookFiction.onNext(fictionBook)
                 }
                 else if item.book?.bookGenre == 2 {
-                    nonFictionBook.append(LenderBook(id: item.id, price: item.price, bookCondition: item.bookCondition, lender: item.lender, book: item.book, page: item.page, language: item.language, publishedAt: item.publishedAt, createdAt: item.createdAt, updatedAt: item.updatedAt, images: item.images))
+                    nonFictionBook.append(LenderBook(id: item.id, price: item.price, bookCondition: item.bookCondition, lender: item.lender, book: item.book, page: item.page, isAvailable: item.isAvailable, language: item.language, publishedAt: item.publishedAt, createdAt: item.createdAt, updatedAt: item.updatedAt, images: item.images))
                     self.listBookNonFiction.onNext(nonFictionBook)
                 }
             }
@@ -47,7 +47,7 @@ class BooksViewModel {
                     let location = CLLocation(latitude: CLLocationDegrees(lat), longitude: CLLocationDegrees(long))
                     let distance = LocationManager.shared.getDistance(yourLocation: yourLocation, anotherLocation: location)
                     
-                    nearestBook.append(LenderBook(id: item.id, price: item.price, bookCondition: item.bookCondition, lender: item.lender, book: item.book, page: item.page, language: item.language, publishedAt: item.publishedAt, createdAt: item.createdAt, updatedAt: item.updatedAt, images: item.images, distance: distance))
+                    nearestBook.append(LenderBook(id: item.id, price: item.price, bookCondition: item.bookCondition, lender: item.lender, book: item.book, page: item.page, isAvailable: item.isAvailable, language: item.language, publishedAt: item.publishedAt, createdAt: item.createdAt, updatedAt: item.updatedAt, images: item.images, distance: distance))
                 }
             }
             nearestBook.sort {

@@ -14,6 +14,7 @@ struct LenderBook: Codable {
     let lender: Lender?
     let book: Book?
     let page: Int?
+    let isAvailable: Bool?
     let language, publishedAt, createdAt, updatedAt: String?
     let images: [ImageObject]?
     var distance: Double = 0.0
@@ -22,7 +23,7 @@ struct LenderBook: Codable {
     enum CodingKeys: String, CodingKey {
         case id, price
         case bookCondition = "book_condition"
-        case lender, book, page, language
+        case lender, book, page, language, isAvailable
         case publishedAt = "published_at"
         case createdAt = "created_at"
         case updatedAt = "updated_at"

@@ -88,14 +88,14 @@ class DetailBooksViewController: UIViewController {
         viewModel.loading.asObserver().map{ item in
             !item
         }.bind(to: loadingView.rx.isHidden)
-            .disposed(by: disposeBag)
-
+        .disposed(by: disposeBag)
+        
         viewModel.bookDetail.subscribe(onNext: { item in
             self.lenderBook = item
         }).disposed(by: disposeBag)
         
         viewModel.bookDetail.subscribe(onNext: { book in
-                self.lenderId = book.lender?.id
+            self.lenderId = book.lender?.id
         }).disposed(by: disposeBag)
         
         // MARK: -Setup Header View
@@ -174,9 +174,9 @@ class DetailBooksViewController: UIViewController {
         .disposed(by: disposeBag)
         
         viewModel.bookDetail.asObserver().map { book in
-         book.book?.bookGenre == 1 ? "Fiksi" : "Non Fiksi"
-         }.bind(to: detailBookGenreLabel.rx.text)
-         .disposed(by: disposeBag)
+            book.book?.bookGenre == 1 ? "Fiksi" : "Non Fiksi"
+        }.bind(to: detailBookGenreLabel.rx.text)
+        .disposed(by: disposeBag)
         
         viewModel.bookDetail.asObserver().map { book in
             book.book?.sinopsis
@@ -192,12 +192,15 @@ class DetailBooksViewController: UIViewController {
     }
     
     @IBAction func totalBukuGetTapped(_ sender: UITapGestureRecognizer) {
-        if let _ = UserDefaults.standard.string(forKey: "jwt") {
+        
+        
+        if self.dataManager.isLoggedIn() {
             let vc = ModuleBuilder.shared.goToCheckOutViewController()
             self.navigationController?.pushViewController(vc, animated: true)
         } else {
-            tabBarController?.selectedIndex = 1
+            self.tabBarController?.selectedIndex = 1
         }
+        
     }
     
     @IBAction func kondisiBukuInformationTouched(_ sender: UIButton) {
@@ -227,30 +230,35 @@ class DetailBooksViewController: UIViewController {
     }
     
     @IBAction func tambahKeranjangButtonPressed(_ sender: UIButton) {
-        if dataManager.isLoggedIn() {
-            if dataManager.getCart().isEmpty {
-                addItemToCart()
-                return
-            }
-            
-            if lenderBook?.lender?.id != dataManager.getCart()[0].lender?.id {
-                let alert = UIAlertController(title: "Hapus Keranjang?", message: "Keranjang yang kamu buat sebelumnya akan dihapus", preferredStyle: .alert)
-                
-                alert.addAction(UIAlertAction(title: "Hapus", style: .destructive, handler: { action in
-                    self.dataManager.deleteCart()
-                    self.addItemToCart()
-                }))
-                
-                alert.addAction(UIAlertAction(title: "Kembali", style: .cancel, handler: nil))
-                
-                self.present(alert, animated: true, completion: nil)
-            } else {
-                addItemToCart()
+        if lenderBook?.isAvailable == false {
+            ConfirmationDialog.showInfoAlert(viewController: self, title: "Buku Sedang Dalam Penyewaan", subtitle: "Coba lihat di toko lain", text: "Baik") {
+                self.dismiss(animated: true, completion: nil)
             }
         } else {
-            tabBarController?.selectedIndex = 1
+            if dataManager.isLoggedIn() {
+                if dataManager.getCart().isEmpty {
+                    addItemToCart()
+                    return
+                }
+                
+                if lenderBook?.lender?.id != dataManager.getCart()[0].lender?.id {
+                    let alert = UIAlertController(title: "Hapus Keranjang?", message: "Keranjang yang kamu buat sebelumnya akan dihapus", preferredStyle: .alert)
+                    
+                    alert.addAction(UIAlertAction(title: "Hapus", style: .destructive, handler: { action in
+                        self.dataManager.deleteCart()
+                        self.addItemToCart()
+                    }))
+                    
+                    alert.addAction(UIAlertAction(title: "Kembali", style: .cancel, handler: nil))
+                    
+                    self.present(alert, animated: true, completion: nil)
+                } else {
+                    addItemToCart()
+                }
+            } else {
+                tabBarController?.selectedIndex = 1
+            }
         }
-        
     }
     
     private func addItemToCart() {

@@ -119,7 +119,11 @@ class CheckOutViewController: UIViewController, UITableViewDataSource {
     
     private func setupRx() {
         
-        lenderImage.setImage(fromUrl: Constant.Network.baseUrl + (cart[0].lender?.images?[0].url ?? ""))
+        if let images = cart[0].lender?.images {
+            if !images.isEmpty {
+                lenderImage.setImage(fromUrl: Constant.Network.baseUrl + (images[0].url ?? ""))
+            }
+        }
         
         viewModel.itemsPrice
             .map { itemsPrice in
