@@ -150,12 +150,13 @@ class AddressSettingViewController: UIViewController {
         let vc = ModuleBuilder.shared.goToMapsViewController()
         vc.modalPresentationStyle = .fullScreen
         vc.initViewModel(mapsViewModel)
+        
         self.present(vc, animated: true, completion: nil)
     }
     
     @IBAction func checkButtonPressed(_ sender: UIButton) {
         isClicked = !isClicked
-        print(isClicked)
+        
         if isClicked {
             self.checkButton.setImage(UIImage(systemName: "checkmark.square.fill"), for: .normal)
             setAddress(isFilled: true)
@@ -165,7 +166,7 @@ class AddressSettingViewController: UIViewController {
         }
     }
     
-    private func setAddress(isFilled: Bool){
+    private func setAddress(isFilled: Bool) {
         if isFilled {
             let user = DataManager.shared.getUser()
             subDistrictTextField.text = user?.kelurahan
@@ -173,6 +174,12 @@ class AddressSettingViewController: UIViewController {
             cityTextField.text = user?.kota
             provTextField.text = user?.provinsi
             streetTextField.text = user?.alamat
+            
+            addressViewModel?.urbanVillage.onNext(user?.kelurahan ?? "")
+            addressViewModel?.districtName.onNext(user?.kecamatan ?? "")
+            addressViewModel?.cityName.onNext(user?.kota ?? "")
+            addressViewModel?.provName.onNext(user?.provinsi ?? "")
+            addressViewModel?.address.onNext(user?.alamat ?? "")
         } else {
             subDistrictTextField.text = ""
             districtTextField.text = ""

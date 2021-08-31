@@ -231,7 +231,7 @@ class DetailBooksViewController: UIViewController {
     
     @IBAction func tambahKeranjangButtonPressed(_ sender: UIButton) {
         if lenderBook?.isAvailable == false {
-            ConfirmationDialog.showInfoAlert(viewController: self, title: "Buku Sedang Dalam Penyewaan", subtitle: "Coba lihat di toko lain", text: "Baik") {
+            ConfirmationDialog.showInfoAlert(viewController: self, title: "Buku Sedang Dalam Penyewaan", subtitle: "Coba lihat buku lain", text: "Baik") {
                 self.dismiss(animated: true, completion: nil)
             }
         } else {
