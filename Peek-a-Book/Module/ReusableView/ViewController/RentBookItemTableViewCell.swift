@@ -239,6 +239,9 @@ class RentBookItemTableViewCell: UITableViewCell{
                         view.dismiss(animated: true, completion: nil)
                         let safariViewController = SFSafariViewController(url: WhatsappGenerator(rawValue: self.shippingMethod)!.getURL(order: self.response!))
                         view.present(safariViewController, animated: true, completion: nil)
+                        
+                        self.editLenderBooksAvailibility(isAvailable: false)
+                        
                     } negativeCompletion: {
                         view.dismiss(animated: true, completion: nil)
                     }
@@ -246,6 +249,7 @@ class RentBookItemTableViewCell: UITableViewCell{
                 case RentStatus.awaiting.getID():
                     self.viewModel?.changeStatus(id: self.id, statusRent: RentStatus.shipping.getID())
                 case RentStatus.returning.getID():
+                    editLenderBooksAvailibility(isAvailable: true)
                     self.viewModel?.changeStatus(id: self.id, statusRent: RentStatus.done.getID())
                     break
                 default:
@@ -271,6 +275,15 @@ class RentBookItemTableViewCell: UITableViewCell{
                     self.viewModel?.changeStatus(id: self.id, statusRent: RentStatus.unfinish.getID())
                     view.dismiss(animated: true, completion: nil)
                 }
+            }
+        }
+    }
+    
+    // change book availability
+    private func editLenderBooksAvailibility(isAvailable: Bool) {
+        if let lenderBooks = self.response?.lenderBooks {
+            for lenderBook in lenderBooks {
+                self.viewModel?.editAvailability(lenderBookId: lenderBook.id ?? -1, isAvailable: isAvailable)
             }
         }
     }
