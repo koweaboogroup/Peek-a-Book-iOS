@@ -112,7 +112,7 @@ class ProfileLenderViewController: UIViewController, UICollectionViewDelegateFlo
                 }
                 cell.KatalogBookTitle.text = book.book?.title
                 cell.katalogBookWriter.text = book.book?.author
-                cell.katalogBookRentPrice.text = "\(book.price ?? 0)/minggu"
+                cell.katalogBookRentPrice.text = "\(book.price?.toRupiah() ?? "")/minggu"
             }
             
         }.disposed(by: disposeBag)
@@ -142,7 +142,7 @@ class ProfileLenderViewController: UIViewController, UICollectionViewDelegateFlo
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = BooksCollectionView.bounds.width
         
-        let cellWidth = (width/2) - 32
+        let cellWidth = (width/2) - 27
         let cellHeight = (width/1.5)
         
         return CGSize(width: cellWidth, height: cellHeight)
